@@ -10,13 +10,10 @@ export default StyleSheet.create({
         paddingRight:85,
         paddingLeft:85,
         paddingTop:5,
-        paddingBottom:5,
+        paddingBottom:8,
         display : "flex",
         flexDirection : "row",
         width : "100%",
         backgroundColor : '#262222',
     },
-    logo : {
-        height :  "5vh",
-    }
 });
