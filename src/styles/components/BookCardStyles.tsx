@@ -5,10 +5,11 @@ export default StyleSheet.create({
     container: {
         width:"90%",
         height:"20vh",
-        backgroundColor: '#F0F0F0',
+        backgroundColor: COLORS.componentBackground,
         borderRadius : 30,
         shadowOffset: {width: 2.5, height: 2.5},
-        shadowColor: COLORS.clickableColor,
+        shadowColor: COLORS.background,
+        shadowOpacity: 0.3,
         marginBottom: 30,
     }
 });
