@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { COLORS } from "../../Common/CommonColors";
 
 export default StyleSheet.create({
     container: {
@@ -14,6 +15,6 @@ export default StyleSheet.create({
         display : "flex",
         flexDirection : "row",
         width : "100%",
-        backgroundColor : '#262222',
+        backgroundColor : COLORS.background,
     },
 });

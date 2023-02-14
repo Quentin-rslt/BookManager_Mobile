@@ -1,21 +1,29 @@
 import { StyleSheet } from "react-native";
+import { COLORS } from "../Common/CommonColors";
 
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#262222',
+        backgroundColor: COLORS.background,
         alignItems: 'center',
         justifyContent: 'center',
       },
       content : {
-        backgroundColor: '#332d2d',
+        backgroundColor: COLORS.backgroundLight,
         width: '100%',
         position: 'absolute',
         top : 85,
         bottom: 55,
-        borderTopLeftRadius: 30,
-        borderTopRightRadius: 30,
-        borderBottomLeftRadius: 30,
-        borderBottomRightRadius: 30,
+        borderRadius : 30,
     },
+    scrollViewContainer : {
+        marginTop: "4vh",
+        marginBottom: '2vh',
+    },
+    componentContainer : {
+        justifyContent: 'center',
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    }
 });

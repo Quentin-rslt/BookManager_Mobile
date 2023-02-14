@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
+import { COLORS } from "../../Common/CommonColors";
 
 export default StyleSheet.create({
     title: {
         fontSize: 30,
         fontWeight: '800',
-        color: '#e8d0d0',
+        color: COLORS.foreground,
         textAlign: 'center',
         paddingHorizontal: '20%',
         marginTop: '3vh',

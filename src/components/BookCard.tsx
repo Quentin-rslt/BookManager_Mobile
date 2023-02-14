@@ -1,11 +1,15 @@
 import { Text, View } from 'react-native'
 import React from 'react'
+import Book from '../Common/types/book'
+import BookCardStyles from '../styles/components/BookCardStyles';
 
-type Props = {}
+type Props = {
+    book: Book;
+}
 
-export default function BookCard(props : Props) {
+export default function BookCard({book} : Props) {
     return (
-        <View>
+        <View style={BookCardStyles.container}>
             <Text>
                
             </Text>

@@ -30,12 +30,12 @@ export default function NavBar({libraryFocus, tagsFocus} : Props) {
         <View style={NavBarStyles.container}>
             <TouchableHighlight onPress={onClickLibraryButton} underlayColor={"#262222"}>
                 {
-                    !libraryFocus? <MaterialCommunityIcons name="bookshelf" size={35} color="#c58282e5"/> : <MaterialCommunityIcons name="bookshelf" size={35} color="#c54c4ce5"/>
+                    !libraryFocus? <MaterialCommunityIcons name="bookshelf" size={35} color="#c58282e5"/> : <MaterialCommunityIcons name="bookshelf" size={35} color="#c53e3ee5"/>
                 }
             </TouchableHighlight>
             <TouchableHighlight onPress={onClickTagsButton} underlayColor={"#262222"}>
                 {
-                    !tagsFocus? <MaterialCommunityIcons name="tag-multiple" size={35} color="#c58282e5"/> : <MaterialCommunityIcons name="tag-multiple" size={35} color="#c54c4ce5"/>
+                    !tagsFocus? <MaterialCommunityIcons name="tag-multiple" size={35} color="#c58282e5"/> : <MaterialCommunityIcons name="tag-multiple" size={35} color="#c53e3ee5"/>
                 }
             </TouchableHighlight>
         </View>
