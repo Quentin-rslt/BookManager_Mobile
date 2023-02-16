@@ -25,5 +25,9 @@ export default StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
+    },
+    booksContainer: {
+        alignItems: "center",
+        width: "100%",
     }
 });

@@ -39,11 +39,10 @@ export default function LibraryScreen(props: Props) {
                 <ScrollView style={CommonStyles.scrollViewContainer}>
                     <View style={CommonStyles.componentContainer}>
                         {
-                            books.map(
-                                book =>
-                                <View key={book.idBook}>
+                            books.map((book, idBook) =>
+                                <View style={CommonStyles.booksContainer} key={idBook}>
                                     <BookCard book={book}/>
-                                </View>
+                                </View> 
                             )
                         }
                     </View>
