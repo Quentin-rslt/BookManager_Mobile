@@ -16,7 +16,7 @@ export default StyleSheet.create({
     titleStyle: {
         color: COLORS.foreground,
         fontSize: 20,
-        fontWeight: '700',
+        fontWeight: '800',
         marginLeft: 20,
         marginTop: 15,
     },
