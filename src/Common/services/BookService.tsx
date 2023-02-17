@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Book from '../types/book';
-import Tag from '../types/tag';
 
 
 export function getBooks(){

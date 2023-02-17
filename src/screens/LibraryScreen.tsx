@@ -3,10 +3,8 @@ import NavBar from '../components/NavBar'
 import CommonStyles from '../styles/CommonStyles'
 import TitleScreen from '../components/TitleScreen'
 import BookCard from '../components/BookCard'
-import Book from '../Common/types/book'
 import { ScrollView } from 'react-native-gesture-handler'
 import {getBooks} from '../Common/services/BookService'
-import { Key } from 'react'
 
 export default function LibraryScreen() {
     return (

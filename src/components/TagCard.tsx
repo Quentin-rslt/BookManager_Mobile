@@ -1,9 +1,7 @@
 import { Text, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
 import Tag from '../Common/types/tag';
 import NumberIcon from './NumberIcon';
 import TagCardStyles from '../styles/components/TagCardStyles';
-import Book from '../Common/types/book';
 import { getBooksByTag } from '../Common/services/BookService';
 
 type Props = {
