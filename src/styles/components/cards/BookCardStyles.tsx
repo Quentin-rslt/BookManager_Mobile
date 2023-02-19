@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { COLORS } from "../../Common/CommonColors";
+import { COLORS } from "../../../Common/CommonColors";
 
 export default StyleSheet.create({
     container: {
@@ -31,6 +31,7 @@ export default StyleSheet.create({
         display : "flex",
         flexDirection : "row",
         marginLeft : 15,
+        marginRight : 15,
         marginTop : 15,
     },
     numberContainer: {
@@ -45,4 +46,16 @@ export default StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 20,
     },
+    containerReleaseAuthor: {
+        display : "flex",
+        flexDirection : "row",
+    },
+    releaseYear : {
+        position:'absolute',
+        color: COLORS.foreground,
+        fontSize: 15,
+        fontWeight: '500',
+        right : 20,
+        marginTop: 5,
+    }
 });

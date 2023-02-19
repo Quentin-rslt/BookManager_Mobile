@@ -1,8 +1,8 @@
 import { Text, View } from 'react-native'
-import Tag from '../Common/types/tag';
-import NumberIcon from './NumberIcon';
-import TagCardStyles from '../styles/components/TagCardStyles';
-import { getBooksByTag } from '../Common/services/BookService';
+import Tag from '../../Common/types/tag';
+import NumberIcon from './../NumberIcon';
+import TagCardStyles from '../../styles/components/cards/TagCardStyles';
+import { getBooksByTag } from '../../Common/services/BookService';
 
 type Props = {
     tag: Tag;

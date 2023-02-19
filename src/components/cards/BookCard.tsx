@@ -1,9 +1,9 @@
 import { Text, View } from 'react-native'
 import React from 'react'
-import Book from '../Common/types/book'
-import BookCardStyles from '../styles/components/BookCardStyles';
-import TagSticker from './TagSticker';
-import NumberIcon from './NumberIcon';
+import Book from '../../Common/types/book'
+import BookCardStyles from '../../styles/components/cards/BookCardStyles';
+import TagSticker from '../TagSticker';
+import NumberIcon from '../NumberIcon';
 
 type Props = {
     book: Book;
@@ -14,7 +14,10 @@ export default function BookCard({book} : Props) {
         <View style={BookCardStyles.container}>
             <View>
                 <Text style={BookCardStyles.titleStyle}>{book.title}</Text>
-                <Text style={BookCardStyles.authorStyle}>{book.author}</Text>
+                <View style={BookCardStyles.containerReleaseAuthor}>
+                    <Text style={BookCardStyles.authorStyle}>{book.author}</Text>
+                    <Text style={BookCardStyles.releaseYear}>{book.releaseYear}</Text>
+                </View>
             </View>
             <View style={BookCardStyles.tagList}>
                 {
