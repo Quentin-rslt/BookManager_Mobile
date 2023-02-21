@@ -1,26 +1,13 @@
-import { useEffect, useState } from 'react';
 import Tag from '../types/tag';
 
-export default function getTags(){
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [tags, setTags] = useState<Tag[]>([]);
+export async function getTags(){
+    const res = await fetch("http://localhost:9000/api/tag/all");
 
-    useEffect(() => {
-    fetch("http://localhost:9000/api/tag/all")
-        .then(res => res.json())
-        .then(
-        (result) => {
-            setIsLoaded(true);
-            setTags(result);
-        },
-        (error) => {
-            setIsLoaded(true);
-            setError(error);
-        }
-        )
-    }, [])
-    
-    return tags;
+    if(res.ok) {
+        const data: Tag[] = await res.json();
+        return data;
+    }
+
+    return [];
 }
 

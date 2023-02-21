@@ -4,27 +4,17 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import Book from '../Common/types/book';
 import { useState } from 'react';
-import { getBooksBytextSearch } from '../Common/services/BookService';
 import { COLORS } from '../Common/CommonColors';
+import Tag from '../Common/types/tag';
 
 type Props = {
-    books: Book[];
+    onChangeSearch: (text: string) => void;
 }
 
-export default function SearchBar({books} : Props) {
-    const [newBooks, setNewBooks] = useState<Book[]>(books);
-    const [text, setText] = useState('');
-
-    function onClickSearch() {
-        books = getBooksBytextSearch(text)
-    }
-
+export default function SearchBar({onChangeSearch} : Props) {
     return (
         <View style={SearchBarStyles.container}>
-            <TextInput placeholder="Search" style={SearchBarStyles.textInput} onChangeText={newText => setText(newText)}/>
-            <TouchableHighlight onPress={() => onClickSearch} underlayColor={COLORS.background}>
-                <MaterialCommunityIcons name={'card-search'} size={40} color="#c58282e5"/>
-            </TouchableHighlight>
+            <TextInput placeholder="Search" style={SearchBarStyles.textInput} onChangeText={onChangeSearch}/>
         </View>
   )
 }

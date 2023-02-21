@@ -1,74 +1,27 @@
-import { useEffect, useState } from 'react';
 import Book from '../types/book';
+import Tag from '../types/tag';
 
 
-export function getBooks() : Array<Book>{
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [books, setBooks] = useState<Book[]>([]);
+export async function getBooks(){
 
-    useEffect(() => {
-    fetch("http://localhost:9000/api/book/all")
-        .then(res => res.json())
-        .then(
-        (result) => {
-            setIsLoaded(true);
-            setBooks(result);
-        },
-        (error) => {
-            setIsLoaded(true);
-            setError(error);
-        }
-        )
-    }, [])
-    
-    return books;
+    const res = await fetch("http://localhost:9000/api/book/all");
+
+    if(res.ok) {
+        const data: Book[] = await res.json();
+        return data;
+    }
+
+    return [];
 }
 
-export function getBooksByTag(idTag: number){
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [books, setBooks] = useState<Book[]>([]);
+export async function getBooksByTag(tag: Tag){
 
-    useEffect(() => {
-    fetch("http://localhost:9000/api/tag/"+idTag+"/book/all")
-        .then(res => res.json())
-        .then(
-        (result) => {
-            setIsLoaded(true);
-            setBooks(result);
-        },
-        (error) => {
-            setIsLoaded(true);
-            setError(error);
-        }
-        )
-    }, [])
+    const res = await fetch("http://localhost:9000/api/tag/"+tag.idTag+"/book/all");
+
+    if(res.ok) {
+        const data: Book[] = await res.json();
+        return data;
+    }
     
-    return books;
+    return [];
 }
-
-export function getBooksBytextSearch(text: string){
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [books, setBooks] = useState<Book[]>([]);
-
-    useEffect(() => {
-    fetch("http://localhost:9000/api/book/text/"+text)
-        .then(res => res.json())
-        .then(
-        (result) => {
-            setIsLoaded(true);
-            setBooks(result);
-            console.log('Les resultat : '+books)
-        },
-        (error) => {
-            setIsLoaded(true);
-            setError(error);
-        }
-        )
-    }, [])
-    
-    return books;
-}
-
