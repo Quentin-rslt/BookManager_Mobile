@@ -3,7 +3,7 @@ import { COLORS } from "../../Common/CommonColors";
 
 export default StyleSheet.create({
     container: {
-        marginLeft : 5,
+        marginRight : 5,
     },
     textTag: {
         backgroundColor: COLORS.accentColor,

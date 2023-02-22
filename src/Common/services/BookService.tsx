@@ -16,7 +16,7 @@ export async function getBooks(){
 
 export async function getBooksByTag(tag: Tag){
 
-    const res = await fetch("http://localhost:9000/api/tag/"+tag.idTag+"/book/all");
+    const res = await fetch("http://localhost:9000/api/book/tag/"+tag.idTag+"");
 
     if(res.ok) {
         const data: Book[] = await res.json();

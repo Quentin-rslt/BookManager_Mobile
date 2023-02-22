@@ -1,5 +1,5 @@
-import { TextInput, View } from 'react-native'
-import NavBar from '../components/NavBar'
+import { ActivityIndicator, TextInput, View } from 'react-native'
+import NavBar from '../components/Buttons/NavBar'
 import CommonStyles from '../styles/CommonStyles'
 import TitleScreen from '../components/TitleScreen'
 import BookCard from '../components/cards/BookCard'
@@ -7,7 +7,9 @@ import { ScrollView } from 'react-native-gesture-handler'
 import {getBooks} from '../Common/services/BookService'
 import { useEffect, useState } from 'react'
 import Book from '../Common/types/book'
-import SearchBar from '../components/SearchBar'
+import SearchBar from '../components/Inputs/SearchBar'
+import { COLORS } from '../Common/CommonColors'
+import LibraryStyles from '../styles/screens/LibraryStyles'
 
 export default function LibraryScreen() {
     const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
@@ -34,20 +36,23 @@ export default function LibraryScreen() {
     return (
         <View style={CommonStyles.container}>
             <SearchBar onChangeSearch={onChangeSearch}/>
-            <View style={CommonStyles.content}>
-                <TitleScreen title={'Bibliothèque'}/>
-                <ScrollView style={CommonStyles.scrollViewContainer}>
-                    <View style={CommonStyles.componentContainer}>
-                        {   
-                            filteredBooks.map((book, idBook) =>
-                                <View style={CommonStyles.booksContainer} key={idBook}>
-                                    <BookCard book={book}/>
-                                </View> 
-                            )
-                        }
+                {
+                    filteredBooks.length === 0 ?  <ActivityIndicator size="large" color={COLORS.accentColor} style={CommonStyles.loader} /> :
+                    <View style={CommonStyles.content}>
+                        <TitleScreen title={'Bibliothèque'}/>
+                        <ScrollView style={CommonStyles.scrollViewContainer}>
+                        <View style={LibraryStyles.booksContainer}>
+                            {   
+                                filteredBooks.map((book, idBook) =>
+                                    <View style={LibraryStyles.bookContainer} key={idBook}>
+                                        <BookCard book={book}/>
+                                    </View> 
+                                )
+                            }
+                        </View>
+                        </ScrollView>
                     </View>
-                </ScrollView>
-            </View>
+                }
             <NavBar libraryFocus={true} tagsFocus={false}/>
         </View>
   )

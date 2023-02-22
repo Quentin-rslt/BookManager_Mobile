@@ -4,7 +4,7 @@ import { COLORS } from "../../../Common/CommonColors";
 export default StyleSheet.create({
     container: {
         width:"90%",
-        height:"20vh",
+        height:150,
         overflow:'hidden',
         backgroundColor: COLORS.componentBackground,
         borderRadius : 30,
@@ -18,6 +18,8 @@ export default StyleSheet.create({
         fontSize: 20,
         fontWeight: '800',
         marginLeft: 20,
+        marginRight: 20,
+        overflow: 'hidden',
         marginTop: 15,
     },
     authorStyle: {
@@ -30,9 +32,9 @@ export default StyleSheet.create({
     tagList: {
         display : "flex",
         flexDirection : "row",
-        marginLeft : 15,
-        marginRight : 15,
-        marginTop : 15,
+        overflow:'scroll',
+        marginTop : 13,
+        marginHorizontal:20,
     },
     numberContainer: {
         position:'absolute',
@@ -41,7 +43,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         width: "100%",
-        bottom: 20,
+        bottom: 15,
         left: 0,
         paddingLeft: 20,
         paddingRight: 20,

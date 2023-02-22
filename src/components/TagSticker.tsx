@@ -9,7 +9,7 @@ type Props = {
 export default function TagSticker({text} : Props) {
     return (
         <View style={TagStickerStyles.container}>
-            <Text style={TagStickerStyles.textTag}>{text}</Text>
+            <Text style={TagStickerStyles.textTag} numberOfLines={1}>{text}</Text>
         </View>
     )
 }

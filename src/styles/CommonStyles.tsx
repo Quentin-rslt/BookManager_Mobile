@@ -20,14 +20,9 @@ export default StyleSheet.create({
         marginTop: "4vh",
         marginBottom: '2vh',
     },
-    componentContainer : {
-        justifyContent: 'center',
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
+    loader: {
+        position: 'absolute',
+        top: '45%',
+        left: '45%',
     },
-    booksContainer: {
-        alignItems: "center",
-        width: "100%",
-    }
 });

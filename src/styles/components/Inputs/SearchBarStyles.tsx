@@ -1,16 +1,16 @@
 import { StyleSheet } from "react-native";
-import { COLORS } from "../../Common/CommonColors";
+import { COLORS } from "../../../Common/CommonColors";
 
 export default StyleSheet.create({
     container : {
         position: 'absolute',
-        top:29,
+        top:23,
         alignItems : "center",
         justifyContent: 'center',
         display: 'flex',
         flexDirection: 'row',
         width : "100%",
-        height : "4vh",
+        height : 40,
         paddingLeft : 15,
         paddingRight : 15,
     },
@@ -19,7 +19,7 @@ export default StyleSheet.create({
         backgroundColor : COLORS.backgroundLight,
         height: "100%",
         width : "90%",
-        borderRadius : 15,
+        borderRadius : 20,
         paddingLeft : 10,
         paddingRight : 10,
         fontWeight : "700",

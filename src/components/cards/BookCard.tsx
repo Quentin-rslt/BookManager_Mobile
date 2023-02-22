@@ -13,9 +13,9 @@ export default function BookCard({book} : Props) {
     return (
         <View style={BookCardStyles.container}>
             <View>
-                <Text style={BookCardStyles.titleStyle}>{book.title}</Text>
+                <Text style={BookCardStyles.titleStyle} numberOfLines={1}>{book.title}</Text>
                 <View style={BookCardStyles.containerReleaseAuthor}>
-                    <Text style={BookCardStyles.authorStyle}>{book.author}</Text>
+                    <Text style={BookCardStyles.authorStyle} numberOfLines={1}>{book.author}</Text>
                     <Text style={BookCardStyles.releaseYear}>{book.releaseYear}</Text>
                 </View>
             </View>

@@ -3,7 +3,7 @@ import { TouchableHighlight, View, Text } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import NavBarStyles from '../styles/components/NavBarStyles';
+import NavBarStyles from '../../styles/components/Buttons/NavBarStyles';
 
 type NavBarStackParamList = {
     Library : undefined;

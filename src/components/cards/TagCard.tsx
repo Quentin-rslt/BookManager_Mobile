@@ -18,13 +18,11 @@ export default function TagCard({tag} : Props) {
     }, [])
 
     return (
-        <View>
-            <View style={TagCardStyles.container}>
+        <View style={TagCardStyles.container}>
                 <Text style={TagCardStyles.text} numberOfLines={1}>{tag.textTag}</Text>
                 <View style={TagCardStyles.numberBook}>
                     <NumberIcon number={books.length} nameIcon={"book-open-outline"} />
                 </View>
-            </View>
         </View>
     )
 }
