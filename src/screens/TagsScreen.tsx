@@ -1,4 +1,4 @@
-import { ScrollView, View } from 'react-native'
+import { ScrollView, View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import NavBar from '../components/Buttons/NavBar'
 import CommonStyles from '../styles/CommonStyles'
@@ -12,6 +12,7 @@ import Tag from '../Common/types/tag'
 export default function TagsScreen() {
     const [tags, setTags] = useState<Tag[]>([]);
     const [filteredTags, setFilteredTags] = useState<Tag[]>([]);
+    const [noTags, setNoTags] = useState<boolean>(false);
 
     useEffect(() => {
         getTags().then(tags => {setTags([...tags]), setFilteredTags([...tags])});
@@ -22,6 +23,7 @@ export default function TagsScreen() {
             return tag.textTag.toUpperCase().includes(text.toUpperCase());
         });
         setFilteredTags(filteredTags);
+        setNoTags(filteredTags.length == 0);
     };
 
     return (
@@ -38,10 +40,12 @@ export default function TagsScreen() {
                                 </View> 
                             )
                         }
+                        {
+                            noTags && <Text style={CommonStyles.noItems}> Aucun tag n'a été trouvé </Text>
+                        }
                     </View>
                 </ScrollView>
             </View>
-            <NavBar libraryFocus={false} tagsFocus={true}/>
         </View>
     ) 
 }

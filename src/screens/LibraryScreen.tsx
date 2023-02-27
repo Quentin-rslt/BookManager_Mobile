@@ -1,4 +1,4 @@
-import { ActivityIndicator, TextInput, View } from 'react-native'
+import { ActivityIndicator, Text, View } from 'react-native'
 import NavBar from '../components/Buttons/NavBar'
 import CommonStyles from '../styles/CommonStyles'
 import TitleScreen from '../components/TitleScreen'
@@ -14,6 +14,7 @@ import LibraryStyles from '../styles/screens/LibraryStyles'
 export default function LibraryScreen() {
     const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
     const [books, setBooks] = useState<Book[]>([]);
+    const [noBooks, setNoBooks] = useState<boolean>(false);
 
     useEffect(() => {
         getBooks().then(books => {setBooks([...books]), setFilteredBooks([...books])});
@@ -31,13 +32,14 @@ export default function LibraryScreen() {
             return book.title.toUpperCase().includes(text.toUpperCase()) || book.author.toUpperCase().includes(text.toUpperCase()) || book.tags[id].textTag.toUpperCase().includes(text.toUpperCase());
         });
         setFilteredBooks(filteredBooks);
+        setNoBooks(filteredBooks.length == 0);
     };
 
     return (
         <View style={CommonStyles.container}>
             <SearchBar onChangeSearch={onChangeSearch}/>
                 {
-                    filteredBooks.length === 0 ?  <ActivityIndicator size="large" color={COLORS.accentColor} style={CommonStyles.loader} /> :
+                    filteredBooks.length === 0 && noBooks === false ?  <ActivityIndicator size="large" color={COLORS.accentColor} style={CommonStyles.loader} /> :
                     <View style={CommonStyles.content}>
                         <TitleScreen title={'Bibliothèque'}/>
                         <ScrollView style={CommonStyles.scrollViewContainer}>
@@ -49,11 +51,13 @@ export default function LibraryScreen() {
                                     </View> 
                                 )
                             }
+                            {
+                                noBooks && <Text style={CommonStyles.noItems}> Aucun livre n'a été trouvé </Text>
+                            }
                         </View>
                         </ScrollView>
                     </View>
                 }
-            <NavBar libraryFocus={true} tagsFocus={false}/>
         </View>
   )
 }

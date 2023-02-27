@@ -12,17 +12,22 @@ export default StyleSheet.create({
         backgroundColor: COLORS.backgroundLight,
         width: '100%',
         position: 'absolute',
-        top : 85,
-        bottom: 55,
+        top : 120,
+        bottom: 60,
         borderRadius : 30,
     },
     scrollViewContainer : {
-        marginTop: "4vh",
-        marginBottom: '2vh',
+        marginTop: "10%",
+        marginBottom: "5%",
     },
     loader: {
         position: 'absolute',
         top: '45%',
         left: '45%',
     },
+    noItems: {
+        textAlign: 'center',
+        color: COLORS.foreground,
+        width: "100%"
+    }
 });

@@ -1,43 +1,46 @@
 import React from 'react'
-import { TouchableHighlight, View, Text } from 'react-native'
-import { StackNavigationProp } from '@react-navigation/stack';
-import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import NavBarStyles from '../../styles/components/Buttons/NavBarStyles';
+import LibraryScreen from '../../screens/LibraryScreen';
+import TagsScreen from '../../screens/TagsScreen';
+import { COLORS } from '../../Common/CommonColors';
 
-type NavBarStackParamList = {
-    Library : undefined;
-    Tags : undefined;
-}
+const Tab = createBottomTabNavigator();
 
-type Props = {
-    libraryFocus : boolean;
-    tagsFocus : boolean;
-}
-
-export default function NavBar({libraryFocus, tagsFocus} : Props) {
-    const nav = useNavigation<StackNavigationProp<NavBarStackParamList>>();
-
-    const onClickLibraryButton = () => {
-        nav.navigate('Library');
-    }
-
-    const onClickTagsButton = () => {
-        nav.navigate('Tags');
-    }
-
+export default function NavBar() {
     return (
-        <View style={NavBarStyles.container}>
-            <TouchableHighlight onPress={onClickLibraryButton} underlayColor={"#262222"}>
-                {
-                    !libraryFocus? <MaterialCommunityIcons name="bookshelf" size={35} color="#c58282e5"/> : <MaterialCommunityIcons name="bookshelf" size={35} color="#c53e3ee5"/>
-                }
-            </TouchableHighlight>
-            <TouchableHighlight onPress={onClickTagsButton} underlayColor={"#262222"}>
-                {
-                    !tagsFocus? <MaterialCommunityIcons name="tag-multiple" size={35} color="#c58282e5"/> : <MaterialCommunityIcons name="tag-multiple" size={35} color="#c53e3ee5"/>
-                }
-            </TouchableHighlight>
-        </View>
+        <Tab.Navigator
+            initialRouteName="Feed"
+            screenOptions={{
+                tabBarActiveBackgroundColor: COLORS.background,
+                tabBarInactiveBackgroundColor: COLORS.background,
+                tabBarInactiveTintColor: COLORS.foreground,
+                tabBarActiveTintColor: COLORS.accentColor,
+                tabBarLabel: '',
+                tabBarHideOnKeyboard: true,
+                headerShown: false,
+                tabBarStyle: NavBarStyles.container,
+            }} 
+        >
+            <Tab.Screen
+                name="Library"
+                component={LibraryScreen}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <MaterialCommunityIcons name="bookshelf" color={color} size={40}/>
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="Tags"
+                component={TagsScreen}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <MaterialCommunityIcons name="tag-multiple" color={color} size={40} />
+                    ),
+                }}
+            />
+        </Tab.Navigator>
     )
 }

@@ -14,7 +14,7 @@ type Props = {
 export default function SearchBar({onChangeSearch} : Props) {
     return (
         <View style={SearchBarStyles.container}>
-            <TextInput placeholder="Search" style={SearchBarStyles.textInput} onChangeText={onChangeSearch}/>
+            <TextInput placeholder="Search" placeholderTextColor={COLORS.foregroundHolder}  style={SearchBarStyles.textInput} onChangeText={onChangeSearch}/>
         </View>
   )
 }

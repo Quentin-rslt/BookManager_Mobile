@@ -1,5 +1,6 @@
 export const COLORS = {
     foreground: '#e8d0d0',
+    foregroundHolder: '#827d7d',
     componentBackground :"#423d3d",
     background: '#262222',
     backgroundLight: '#332d2d',
