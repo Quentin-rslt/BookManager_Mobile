@@ -13,14 +13,12 @@ export default function NavBar() {
         <Tab.Navigator
             initialRouteName="Feed"
             screenOptions={{
-                tabBarActiveBackgroundColor: COLORS.background,
-                tabBarInactiveBackgroundColor: COLORS.background,
-                tabBarInactiveTintColor: COLORS.foreground,
+                tabBarInactiveTintColor: COLORS.clickableColor,
                 tabBarActiveTintColor: COLORS.accentColor,
-                tabBarLabel: '',
+                tabBarShowLabel: false,
                 tabBarHideOnKeyboard: true,
                 headerShown: false,
-                tabBarStyle: NavBarStyles.container,
+                tabBarStyle: NavBarStyles.container,    
             }} 
         >
             <Tab.Screen

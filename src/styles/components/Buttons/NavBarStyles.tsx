@@ -4,7 +4,11 @@ import { COLORS } from "../../../Common/CommonColors";
 export default StyleSheet.create({
     container: {
         position: 'absolute',
+        bottom :5,
+        elevation: 0,
         borderTopWidth: 0,
-        borderTopColor: "transparent",
+        borderRadius: 15,
+        backgroundColor: COLORS.tansparent,
+        borderTopColor: COLORS.tansparent,
     },
 });

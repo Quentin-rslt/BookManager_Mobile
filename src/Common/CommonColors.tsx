@@ -5,5 +5,6 @@ export const COLORS = {
     background: '#262222',
     backgroundLight: '#332d2d',
     accentColor: '#c53e3ee5',
-    clickableColor: '#c58282e5'
-  }
+    clickableColor: '#c58282e5',
+    tansparent: 'transaprent'
+}
