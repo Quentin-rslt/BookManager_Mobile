@@ -8,7 +8,7 @@ export default StyleSheet.create({
         elevation: 0,
         borderTopWidth: 0,
         borderRadius: 15,
-        backgroundColor: COLORS.tansparent,
-        borderTopColor: COLORS.tansparent,
+        backgroundColor: COLORS.transparent,
+        borderTopColor: COLORS.transparent,
     },
 });

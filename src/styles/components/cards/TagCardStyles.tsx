@@ -8,9 +8,6 @@ export default StyleSheet.create({
         overflow:'hidden',
         backgroundColor: COLORS.componentBackground,
         borderRadius : 30,
-        shadowOffset: {width: 2.5, height: 2.5},
-        shadowColor: COLORS.background,
-        shadowOpacity: 0.3,
         marginBottom: 19,
     },
     text : {

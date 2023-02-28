@@ -17,8 +17,8 @@ export default StyleSheet.create({
         borderRadius : 30,
     },
     scrollViewContainer : {
-        marginTop: "10%",
-        marginBottom: "5%",
+        marginTop: "7%",
+        marginBottom: "7%",
     },
     loader: {
         position: 'absolute',

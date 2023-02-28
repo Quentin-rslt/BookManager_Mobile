@@ -18,7 +18,7 @@ export default function NavBar() {
                 tabBarShowLabel: false,
                 tabBarHideOnKeyboard: true,
                 headerShown: false,
-                tabBarStyle: NavBarStyles.container,    
+                tabBarStyle: NavBarStyles.container,     
             }} 
         >
             <Tab.Screen
@@ -35,7 +35,7 @@ export default function NavBar() {
                 component={TagsScreen}
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <MaterialCommunityIcons name="tag-multiple" color={color} size={40} />
+                        <MaterialCommunityIcons name="tag-multiple" color={color} size={40}/>
                     ),
                 }}
             />
