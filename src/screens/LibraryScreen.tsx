@@ -1,5 +1,4 @@
 import { ActivityIndicator, Text, View } from 'react-native'
-import NavBar from '../components/Buttons/NavBar'
 import CommonStyles from '../styles/CommonStyles'
 import TitleScreen from '../components/TitleScreen'
 import BookCard from '../components/cards/BookCard'
@@ -10,6 +9,7 @@ import Book from '../Common/types/book'
 import SearchBar from '../components/Inputs/SearchBar'
 import { COLORS } from '../Common/CommonColors'
 import LibraryStyles from '../styles/screens/LibraryStyles'
+import TextButton from '../components/Buttons/TextButton'
 
 export default function LibraryScreen() {
     const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
@@ -35,6 +35,10 @@ export default function LibraryScreen() {
         setNoBooks(filteredBooks.length == 0);
     };
 
+    const onClickAddBook = () => {
+        alert("add book");
+    }
+
     return (
         <View style={CommonStyles.container}>
             <SearchBar onChangeSearch={onChangeSearch}/>
@@ -43,19 +47,20 @@ export default function LibraryScreen() {
                     <View style={CommonStyles.content}>
                         <TitleScreen title={'Bibliothèque'}/>
                         <ScrollView style={CommonStyles.scrollViewContainer}>
-                        <View style={LibraryStyles.booksContainer}>
-                            {   
-                                filteredBooks.map((book, idBook) =>
-                                    <View style={LibraryStyles.bookContainer} key={idBook}>
-                                        <BookCard book={book}/>
-                                    </View> 
-                                )
-                            }
-                            {
-                                noBooks && <Text style={CommonStyles.noItems}> Aucun livre n'a été trouvé </Text>
-                            }
-                        </View>
+                            <View style={LibraryStyles.booksContainer}>
+                                {   
+                                    filteredBooks.map((book, idBook) =>
+                                        <View style={LibraryStyles.bookContainer} key={idBook}>
+                                            <BookCard book={book}/>
+                                        </View> 
+                                    )
+                                }
+                                {
+                                    noBooks && <Text style={CommonStyles.noItems}> Aucun livre n'a été trouvé </Text>
+                                }
+                            </View>
                         </ScrollView>
+                        <TextButton callBack={onClickAddBook} name={'Ajouter un livre'}/>
                     </View>
                 }
         </View>

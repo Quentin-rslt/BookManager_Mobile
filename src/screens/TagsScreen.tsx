@@ -1,6 +1,5 @@
 import { ScrollView, View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import NavBar from '../components/Buttons/NavBar'
 import CommonStyles from '../styles/CommonStyles'
 import TitleScreen from '../components/TitleScreen'
 import {getTags} from '../Common/services/TagService'
@@ -8,6 +7,7 @@ import TagCard from '../components/cards/TagCard'
 import TagsStyles from '../styles/screens/TagsStyles'
 import SearchBar from '../components/Inputs/SearchBar'
 import Tag from '../Common/types/tag'
+import TextButton from '../components/Buttons/TextButton'
 
 export default function TagsScreen() {
     const [tags, setTags] = useState<Tag[]>([]);
@@ -24,6 +24,10 @@ export default function TagsScreen() {
         });
         setFilteredTags(filteredTags);
         setNoTags(filteredTags.length == 0);
+    };
+
+    const onClickAddTag = () => {
+        alert("add tag");
     };
 
     return (
@@ -45,6 +49,7 @@ export default function TagsScreen() {
                         }
                     </View>
                 </ScrollView>
+                <TextButton callBack={onClickAddTag} name={'Ajouter un tag'}/>
             </View>
         </View>
     ) 
