@@ -5,17 +5,14 @@ export default StyleSheet.create({
     text: {
         backgroundColor: COLORS.clickableColor,
         color: COLORS.background,
-        padding: 15,    
-        borderRadius : 17,
-        fontSize: 13,
-        fontWeight: '700',
+        padding: 17,    
+        borderRadius : 20,
+        fontSize: 15,
+        fontWeight: '800',
         textAlign : 'center',
-    },
-    container: {
-        display : "flex",
-        flexDirection : "row",
-        position: 'absolute',
-        bottom: 30,
-        right: 30,
+        shadowColor: 'black',
+        shadowOpacity: 0.3,
+        shadowOffset: { width: 4, height: 4},
+        elevation: 5,
     }
 });

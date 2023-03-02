@@ -49,7 +49,9 @@ export default function TagsScreen() {
                         }
                     </View>
                 </ScrollView>
-                <TextButton callBack={onClickAddTag} name={'Ajouter un tag'}/>
+                <View style={CommonStyles.textButtonContainer}>
+                    <TextButton callBack={onClickAddTag} name={'Ajouter un tag'}/>
+                </View>
             </View>
         </View>
     ) 

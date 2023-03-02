@@ -9,6 +9,10 @@ export default StyleSheet.create({
         backgroundColor: COLORS.componentBackground,
         borderRadius : 30,
         marginBottom: 19,
+        shadowColor: 'black',
+        shadowOpacity: 0.3,
+        shadowOffset: { width: 4, height: 4},
+        elevation: 5,
     },
     text : {
         fontSize: 25,

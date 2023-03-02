@@ -10,6 +10,7 @@ import SearchBar from '../components/Inputs/SearchBar'
 import { COLORS } from '../Common/CommonColors'
 import LibraryStyles from '../styles/screens/LibraryStyles'
 import TextButton from '../components/Buttons/TextButton'
+import TextButtonStyles from '../styles/components/Buttons/TextButtonStyles'
 
 export default function LibraryScreen() {
     const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
@@ -60,7 +61,9 @@ export default function LibraryScreen() {
                                 }
                             </View>
                         </ScrollView>
-                        <TextButton callBack={onClickAddBook} name={'Ajouter un livre'}/>
+                        <View style={CommonStyles.textButtonContainer}>
+                            <TextButton callBack={onClickAddBook} name={'Ajouter un livre'}/>
+                        </View>
                     </View>
                 }
         </View>

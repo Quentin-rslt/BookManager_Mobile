@@ -1,18 +1,16 @@
-import React from 'react'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import React from 'react';
 import TextButtonStyles from '../../styles/components/Buttons/TextButtonStyles';
-import { Text } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 
 interface Props {
     callBack: ()=>void;
     name: string;
-    containerStyle?: any;
     textStyle?: any;
 }
 
-export default function TextButton({callBack, name, containerStyle, textStyle} : Props) {
+export default function TextButton({callBack, name, textStyle} : Props) {
     return (
-        <TouchableOpacity onPress={callBack} style={[TextButtonStyles.container, containerStyle]}>
+        <TouchableOpacity onPress={callBack}>
             <Text style={[TextButtonStyles.text, textStyle]}>{name}</Text>
         </TouchableOpacity>
     )

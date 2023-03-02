@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import Book from '../../Common/types/book'
 import BookCardStyles from '../../styles/components/cards/BookCardStyles';
@@ -10,8 +10,12 @@ type Props = {
 }
 
 export default function BookCard({book} : Props) {
+    const onClickBookCard = () => {
+        alert(book.title);
+    }
+
     return (
-        <View style={BookCardStyles.container}>
+        <TouchableOpacity style={BookCardStyles.container} onPress={onClickBookCard}>
             <View>
                 <Text style={BookCardStyles.titleStyle} numberOfLines={1}>{book.title}</Text>
                 <View style={BookCardStyles.containerReleaseAuthor}>
@@ -33,6 +37,6 @@ export default function BookCard({book} : Props) {
                 <NumberIcon number={book.numberOP} nameIcon={"book-open-page-variant-outline"}/>
                 <NumberIcon number={book.notePerso} nameIcon={"star"}/>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }

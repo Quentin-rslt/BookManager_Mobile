@@ -29,5 +29,12 @@ export default StyleSheet.create({
         textAlign: 'center',
         color: COLORS.foreground,
         width: "100%"
+    },
+    textButtonContainer: {
+        position:'absolute',
+        display : "flex",
+        flexDirection : "row",
+        bottom: 35,
+        right: 30,
     }
 });

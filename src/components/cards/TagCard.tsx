@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import Tag from '../../Common/types/tag';
 import NumberIcon from './../NumberIcon';
 import TagCardStyles from '../../styles/components/cards/TagCardStyles';
@@ -17,12 +17,16 @@ export default function TagCard({tag} : Props) {
         getBooksByTag(tag).then(books => {setBooks([...books])});
     }, [])
 
+    const onClickTagCard = () => {
+        alert(tag.textTag)
+    }
+
     return (
-        <View style={TagCardStyles.container}>
+        <TouchableOpacity style={TagCardStyles.container} onPress={onClickTagCard}>
                 <Text style={TagCardStyles.text} numberOfLines={1}>{tag.textTag}</Text>
                 <View style={TagCardStyles.numberBook}>
                     <NumberIcon number={books.length} nameIcon={"book-open-outline"} />
                 </View>
-        </View>
+        </TouchableOpacity>
     )
 }
