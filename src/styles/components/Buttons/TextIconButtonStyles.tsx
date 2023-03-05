@@ -21,5 +21,6 @@ export default StyleSheet.create({
         fontSize: 15,
         fontWeight: '800',
         textAlign : 'center',
+        textAlignVertical: 'center',
     }
 });

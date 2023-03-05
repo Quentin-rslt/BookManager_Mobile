@@ -7,7 +7,7 @@ export default StyleSheet.create({
     },
     spinner: {
         backgroundColor: COLORS.componentBackground,
-        padding: 5,
+        padding: 2,
         borderRadius: 20,
     },
     holderText: {

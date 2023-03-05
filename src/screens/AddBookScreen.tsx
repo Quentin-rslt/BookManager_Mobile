@@ -34,13 +34,16 @@ export default function AddBookScreen() {
                         <InputText placeholder={'Autheur'}/>
                         <View style={AddBookStyles.spinnerContainer}>
                             <Spinner min={0} max={5} step={0.5} value={0} placeholder={'Note : '} skin={'clean'}/>
-                            <Spinner min={0} max={2999} step={1} value={new Date().getFullYear()} placeholder={'Date : '} skin={'clean'}/>
+                            <Spinner min={-2999} max={2999} step={1} value={new Date().getFullYear()} placeholder={'Date : '} skin={'clean'}/>
                         </View>
                         <View style={AddBookStyles.tagsContainer}>
-                            <Text style={AddBookStyles.addTagText}>Tags : </Text>
+                            <Text style={AddBookStyles.text}>Tags : </Text>
                             <TextIconButton callBack={onClickAddTag} nameIcon={'plus'} size={15} showText={false} containerStyle={AddBookStyles.addTagContainer}/>
                         </View>
                         <InputText placeholder={'Description'} multiline={true} containerStyle={AddBookStyles.descriptionContainer}/>
+                        <View style={AddBookStyles.readingsContainer}>
+                            <Text style={AddBookStyles.text}>Lectures : </Text>
+                        </View>
                     </View>
                 </ScrollView>
             </View>

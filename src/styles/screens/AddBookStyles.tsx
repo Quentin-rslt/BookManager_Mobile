@@ -28,35 +28,33 @@ export default StyleSheet.create({
     tagsContainer: {
         alignItem: 'center',
         width: "85%",
+        height: 40,
         display : "flex",
         flexDirection : "row",
         overflow: 'scroll',
-        marginBottom: 30,
+        marginBottom: 5,
     },
     addTagContainer: {
-        alignItems: 'center',
-        display: 'flex',
-        flexDirection: 'row',
         paddingHorizontal: 20,
         height: 30,
-        backgroundColor: COLORS.clickableColor,
+        backgroundColor: COLORS.accentColor,
         borderRadius: 17,
         shadowColor: 'black',
         shadowOpacity: 0.3,
         shadowOffset: { width: 4, height: 4},
         elevation: 5,
     },
-    addTagText: {
-        textAlign: 'center',
+    text: {
         textAlignVertical: 'center',
         marginRight : 15,
+        paddingBottom : 10,
         color: COLORS.foregroundHolder,
     },
     descriptionContainer: {
         backgroundColor: COLORS.componentBackground,
         width: '85%',
         height: 150,
-        marginBottom: 30,
+        marginBottom: 15,
         paddingHorizontal: 10,
         borderRadius: 20,
         shadowColor: 'black',
@@ -69,6 +67,9 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 30,
+        marginBottom: 15,
+    },
+    readingsContainer: {
+        width: '85%',
     }
 });

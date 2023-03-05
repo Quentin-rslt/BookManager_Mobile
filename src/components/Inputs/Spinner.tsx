@@ -25,7 +25,6 @@ export default function Spinner({max, min, step, value, skin, placeholder} : Pro
                 skin={skin} 
                 background={COLORS.componentBackground} 
                 fontSize={14} 
-                buttonTextColor={COLORS.clickableColor} 
                 textColor={COLORS.foreground} 
                 width={150} 
                 style={SpinnerStyles.spinner}
