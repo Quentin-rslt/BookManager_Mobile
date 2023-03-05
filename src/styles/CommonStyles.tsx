@@ -32,9 +32,7 @@ export default StyleSheet.create({
     },
     textButtonContainer: {
         position:'absolute',
-        display : "flex",
-        flexDirection : "row",
         bottom: 35,
         right: 30,
-    }
+    },
 });

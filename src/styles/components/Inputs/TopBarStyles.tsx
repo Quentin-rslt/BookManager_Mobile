@@ -4,7 +4,7 @@ import { COLORS } from "../../../Common/CommonColors";
 export default StyleSheet.create({
     container : {
         position: 'absolute',
-        top:55,
+        top:60,
         alignItems : "center",
         justifyContent: 'center',
         display: 'flex',
@@ -24,5 +24,23 @@ export default StyleSheet.create({
         paddingRight : 20,
         fontWeight : "700",
         color : COLORS.foreground,
+    },
+    returnButtonContainer : {   
+        position:'absolute',
+        left: 20,
+    },
+    returnButton: {
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        display: 'flex',
+        flexDirection: 'row',
+        paddingHorizontal: 10,
+        height: 50,
+        backgroundColor: COLORS.clickableColor,
+        borderRadius: 17,
+        shadowColor: 'black',
+        shadowOpacity: 0.3,
+        shadowOffset: { width: 4, height: 4},
+        elevation: 5,
     }
 });

@@ -5,9 +5,11 @@ import TitleScreen from '../components/TitleScreen'
 import {getTags} from '../Common/services/TagService'
 import TagCard from '../components/cards/TagCard'
 import TagsStyles from '../styles/screens/TagsStyles'
-import SearchBar from '../components/Inputs/SearchBar'
+import TopBar from '../components/Inputs/TopBar'
 import Tag from '../Common/types/tag'
 import TextButton from '../components/Buttons/TextButton'
+import { COLORS } from '../Common/CommonColors'
+import TextIconButton from '../components/Buttons/TextIconButton'
 
 export default function TagsScreen() {
     const [tags, setTags] = useState<Tag[]>([]);
@@ -32,7 +34,7 @@ export default function TagsScreen() {
 
     return (
         <View style={CommonStyles.container}>
-            <SearchBar onChangeSearch={onChangeSearch}/>
+            <TopBar onChangeSearch={onChangeSearch}/>
             <View style={CommonStyles.content}>
                 <TitleScreen title={'Tags'}/>
                 <ScrollView style={CommonStyles.scrollViewContainer}>
@@ -50,7 +52,7 @@ export default function TagsScreen() {
                     </View>
                 </ScrollView>
                 <View style={CommonStyles.textButtonContainer}>
-                    <TextButton callBack={onClickAddTag} name={'Ajouter un tag'}/>
+                    <TextIconButton callBack={onClickAddTag} size={22} text={'Ajouter un tag'} nameIcon={'plus'} color={COLORS.background}/>
                 </View>
             </View>
         </View>

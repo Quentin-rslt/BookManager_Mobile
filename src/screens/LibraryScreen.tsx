@@ -6,13 +6,20 @@ import { ScrollView } from 'react-native-gesture-handler'
 import {getBooks} from '../Common/services/BookService'
 import { useEffect, useState } from 'react'
 import Book from '../Common/types/book'
-import SearchBar from '../components/Inputs/SearchBar'
+import TopBar from '../components/Inputs/TopBar'
 import { COLORS } from '../Common/CommonColors'
 import LibraryStyles from '../styles/screens/LibraryStyles'
-import TextButton from '../components/Buttons/TextButton'
-import TextButtonStyles from '../styles/components/Buttons/TextButtonStyles'
+import { StackNavigationProp } from "@react-navigation/stack";
+import { useNavigation } from "@react-navigation/native";
+import TextIconButton from '../components/Buttons/TextIconButton'
+
+type LibraryStackParamList = {
+    AddBookScreen : undefined;
+}
 
 export default function LibraryScreen() {
+    const navigation = useNavigation<StackNavigationProp<LibraryStackParamList>>();
+
     const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
     const [books, setBooks] = useState<Book[]>([]);
     const [noBooks, setNoBooks] = useState<boolean>(false);
@@ -35,14 +42,14 @@ export default function LibraryScreen() {
         setFilteredBooks(filteredBooks);
         setNoBooks(filteredBooks.length == 0);
     };
-
+    
     const onClickAddBook = () => {
-        alert("add book");
+        navigation.navigate('AddBookScreen');
     }
 
     return (
         <View style={CommonStyles.container}>
-            <SearchBar onChangeSearch={onChangeSearch}/>
+            <TopBar onChangeSearch={onChangeSearch}/>
                 {
                     filteredBooks.length === 0 && noBooks === false ?  <ActivityIndicator size="large" color={COLORS.accentColor} style={CommonStyles.loader} /> :
                     <View style={CommonStyles.content}>
@@ -62,7 +69,7 @@ export default function LibraryScreen() {
                             </View>
                         </ScrollView>
                         <View style={CommonStyles.textButtonContainer}>
-                            <TextButton callBack={onClickAddBook} name={'Ajouter un livre'}/>
+                            <TextIconButton callBack={onClickAddBook} size={22} text={'Ajouter un livre'} nameIcon={'plus'} color={COLORS.background}/>
                         </View>
                     </View>
                 }
