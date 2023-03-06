@@ -1,6 +1,6 @@
 import { Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import Book from '../../Common/types/book'
+import Book from '../../Common/Class/Book'
 import BookCardStyles from '../../styles/components/cards/BookCardStyles';
 import TagSticker from '../TagSticker';
 import NumberIcon from '../NumberIcon';

@@ -1,4 +1,4 @@
-import Tag from '../types/tag';
+import Tag from '../Class/Tag';
 
 export async function getTags(){
     const res = await fetch("http://192.168.0.28:9000/api/tag/all");

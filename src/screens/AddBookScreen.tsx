@@ -1,5 +1,5 @@
 import { View, Text, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import CommonStyles from '../styles/CommonStyles'
 import TitleScreen from '../components/TitleScreen'
 import AddBookStyles from '../styles/screens/AddBookStyles'
@@ -9,11 +9,15 @@ import { useNavigation } from "@react-navigation/native";
 import TextIconButton from '../components/Buttons/TextIconButton'
 import InputText from '../components/Inputs/InputText'
 import Spinner from '../components/Inputs/Spinner'
+import ReadingCard from '../components/cards/ReadingCard'
+import Reading from '../Common/Class/Reading'
 
 type AddBookStackParamList = {};
 
 export default function AddBookScreen() {
     const navigation = useNavigation<StackNavigationProp<AddBookStackParamList>>();
+
+    let reading:Reading = new Reading(new Date(), new Date());
 
     const onClickSaveBook = () => {
         navigation.goBack();
@@ -43,6 +47,7 @@ export default function AddBookScreen() {
                         <InputText placeholder={'Description'} multiline={true} containerStyle={AddBookStyles.descriptionContainer}/>
                         <View style={AddBookStyles.readingsContainer}>
                             <Text style={AddBookStyles.text}>Lectures : </Text>
+                            <ReadingCard reading={reading} showDeleteButton={true}/>
                         </View>
                     </View>
                 </ScrollView>

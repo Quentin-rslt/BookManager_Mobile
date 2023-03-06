@@ -1,5 +1,5 @@
-import Book from '../types/book';
-import Tag from '../types/tag';
+import Book from '../Class/Book';
+import Tag from '../Class/Tag';
 
 
 export async function getBooks(){
