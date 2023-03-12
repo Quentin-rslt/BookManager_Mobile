@@ -35,4 +35,14 @@ export default StyleSheet.create({
         bottom: 35,
         right: 30,
     },
+    holderText: {
+        position: 'absolute',
+        textAlign: 'left',
+        color: COLORS.foregroundHolder,
+        width: '100%',
+        top: 10,
+        left: 18,
+        fontSize: 13,
+        lineHeight: 16,
+    },
 });

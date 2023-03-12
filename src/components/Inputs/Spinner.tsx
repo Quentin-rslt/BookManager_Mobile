@@ -26,8 +26,11 @@ export default function Spinner({max, min, step, value, skin, placeholder} : Pro
                 background={COLORS.componentBackground} 
                 fontSize={14} 
                 textColor={COLORS.foreground} 
-                width={150} 
+                width={"61%"} 
                 style={SpinnerStyles.spinner}
+                onChange={(num) => {
+                    console.log(num);
+                }}
             />
         </View>
     )

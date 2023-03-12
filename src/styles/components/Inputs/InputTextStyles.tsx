@@ -15,16 +15,6 @@ export default StyleSheet.create({
         shadowOffset: { width: 4, height: 4},
         elevation: 5,
     },
-    holderText: {
-        position: 'absolute',
-        textAlign: 'left',
-        color: COLORS.foregroundHolder,
-        width: '100%',
-        top: 10,
-        left: 18,
-        fontSize: 13,
-        lineHeight: 16,
-    },
     inputText: {
         textAlignVertical: 'top',  
         textAlign: 'left',

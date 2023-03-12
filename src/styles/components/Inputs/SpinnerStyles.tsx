@@ -3,7 +3,10 @@ import { COLORS } from "../../../Common/CommonColors";
 
 export default StyleSheet.create({
     container: {
-        paddingHorizontal: 10, 
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 15,
     },
     spinner: {
         backgroundColor: COLORS.componentBackground,
@@ -12,8 +15,9 @@ export default StyleSheet.create({
     },
     holderText: {
         color: COLORS.foregroundHolder,
-        textAlign: 'center',
-        marginBottom: 5,
+        textAlign: 'left',
+        marginLeft: 15,
+        width: "35%",
     },
     textButton: {
         color: COLORS.clickableColor,

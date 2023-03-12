@@ -6,22 +6,29 @@ import { COLORS } from '../../Common/CommonColors';
 import Reading from '../../Common/Class/Reading';
 
 interface Props {
+    readings : Reading[],
+    setReadings: React.Dispatch<React.SetStateAction<Reading[]>>;
     reading : Reading;
+    idReading : number;
     showDeleteButton?: boolean;
 }
 
-export default function ReadingCard({reading, showDeleteButton=false} : Props) {
+export default function ReadingCard({reading, showDeleteButton=false, setReadings, readings, idReading} : Props) {
+    const startReading:string = reading.startReadingDate.toLocaleDateString();
+    const endReading:string = reading.endReadingDate.toLocaleDateString();
 
     const onClickDeleteReading = () => {
-        alert('Delete reading');
+        readings.splice(idReading, 1);
+        const newReadings:Reading[] = Array.from(readings);
+        setReadings(newReadings);
     };
 
     return (
         <View style={ReadingCardStyles.container}>
             <View style={showDeleteButton ? ReadingCardStyles.cardContainerWithDelete : ReadingCardStyles.cardContainerWithoutDelete}>
-                <Text style={ReadingCardStyles.text}>{reading.startReading.toTimeString()}</Text>
+                <Text style={ReadingCardStyles.text}>{startReading}</Text>
                 <Text style={ReadingCardStyles.text}> au </Text>
-                <Text style={ReadingCardStyles.text}>{reading.endReading.toTimeString()}</Text>
+                <Text style={ReadingCardStyles.text}>{endReading}</Text>
             </View>
             {
                 showDeleteButton &&

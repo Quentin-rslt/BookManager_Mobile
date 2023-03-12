@@ -33,21 +33,18 @@ export default StyleSheet.create({
         flexDirection : "row",
         overflow: 'scroll',
         marginBottom: 5,
+        paddingTop: 5
     },
     addTagContainer: {
-        paddingHorizontal: 20,
-        height: 30,
+        paddingHorizontal: 15,
+        height: 25,
         backgroundColor: COLORS.accentColor,
         borderRadius: 17,
-        shadowColor: 'black',
-        shadowOpacity: 0.3,
-        shadowOffset: { width: 4, height: 4},
-        elevation: 5,
     },
     text: {
         textAlignVertical: 'center',
         marginRight : 15,
-        paddingBottom : 10,
+        paddingBottom : 15,
         color: COLORS.foregroundHolder,
     },
     descriptionContainer: {
@@ -63,11 +60,7 @@ export default StyleSheet.create({
         elevation: 5,
     },
     spinnerContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: 15,
+        width: '85%',
     },
     readingsContainer: {
         width: '85%',

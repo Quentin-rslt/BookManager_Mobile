@@ -1,13 +1,13 @@
 export default class Reading {
-    public id:number|undefined;
+    public idReading:number|undefined;
 
-    public startReading:Date;
+    public startReadingDate:Date;
 
-    public endReading:Date;
+    public endReadingDate:Date;
 
-    constructor(startReading:Date, endReading:Date, id?:number) {
-        this.id = id;
-        this.startReading = startReading;
-        this.endReading = endReading;
+    constructor(startReadingDate:Date, endReadingDate:Date, idReading?:number) {
+        this.idReading = idReading;
+        this.startReadingDate = startReadingDate;
+        this.endReadingDate = endReadingDate;
     };
 }

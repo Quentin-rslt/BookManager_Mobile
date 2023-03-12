@@ -31,4 +31,17 @@ export default class Book {
         this.readings=readings;
         this.tags=tags;
     }
-}
+
+    public toJSON() {
+        return {
+            title: this.title,
+            author: this.author,
+            numberOP: this.numberOP,
+            notePerso: this.notePerso,
+            releaseYear: this.releaseYear,
+            summary: this.summary,
+            readings: Array.from(this.readings),
+            tags: Array.from(this.tags),
+        }
+    }
+} 

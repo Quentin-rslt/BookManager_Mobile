@@ -14,7 +14,7 @@ import { useNavigation } from "@react-navigation/native";
 import TextIconButton from '../components/Buttons/TextIconButton'
 
 type LibraryStackParamList = {
-    AddBookScreen : undefined;
+    AddBookScreen : {filteredBooks: Book[], setFilteredBooks: React.Dispatch<React.SetStateAction<Book[]>> };
 }
 
 export default function LibraryScreen() {
@@ -44,7 +44,7 @@ export default function LibraryScreen() {
     };
     
     const onClickAddBook = () => {
-        navigation.navigate('AddBookScreen');
+        navigation.navigate('AddBookScreen', {filteredBooks, setFilteredBooks});
     }
 
     return (

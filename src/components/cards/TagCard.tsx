@@ -1,10 +1,10 @@
 import { Text, TouchableOpacity, View } from 'react-native'
-import Tag from '../../Common/types/tag';
+import Tag from '../../Common/class/tag';
 import NumberIcon from './../NumberIcon';
 import TagCardStyles from '../../styles/components/cards/TagCardStyles';
 import { getBooksByTag } from '../../Common/services/BookService';
 import { useEffect, useState } from 'react';
-import Book from '../../Common/types/book';
+import Book from '../../Common/class/book';
 
 type Props = {
     tag: Tag;

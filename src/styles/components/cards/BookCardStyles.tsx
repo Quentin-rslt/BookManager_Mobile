@@ -31,9 +31,7 @@ export default StyleSheet.create({
         marginTop: 5,
     },
     tagList: {
-        display : "flex",
-        flexDirection : "row",
-        overflow:'scroll',
+        height:30,
         marginTop : 13,
         marginHorizontal:20,
     },
