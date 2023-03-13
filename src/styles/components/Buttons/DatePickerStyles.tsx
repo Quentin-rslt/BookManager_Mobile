@@ -3,12 +3,19 @@ import { COLORS } from "../../../Common/CommonColors";
 
 export default StyleSheet.create({
     container: {
+        backgroundColor: COLORS.componentBackground,
         height: 55,
         marginBottom: 15,
+        borderRadius: 20,
+        shadowColor: 'black',
+        shadowOpacity: 0.3,
+        shadowOffset: { width: 4, height: 4},
+        elevation: 5,
     },
     addReadingContainer: {
         position: 'absolute',
-        right: 0,
+        top: 7.5,
+        right: 15,
     },
     datesContainer: {
         display: 'flex',
@@ -17,14 +24,10 @@ export default StyleSheet.create({
         left: 0,
     },
     addReadingButton: {
-        paddingHorizontal: 25,
-        height: 55,
+        paddingHorizontal: 20,
+        height: 40,
         backgroundColor: COLORS.accentColor,
-        borderRadius: 20,
-        shadowColor: 'black',
-        shadowOpacity: 0.3,
-        shadowOffset: { width: 4, height: 4},
-        elevation: 5,
+        borderRadius: 15,
     },
     dateText: {
         color: COLORS.foreground,
@@ -37,11 +40,5 @@ export default StyleSheet.create({
         height: 55,
         marginRight: 25,
         paddingHorizontal: 22,
-        borderRadius: 20,
-        backgroundColor: COLORS.componentBackground,
-        shadowColor: 'black',
-        shadowOpacity: 0.3,
-        shadowOffset: { width: 4, height: 4},
-        elevation: 5,
     },
 });

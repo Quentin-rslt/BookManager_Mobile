@@ -8,12 +8,13 @@ interface Props {
     max : number;
     min : number;
     step : number;
-    value : number;
+    value : number|string;
     skin : any;
     placeholder : string;
+    onChange?(...args: unknown[]): unknown;
 };
 
-export default function Spinner({max, min, step, value, skin, placeholder} : Props) {
+export default function Spinner({max, min, step, value, skin, placeholder, onChange} : Props) {
     return (
         <View style={SpinnerStyles.container}>
             <Text style={SpinnerStyles.holderText}>{placeholder}</Text>
@@ -28,9 +29,7 @@ export default function Spinner({max, min, step, value, skin, placeholder} : Pro
                 textColor={COLORS.foreground} 
                 width={"61%"} 
                 style={SpinnerStyles.spinner}
-                onChange={(num) => {
-                    console.log(num);
-                }}
+                onChange={onChange}
             />
         </View>
     )

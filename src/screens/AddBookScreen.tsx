@@ -16,9 +16,7 @@ import DatePicker from '../components/Buttons/DatePicker'
 import Book from '../Common/Class/Book'
 import { createBook } from '../Common/services/BookService'
 import { LogBox } from 'react-native';
-import SpinnerStyles from '../styles/components/Inputs/SpinnerStyles'
-import InputSpinner from 'react-native-input-spinner'
-import { COLORS } from '../Common/CommonColors'
+import Spinner from '../components/Inputs/Spinner'
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
@@ -88,60 +86,9 @@ export default function AddBookScreen({ route }: any) {
                         <InputText placeholder={'Titre'} onChangeText={onChangeTitle}/>
                         <InputText placeholder={'Autheur'} onChangeText={onChangeAuthor}/>
                         <View style={AddBookStyles.spinnerContainer}>
-                            <View style={SpinnerStyles.container}>
-                                <Text style={SpinnerStyles.holderText}>Nombre de page: </Text>
-                                <InputSpinner 
-                                    min={0} 
-                                    max={9999999} 
-                                    step={1} 
-                                    value={numberOP} 
-                                    skin={'clean'} 
-                                    background={COLORS.componentBackground} 
-                                    fontSize={14} 
-                                    textColor={COLORS.foreground} 
-                                    width={"61%"} 
-                                    style={SpinnerStyles.spinner}
-                                    onChange={(num:number) => {
-                                        setNumberOP(num);
-                                    }}
-                                />
-                            </View>
-                            <View style={SpinnerStyles.container}>
-                                <Text style={SpinnerStyles.holderText}>Note personnelle: </Text>
-                                <InputSpinner 
-                                    min={0} 
-                                    max={5} 
-                                    step={0.5} 
-                                    value={notePerso} 
-                                    skin={'clean'} 
-                                    background={COLORS.componentBackground} 
-                                    fontSize={14} 
-                                    textColor={COLORS.foreground} 
-                                    width={"61%"} 
-                                    style={SpinnerStyles.spinner}
-                                    onChange={(num:number) => {
-                                        setNotePerso(num);
-                                    }}
-                                />
-                            </View>
-                            <View style={SpinnerStyles.container}>
-                                <Text style={SpinnerStyles.holderText}>Date de sortie : </Text>
-                                <InputSpinner 
-                                    min={-999999} 
-                                    max={new Date().getFullYear()} 
-                                    step={1} 
-                                    value={releaseYear} 
-                                    skin={'clean'} 
-                                    background={COLORS.componentBackground} 
-                                    fontSize={14} 
-                                    textColor={COLORS.foreground} 
-                                    width={"61%"} 
-                                    style={SpinnerStyles.spinner}
-                                    onChange={(num:string) => {
-                                        setReleaseYear(num);
-                                    }}
-                                />
-                            </View>
+                            <Spinner max={9999999} min={0} step={1} value={numberOP} skin={'clean'} placeholder={'Nombre de page: '} onChange={(num:number) => {setNumberOP(num)}}/>
+                            <Spinner max={5} min={0} step={0.5} value={notePerso} skin={'clean'} placeholder={'Note personnelle: '} onChange={(num:number) => {setNotePerso(num)}}/>
+                            <Spinner max={new Date().getFullYear()} min={0} step={1} value={releaseYear} skin={'clean'} placeholder={'Date de sortie : '} onChange={(num:string) => {setReleaseYear(num)}}/>
                         </View>
                         <View style={AddBookStyles.tagsContainer}>
                             <Text style={AddBookStyles.text}>Tags : </Text>
