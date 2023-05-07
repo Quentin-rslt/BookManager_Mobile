@@ -4,7 +4,7 @@ import Tag from '../Class/Tag';
 
 export async function getBooks(){
 
-    const res = await fetch("http://10.121.128.60:9000/api/book/all");
+    const res = await fetch("http://192.168.0.175:9000/api/book/all");
 
     if(res.ok) {
         const data: Book[] = await res.json();
@@ -16,7 +16,7 @@ export async function getBooks(){
 
 export async function getBooksByTag(tag: Tag){
 
-    const res = await fetch("http://10.121.128.60:9000/api/book/tag/"+tag.idTag+"");
+    const res = await fetch("http://192.168.0.175:9000/api/book/tag/"+tag.idTag+"");
 
     if(res.ok) {
         const data: Book[] = await res.json();
@@ -27,7 +27,7 @@ export async function getBooksByTag(tag: Tag){
 }
 
 export async function createBook(data: string) {
-    fetch('http://10.121.128.60:9000/api/addBook', {
+    fetch('http://192.168.0.175:9000/api/addBook', {
         method: 'POST',
         headers: {
             Accept: 'application/json',

@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, ToastAndroid } from 'react-native'
 import React, { useState } from 'react'
 import CommonStyles from '../styles/CommonStyles'
 import TitleScreen from '../components/TitleScreen'
@@ -41,19 +41,23 @@ export default function AddBookScreen() {
     
 
     const onClickSaveBook = async () => {
-        if(title != "" && author != ""){
-            const newBook:Book = new Book(title, author, numberOP, notePerso, releaseYear, summary, readings, tags, 0);
-            const data = newBook.toJSON();
-            await createBook(JSON.stringify(data));
-    
-            navigation.goBack();
-        } else {
-            alert("Veuillez mettre un titre et un author");
+        try{
+            if(title != "" && author != ""){
+                const newBook:Book = new Book(title, author, numberOP, notePerso, releaseYear, summary, readings, tags, 0);
+                const data = newBook.toJSON();
+                await createBook(JSON.stringify(data));
+        
+                navigation.goBack();
+            } else {
+                ToastAndroid.show("Veuillez mettre un titre et un author" , ToastAndroid.CENTER);
+            }
+        } catch(error) {
+            ToastAndroid.show("Problème lors de la création d'un livre" , ToastAndroid.CENTER);
         }
     };
 
     const onClickAddTag = () => {
-        tags.push(new Tag(textTag, 0));
+        tags.push(new Tag(textTag, 0, 0));
         const newTags = Array.from(tags);
         setTags(newTags);
     };    

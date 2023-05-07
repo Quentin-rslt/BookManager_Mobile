@@ -1,12 +1,12 @@
 
 export default class Tag {
-    public idTag:number|undefined;
+    public idTag:number;
     
     public textTag:string;
     
     public colorTag:number;
 
-    constructor(textTag:string, colorTag:number, idTag?:number) {
+    constructor(textTag:string, colorTag:number, idTag:number) {
         this.idTag=idTag;
         this.textTag=textTag;
         this.colorTag=colorTag;

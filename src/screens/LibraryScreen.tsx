@@ -1,24 +1,16 @@
-import { ActivityIndicator, FlatList, RefreshControl, Text, View } from 'react-native'
+import { FlatList, RefreshControl, Text, ToastAndroid, View } from 'react-native'
 import CommonStyles from '../styles/CommonStyles'
 import TitleScreen from '../components/TitleScreen'
 import BookCard from '../components/cards/BookCard'
-import { ScrollView } from 'react-native-gesture-handler'
 import {getBooks} from '../Common/services/BookService'
 import { useCallback, useEffect, useState } from 'react'
 import Book from '../Common/Class/Book'
 import TopBar from '../components/Inputs/TopBar'
 import { COLORS } from '../Common/CommonColors'
 import LibraryStyles from '../styles/screens/LibraryStyles'
-import { StackNavigationProp } from "@react-navigation/stack";
-import { useNavigation } from "@react-navigation/native";
 import TextIconButton from '../components/Buttons/TextIconButton'
 
-type LibraryStackParamList = {
-    AddBookScreen : { };
-}
-
-export default function LibraryScreen() {
-    const navigation = useNavigation<StackNavigationProp<LibraryStackParamList>>();
+export default function LibraryScreen({ navigation } : any) {
 
     const [books, setBooks] = useState<Book[]>([]);
     const [bufferBooks, setBufferBooks] = useState<Book[]>([]);
@@ -31,8 +23,12 @@ export default function LibraryScreen() {
     }, [navigation])
 
     const onRefresh = useCallback(async () => {
-        await getBooks().then(books => {setBooks([...books]), setBufferBooks([...books])});
-        setIsLoading(false);
+        try{
+            await getBooks().then(books => {setBooks([...books]), setBufferBooks([...books])});
+            setIsLoading(false);
+        } catch(error) {
+            ToastAndroid.show("Problème lors du chargement des livres" , ToastAndroid.CENTER);
+        }
     }, []);
 
 

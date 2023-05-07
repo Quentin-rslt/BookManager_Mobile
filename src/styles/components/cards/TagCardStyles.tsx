@@ -3,8 +3,8 @@ import { COLORS } from "../../../Common/CommonColors";
 
 export default StyleSheet.create({
     container : {
-        width: 170,
-        height:170,
+        width: "47%",
+        aspectRatio: 1,
         overflow:'hidden',
         backgroundColor: COLORS.componentBackground,
         borderRadius : 30,
