@@ -2,7 +2,7 @@ import Reading from "./Reading";
 import Tag from "./Tag";
 
 export default class Book {
-    public idBook:number|undefined;
+    public idBook:number;
 
     public title:string;
 
@@ -20,7 +20,7 @@ export default class Book {
     
     public tags:Array<Tag>;
 
-    constructor(title:string, author:string, numberOP:number, notePerso:number, releaseYear:string, summary:string, readings: Array<Reading>, tags: Array<Tag>, idBook?:number) {
+    constructor(title:string, author:string, numberOP:number, notePerso:number, releaseYear:string, summary:string, readings: Array<Reading>, tags: Array<Tag>, idBook:number) {
         this.idBook=idBook;
         this.title=title;
         this.author=author;

@@ -8,6 +8,6 @@ export default StyleSheet.create({
         color: COLORS.foreground,
         textAlign: 'center',
         paddingHorizontal: '20%',
-        marginTop: '7%',
+        marginBottom: 20,
     },
 });

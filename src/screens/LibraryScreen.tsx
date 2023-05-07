@@ -1,10 +1,10 @@
-import { ActivityIndicator, Text, View } from 'react-native'
+import { ActivityIndicator, FlatList, RefreshControl, Text, View } from 'react-native'
 import CommonStyles from '../styles/CommonStyles'
 import TitleScreen from '../components/TitleScreen'
 import BookCard from '../components/cards/BookCard'
 import { ScrollView } from 'react-native-gesture-handler'
 import {getBooks} from '../Common/services/BookService'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Book from '../Common/Class/Book'
 import TopBar from '../components/Inputs/TopBar'
 import { COLORS } from '../Common/CommonColors'
@@ -14,65 +14,62 @@ import { useNavigation } from "@react-navigation/native";
 import TextIconButton from '../components/Buttons/TextIconButton'
 
 type LibraryStackParamList = {
-    AddBookScreen : {filteredBooks: Book[], setFilteredBooks: React.Dispatch<React.SetStateAction<Book[]>> };
+    AddBookScreen : { };
 }
 
 export default function LibraryScreen() {
     const navigation = useNavigation<StackNavigationProp<LibraryStackParamList>>();
 
-    const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
     const [books, setBooks] = useState<Book[]>([]);
-    const [noBooks, setNoBooks] = useState<boolean>(false);
+    const [bufferBooks, setBufferBooks] = useState<Book[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        getBooks().then(books => {setBooks([...books]), setFilteredBooks([...books])});
-    }, [])
+        navigation.addListener('focus', () => {
+            onRefresh();
+        });
+    }, [navigation])
+
+    const onRefresh = useCallback(async () => {
+        await getBooks().then(books => {setBooks([...books]), setBufferBooks([...books])});
+        setIsLoading(false);
+    }, []);
+
 
     const onChangeSearch = (text : string) => {
-        let id:number = 0;
-        const filteredBooks:Book[] = Array.from(books).filter((book) => {
-            book.tags.map((tag, idTag) => {
-                if(tag.textTag.toUpperCase().includes(text.toUpperCase())){
-                    id = idTag;
-                }
-            });
-            
-            return book.title.toUpperCase().includes(text.toUpperCase()) || book.author.toUpperCase().includes(text.toUpperCase()) || book.tags[id].textTag.toUpperCase().includes(text.toUpperCase());
-        });
-        setFilteredBooks(filteredBooks);
-        setNoBooks(filteredBooks.length == 0);
+        const filteredBooks = bufferBooks.filter((book) =>
+            book.title.toLowerCase().includes(text.toLowerCase()) || book.author.toUpperCase().includes(text.toUpperCase())
+        );
+        setBooks([...filteredBooks]);
     };
     
     const onClickAddBook = () => {
-        navigation.navigate('AddBookScreen', {filteredBooks, setFilteredBooks});
-    }
+        navigation.navigate('AddBookScreen', {});
+    };
+
+    const renderHeader = () => {
+        return(
+            <TitleScreen title={'Bibliothèque'}/>
+        )
+    };
 
     return (
         <View style={CommonStyles.container}>
             <TopBar onChangeSearch={onChangeSearch}/>
-                {
-                    filteredBooks.length === 0 && noBooks === false ?  <ActivityIndicator size="large" color={COLORS.accentColor} style={CommonStyles.loader} /> :
-                    <View style={CommonStyles.content}>
-                        <TitleScreen title={'Bibliothèque'}/>
-                        <ScrollView style={CommonStyles.scrollViewContainer}>
-                            <View style={LibraryStyles.booksContainer}>
-                                {   
-                                    filteredBooks.map((book, idBook) =>
-                                        <View style={LibraryStyles.bookContainer} key={idBook}>
-                                            <BookCard book={book}/>
-                                        </View> 
-                                    )
-                                }
-                                {
-                                    noBooks && <Text style={CommonStyles.noItems}> Aucun livre n'a été trouvé </Text>
-                                }
-                            </View>
-                        </ScrollView>
-                        <View style={CommonStyles.textButtonContainer}>
-                            <TextIconButton callBack={onClickAddBook} size={22} text={'Ajouter un livre'} nameIcon={'plus'} color={COLORS.background}/>
-                        </View>
-                    </View>
-                }
+            <View style={CommonStyles.content}>
+                <FlatList style={CommonStyles.itemsContainer} 
+                    ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun livre n'a été trouvé"}</Text>}
+                    contentContainerStyle = {LibraryStyles.booksContainer}
+                    data={books}
+                    renderItem={({item}) => <BookCard book={item}/>}
+                    keyExtractor={item => item.idBook.toString()}
+                    refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefresh}/>}
+                    ListHeaderComponent={renderHeader}
+                />
+                <View style={CommonStyles.textButtonContainer}>
+                    <TextIconButton callBack={onClickAddBook} size={22} text={'Ajouter un livre'} nameIcon={'plus'} color={COLORS.background}/>
+                </View>
+            </View>
         </View>
   )
 }

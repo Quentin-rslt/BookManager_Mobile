@@ -3,15 +3,14 @@ import { COLORS } from "../../Common/CommonColors";
 
 export default StyleSheet.create({
     bookContainer: {
-        alignItems: "center",
-        width: "100%",
+        paddingHorizontal: 20,
+        justifyContent: 'center',
+        paddingBottom: 80,
     },
     
     booksContainer : {
+        paddingHorizontal: 20,
         justifyContent: 'center',
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        marginBottom: "12%",
+        paddingBottom: 80,
     },
 });

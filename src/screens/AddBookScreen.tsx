@@ -24,10 +24,8 @@ LogBox.ignoreLogs([
 
 type AddBookStackParamList = {};
 
-export default function AddBookScreen({ route }: any) {
+export default function AddBookScreen() {
     const navigation = useNavigation<StackNavigationProp<AddBookStackParamList>>();
-    const filteredBooks = route.params.filteredBooks as Book[];
-    const setFilteredBooks = route.params.setFilteredBooks as React.Dispatch<React.SetStateAction<Book[]>>;
 
     const [title, setTitle] = useState<string>("");
     const [author, setAuthor] = useState<string>("");
@@ -42,15 +40,11 @@ export default function AddBookScreen({ route }: any) {
 
     
 
-    const onClickSaveBook = () => {
+    const onClickSaveBook = async () => {
         if(title != "" && author != ""){
-            const newBook:Book = new Book(title, author, numberOP, notePerso, releaseYear, summary, readings, tags);
+            const newBook:Book = new Book(title, author, numberOP, notePerso, releaseYear, summary, readings, tags, 0);
             const data = newBook.toJSON();
-            createBook(JSON.stringify(data));
-    
-            filteredBooks.push(newBook);
-            const newBooks = Array.from(filteredBooks);
-            setFilteredBooks(newBooks);
+            await createBook(JSON.stringify(data));
     
             navigation.goBack();
         } else {

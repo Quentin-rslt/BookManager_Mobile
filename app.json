@@ -28,6 +28,10 @@
     },
     "web": {
       "favicon": "./src/assets/logo_BookManager.png"
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#262222",
+      "translucent": false
     }
   }
 }

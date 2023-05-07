@@ -11,12 +11,8 @@ type Props = {
 }
 
 export default function BookCard({book} : Props) {
-    const onClickBookCard = () => {
-        alert(book.title);
-    }
-
     return (
-        <TouchableOpacity style={BookCardStyles.container} onPress={onClickBookCard}>
+        <View style={BookCardStyles.container}>
             <View>
                 <Text style={BookCardStyles.titleStyle} numberOfLines={1}>{book.title}</Text>
                 <View style={BookCardStyles.containerReleaseAuthor}>
@@ -25,7 +21,7 @@ export default function BookCard({book} : Props) {
                 </View>
             </View>
             <View style={BookCardStyles.tagList}>
-                <ScrollView horizontal>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                     {
                         book.tags.map((tag, idTag) =>
                             <View key={idTag}>   
@@ -40,6 +36,6 @@ export default function BookCard({book} : Props) {
                 <NumberIcon number={book.numberOP} nameIcon={"book-open-page-variant-outline"}/>
                 <NumberIcon number={book.notePerso} nameIcon={"star"}/>
             </View>
-        </TouchableOpacity>
+        </View>
     )
 }

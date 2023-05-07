@@ -12,13 +12,16 @@ export default StyleSheet.create({
         backgroundColor: COLORS.backgroundLight,
         width: '100%',
         position: 'absolute',
-        top : 120,
+        top : 75,
         bottom: 60,
         borderRadius : 30,
     },
     scrollViewContainer : {
         marginTop: "7%",
         marginBottom: "7%",
+    },
+    itemsContainer : {
+        marginVertical : 20,
     },
     loader: {
         position: 'absolute',
@@ -28,7 +31,8 @@ export default StyleSheet.create({
     noItems: {
         textAlign: 'center',
         color: COLORS.foreground,
-        width: "100%"
+        width: "100%",
+        marginTop : 20,
     },
     textButtonContainer: {
         position:'absolute',

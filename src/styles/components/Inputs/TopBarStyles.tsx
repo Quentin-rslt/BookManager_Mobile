@@ -4,13 +4,13 @@ import { COLORS } from "../../../Common/CommonColors";
 export default StyleSheet.create({
     container : {
         position: 'absolute',
-        top:60,
+        top:5,
         alignItems : "center",
         justifyContent: 'center',
         display: 'flex',
         flexDirection: 'row',
         width : "100%",
-        height : 45,
+        height : 50,
         paddingLeft : 15,
         paddingRight : 15,
     },
