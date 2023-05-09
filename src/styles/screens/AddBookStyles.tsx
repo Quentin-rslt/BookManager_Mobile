@@ -44,6 +44,7 @@ export default StyleSheet.create({
     text: {
         textAlignVertical: 'center',
         marginRight : 15,
+        marginLeft : 15,
         paddingBottom : 15,
         color: COLORS.foregroundHolder,
     },

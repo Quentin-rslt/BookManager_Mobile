@@ -9,13 +9,14 @@ interface Props {
     containerStyle ?: any;
     onChangeText : (text: string) => void;
     keyboardType?: KeyboardTypeOptions;
+    defaultValue?: string;
   }
   
-  export default function InputText({placeholder, multiline=false, containerStyle, onChangeText, keyboardType = 'ascii-capable'} : Props) {
+  export default function InputText({placeholder, multiline=false, containerStyle, onChangeText, keyboardType = 'ascii-capable', defaultValue = ''} : Props) {
     return (
         <View style={[InputTextStyles.txtFieldBackground, containerStyle]}>
             <Text style={CommonStyles.holderText}>{placeholder}</Text>
-            <TextInput multiline={multiline} keyboardType={keyboardType} style={InputTextStyles.inputText} onChangeText={onChangeText}/>
+            <TextInput multiline={multiline} keyboardType={keyboardType} defaultValue={defaultValue} style={InputTextStyles.inputText} onChangeText={onChangeText}/>
         </View>
     )
   }

@@ -65,6 +65,10 @@ export default function AddBookScreen({ navigation, route } : any) {
         newBook.setNotePerso(+text);
     };
 
+    const onChangeReleaseYear = (text : string) => {
+        newBook.setReleaseYear(text);
+    };
+
     return (
         <View style={CommonStyles.container}>
             <TopBar iconButtonShow={true} searchBarShow={false}/>
@@ -75,12 +79,10 @@ export default function AddBookScreen({ navigation, route } : any) {
                         <InputText placeholder={'Titre'} onChangeText={onChangeTitle}/>
                         <InputText placeholder={'Autheur'} onChangeText={onChangeAuthor}/>
                         <View style={AddBookStyles.inputNumberContainer}>
-                            <InputText placeholder={'Page'} containerStyle={AddBookStyles.inputNumber} keyboardType='numeric' onChangeText={onChangeNumberOP}/>
-                            <InputText placeholder={'Note'} containerStyle={AddBookStyles.inputNumber} keyboardType='numeric' onChangeText={onChangeNotePerso}/>
+                            <InputText placeholder={'Page'} containerStyle={AddBookStyles.inputNumber} defaultValue={newBook.numberOP.toString()} keyboardType='numeric' onChangeText={onChangeNumberOP}/>
+                            <InputText placeholder={'Note'} containerStyle={AddBookStyles.inputNumber} defaultValue={newBook.notePerso.toString()} keyboardType='numeric' onChangeText={onChangeNotePerso}/>
                         </View>
-                        <View style={AddBookStyles.spinnerContainer}>
-                            <Spinner max={new Date().getFullYear()} min={0} step={1} value={newBook.releaseYear} skin={'clean'} placeholder={'Date de sortie : '} onChange={(num:string) => {newBook.setReleaseYear(num)}}/>
-                        </View>
+                        <InputText placeholder={'Année de sortie'} defaultValue={newBook.releaseYear} keyboardType='numeric' onChangeText={onChangeReleaseYear}/>
                         <View style={AddBookStyles.tagsContainer}>
                             <Text style={AddBookStyles.text}>Tags : </Text>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
