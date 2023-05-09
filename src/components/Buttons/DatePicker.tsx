@@ -5,6 +5,7 @@ import Reading from '../../Common/Class/Reading';
 import TextIconButton from './TextIconButton';
 import CommonStyles from '../../styles/CommonStyles';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { COLORS } from '../../Common/CommonColors';
 
 interface Props {
     readings: Reading[];
@@ -81,7 +82,7 @@ export default function DatesPickers({readings, setReadings} : Props) {
                 </TouchableOpacity>
             </View>
             <View style={DatePickerStyles.addReadingContainer}>
-                <TextIconButton callBack={onClickAddReading} nameIcon={'plus'} size={15} showText={false} containerStyle={DatePickerStyles.addReadingButton}/>
+                <TextIconButton callBack={onClickAddReading} nameIcon={'send'} size={26} color={COLORS.clickableColor} showText={false} containerStyle={DatePickerStyles.addReadingButton}/>
             </View>
         </View>
     )

@@ -53,7 +53,7 @@ export default function LibraryScreen({ navigation } : any) {
         <View style={CommonStyles.container}>
             <TopBar onChangeSearch={onChangeSearch}/>
             <View style={CommonStyles.content}>
-                <FlatList style={CommonStyles.itemsContainer} 
+                <FlatList style={CommonStyles.flatListContainer} 
                     ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun livre n'a été trouvé"}</Text>}
                     contentContainerStyle = {LibraryStyles.booksContainer}
                     data={books}

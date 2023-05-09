@@ -17,10 +17,9 @@ export default StyleSheet.create({
         borderRadius : 30,
     },
     scrollViewContainer : {
-        marginTop: "7%",
-        marginBottom: "7%",
+        marginVertical : 20,
     },
-    itemsContainer : {
+    flatListContainer : {
         marginVertical : 20,
     },
     loader: {

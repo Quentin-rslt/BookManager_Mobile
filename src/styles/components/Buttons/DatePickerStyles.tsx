@@ -26,7 +26,8 @@ export default StyleSheet.create({
     addReadingButton: {
         paddingHorizontal: 20,
         height: 40,
-        backgroundColor: COLORS.accentColor,
+        backgroundColor: COLORS.transparent,
+        shadowColor: COLORS.transparent,
         borderRadius: 15,
     },
     dateText: {

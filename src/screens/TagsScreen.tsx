@@ -52,7 +52,7 @@ export default function TagsScreen({ navigation } : any) {
         <View style={CommonStyles.container}>
             <TopBar onChangeSearch={onChangeSearch}/>
             <View style={CommonStyles.content}>
-                <FlatList style={CommonStyles.itemsContainer} 
+                <FlatList style={CommonStyles.flatListContainer} 
                     ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun tag n'a été trouvé"}</Text>}
                     columnWrapperStyle={TagsStyles.columnWrapperStyle}
                     contentContainerStyle = {TagsStyles.tagsContainer}
