@@ -6,13 +6,15 @@ import TextIconButton from './TextIconButton';
 import CommonStyles from '../../styles/CommonStyles';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { COLORS } from '../../Common/CommonColors';
+import Book from '../../Common/Class/Book';
 
 interface Props {
-    readings: Reading[];
-    setReadings: React.Dispatch<React.SetStateAction<Reading[]>>
+    book: Book;
+    refresh: boolean;
+    setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function DatesPickers({readings, setReadings} : Props) {
+export default function DatesPickers({book, refresh, setRefresh} : Props) {
     const [startDateReading, setStartDateReading] = useState<Date>(new Date());
     const [endDateReading, setEndDateReading] = useState<Date>(new Date());
 
@@ -40,9 +42,8 @@ export default function DatesPickers({readings, setReadings} : Props) {
     }
 
     const onClickAddReading = () => {
-        readings.push(new Reading(startDateReading, endDateReading));
-        const newReadings = Array.from(readings);
-        setReadings(newReadings);
+        book.addReading(new Reading(startDateReading, endDateReading));
+        setRefresh(!refresh);
     }
 
     return (
@@ -82,7 +83,7 @@ export default function DatesPickers({readings, setReadings} : Props) {
                 </TouchableOpacity>
             </View>
             <View style={DatePickerStyles.addReadingContainer}>
-                <TextIconButton callBack={onClickAddReading} nameIcon={'send'} size={26} color={COLORS.clickableColor} showText={false} containerStyle={DatePickerStyles.addReadingButton}/>
+                <TextIconButton callBack={onClickAddReading} nameIcon={'plus-box'} size={26} color={COLORS.clickableColor} showText={false} containerStyle={DatePickerStyles.addReadingButton}/>
             </View>
         </View>
     )

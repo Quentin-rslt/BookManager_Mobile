@@ -20,16 +20,16 @@ export default class Book {
     
     public tags: Array<Tag>;
 
-    constructor(title:string, author:string, numberOP:number, notePerso:number, releaseYear:string, summary:string, readings: Array<Reading>, tags: Array<Tag>, idBook:number) {
-        this.idBook=idBook;
-        this.title=title;
-        this.author=author;
-        this.numberOP=numberOP;
-        this.notePerso=notePerso;
-        this.releaseYear=releaseYear;
-        this.summary=summary;
-        this.readings=readings;
-        this.tags=tags;
+    constructor(title?:string, author?:string, numberOP?:number, notePerso?:number, releaseYear?:string, summary?:string, readings?: Array<Reading>, tags?: Array<Tag>, idBook?:number) {
+        this.idBook=idBook ? idBook : 0;
+        this.title=title ? title : "";
+        this.author=author ? author : "";
+        this.numberOP=numberOP ? numberOP : 0;
+        this.notePerso=notePerso ? notePerso : 0;
+        this.releaseYear=releaseYear ? releaseYear : "2023";
+        this.summary=summary ? summary : "";
+        this.readings=readings ? readings : [];
+        this.tags=tags ? tags : [];
     }
 
     public toJSON() {
@@ -47,37 +47,61 @@ export default class Book {
     
     public setIdBook(value: number) {
         this.idBook = value;
+        return this;
     }
 
     public setTitle(value: string) {
         this.title = value;
+        return this;
     }
 
     public setAuthor(value: string) {
         this.author = value;
+        return this;
     }
 
     public setNumberOP(value: number) {
         this.numberOP = value;
+        return this;
     }
 
     public setNotePerso(value: number) {
         this.notePerso = value;
+        return this;
     }
 
     public setReleaseYear(value: string) {
         this.releaseYear = value;
+        return this;
     }
 
     public setSummary(value: string) {
         this.summary = value;
+        return this;
     }
 
     public setReadings(value: Array<Reading>) {
         this.readings = value;
+        return this;
+    }
+
+    public addReading(value: Reading) {
+        this.readings.push(value);
+        return this;
+    }
+
+    public deleteReading(value: number) {
+        this.readings.splice(value, 1);
+        return this;
     }
 
     public setTags(value: Array<Tag>) {
         this.tags = value;
+        return this;
+    }
+
+    public addTag(value: Tag) {
+        this.tags.push(value);
+        return this;
     }
 } 

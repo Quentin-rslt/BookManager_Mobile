@@ -4,12 +4,9 @@ import CommonStyles from '../styles/CommonStyles'
 import TitleScreen from '../components/TitleScreen'
 import AddBookStyles from '../styles/screens/AddBookStyles'
 import TopBar from '../components/Inputs/TopBar'
-import { StackNavigationProp } from "@react-navigation/stack";
-import { useNavigation } from "@react-navigation/native";
 import TextIconButton from '../components/Buttons/TextIconButton'
 import InputText from '../components/Inputs/InputText'
 import ReadingCard from '../components/cards/ReadingCard'
-import Reading from '../Common/Class/Reading' 
 import Tag from '../Common/Class/Tag'
 import TagSticker from '../components/Buttons/TagSticker'
 import DatePicker from '../components/Buttons/DatePicker'
@@ -22,18 +19,15 @@ LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
 ]);
 
-export default function AddBookScreen({ navigation } : any) {
+export default function AddBookScreen({ navigation, route } : any) {
 
-    const newBook = new Book("", "", 0, 0, "2023", "", [], [], 0);
+    const newBook:Book = route.params.newBook;
 
-    const [tags, setTags] = useState<Tag[]>(newBook.tags);
-    const [readings, setReadings] = useState<Reading[]>(newBook.readings);
+    const [refresh, setRefresh] = useState<boolean>(false);
 
     const onClickSaveBook = async () => {
         try{
             if(newBook.title != "" && newBook.author != ""){
-                newBook.setReadings(readings);
-                newBook.setTags(tags);
                 const data = newBook.toJSON();
                 await createBook(JSON.stringify(data));
         
@@ -47,9 +41,8 @@ export default function AddBookScreen({ navigation } : any) {
     };
 
     const onClickAddTag = () => {
-        tags.push(new Tag("Fantasy", 0, 0));
-        const newTags = Array.from(tags);
-        setTags(newTags);
+        newBook.addTag(new Tag("Fantasy", 0, 0));
+        setRefresh(!refresh);
     };
 
     const onChangeTitle = (text : string) => {
@@ -64,6 +57,14 @@ export default function AddBookScreen({ navigation } : any) {
         newBook.setSummary(text);
     };
 
+    const onChangeNumberOP = (text : string) => {
+        newBook.setNumberOP(+text);
+    };
+
+    const onChangeNotePerso = (text : string) => {
+        newBook.setNotePerso(+text);
+    };
+
     return (
         <View style={CommonStyles.container}>
             <TopBar iconButtonShow={true} searchBarShow={false}/>
@@ -73,16 +74,18 @@ export default function AddBookScreen({ navigation } : any) {
                     <View style={AddBookStyles.container}>
                         <InputText placeholder={'Titre'} onChangeText={onChangeTitle}/>
                         <InputText placeholder={'Autheur'} onChangeText={onChangeAuthor}/>
+                        <View style={AddBookStyles.inputNumberContainer}>
+                            <InputText placeholder={'Page'} containerStyle={AddBookStyles.inputNumber} keyboardType='numeric' onChangeText={onChangeNumberOP}/>
+                            <InputText placeholder={'Note'} containerStyle={AddBookStyles.inputNumber} keyboardType='numeric' onChangeText={onChangeNotePerso}/>
+                        </View>
                         <View style={AddBookStyles.spinnerContainer}>
-                            <Spinner max={9999999} min={0} step={1} value={newBook.numberOP} skin={'clean'} placeholder={'Nombre de page: '} onChange={(num:number) => {newBook.setNumberOP(num)}}/>
-                            <Spinner max={5} min={0} step={0.5} value={newBook.notePerso} skin={'clean'} placeholder={'Note personnelle: '} onChange={(num:number) => {newBook.setNotePerso(num)}}/>
                             <Spinner max={new Date().getFullYear()} min={0} step={1} value={newBook.releaseYear} skin={'clean'} placeholder={'Date de sortie : '} onChange={(num:string) => {newBook.setReleaseYear(num)}}/>
                         </View>
                         <View style={AddBookStyles.tagsContainer}>
                             <Text style={AddBookStyles.text}>Tags : </Text>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                                 {
-                                    tags.map((tag, idTag) => 
+                                    newBook.tags.map((tag, idTag) => 
                                         <TagSticker key={idTag} tag={tag}/>
                                     )
                                 }
@@ -92,10 +95,10 @@ export default function AddBookScreen({ navigation } : any) {
                         <InputText placeholder={'Description'} multiline={true} containerStyle={AddBookStyles.descriptionContainer} onChangeText={onChangeSummary}/>
                         <View style={AddBookStyles.readingsContainer}>
                             <Text style={AddBookStyles.text}>Lectures : </Text>
-                            <DatePicker readings={readings} setReadings={setReadings}/>
+                            <DatePicker book={newBook} setRefresh={setRefresh} refresh={refresh}/>
                             {
-                                readings.map((reading, idReading) => 
-                                    <ReadingCard key={idReading} reading={reading} showDeleteButton={true} setReadings={setReadings} readings={readings} idReading={idReading}/>
+                                newBook.readings.map((reading, idReading) => 
+                                    <ReadingCard key={idReading} reading={reading} showDeleteButton={true} idReading={idReading} book={newBook} setRefresh={setRefresh} refresh={refresh}/>
                                 )
                             }
                         </View>

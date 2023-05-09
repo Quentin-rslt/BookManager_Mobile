@@ -40,7 +40,8 @@ export default function LibraryScreen({ navigation } : any) {
     };
     
     const onClickAddBook = () => {
-        navigation.navigate('AddBookScreen', {});
+        const newBook = new Book();
+        navigation.navigate('AddBookScreen', { newBook });
     };
 
     const renderHeader = () => {

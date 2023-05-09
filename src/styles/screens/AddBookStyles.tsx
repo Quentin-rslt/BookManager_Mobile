@@ -62,6 +62,15 @@ export default StyleSheet.create({
     spinnerContainer: {
         width: '85%',
     },
+    inputNumberContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '85%',
+    },
+    inputNumber: {
+        width: '45%',
+    },
     readingsContainer: {
         width: '85%',
     }
