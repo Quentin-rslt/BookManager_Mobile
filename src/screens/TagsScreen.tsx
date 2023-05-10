@@ -2,18 +2,19 @@ import { View, Text, FlatList, RefreshControl, ToastAndroid } from 'react-native
 import React, { useCallback, useEffect, useState } from 'react'
 import CommonStyles from '../styles/CommonStyles'
 import TitleScreen from '../components/TitleScreen'
-import {getTags} from '../Common/services/TagService'
 import TagCard from '../components/cards/TagCard'
 import TagsStyles from '../styles/screens/TagsStyles'
 import TopBar from '../components/Inputs/TopBar'
 import Tag from '../Common/Class/Tag'
 import { COLORS } from '../Common/CommonColors'
 import TextIconButton from '../components/Buttons/TextIconButton'
+import TagService from '../Common/services/TagService'
 
 export default function TagsScreen({ navigation } : any) {
 
-    const [tags, setTags] = useState<Tag[] | undefined>([]);
-    const [bufferTags, setBufferTags] = useState<Tag[]>([]);
+    const tagService:TagService = new TagService;
+
+    const [tags, setTags] = useState<Tag[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
@@ -24,7 +25,8 @@ export default function TagsScreen({ navigation } : any) {
 
     const onRefresh = useCallback(async () => {
         try{
-            await getTags().then(tags => {setTags([...tags]), setBufferTags([...tags])});
+            await tagService.fetchTags();
+            setTags(tagService.tags);
             setIsLoading(false);
         } catch(error) {
             ToastAndroid.show("Problème lors du chargement des tags" , ToastAndroid.CENTER);
@@ -32,7 +34,7 @@ export default function TagsScreen({ navigation } : any) {
     }, []);
 
     const onChangeSearch = (text : string) => {
-        const filteredTags:Tag[] = bufferTags.filter((tag) => {
+        const filteredTags:Tag[] = tagService.tags.filter((tag) => {
             return tag.textTag.toUpperCase().includes(text.toUpperCase());
         });
         setTags(filteredTags);

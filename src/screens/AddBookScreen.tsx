@@ -11,9 +11,8 @@ import Tag from '../Common/Class/Tag'
 import TagSticker from '../components/Buttons/TagSticker'
 import DatePicker from '../components/Buttons/DatePicker'
 import Book from '../Common/Class/Book'
-import { createBook } from '../Common/services/BookService'
 import { LogBox } from 'react-native';
-import Spinner from '../components/Inputs/Spinner'
+import BookService from '../Common/services/BookService'
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
@@ -22,6 +21,7 @@ LogBox.ignoreLogs([
 export default function AddBookScreen({ navigation, route } : any) {
 
     const newBook:Book = route.params.newBook;
+    const bookService:BookService = new BookService();
 
     const [refresh, setRefresh] = useState<boolean>(false);
 
@@ -29,7 +29,7 @@ export default function AddBookScreen({ navigation, route } : any) {
         try{
             if(newBook.title != "" && newBook.author != ""){
                 const data = newBook.toJSON();
-                await createBook(JSON.stringify(data));
+                await bookService.createBook(JSON.stringify(data));
         
                 navigation.goBack();
             } else {

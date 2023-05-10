@@ -2,18 +2,19 @@ import { FlatList, RefreshControl, Text, ToastAndroid, View } from 'react-native
 import CommonStyles from '../styles/CommonStyles'
 import TitleScreen from '../components/TitleScreen'
 import BookCard from '../components/cards/BookCard'
-import {getBooks} from '../Common/services/BookService'
 import { useCallback, useEffect, useState } from 'react'
 import Book from '../Common/Class/Book'
 import TopBar from '../components/Inputs/TopBar'
 import { COLORS } from '../Common/CommonColors'
 import LibraryStyles from '../styles/screens/LibraryStyles'
 import TextIconButton from '../components/Buttons/TextIconButton'
+import BookService from '../Common/services/BookService'
 
 export default function LibraryScreen({ navigation } : any) {
+    
+    const bookService = new BookService();
 
     const [books, setBooks] = useState<Book[]>([]);
-    const [bufferBooks, setBufferBooks] = useState<Book[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
@@ -24,7 +25,8 @@ export default function LibraryScreen({ navigation } : any) {
 
     const onRefresh = useCallback(async () => {
         try{
-            await getBooks().then(books => {setBooks([...books]), setBufferBooks([...books])});
+            await bookService.fetchBooks();
+            setBooks(bookService.books)
             setIsLoading(false);
         } catch(error) {
             ToastAndroid.show("Problème lors du chargement des livres" , ToastAndroid.CENTER);
@@ -33,10 +35,10 @@ export default function LibraryScreen({ navigation } : any) {
 
 
     const onChangeSearch = (text : string) => {
-        const filteredBooks = bufferBooks.filter((book) =>
+        const filteredBooks = bookService.books.filter((book) =>
             book.title.toLowerCase().includes(text.toLowerCase()) || book.author.toUpperCase().includes(text.toUpperCase())
         );
-        setBooks([...filteredBooks]);
+        bookService.setBooks(filteredBooks);
     };
     
     const onClickAddBook = () => {

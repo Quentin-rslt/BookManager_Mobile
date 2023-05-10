@@ -1,9 +1,9 @@
 import { Text, ToastAndroid, TouchableOpacity, View } from 'react-native'
 import NumberIcon from './../NumberIcon';
 import TagCardStyles from '../../styles/components/cards/TagCardStyles';
-import { getBooksByTag } from '../../Common/services/BookService';
 import { useCallback, useEffect, useState } from 'react';
 import Tag from '../../Common/Class/Tag';
+import BookService from '../../Common/services/BookService';
 
 type Props = {
     tag: Tag;
@@ -11,6 +11,9 @@ type Props = {
 }
 
 export default function TagCard({tag, navigation} : Props) {
+    
+    const bookService:BookService = new BookService();
+
     const [numberBook, setNumberBook] = useState<number>(0);
 
     useEffect(() => {
@@ -19,8 +22,8 @@ export default function TagCard({tag, navigation} : Props) {
 
     const onRefresh = useCallback(async () => {
         try{
-            setNumberBook(0);
-            await getBooksByTag(tag).then(books => {setNumberBook(books.length)});
+            await bookService.fetchBooksByTag(tag);
+            setNumberBook(bookService.books.length)
         } catch(error) {
             ToastAndroid.show("Problème lors du chargement du nombre de livre" , ToastAndroid.CENTER);
         }
@@ -32,10 +35,10 @@ export default function TagCard({tag, navigation} : Props) {
 
     return (
         <TouchableOpacity style={TagCardStyles.container} onPress={onClickTagCard}>
-                <Text style={TagCardStyles.text} numberOfLines={1}>{tag.textTag}</Text>
-                <View style={TagCardStyles.numberBook}>
-                    <NumberIcon number={numberBook} nameIcon={"book-open-outline"} />
-                </View>
+            <Text style={TagCardStyles.text} numberOfLines={1}>{tag.textTag}</Text>
+            <View style={TagCardStyles.numberBook}>
+                <NumberIcon number={numberBook} nameIcon={"book-open-outline"} />
+            </View>
         </TouchableOpacity>
     )
 }
