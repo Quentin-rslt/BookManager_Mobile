@@ -1,11 +1,14 @@
 import Book from '../Class/Book';
+import Client from '../Class/Client';
 import Tag from '../Class/Tag';
+import BaseService from './BaseService';
 
-export default class BookService {
+export default class BookService extends BaseService {
 
     public books:Book[];
 
-    constructor() {
+    constructor(client: Client) {
+        super(client);
         this.books = new Array<Book>;
     }
 
@@ -18,18 +21,6 @@ export default class BookService {
             return this.setBooks([...data]);
         }
     
-        return [];
-    }
-    
-    public async fetchBooksByTag(tag: Tag){
-    
-        const res = await fetch("http://192.168.0.34:9000/api/book/tag/"+tag.idTag+"");
-    
-        if(res.ok) {
-            const data: Book[] = await res.json();
-            return this.setBooks([...data]);
-        }
-        
         return [];
     }
     

@@ -1,7 +1,9 @@
+import Base from "./Base";
+import Client from "./Client";
 import Reading from "./Reading";
 import Tag from "./Tag";
 
-export default class Book {
+export default class Book extends Base {
     public idBook: number;
 
     public title:string;
@@ -20,7 +22,8 @@ export default class Book {
     
     public tags: Array<Tag>;
 
-    constructor(title?:string, author?:string, numberOP?:number, notePerso?:number, releaseYear?:string, summary?:string, readings?: Array<Reading>, tags?: Array<Tag>, idBook?:number) {
+    constructor(client: Client, title?:string, author?:string, numberOP?:number, notePerso?:number, releaseYear?:string, summary?:string, readings?: Array<Reading>, tags?: Array<Tag>, idBook?:number) {
+        super(client);
         this.idBook=idBook ? idBook : 0;
         this.title=title ? title : "";
         this.author=author ? author : "";
