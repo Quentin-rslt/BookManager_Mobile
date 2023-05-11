@@ -66,8 +66,8 @@ export default function TagsScreen({ navigation } : any) {
                     refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefresh}/>}
                     ListHeaderComponent={renderHeader}
                 />
-                <View style={CommonStyles.textButtonContainer}>
-                    <TextIconButton callBack={onClickAddTag} size={22} text={'Ajouter un tag'} nameIcon={'plus'} color={COLORS.background}/>
+                <View style={CommonStyles.buttonContainer}>
+                    <TextIconButton callBack={onClickAddTag} size={22} text={'Ajouter un tag'} nameIcon={'plus'} containerStyle={CommonStyles.addButton} color={COLORS.background}/>
                 </View>
             </View>
         </View>

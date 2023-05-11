@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '../../Common/CommonColors';
 import Reading from '../../Common/Class/Reading';
 import Book from '../../Common/Class/Book';
+import TextIconButton from '../Buttons/TextIconButton';
 
 interface Props {
     book: Book;
@@ -34,9 +35,7 @@ export default function ReadingCard({reading, showDeleteButton=false, book, refr
                 <Text style={ReadingCardStyles.textDate}>{endReading}</Text>
                 {
                     showDeleteButton &&
-                    <TouchableOpacity onPress={onClickDeleteReading}>
-                        <MaterialCommunityIcons name={'delete'} size={24} color={COLORS.accentColor}/>
-                    </TouchableOpacity>
+                    <TextIconButton callBack={onClickDeleteReading} showText={false} nameIcon={'delete'} size={24} color={COLORS.accentColor}/>
                 }
             </View>
         </View>

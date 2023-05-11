@@ -24,7 +24,7 @@ export default StyleSheet.create({
         left: 0,
     },
     addReadingButton: {
-        paddingHorizontal: 20,
+        justifyContent: 'center',
         height: 40,
         backgroundColor: COLORS.transparent,
         shadowColor: COLORS.transparent,

@@ -38,9 +38,5 @@ export default StyleSheet.create({
         height: 50,
         backgroundColor: COLORS.clickableColor,
         borderRadius: 17,
-        shadowColor: 'black',
-        shadowOpacity: 0.3,
-        shadowOffset: { width: 4, height: 4},
-        elevation: 5,
     }
 });

@@ -27,16 +27,29 @@ export default StyleSheet.create({
         top: '45%',
         left: '45%',
     },
+    loaderButton: {
+        width: '100%',
+    },
     noItems: {
         textAlign: 'center',
         color: COLORS.foreground,
         width: "100%",
         marginTop : 20,
     },
-    textButtonContainer: {
+    buttonContainer: {
         position:'absolute',
         bottom: 35,
         right: 30,
+    },
+    addButton: {
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        display: 'flex',
+        flexDirection: 'row',
+        paddingHorizontal: 10,
+        height: 55,
+        backgroundColor: COLORS.clickableColor,
+        borderRadius: 17,
     },
     holderText: {
         position: 'absolute',

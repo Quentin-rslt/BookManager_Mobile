@@ -9,21 +9,19 @@ export default StyleSheet.create({
         flexWrap: 'wrap',
     },
     saveButtonContainer: {
+        justifyContent: 'center',
+        width: '100%',
         position: 'absolute',
         bottom: 8,
+        paddingHorizontal: '25%',
     },
-    textSaveButton: {
+    saveButton: {
+        backgroundColor: COLORS.clickableColor,
         color: COLORS.background,
         height: 45,
-        paddingHorizontal: 50, 
+        width: "100%",
+        justifyContent: 'center',
         borderRadius : 17,
-        fontSize: 17,
-        fontWeight: '800',
-        textAlign : 'center',
-        shadowColor: 'black',
-        shadowOpacity: 0.3,
-        shadowOffset: { width: 4, height: 4},
-        elevation: 5,
     },
     tagsContainer: {
         alignItem: 'center',
@@ -36,6 +34,7 @@ export default StyleSheet.create({
         paddingTop: 5
     },
     addTagContainer: {
+        justifyContent: 'center',
         paddingHorizontal: 15,
         height: 25,
         backgroundColor: COLORS.accentColor,

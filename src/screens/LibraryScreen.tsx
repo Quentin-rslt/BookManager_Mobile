@@ -11,7 +11,7 @@ import TextIconButton from '../components/Buttons/TextIconButton'
 import BookService from '../Common/services/BookService'
 
 export default function LibraryScreen({ navigation } : any) {
-    
+
     const bookService = new BookService();
 
     const [books, setBooks] = useState<Book[]>([]);
@@ -65,8 +65,8 @@ export default function LibraryScreen({ navigation } : any) {
                     refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefresh}/>}
                     ListHeaderComponent={renderHeader}
                 />
-                <View style={CommonStyles.textButtonContainer}>
-                    <TextIconButton callBack={onClickAddBook} size={22} text={'Ajouter un livre'} nameIcon={'plus'} color={COLORS.background}/>
+                <View style={CommonStyles.buttonContainer}>
+                    <TextIconButton callBack={onClickAddBook} size={22} text={'Ajouter un livre'} containerStyle={CommonStyles.addButton} nameIcon={'plus'} color={COLORS.background}/>
                 </View>
             </View>
         </View>

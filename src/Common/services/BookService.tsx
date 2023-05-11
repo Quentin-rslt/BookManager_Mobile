@@ -15,7 +15,7 @@ export default class BookService {
     
         if(res.ok) {
             const data: Book[] = await res.json();
-            return this.setBooks(data);
+            return this.setBooks([...data]);
         }
     
         return [];
@@ -27,14 +27,14 @@ export default class BookService {
     
         if(res.ok) {
             const data: Book[] = await res.json();
-            return this.setBooks(data);
+            return this.setBooks([...data]);
         }
         
         return [];
     }
     
     public async createBook(data: string) {
-        fetch('http://192.168.0.34:9000/api/addBook', {
+        await fetch('http://192.168.0.34:9000/api/addBook', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -43,7 +43,7 @@ export default class BookService {
             body: data,
         });
     }
-    
+
     public setBooks(value:Book[]){
         this.books = value;
         return this;

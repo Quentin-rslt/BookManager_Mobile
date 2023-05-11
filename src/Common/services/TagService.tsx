@@ -13,7 +13,7 @@ export default class TagService {
     
         if(res.ok) {
             const data: Tag[] = await res.json();
-            return this.setTags(data);
+            return this.setTags([...data]);
         }
     
         return [];

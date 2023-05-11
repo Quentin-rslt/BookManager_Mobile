@@ -3,6 +3,7 @@ import React from 'react'
 import TagStickerStyles from '../../styles/components/Buttons/TagStickerStyles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Tag from '../../Common/Class/Tag';
+import TextIconButton from './TextIconButton';
 
 type Props = {
     tag: Tag,
@@ -15,8 +16,6 @@ export default function TagSticker({tag} : Props) {
     }
 
     return (
-        <TouchableOpacity style={TagStickerStyles.container} onPress={onclickTag}>
-            <Text style={TagStickerStyles.textTag} numberOfLines={1}>{tag.textTag}</Text>
-        </TouchableOpacity>
+        <TextIconButton callBack={onclickTag} showIcon={false} containerStyle={TagStickerStyles.container} textStyle={TagStickerStyles.textTag} text={tag.textTag} numberOfLineText={1} />
     )
 }

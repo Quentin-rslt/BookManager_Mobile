@@ -24,8 +24,11 @@ export default function AddBookScreen({ navigation, route } : any) {
     const bookService:BookService = new BookService();
 
     const [refresh, setRefresh] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const onClickSaveBook = async () => {
+        setIsLoading(true);
+        
         try{
             if(newBook.title != "" && newBook.author != ""){
                 const data = newBook.toJSON();
@@ -38,6 +41,8 @@ export default function AddBookScreen({ navigation, route } : any) {
         } catch(error) {
             ToastAndroid.show("Problème lors de la création d'un livre" , ToastAndroid.CENTER);
         }
+
+        setIsLoading(false);
     };
 
     const onClickAddTag = () => {
@@ -108,7 +113,7 @@ export default function AddBookScreen({ navigation, route } : any) {
                 </ScrollView>
             </View>
             <View style={AddBookStyles.saveButtonContainer}>
-                <TextIconButton callBack={onClickSaveBook} text={'Enregistrer'} showIcon={false} containerStyle={AddBookStyles.textSaveButton}/>
+                <TextIconButton callBack={onClickSaveBook} isLoading={isLoading} text={'Enregistrer'} showIcon={false} containerStyle={AddBookStyles.saveButton}/>
             </View>
         </View>
     )
