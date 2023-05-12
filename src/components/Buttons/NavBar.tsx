@@ -8,10 +8,13 @@ import { COLORS } from '../../Common/CommonColors';
 
 const Tab = createBottomTabNavigator();
 
-export default function NavBar() {
+export default function NavBar({ route } : any) {
+
+    const client = route.params.client;
+
     return (
         <Tab.Navigator
-            initialRouteName="Feed"
+            initialRouteName="Library"
             screenOptions={{
                 tabBarInactiveTintColor: COLORS.clickableColor,
                 tabBarActiveTintColor: COLORS.accentColor,
@@ -29,6 +32,7 @@ export default function NavBar() {
                         <MaterialCommunityIcons name="bookshelf" color={color} size={40}/>
                     ),
                 }}
+                initialParams={{client}}
             />
             <Tab.Screen
                 name="Tags"
@@ -38,6 +42,7 @@ export default function NavBar() {
                         <MaterialCommunityIcons name="tag-multiple" color={color} size={40}/>
                     ),
                 }}
+                initialParams={{client}}
             />
         </Tab.Navigator>
     )

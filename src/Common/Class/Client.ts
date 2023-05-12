@@ -12,7 +12,7 @@ export default class Client {
         this.tagService = new TagService(this);
     }
 
-    public async fetch() {
+    public async fetchAll() {
         await this.bookService.fetchBooks();
         await this.tagService.fetchTags();
     }

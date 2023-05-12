@@ -61,4 +61,12 @@ export default StyleSheet.create({
         fontSize: 13,
         lineHeight: 16,
     },
+    image: {
+        resizeMode: "contain",
+        width: "100%",
+    },
+    firstLoader: {
+        position: 'absolute',
+        bottom: "50%",
+    },
 });

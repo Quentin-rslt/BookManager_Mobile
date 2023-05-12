@@ -1,5 +1,5 @@
 import { View, Text, FlatList, RefreshControl, ToastAndroid } from 'react-native'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import CommonStyles from '../styles/CommonStyles'
 import TitleScreen from '../components/TitleScreen'
 import TagCard from '../components/cards/TagCard'
@@ -8,25 +8,18 @@ import TopBar from '../components/Inputs/TopBar'
 import Tag from '../Common/Class/Tag'
 import { COLORS } from '../Common/CommonColors'
 import TextIconButton from '../components/Buttons/TextIconButton'
-import TagService from '../Common/services/TagService'
+import Client from '../Common/Class/Client'
 
-export default function TagsScreen({ navigation } : any) {
+export default function TagsScreen({ route } : any) {
 
-    const tagService:TagService = new TagService;
+    const client:Client = route.params.client;
 
-    const [tags, setTags] = useState<Tag[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
-
-    useEffect(() => {
-        navigation.addListener('focus', () => {
-            onRefresh();
-        });
-    }, [navigation])
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const onRefresh = useCallback(async () => {
         try{
-            await tagService.fetchTags();
-            setTags(tagService.tags);
+            setIsLoading(true);
+            await client.tagService.fetchTags();
             setIsLoading(false);
         } catch(error) {
             ToastAndroid.show("Problème lors du chargement des tags" , ToastAndroid.CENTER);
@@ -34,10 +27,9 @@ export default function TagsScreen({ navigation } : any) {
     }, []);
 
     const onChangeSearch = (text : string) => {
-        const filteredTags:Tag[] = tagService.tags.filter((tag) => {
+        const filteredTags:Tag[] = client.tagService.tags.filter((tag) => {
             return tag.textTag.toUpperCase().includes(text.toUpperCase());
         });
-        setTags(filteredTags);
     };
 
     const onClickAddTag = () => {
@@ -60,8 +52,8 @@ export default function TagsScreen({ navigation } : any) {
                     contentContainerStyle = {TagsStyles.tagsContainer}
                     initialNumToRender={2}
                     numColumns={2}
-                    data={tags}
-                    renderItem={({item}) => <TagCard tag={item} navigation={navigation}/>}
+                    data={client.tagService.tags}
+                    renderItem={({item}) => <TagCard tag={item}/>}
                     keyExtractor={item => item.idTag.toString()}
                     refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefresh}/>}
                     ListHeaderComponent={renderHeader}

@@ -12,7 +12,7 @@ import TagSticker from '../components/Buttons/TagSticker'
 import DatePicker from '../components/Buttons/DatePicker'
 import Book from '../Common/Class/Book'
 import { LogBox } from 'react-native';
-import BookService from '../Common/services/BookService'
+import Client from '../Common/Class/Client'
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
@@ -21,7 +21,7 @@ LogBox.ignoreLogs([
 export default function AddBookScreen({ navigation, route } : any) {
 
     const newBook:Book = route.params.newBook;
-    const bookService:BookService = new BookService();
+    const client:Client = route.params.client;
 
     const [refresh, setRefresh] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -31,8 +31,7 @@ export default function AddBookScreen({ navigation, route } : any) {
         
         try{
             if(newBook.title != "" && newBook.author != ""){
-                const data = newBook.toJSON();
-                await bookService.createBook(JSON.stringify(data));
+                await client.bookService.createBook(newBook);
         
                 navigation.goBack();
             } else {
@@ -46,7 +45,7 @@ export default function AddBookScreen({ navigation, route } : any) {
     };
 
     const onClickAddTag = () => {
-        newBook.addTag(new Tag("Fantasy", 0, 0));
+        newBook.addTag(new Tag("Fantasy"));
         setRefresh(!refresh);
     };
 

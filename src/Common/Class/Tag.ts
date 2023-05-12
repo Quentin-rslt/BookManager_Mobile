@@ -2,7 +2,7 @@ import Base from "./Base";
 import Book from "./Book";
 import Client from "./Client";
 
-export default class Tag extends Base{
+export default class Tag {
     public idTag: number;
     
     public textTag: string;
@@ -11,8 +11,7 @@ export default class Tag extends Base{
 
     public books: Book[];
 
-    constructor(client:Client, textTag?:string, colorTag?:number, idTag?:number, books?:Book[]) {
-        super(client);
+    constructor(textTag?:string, colorTag?:number, idTag?:number, books?:Book[]) {
         this.idTag=idTag ? idTag : 0;
         this.textTag=textTag ? textTag : "";
         this.colorTag=colorTag ? colorTag : 0;
