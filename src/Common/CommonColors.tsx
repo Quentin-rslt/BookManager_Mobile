@@ -6,5 +6,6 @@ export enum COLORS {
     backgroundLight = '#332d2d',
     accentColor = '#c53e3ee5',
     clickableColor = '#c58282e5',
-    transparent = 'transparent'
+    transparent = 'transparent',
+    Black = '#220b0b',
 }

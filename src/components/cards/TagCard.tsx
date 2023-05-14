@@ -1,6 +1,6 @@
 import { Text, ToastAndroid, TouchableOpacity, View } from 'react-native'
-import NumberIcon from './../NumberIcon';
-import TagCardStyles from '../../styles/components/cards/TagCardStyles';
+import NumberIcon from '../NumberIcon';
+import TagCardStyles from '../../styles/components/Cards/TagCardStyles';
 import { useCallback, useEffect, useState } from 'react';
 import Tag from '../../Common/Class/Tag';
 import BookService from '../../Common/services/BookService';

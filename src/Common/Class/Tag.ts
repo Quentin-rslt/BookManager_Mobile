@@ -17,4 +17,12 @@ export default class Tag {
         this.colorTag=colorTag ? colorTag : 0;
         this.books=books ? books : [];
     }
+
+    public toJSON() {
+        return {
+            idTag: this.idTag,
+            textTag: this.textTag,
+            colorTag: this.colorTag,
+        }
+    }
 }

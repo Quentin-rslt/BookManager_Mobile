@@ -13,7 +13,7 @@ export default class TagService extends BaseService {
     }
 
     public async fetchTags(){
-        const res = await fetch("http://192.168.246.175:9000/api/tag/all");
+        const res = await fetch("http://192.168.1.18:9000/api/tag/all");
     
         if(res.ok) {
             const tags: Tag[] = await res.json();
@@ -25,7 +25,7 @@ export default class TagService extends BaseService {
     }
 
     public async fetchBooksByTag(tag: Tag){
-        const res = await fetch("http://192.168.246.175:9000/api/book/tag/"+tag.idTag+"");
+        const res = await fetch("http://192.168.1.18:9000/api/book/tag/"+tag.idTag+"");
     
         if(res.ok) {
             const books: Book[] = await res.json();
@@ -45,6 +45,18 @@ export default class TagService extends BaseService {
         }
 
         return this.tags;
+    }
+
+    public getTag(idTag:number){
+        return this.tags[idTag];
+    }
+
+    public toJSON(){
+        const data = [];
+        for(const t of this.tags){
+            data.push({id : t.idTag, textTag : t.textTag})
+        }
+        return data;
     }
 }
 

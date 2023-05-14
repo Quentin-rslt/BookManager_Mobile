@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
-import ReadingCardStyles from '../../styles/components/cards/ReadingCardStyles'
+import ReadingCardStyles from '../../styles/components/Cards/ReadingCardStyles'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '../../Common/CommonColors';
 import Reading from '../../Common/Class/Reading';

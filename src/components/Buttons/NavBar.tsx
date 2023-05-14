@@ -2,8 +2,8 @@ import React from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import NavBarStyles from '../../styles/components/Buttons/NavBarStyles';
-import LibraryScreen from '../../screens/LibraryScreen';
-import TagsScreen from '../../screens/TagsScreen';
+import LibraryScreen from '../../Screens/LibraryScreen';
+import TagsScreen from '../../Screens/TagsScreen';
 import { COLORS } from '../../Common/CommonColors';
 
 const Tab = createBottomTabNavigator();

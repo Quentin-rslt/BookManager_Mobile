@@ -36,7 +36,7 @@ export default StyleSheet.create({
     addTagContainer: {
         justifyContent: 'center',
         paddingHorizontal: 15,
-        height: 25,
+        paddingVertical: 3,
         backgroundColor: COLORS.accentColor,
         borderRadius: 17,
     },

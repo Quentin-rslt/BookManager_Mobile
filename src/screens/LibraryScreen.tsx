@@ -1,21 +1,20 @@
 import { FlatList, RefreshControl, Text, ToastAndroid, View } from 'react-native'
 import CommonStyles from '../styles/CommonStyles'
 import TitleScreen from '../components/TitleScreen'
-import BookCard from '../components/cards/BookCard'
+import BookCard from '../components/Cards/BookCard'
 import { useCallback, useState } from 'react'
 import Book from '../Common/Class/Book'
 import TopBar from '../components/Inputs/TopBar'
 import { COLORS } from '../Common/CommonColors'
-import LibraryStyles from '../styles/screens/LibraryStyles'
+import LibraryStyles from '../styles/Screens/LibraryStyles'
 import TextIconButton from '../components/Buttons/TextIconButton'
 import Client from '../Common/Class/Client'
 
 export default function LibraryScreen({ navigation, route } : any) {
 
     const client:Client = route.params.client;
-
+    const [search, setSearch] = useState('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
-
 
     const onRefresh = useCallback(async () => {
         try{    
@@ -26,17 +25,10 @@ export default function LibraryScreen({ navigation, route } : any) {
             ToastAndroid.show("Problème lors du chargement des livres" , ToastAndroid.CENTER);
         }
     }, []);
-
-
-    const onChangeSearch = (text : string) => {
-        const filteredBooks = client.bookService.books.filter((book) =>
-            book.title.toLowerCase().includes(text.toLowerCase()) || book.author.toUpperCase().includes(text.toUpperCase())
-        );
-    };
     
     const onClickAddBook = () => {
         const newBook = new Book();
-        navigation.navigate('AddBookScreen', { newBook });
+        navigation.navigate('AddBookScreen', { newBook, client });
     };
 
     const renderHeader = () => {
@@ -47,13 +39,19 @@ export default function LibraryScreen({ navigation, route } : any) {
 
     return (
         <View style={CommonStyles.container}>
-            <TopBar onChangeSearch={onChangeSearch}/>
+            <TopBar onChangeSearch={(text) => setSearch(text)}/>
             <View style={CommonStyles.content}>
                 <FlatList style={CommonStyles.flatListContainer} 
                     ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun livre n'a été trouvé"}</Text>}
                     contentContainerStyle = {LibraryStyles.booksContainer}
                     data={client.bookService.books}
-                    renderItem={({item}) => <BookCard book={item}/>}
+                    renderItem={({item}) => {
+                        if( item.title.toLowerCase().includes(search.toLowerCase()) || item.author.toLowerCase().includes(search.toLowerCase())){
+                            return <BookCard book={item}/>
+                        } else {
+                            return null;
+                        }
+                    }}
                     keyExtractor={item => item.idBook.toString()}
                     refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefresh}/>}
                     ListHeaderComponent={renderHeader}

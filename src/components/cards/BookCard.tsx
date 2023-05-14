@@ -1,7 +1,7 @@
 import { Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import Book from '../../Common/Class/Book'
-import BookCardStyles from '../../styles/components/cards/BookCardStyles';
+import BookCardStyles from '../../styles/components/Cards/BookCardStyles';
 import TagSticker from '../Buttons/TagSticker';
 import NumberIcon from '../NumberIcon';
 import { ScrollView } from 'react-native-gesture-handler';

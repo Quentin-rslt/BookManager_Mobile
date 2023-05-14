@@ -1,5 +1,6 @@
 import Book from '../Class/Book';
 import Client from '../Class/Client';
+import Tag from '../Class/Tag';
 import BaseService from './BaseService';
 
 export default class BookService extends BaseService {
@@ -12,7 +13,7 @@ export default class BookService extends BaseService {
     }
 
     public async fetchBooks(){
-        const res = await fetch("http://192.168.246.175:9000/api/book/all");
+        const res = await fetch("http://192.168.1.18:9000/api/book/all");
         
         if(res.ok) {
             const data: Book[] = await res.json();
@@ -25,7 +26,7 @@ export default class BookService extends BaseService {
     
     public async createBook(newBook: Book) {
         const data = newBook.toJSON();
-        await fetch('http://192.168.246.175:9000/api/addBook', {
+        await fetch('http://192.168.1.18:9000/api/addBook', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -47,5 +48,13 @@ export default class BookService extends BaseService {
         this.books = value;
 
         return this.books;
+    }
+
+    public setTags(book:Book, tags:Tag[]){
+        for(const t of tags) {
+            book.addTag(t);
+        }
+
+        return book;
     }
 }

@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { ActivityIndicator, View } from 'react-native';
 import NavBar from './src/components/Buttons/NavBar';
 import { createStackNavigator } from '@react-navigation/stack';
-import AddBookScreen from './src/screens/AddBookScreen';
+import AddBookScreen from './src/Screens/AddBookScreen';
 import Client from './src/Common/Class/Client';
 import CommonStyles from './src/styles/CommonStyles';
 import { COLORS } from './src/Common/CommonColors';

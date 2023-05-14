@@ -2,17 +2,17 @@ import { View, Text, ScrollView, ToastAndroid } from 'react-native'
 import React, { useState } from 'react'
 import CommonStyles from '../styles/CommonStyles'
 import TitleScreen from '../components/TitleScreen'
-import AddBookStyles from '../styles/screens/AddBookStyles'
+import AddBookStyles from '../styles/Screens/AddBookStyles'
 import TopBar from '../components/Inputs/TopBar'
 import TextIconButton from '../components/Buttons/TextIconButton'
 import InputText from '../components/Inputs/InputText'
-import ReadingCard from '../components/cards/ReadingCard'
-import Tag from '../Common/Class/Tag'
+import ReadingCard from '../components/Cards/ReadingCard'
 import TagSticker from '../components/Buttons/TagSticker'
 import DatePicker from '../components/Buttons/DatePicker'
 import Book from '../Common/Class/Book'
 import { LogBox } from 'react-native';
 import Client from '../Common/Class/Client'
+import TagsModal from '../components/TagsModal'
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
@@ -25,6 +25,7 @@ export default function AddBookScreen({ navigation, route } : any) {
 
     const [refresh, setRefresh] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [showModal, setShowModal] = useState<boolean>(false);
 
     const onClickSaveBook = async () => {
         setIsLoading(true);
@@ -42,11 +43,6 @@ export default function AddBookScreen({ navigation, route } : any) {
         }
 
         setIsLoading(false);
-    };
-
-    const onClickAddTag = () => {
-        newBook.addTag(new Tag("Fantasy"));
-        setRefresh(!refresh);
     };
 
     const onChangeTitle = (text : string) => {
@@ -95,7 +91,8 @@ export default function AddBookScreen({ navigation, route } : any) {
                                         <TagSticker key={idTag} tag={tag}/>
                                     )
                                 }
-                                <TextIconButton callBack={onClickAddTag} nameIcon={'plus'} size={15} showText={false} containerStyle={AddBookStyles.addTagContainer}/>
+                                <TextIconButton callBack={() => setShowModal(true)} nameIcon={'square-edit-outline'} size={15} showText={false} containerStyle={AddBookStyles.addTagContainer}/>
+                                <TagsModal client={client} book={newBook} showModal={showModal} setShowModal={setShowModal}/>
                             </ScrollView>
                         </View>
                         <InputText placeholder={'Description'} multiline={true} containerStyle={AddBookStyles.descriptionContainer} onChangeText={onChangeSummary}/>
