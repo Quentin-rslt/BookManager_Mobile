@@ -1,6 +1,5 @@
 import Book from '../Class/Book';
 import Client from '../Class/Client';
-import Tag from '../Class/Tag';
 import BaseService from './BaseService';
 
 export default class BookService extends BaseService {
@@ -24,8 +23,8 @@ export default class BookService extends BaseService {
         return [];
     }
     
-    public async createBook(newBook: Book) {
-        const data = newBook.toJSON();
+    public async createBook(book: Book) {
+        const data = book.toJSON();
         await fetch('http://192.168.1.18:9000/api/addBook', {
             method: 'POST',
             headers: {
@@ -34,13 +33,13 @@ export default class BookService extends BaseService {
             },
             body: JSON.stringify(data),
         });
-        this.addBook(newBook);
+        this.addBook(book);
         await this.client.tagService.setTags([...this.client.tagService.tags])
         return this.books;
     }
 
     public addBook(b:Book){
-        const book = new Book(b.title, b.author, b.numberOP, b.notePerso, b.releaseYear, b.summary, b.readings, b.tags, b.idBook);
+        const book = new Book(this.client, b.title, b.author, b.numberOP, b.notePerso, b.releaseYear, b.summary, b.readings, b.tags, b.idBook);
         this.books.push(book);
     }
 

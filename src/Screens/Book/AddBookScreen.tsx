@@ -1,18 +1,18 @@
 import { View, Text, ScrollView, ToastAndroid } from 'react-native'
 import React, { useState } from 'react'
-import CommonStyles from '../styles/CommonStyles'
-import TitleScreen from '../components/TitleScreen'
-import AddBookStyles from '../styles/Screens/AddBookStyles'
-import TopBar from '../components/Inputs/TopBar'
-import TextIconButton from '../components/Buttons/TextIconButton'
-import InputText from '../components/Inputs/InputText'
-import ReadingCard from '../components/Cards/ReadingCard'
-import TagSticker from '../components/Buttons/TagSticker'
-import DatePicker from '../components/Buttons/DatePicker'
-import Book from '../Common/Class/Book'
+import CommonStyles from '../../styles/CommonStyles'
+import TitleScreen from '../../components/TitleScreen'
+import AddBookStyles from '../../styles/Screens/Book/AddBookStyles'
+import TopBar from '../../components/Inputs/TopBar'
+import TextIconButton from '../../components/Buttons/TextIconButton'
+import InputText from '../../components/Inputs/InputText'
+import ReadingCard from '../../components/Cards/ReadingCard'
+import TagSticker from '../../components/Buttons/TagSticker'
+import DatePicker from '../../components/Buttons/DatePicker'
+import Book from '../../Common/Class/Book'
 import { LogBox } from 'react-native';
-import Client from '../Common/Class/Client'
-import TagsModal from '../components/TagsModal'
+import Client from '../../Common/Class/Client'
+import TagsModal from '../../components/TagsModal'
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
@@ -20,7 +20,7 @@ LogBox.ignoreLogs([
 
 export default function AddBookScreen({ navigation, route } : any) {
 
-    const newBook:Book = route.params.newBook;
+    const book:Book = route.params.newBook;
     const client:Client = route.params.client;
 
     const [refresh, setRefresh] = useState<boolean>(false);
@@ -31,8 +31,8 @@ export default function AddBookScreen({ navigation, route } : any) {
         setIsLoading(true);
         
         try{
-            if(newBook.title != "" && newBook.author != ""){
-                await client.bookService.createBook(newBook);
+            if(book.title != "" && book.author != ""){
+                await client.bookService.createBook(book);
         
                 navigation.goBack();
             } else {
@@ -46,27 +46,27 @@ export default function AddBookScreen({ navigation, route } : any) {
     };
 
     const onChangeTitle = (text : string) => {
-        newBook.setTitle(text);
+        book.setTitle(text);
     };
 
     const onChangeAuthor = (text : string) => {
-        newBook.setAuthor(text);
+        book.setAuthor(text);
     };
 
     const onChangeSummary = (text : string) => {
-        newBook.setSummary(text);
+        book.setSummary(text);
     };
 
     const onChangeNumberOP = (text : string) => {
-        newBook.setNumberOP(+text);
+        book.setNumberOP(+text);
     };
 
     const onChangeNotePerso = (text : string) => {
-        newBook.setNotePerso(+text);
+        book.setNotePerso(+text);
     };
 
     const onChangeReleaseYear = (text : string) => {
-        newBook.setReleaseYear(text);
+        book.setReleaseYear(text);
     };
 
     return (
@@ -76,41 +76,39 @@ export default function AddBookScreen({ navigation, route } : any) {
                 <ScrollView style={CommonStyles.scrollViewContainer}>
                     <TitleScreen title={"Ajouter un livre"}/>
                     <View style={AddBookStyles.container}>
-                        <InputText placeholder={'Titre'} onChangeText={onChangeTitle}/>
-                        <InputText placeholder={'Autheur'} onChangeText={onChangeAuthor}/>
+                        <InputText placeholder={'Titre'} defaultValue={book.title} onChangeText={onChangeTitle}/>
+                        <InputText placeholder={'Autheur'} defaultValue={book.author} onChangeText={onChangeAuthor}/>
                         <View style={AddBookStyles.inputNumberContainer}>
-                            <InputText placeholder={'Page'} containerStyle={AddBookStyles.inputNumber} defaultValue={newBook.numberOP.toString()} keyboardType='numeric' onChangeText={onChangeNumberOP}/>
-                            <InputText placeholder={'Note'} containerStyle={AddBookStyles.inputNumber} defaultValue={newBook.notePerso.toString()} keyboardType='numeric' onChangeText={onChangeNotePerso}/>
+                            <InputText placeholder={'Page'} containerStyle={AddBookStyles.inputNumber} defaultValue={book.numberOP.toString()} keyboardType='numeric' onChangeText={onChangeNumberOP}/>
+                            <InputText placeholder={'Note'} containerStyle={AddBookStyles.inputNumber} defaultValue={book.notePerso.toString()} keyboardType='numeric' onChangeText={onChangeNotePerso}/>
                         </View>
-                        <InputText placeholder={'Année de sortie'} defaultValue={newBook.releaseYear} keyboardType='numeric' onChangeText={onChangeReleaseYear}/>
+                        <InputText placeholder={'Année de sortie'} defaultValue={book.releaseYear} keyboardType='numeric' onChangeText={onChangeReleaseYear}/>
                         <View style={AddBookStyles.tagsContainer}>
                             <Text style={AddBookStyles.text}>Tags : </Text>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                                 {
-                                    newBook.tags.map((tag, idTag) => 
+                                    book.tags.map((tag, idTag) => 
                                         <TagSticker key={idTag} tag={tag}/>
                                     )
                                 }
-                                <TextIconButton callBack={() => setShowModal(true)} nameIcon={'square-edit-outline'} size={15} showText={false} containerStyle={AddBookStyles.addTagContainer}/>
-                                <TagsModal client={client} book={newBook} showModal={showModal} setShowModal={setShowModal}/>
+                                <TextIconButton callBack={() => setShowModal(true)} nameIcon={'square-edit-outline'} size={15} showText={false} buttonStyle={AddBookStyles.addTagContainer}/>
+                                <TagsModal book={book} showModal={showModal} setShowModal={setShowModal}/>
                             </ScrollView>
                         </View>
                         <InputText placeholder={'Description'} multiline={true} containerStyle={AddBookStyles.descriptionContainer} onChangeText={onChangeSummary}/>
                         <View style={AddBookStyles.readingsContainer}>
                             <Text style={AddBookStyles.text}>Lectures : </Text>
-                            <DatePicker book={newBook} setRefresh={setRefresh} refresh={refresh}/>
+                            <DatePicker book={book} setRefresh={setRefresh} refresh={refresh}/>
                             {
-                                newBook.readings.map((reading, idReading) => 
-                                    <ReadingCard key={idReading} reading={reading} showDeleteButton={true} idReading={idReading} book={newBook} setRefresh={setRefresh} refresh={refresh}/>
+                                book.readings.map((reading, idReading) => 
+                                    <ReadingCard key={idReading} reading={reading} showDeleteButton={true} idReading={idReading} book={book} setRefresh={setRefresh} refresh={refresh}/>
                                 )
                             }
                         </View>
                     </View>
                 </ScrollView>
             </View>
-            <View style={AddBookStyles.saveButtonContainer}>
-                <TextIconButton callBack={onClickSaveBook} isLoading={isLoading} text={'Enregistrer'} showIcon={false} containerStyle={AddBookStyles.saveButton}/>
-            </View>
+            <TextIconButton callBack={onClickSaveBook} isLoading={isLoading} text={'Enregistrer'} showIcon={false} buttonStyle={AddBookStyles.button}/>
         </View>
     )
 }

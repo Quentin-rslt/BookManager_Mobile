@@ -29,10 +29,30 @@ export default class TagService extends BaseService {
     
         if(res.ok) {
             const books: Book[] = await res.json();
+       
             return books;
         }
         
         return [];
+    }
+
+    public async createTag(tag: Tag){
+        const data = tag.toJSON();
+        await fetch('http://192.168.1.18:9000/api/addTag', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+        }); 
+
+        this.addTag(tag);
+    }
+
+    public addTag(t:Tag){
+        const tag = new Tag(this.client, t.textTag, t.colorTag, t.idTag, []);
+        this.tags.push(tag);
     }
 
     public async setTags(tags:Tag[]){
@@ -40,15 +60,11 @@ export default class TagService extends BaseService {
 
         for(const t of tags) {
             const books = await this.fetchBooksByTag(t);
-            const tag = new Tag(t.textTag, t.colorTag, t.idTag, books);
+            const tag = new Tag(this.client, t.textTag, t.colorTag, t.idTag, books);
             this.tags.push(tag);
         }
 
         return this.tags;
-    }
-
-    public getTag(idTag:number){
-        return this.tags[idTag];
     }
 }
 

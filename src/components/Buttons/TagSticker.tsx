@@ -14,6 +14,6 @@ export default function TagSticker({tag} : Props) {
     }
 
     return (
-        <TextIconButton callBack={onclickTag} showIcon={false} containerStyle={TagStickerStyles.container} textStyle={TagStickerStyles.textTag} text={tag.textTag} numberOfLineText={1} />
+        <TextIconButton callBack={onclickTag} showIcon={false} buttonStyle={TagStickerStyles.container} textStyle={TagStickerStyles.textTag} text={tag.textTag} numberOfLineText={1} />
     )
 }

@@ -83,7 +83,7 @@ export default function DatesPickers({book, refresh, setRefresh} : Props) {
                 </TouchableOpacity>
             </View>
             <View style={DatePickerStyles.addReadingContainer}>
-                <TextIconButton callBack={onClickAddReading} nameIcon={'plus-box'} size={26} color={COLORS.clickableColor} showText={false} containerStyle={DatePickerStyles.addReadingButton}/>
+                <TextIconButton callBack={onClickAddReading} nameIcon={'plus-box'} size={26} color={COLORS.clickableColor} showText={false} buttonStyle={DatePickerStyles.addReadingButton}/>
             </View>
         </View>
     )

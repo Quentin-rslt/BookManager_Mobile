@@ -21,7 +21,7 @@ export default function TopBar({onChangeSearch, iconButtonShow=false, searchBarS
             {
                 iconButtonShow && 
                 <View style={TopBarStyles.returnButtonContainer}>
-                    <TextIconButton callBack={() => navigation.goBack()} size={24} text={' Retour '} nameIcon={'arrow-left-top'} color={COLORS.background} containerStyle={TopBarStyles.returnButton}/>
+                    <TextIconButton callBack={() => navigation.goBack()} size={24} text={' Retour '} nameIcon={'arrow-left-top'} color={COLORS.background} buttonStyle={TopBarStyles.returnButton}/>
                 </View>
             }
             {

@@ -1,14 +1,14 @@
 import { FlatList, RefreshControl, Text, ToastAndroid, View } from 'react-native'
-import CommonStyles from '../styles/CommonStyles'
-import TitleScreen from '../components/TitleScreen'
-import BookCard from '../components/Cards/BookCard'
+import CommonStyles from '../../styles/CommonStyles'
+import TitleScreen from '../../components/TitleScreen'
+import BookCard from '../../components/Cards/BookCard'
 import { useCallback, useState } from 'react'
-import Book from '../Common/Class/Book'
-import TopBar from '../components/Inputs/TopBar'
-import { COLORS } from '../Common/CommonColors'
-import LibraryStyles from '../styles/Screens/LibraryStyles'
-import TextIconButton from '../components/Buttons/TextIconButton'
-import Client from '../Common/Class/Client'
+import Book from '../../Common/Class/Book'
+import TopBar from '../../components/Inputs/TopBar'
+import { COLORS } from '../../Common/CommonColors'
+import LibraryStyles from '../../styles/Screens/Book/LibraryStyles'
+import TextIconButton from '../../components/Buttons/TextIconButton'
+import Client from '../../Common/Class/Client'
 
 export default function LibraryScreen({ navigation, route } : any) {
 
@@ -27,7 +27,7 @@ export default function LibraryScreen({ navigation, route } : any) {
     }, []);
     
     const onClickAddBook = () => {
-        const newBook = new Book();
+        const newBook = new Book(client);
         navigation.navigate('AddBookScreen', { newBook, client });
     };
 
@@ -57,7 +57,7 @@ export default function LibraryScreen({ navigation, route } : any) {
                     ListHeaderComponent={renderHeader}
                 />
                 <View style={CommonStyles.buttonContainer}>
-                    <TextIconButton callBack={onClickAddBook} size={22} text={'Ajouter un livre'} containerStyle={CommonStyles.addButton} nameIcon={'plus'} color={COLORS.background}/>
+                    <TextIconButton callBack={onClickAddBook} size={22} text={'Ajouter un livre'} buttonStyle={CommonStyles.addButton} nameIcon={'plus'} color={COLORS.background}/>
                 </View>
             </View>
         </View>

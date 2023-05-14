@@ -10,14 +10,14 @@ import Tag from '../Common/Class/Tag';
 import TitleScreen from './TitleScreen';
 
 interface Props {
-    client: Client;
     book: Book;
     showModal: boolean;
     setShowModal: React.Dispatch<React.SetStateAction<boolean>>; 
 }
 
-export default function TagsModal({ client, book, showModal, setShowModal }: Props) {
+export default function TagsModal({ book, showModal, setShowModal }: Props) {
 
+    const client = book.client;
     const tags = client.tagService.tags;
 
     const [selectedTags, setSelectedTags] = useState<string[]>();
@@ -27,7 +27,7 @@ export default function TagsModal({ client, book, showModal, setShowModal }: Pro
         setSelectedTags(selectedTags);
  
         for (const selectedTag of selectedTags) {
-            const item = new Tag(tags.find(item => item.idTag === +selectedTag)?.textTag);
+            const item = new Tag(client, tags.find(item => item.idTag === +selectedTag)?.textTag);
             newTags.push(item);
         }
 
@@ -63,7 +63,7 @@ export default function TagsModal({ client, book, showModal, setShowModal }: Pro
                         styleDropdownMenuSubsection={{backgroundColor: COLORS.componentBackground, height: 50, paddingLeft: 5, marginBottom: 20, borderBottomColor: COLORS.foreground}}
                     />
                 </View>
-                <TextIconButton callBack={() => setShowModal(!showModal)} showIcon={false} text='Valider' containerStyle={TagsModalStyles.button}/>
+                <TextIconButton callBack={() => setShowModal(!showModal)} showIcon={false} text='Valider' buttonStyle={TagsModalStyles.button}/>
             </View>
         </Modal>
     )

@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { COLORS } from "../../Common/CommonColors";
+import { COLORS } from "../../../Common/CommonColors";
 
 export default StyleSheet.create({
     container: {
@@ -8,19 +8,15 @@ export default StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
     },
-    saveButtonContainer: {
+    button: {
         justifyContent: 'center',
-        width: '100%',
+        width: '50%',
         position: 'absolute',
         bottom: 8,
         paddingHorizontal: '25%',
-    },
-    saveButton: {
         backgroundColor: COLORS.clickableColor,
         color: COLORS.background,
         height: 45,
-        width: "100%",
-        justifyContent: 'center',
         borderRadius : 17,
     },
     tagsContainer: {
@@ -36,7 +32,7 @@ export default StyleSheet.create({
     addTagContainer: {
         justifyContent: 'center',
         paddingHorizontal: 15,
-        paddingVertical: 3,
+        height: 23,
         backgroundColor: COLORS.accentColor,
         borderRadius: 17,
     },

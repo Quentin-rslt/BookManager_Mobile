@@ -1,16 +1,16 @@
 import { View, Text, FlatList, RefreshControl, ToastAndroid } from 'react-native'
 import React, { useCallback, useState } from 'react'
-import CommonStyles from '../styles/CommonStyles'
-import TitleScreen from '../components/TitleScreen'
-import TagCard from '../components/Cards/TagCard'
-import TagsStyles from '../styles/Screens/TagsStyles'
-import TopBar from '../components/Inputs/TopBar'
-import Tag from '../Common/Class/Tag'
-import { COLORS } from '../Common/CommonColors'
-import TextIconButton from '../components/Buttons/TextIconButton'
-import Client from '../Common/Class/Client'
+import CommonStyles from '../../styles/CommonStyles'
+import TitleScreen from '../../components/TitleScreen'
+import TagCard from '../../components/Cards/TagCard'
+import TagsStyles from '../../styles/Screens/Tag/TagsStyles'
+import TopBar from '../../components/Inputs/TopBar'
+import { COLORS } from '../../Common/CommonColors'
+import TextIconButton from '../../components/Buttons/TextIconButton'
+import Client from '../../Common/Class/Client'
+import Tag from '../../Common/Class/Tag'
 
-export default function TagsScreen({ route } : any) {
+export default function TagsScreen({navigation, route } : any) {
 
     const client:Client = route.params.client;
 
@@ -28,7 +28,8 @@ export default function TagsScreen({ route } : any) {
     }, []);
 
     const onClickAddTag = () => {
-        alert("add tag");
+        const tag = new Tag(client);
+        navigation.navigate('AddTagScreen', { tag });
     };
 
     const renderHeader = () => {
@@ -60,7 +61,7 @@ export default function TagsScreen({ route } : any) {
                     ListHeaderComponent={renderHeader}
                 />
                 <View style={CommonStyles.buttonContainer}>
-                    <TextIconButton callBack={onClickAddTag} size={22} text={'Ajouter un tag'} nameIcon={'plus'} containerStyle={CommonStyles.addButton} color={COLORS.background}/>
+                    <TextIconButton callBack={onClickAddTag} size={22} text={'Ajouter un tag'} nameIcon={'plus'} buttonStyle={CommonStyles.addButton} color={COLORS.background}/>
                 </View>
             </View>
         </View>

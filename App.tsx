@@ -4,10 +4,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { ActivityIndicator, View } from 'react-native';
 import NavBar from './src/components/Buttons/NavBar';
 import { createStackNavigator } from '@react-navigation/stack';
-import AddBookScreen from './src/Screens/AddBookScreen';
+import AddBookScreen from './src/Screens/Book/AddBookScreen';
 import Client from './src/Common/Class/Client';
 import CommonStyles from './src/styles/CommonStyles';
 import { COLORS } from './src/Common/CommonColors';
+import AddTagScreen from './src/Screens/Tag/AddTagScreen';
 
 const Stack = createStackNavigator();
 
@@ -41,6 +42,7 @@ export default function App() {
             <Stack.Navigator>
                 <Stack.Screen name="NavBar" component={NavBar} options={{ headerShown: false }} initialParams={{ client }}/>
                 <Stack.Screen name="AddBookScreen" component={AddBookScreen} options={{ headerShown: false, animationEnabled: false }} initialParams={{ client }}/>
+                <Stack.Screen name="AddTagScreen" component={AddTagScreen} options={{ headerShown: false, animationEnabled: false }} initialParams={{ client }}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
