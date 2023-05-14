@@ -50,13 +50,5 @@ export default class TagService extends BaseService {
     public getTag(idTag:number){
         return this.tags[idTag];
     }
-
-    public toJSON(){
-        const data = [];
-        for(const t of this.tags){
-            data.push({id : t.idTag, textTag : t.textTag})
-        }
-        return data;
-    }
 }
 

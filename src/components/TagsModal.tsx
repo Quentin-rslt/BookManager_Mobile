@@ -17,16 +17,17 @@ interface Props {
 }
 
 export default function TagsModal({ client, book, showModal, setShowModal }: Props) {
-    const items = client.tagService.toJSON();
 
-    const [ selectedItems, setSelectedItems ] = useState<string[]>();
+    const tags = client.tagService.tags;
 
-    const onSelectedItemsChange = (selectedItems:string[]) => {
+    const [selectedTags, setSelectedTags] = useState<string[]>();
+
+    const onSelectedItemsChange = (selectedTags:string[]) => {
         const newTags: Tag[]= [];
-        setSelectedItems(selectedItems);
+        setSelectedTags(selectedTags);
  
-        for (let i = 0; i < selectedItems.length; i++) {
-            const item = new Tag(items.find(item => item.id === +selectedItems[i])?.textTag);
+        for (const selectedTag of selectedTags) {
+            const item = new Tag(tags.find(item => item.idTag === +selectedTag)?.textTag);
             newTags.push(item);
         }
 
@@ -40,11 +41,11 @@ export default function TagsModal({ client, book, showModal, setShowModal }: Pro
                 <View style={TagsModalStyles.multiSelectContainer}> 
                     <MultiSelect
                         fixedHeight={true}
-                        items={items}
+                        items={tags}
                         displayKey="textTag"
-                        uniqueKey="id"
+                        uniqueKey="idTag"
                         onSelectedItemsChange={onSelectedItemsChange}
-                        selectedItems={selectedItems}
+                        selectedItems={selectedTags}
                         selectText="Sélectioner un tag"
                         searchInputPlaceholderText="Chercher un tag..."
                         textColor={COLORS.foregroundHolder}

@@ -35,7 +35,7 @@ export default class BookService extends BaseService {
             body: JSON.stringify(data),
         });
         this.addBook(newBook);
-        await this.client.tagService.setTags(this.client.tagService.tags)
+        await this.client.tagService.setTags([...this.client.tagService.tags])
         return this.books;
     }
 
@@ -48,13 +48,5 @@ export default class BookService extends BaseService {
         this.books = value;
 
         return this.books;
-    }
-
-    public setTags(book:Book, tags:Tag[]){
-        for(const t of tags) {
-            book.addTag(t);
-        }
-
-        return book;
     }
 }
