@@ -12,11 +12,11 @@ export default class BookService extends BaseService {
     }
 
     public async fetchBooks(){
-        const res = await fetch("http://192.168.1.18:9000/api/book/all");
+        const res = await fetch("http://"+this.getIp()+":9000/api/book/all");
         
         if(res.ok) {
-            const data: Book[] = await res.json();
-            this.setBooks([...data]);
+            const books: Book[] = await res.json();
+            this.setBooks([...books]);
             return this.books;
         }
     
@@ -25,7 +25,7 @@ export default class BookService extends BaseService {
     
     public async createBook(book: Book) {
         const data = book.toJSON();
-        await fetch('http://192.168.1.18:9000/api/addBook', {
+        await fetch("http://"+this.getIp()+":9000/api/addBook", {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

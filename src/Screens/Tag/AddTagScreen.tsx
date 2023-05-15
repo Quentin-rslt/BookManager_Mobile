@@ -1,7 +1,6 @@
-import { View, Text, ScrollView, ToastAndroid } from 'react-native'
+import { View, ScrollView, ToastAndroid } from 'react-native'
 import React, { useState } from 'react'
 import Tag from '../../Common/Class/Tag';
-import Client from '../../Common/Class/Client';
 import TopBar from '../../components/Inputs/TopBar';
 import CommonStyles from '../../styles/CommonStyles';
 import TitleScreen from '../../components/TitleScreen';
@@ -21,7 +20,7 @@ export default function AddTagScreen({ navigation, route } : any) {
         try{
             if(tag.textTag != ""){
                 await tag.client.tagService.createTag(tag);
-        
+                
                 navigation.goBack();
             } else {
                 ToastAndroid.show("Veuillez titre pour le tag" , ToastAndroid.CENTER);

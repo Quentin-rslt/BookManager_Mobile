@@ -20,8 +20,7 @@ LogBox.ignoreLogs([
 
 export default function AddBookScreen({ navigation, route } : any) {
 
-    const book:Book = route.params.newBook;
-    const client:Client = route.params.client;
+    const book:Book = route.params.book;
 
     const [refresh, setRefresh] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -32,8 +31,8 @@ export default function AddBookScreen({ navigation, route } : any) {
         
         try{
             if(book.title != "" && book.author != ""){
-                await client.bookService.createBook(book);
-        
+                await book.client.bookService.createBook(book);
+                
                 navigation.goBack();
             } else {
                 ToastAndroid.show("Veuillez mettre un titre et un author" , ToastAndroid.CENTER);

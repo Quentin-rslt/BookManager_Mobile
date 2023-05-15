@@ -7,4 +7,8 @@ export default class BaseService {
     constructor(client: Client) {
         this.client = client
     }
+
+    public getIp(){
+        return "10.121.128.89";
+    }
 }
