@@ -14,6 +14,11 @@ export default StyleSheet.create({
         shadowOffset: { width: 4, height: 4},
         elevation: 5,
     },
+    containerButton : {
+        width: "100%",
+        aspectRatio: 1,
+        overflow:'hidden',
+    },
     text : {
         fontSize: 25,
         fontWeight: '800',

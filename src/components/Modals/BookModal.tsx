@@ -26,8 +26,9 @@ export default function BookModal({ book, showModal, setShowModal, onRefresh }: 
         try {
             await book.client.bookService.deleteBook(book);
             onRefresh();
-            setShowModal(!showModal)
+            setShowModal(!showModal);
         } catch(error) {
+            console.log(error);
             ToastAndroid.show("Problème lors de la suppression du livre" , ToastAndroid.CENTER);
         }
         setIsLoading(false);

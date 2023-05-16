@@ -14,7 +14,7 @@ export default function LibraryScreen({ navigation, route } : any) {
 
     const client:Client = route.params.client;
 
-    const [books, setBooks] = useState(client.bookService.books);
+    const [books, setBooks] = useState(Array.from(client.bookService.books.values()));
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     useEffect(() => {
@@ -24,14 +24,14 @@ export default function LibraryScreen({ navigation, route } : any) {
     }, [navigation]);
 
     const onRefresh = useCallback(async () => {
-        const books = client.bookService.books;
-        setBooks([...books]);
+        const books = client.bookService.books.values();
+        setBooks([...Array.from(books)]);
     }, []);
 
     const onRefreshFecthAPI = useCallback(async () => {
         setIsLoading(true);
         try{    
-            setBooks([...await client.bookService.fetchBooks()]);
+            setBooks(Array.from((await client.bookService.fetchBooks()).values()));
         } catch(error) {
             ToastAndroid.show("Problème lors du chargement des livres" , ToastAndroid.CENTER);
         }
@@ -44,7 +44,7 @@ export default function LibraryScreen({ navigation, route } : any) {
     };
 
     const onChangeSearch = (text : string) => {
-        const filteredBooks = client.bookService.books.filter((book) =>
+        const filteredBooks = Array.from(client.bookService.books.values()).filter((book) =>
             book.title.toLowerCase().includes(text.toLowerCase()) || book.author.toUpperCase().includes(text.toUpperCase())
         );
         setBooks([...filteredBooks]);
@@ -64,7 +64,7 @@ export default function LibraryScreen({ navigation, route } : any) {
                     ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun livre n'a été trouvé"}</Text>}
                     contentContainerStyle = {LibraryStyles.booksContainer}
                     data={books}
-                    renderItem={({item}) => <BookCard book={item} onRefresh={onRefresh}/>}
+                    renderItem={({item}) => <BookCard key={item.idBook} book={item} onRefresh={onRefresh}/>}
                     keyExtractor={item => item.idBook.toString()}
                     refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}
                     ListHeaderComponent={renderHeader}

@@ -9,14 +9,26 @@ export default class Tag extends Base {
     
     public colorTag: number;
 
-    public books: Book[];
 
-    constructor(client:Client, textTag?:string, colorTag?:number, idTag?:number, books?:Book[]) {
+    constructor(client:Client, textTag?:string, colorTag?:number, idTag?:number) {
         super(client);
         this.idTag=idTag ? idTag : 0;
         this.textTag=textTag ? textTag : "";
         this.colorTag=colorTag ? colorTag : 0;
-        this.books=books ? books : new Array<Book>();
+    }
+
+    get books(){
+        const books = new Map<number, Book>();
+        
+        for(const b of this.client.bookService.books.values()){
+            for(const t of b.tags){
+                if(t.idTag === this.idTag) {
+                    books.set(b.idBook, b);
+                }
+            }
+        }
+
+        return books;
     }
 
     public toJSON() {

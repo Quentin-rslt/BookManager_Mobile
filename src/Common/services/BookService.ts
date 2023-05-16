@@ -5,23 +5,26 @@ import BaseService from './BaseService';
 
 export default class BookService extends BaseService {
 
-    public books:Book[];
+    public books:Map<number, Book>;
 
     constructor(client: Client) {
         super(client);
-        this.books = new Array<Book>();
+        this.books = new Map();
     }
 
     public async fetchBooks(){
         const res = await axios.get(`${this.getIp()}/api/book/all`);
         
         if(res.status === 200) {
-            const books: Book[] = await res.data;
-            this.setBooks([...books]);
+            this.books = new Map();
+            for(const book of res.data) {
+                this.addBook(book);
+            }
+
             return this.books;
         }
     
-        return [];
+        return new Map();
     }
     
     public async createBook(book: Book) {
@@ -30,8 +33,6 @@ export default class BookService extends BaseService {
 
         const newBook:Book = res.data;
         
-        await this.client.tagService.setTags([...this.client.tagService.tags]);
-        
         return this.addBook(newBook);
     }
 
@@ -39,27 +40,16 @@ export default class BookService extends BaseService {
         await axios.delete(`${this.getIp()}/api/deleteBook/${book.idBook}`);
 
         this.removeBook(book.idBook);
-        await this.client.tagService.setTags([...this.client.tagService.tags]);
     }
 
     public addBook(b:Book){
         const book = new Book(this.client, b.title, b.author, b.numberOP, b.notePerso, b.releaseYear, b.summary, b.readings, b.tags, b.idBook);
-        this.books.push(book);
+        this.books.set(book.idBook, book);
 
         return book;
     }
 
     public removeBook(idBook:number){
-        this.books.splice(idBook, 1);
-    }
-
-    public setBooks(books:Book[]){
-        this.books = new Array();
-
-        for(const b of books){
-            this.addBook(b);
-        }
-
-        return this.books;
+        this.books.delete(idBook);
     }
 }

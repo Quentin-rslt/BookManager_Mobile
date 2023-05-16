@@ -17,7 +17,7 @@ interface Props {
 export default function TagsModal({ book, showModal, setShowModal }: Props) {
 
     const client = book.client;
-    const tags = client.tagService.tags;
+    const tags = Array.from(client.tagService.tags.values());
 
     const [selectedTags, setSelectedTags] = useState<string[]>();
 
