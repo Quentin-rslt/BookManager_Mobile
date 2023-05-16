@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Book from '../Class/Book';
 import Client from '../Class/Client';
 import BaseService from './BaseService';
@@ -12,10 +13,10 @@ export default class BookService extends BaseService {
     }
 
     public async fetchBooks(){
-        const res = await fetch("http://"+this.getIp()+":9000/api/book/all");
+        const res = await axios.get(`${this.getIp()}/api/book/all`);
         
-        if(res.ok) {
-            const books: Book[] = await res.json();
+        if(res.status === 200) {
+            const books: Book[] = await res.data;
             this.setBooks([...books]);
             return this.books;
         }
@@ -25,16 +26,15 @@ export default class BookService extends BaseService {
     
     public async createBook(book: Book) {
         const data = book.toJSON();
-        await fetch("http://"+this.getIp()+":9000/api/addBook", {
-            method: 'POST',
+        await axios.post(`${this.getIp()}/api/addBook`, data, {
             headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data),
         });
+
         this.addBook(book);
         await this.client.tagService.setTags([...this.client.tagService.tags])
+
         return this.books;
     }
 

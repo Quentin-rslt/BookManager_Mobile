@@ -9,6 +9,6 @@ export default class BaseService {
     }
 
     public getIp(){
-        return "10.121.128.89";
+        return "http://10.121.128.89:9000";
     }
 }

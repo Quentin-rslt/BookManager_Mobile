@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Book from '../Class/Book';
 import Client from '../Class/Client';
 import Tag from '../Class/Tag';
@@ -13,7 +14,7 @@ export default class TagService extends BaseService {
     }
 
     public async fetchTags(){
-        const res = await fetch("http://"+this.getIp()+":9000/api/tag/all");
+        const res = await fetch(`${this.getIp()}/api/tag/all`);
     
         if(res.ok) {
             const tags: Tag[] = await res.json();
@@ -25,10 +26,10 @@ export default class TagService extends BaseService {
     }
 
     public async fetchBooksForTag(tag: Tag){
-        const res = await fetch("http://"+this.getIp()+":9000/api/book/tag/"+tag.idTag+"");
+        const res = await axios.get(`${this.getIp()}/api/book/tag/`+tag.idTag+"");
     
-        if(res.ok) {
-            const books: Book[] = await res.json();
+        if(res.status === 200) {
+            const books: Book[] = await res.data;
        
             return books;
         }
@@ -38,16 +39,14 @@ export default class TagService extends BaseService {
 
     public async createTag(tag: Tag){
         const data = tag.toJSON();
-        await fetch("http://"+this.getIp()+":9000/api/addTag", {
-            method: 'POST',
+        await axios.post(`${this.getIp()}/api/addTag`, data, {
             headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data),
-        }); 
-
+        });
         this.addTag(tag);
+
+        return this.tags;
     }
 
     public addTag(t:Tag){
