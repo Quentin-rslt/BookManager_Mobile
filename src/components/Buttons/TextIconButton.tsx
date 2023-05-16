@@ -6,10 +6,10 @@ import { COLORS } from '../../Common/CommonColors';
 
 interface Props {
     callBack: ()=>void;
-    size ?: number;
+    iconSize ?: number;
     text ?: string;
-    nameIcon ?: any;
-    color ?: string;
+    iconName ?: any;
+    iconColor ?: string;
     buttonStyle?: any;
     textStyle?: any;
     showIcon ?: boolean;
@@ -18,12 +18,12 @@ interface Props {
     numberOfLineText ?: number;
 }
 
-export default function TextIconButton({callBack, nameIcon: name, size, color, buttonStyle, textStyle, text, showIcon = true, showText = true, isLoading = false, numberOfLineText= 2} : Props) {
+export default function TextIconButton({callBack, iconName, iconSize, iconColor, buttonStyle, textStyle, text, showIcon = true, showText = true, isLoading = false, numberOfLineText= 2} : Props) {
     return (
         isLoading ? <ActivityIndicator size="small" color={COLORS.background} style={buttonStyle}/> :
         <TouchableOpacity onPress={callBack} style={buttonStyle}>
             {
-                showIcon && <MaterialCommunityIcons name={name} size={size} color={color}/>
+                showIcon && <MaterialCommunityIcons name={iconName} size={iconSize} color={iconColor}/>
             }
             {
                 showText && <Text style={[TextIconButtonStyles.text, textStyle]} numberOfLines={numberOfLineText}>{text}</Text>

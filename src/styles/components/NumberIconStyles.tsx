@@ -7,10 +7,4 @@ export default StyleSheet.create({
         flexDirection : "row",
         alignItems: 'center',
     },
-    number: {
-        color: COLORS.foreground,
-        marginRight: 5,
-        fontSize: 15,
-        fontWeight: '700',
-    }
 });

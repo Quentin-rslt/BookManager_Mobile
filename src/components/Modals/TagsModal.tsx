@@ -1,13 +1,12 @@
 import { Modal, View } from 'react-native'
 import React, { useState } from 'react'
-import Book from '../Common/Class/Book';
+import Book from '../../Common/Class/Book';
 import MultiSelect from 'react-native-multiple-select'
-import TagsModalStyles from '../styles/components/TagsModalStyles';
-import TextIconButton from './Buttons/TextIconButton';
-import Client from '../Common/Class/Client';
-import { COLORS } from '../Common/CommonColors';
-import Tag from '../Common/Class/Tag';
-import TitleScreen from './TitleScreen';
+import TagsModalStyles from '../../styles/components/Modals/TagsModalStyles';
+import TextIconButton from '../Buttons/TextIconButton';
+import { COLORS } from '../../Common/CommonColors';
+import Tag from '../../Common/Class/Tag';
+import TitleScreen from '../TitleScreen';
 
 interface Props {
     book: Book;
@@ -35,7 +34,7 @@ export default function TagsModal({ book, showModal, setShowModal }: Props) {
     }
 
     return (
-        <Modal style={TagsModalStyles.modalContainer} animationType="slide" transparent={true} visible={showModal} onRequestClose={() => setShowModal(!showModal)}>
+        <Modal animationType="slide" transparent={true} visible={showModal} onRequestClose={() => setShowModal(!showModal)}>
             <View style={TagsModalStyles.container}>
                 <TitleScreen title='Tags'/>
                 <View style={TagsModalStyles.multiSelectContainer}> 

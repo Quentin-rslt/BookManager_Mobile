@@ -73,7 +73,7 @@ export default function TagsScreen({navigation, route } : any) {
                     ListHeaderComponent={renderHeader}
                 />
                 <View style={CommonStyles.buttonContainer}>
-                    <TextIconButton callBack={onClickAddTag} size={22} text={'Ajouter un tag'} nameIcon={'plus'} buttonStyle={CommonStyles.addButton} color={COLORS.background}/>
+                    <TextIconButton callBack={onClickAddTag} iconSize={22} text={'Ajouter un tag'} iconName={'plus'} buttonStyle={CommonStyles.addButton} iconColor={COLORS.background}/>
                 </View>
             </View>
         </View>

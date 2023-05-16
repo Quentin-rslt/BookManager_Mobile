@@ -7,7 +7,6 @@ export default StyleSheet.create({
         fontWeight: '800',
         color: COLORS.foreground,
         textAlign: 'center',
-        paddingHorizontal: '20%',
         marginBottom: 20,
     },
 });

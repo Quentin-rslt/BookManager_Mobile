@@ -1,12 +1,7 @@
 import { StyleSheet } from "react-native";
-import { COLORS } from "../../Common/CommonColors";
+import { COLORS } from "../../../Common/CommonColors";
 
 export default StyleSheet.create({
-    modalContainer: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        width : "100%",
-    },
     container: {
         marginHorizontal: 20,
         backgroundColor: COLORS.componentBackground,

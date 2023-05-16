@@ -20,7 +20,7 @@ export default function TagCard({tag} : Props) {
         <TouchableOpacity style={TagCardStyles.container} onPress={onClickTagCard}>
             <Text style={TagCardStyles.text} numberOfLines={1}>{tag.textTag}</Text>
             <View style={TagCardStyles.numberBook}>
-                <NumberIcon number={tag.books.length} nameIcon={"book-open-outline"} />
+                <NumberIcon iconNumber={tag.books.length} iconName={"book-open-outline"} />
             </View>
         </TouchableOpacity>
     )

@@ -37,6 +37,7 @@ export default class Book extends Base {
 
     public toJSON() {
         return {
+            idBook : this.idBook,
             title: this.title,
             author: this.author,
             numberOP: this.numberOP,

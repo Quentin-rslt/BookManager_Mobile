@@ -11,8 +11,7 @@ import TagSticker from '../../components/Buttons/TagSticker'
 import DatePicker from '../../components/Buttons/DatePicker'
 import Book from '../../Common/Class/Book'
 import { LogBox } from 'react-native';
-import Client from '../../Common/Class/Client'
-import TagsModal from '../../components/TagsModal'
+import TagsModal from '../../components/Modals/TagsModal'
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
@@ -32,7 +31,7 @@ export default function AddBookScreen({ navigation, route } : any) {
         try{
             if(book.title != "" && book.author != ""){
                 await book.client.bookService.createBook(book);
-                
+ 
                 navigation.goBack();
             } else {
                 ToastAndroid.show("Veuillez mettre un titre et un author" , ToastAndroid.CENTER);
@@ -90,7 +89,7 @@ export default function AddBookScreen({ navigation, route } : any) {
                                         <TagSticker key={idTag} tag={tag}/>
                                     )
                                 }
-                                <TextIconButton callBack={() => setShowModal(true)} nameIcon={'square-edit-outline'} size={15} showText={false} buttonStyle={AddBookStyles.addTagContainer}/>
+                                <TextIconButton callBack={() => setShowModal(true)} iconName={'square-edit-outline'} iconSize={15} showText={false} buttonStyle={AddBookStyles.addTagContainer}/>
                                 <TagsModal book={book} showModal={showModal} setShowModal={setShowModal}/>
                             </ScrollView>
                         </View>

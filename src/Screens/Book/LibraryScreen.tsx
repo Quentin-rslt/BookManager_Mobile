@@ -64,13 +64,13 @@ export default function LibraryScreen({ navigation, route } : any) {
                     ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun livre n'a été trouvé"}</Text>}
                     contentContainerStyle = {LibraryStyles.booksContainer}
                     data={books}
-                    renderItem={({item}) => <BookCard book={item}/>}
+                    renderItem={({item}) => <BookCard book={item} onRefresh={onRefresh}/>}
                     keyExtractor={item => item.idBook.toString()}
                     refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}
                     ListHeaderComponent={renderHeader}
                 />
                 <View style={CommonStyles.buttonContainer}>
-                    <TextIconButton callBack={onClickAddBook} size={22} text={'Ajouter un livre'} buttonStyle={CommonStyles.addButton} nameIcon={'plus'} color={COLORS.background}/>
+                    <TextIconButton callBack={onClickAddBook} iconSize={22} text={'Ajouter un livre'} buttonStyle={CommonStyles.addButton} iconName={'plus'} iconColor={COLORS.background}/>
                 </View>
             </View>
         </View>
