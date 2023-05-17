@@ -7,9 +7,10 @@ import CommonStyles from '../../styles/CommonStyles';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { COLORS } from '../../Common/CommonColors';
 import Book from '../../Common/Class/Book';
+import BookBuilder from '../../Common/Class/BookBuilder';
 
 interface Props {
-    book: Book;
+    book: Book|BookBuilder;
     refresh: boolean;
     setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
 }

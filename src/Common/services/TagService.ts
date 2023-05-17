@@ -2,6 +2,8 @@ import axios from 'axios';
 import Client from '../Class/Client';
 import Tag from '../Class/Tag';
 import BaseService from './BaseService';
+import TagBuilder from '../Class/TagBuilder';
+import { APITagData } from '../Type/Data';
 
 export default class TagService extends BaseService {
 
@@ -17,7 +19,8 @@ export default class TagService extends BaseService {
     
         if(res.status === 200) {
             this.tags = new Map();
-            for(const tag of res.data) {
+            const data: APITagData[] = res.data;
+            for(const tag of data) {
                 this.addTag(tag);
             }
 
@@ -27,29 +30,29 @@ export default class TagService extends BaseService {
         return [];
     }
 
-    public async createTag(tag: Tag){
+    public async createTag(tag: TagBuilder){
         const data = tag.toJSON();
         const res = await axios.post(`${this.getIp()}/api/addTag`, data);
-        const newTag:Tag = res.data;
 
-        this.addTag(newTag);
+        const newTag:APITagData = res.data;
 
-        return this.tags;
+        return this.addTag(newTag);
     }
 
     public async deleteTag(tag: Tag){
         await axios.delete(`${this.getIp()}/api/deleteTag/${tag.idTag}`);
 
-        this.removeTag(tag.idTag);
+        this.removeTag(tag);
     }
 
-    public addTag(t:Tag){
-        const tag = new Tag(this.client, t.textTag, t.colorTag, t.idTag);
-        this.tags.set(t.idTag, tag);
+    public addTag(data:APITagData){
+        const tag = new Tag(this.client, data);
+        this.tags.set(data.idTag, tag);
+        return tag;
     }
 
-    public removeTag(idTag: number){
-        this.tags.delete(idTag);
+    public removeTag(tag: Tag){
+        this.tags.delete(tag.idTag);
     }
 }
 

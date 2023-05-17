@@ -20,7 +20,7 @@ export interface APIReadingData {
 
 export interface APITagData {
     idTag: number;
-    textTag: number;
+    textTag: string;
     colorTag: number;
 
     books: APITagBook[];

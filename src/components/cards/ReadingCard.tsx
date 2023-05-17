@@ -5,9 +5,10 @@ import { COLORS } from '../../Common/CommonColors';
 import Reading from '../../Common/Class/Reading';
 import Book from '../../Common/Class/Book';
 import TextIconButton from '../Buttons/TextIconButton';
+import BookBuilder from '../../Common/Class/BookBuilder';
 
 interface Props {
-    book: Book;
+    book: Book|BookBuilder;
     refresh?: boolean;
     setRefresh?: React.Dispatch<React.SetStateAction<boolean>>;
     reading : Reading;

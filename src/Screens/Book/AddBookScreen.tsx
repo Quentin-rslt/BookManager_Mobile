@@ -9,9 +9,9 @@ import InputText from '../../components/Inputs/InputText'
 import ReadingCard from '../../components/Cards/ReadingCard'
 import TagSticker from '../../components/Buttons/TagSticker'
 import DatePicker from '../../components/Buttons/DatePicker'
-import Book from '../../Common/Class/Book'
 import { LogBox } from 'react-native';
 import TagsModal from '../../components/Modals/TagsModal'
+import BookBuilder from '../../Common/Class/BookBuilder'
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
@@ -19,12 +19,12 @@ LogBox.ignoreLogs([
 
 export default function AddBookScreen({ navigation, route } : any) {
 
-    const book:Book = route.params.book;
+    const book:BookBuilder = route.params.book;
 
     const [refresh, setRefresh] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [showModal, setShowModal] = useState<boolean>(false);
-
+    
     const onClickSaveBook = async () => {
         setIsLoading(true);
         
@@ -85,8 +85,8 @@ export default function AddBookScreen({ navigation, route } : any) {
                             <Text style={AddBookStyles.text}>Tags : </Text>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                                 {
-                                    Array.from(book.bookTagsService.tags.values()).map((tag, idTag) => 
-                                        <TagSticker key={idTag} tag={tag}/>
+                                    book.tags.map((tag, idTag) => 
+                                        <TagSticker key={idTag} tag={tag} canShowModal={false}/>
                                     )
                                 }
                                 <TextIconButton callBack={() => setShowModal(true)} iconName={'square-edit-outline'} iconSize={15} showText={false} buttonStyle={AddBookStyles.addTagContainer}/>

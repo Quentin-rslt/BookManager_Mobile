@@ -7,9 +7,11 @@ import TextIconButton from '../Buttons/TextIconButton';
 import { COLORS } from '../../Common/CommonColors';
 import Tag from '../../Common/Class/Tag';
 import TitleScreen from '../TitleScreen';
+import BookBuilder from '../../Common/Class/BookBuilder';
+import { APITagData } from '../../Common/Type/Data';
 
 interface Props {
-    book: Book;
+    book: Book|BookBuilder;
     showModal: boolean;
     setShowModal: React.Dispatch<React.SetStateAction<boolean>>; 
 }
@@ -26,11 +28,11 @@ export default function TagsModal({ book, showModal, setShowModal }: Props) {
         setSelectedTags(selectedTags);
  
         for (const selectedTag of selectedTags) {
-            const item = new Tag(client, tags.find(item => item.idTag === +selectedTag)?.textTag);
-            newTags.push(item);
+            const tag = client.tagService.tags.get(+selectedTag);
+            tag && newTags.push(tag);
         }
 
-        book.bookTagsService.set(newTags);
+        book.setTags(newTags);
     }
 
     return (

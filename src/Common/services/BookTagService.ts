@@ -6,30 +6,33 @@ export default class BookTagService extends BaseService {
 
     public book:Book;
 
-    public tags:Map<number, Tag>;
 
     constructor(book: Book){
         super(book.client);
         this.book = book;
-        this.tags = new Map();
-
-        this.refresh();
     }
 
-    public refresh() {
+    get tags(){
+        const tags = new Map<number, Tag>();
+
         for(const t of this.book.data.tags) {
             const tag = this.client.tagService.tags.get(t.idTag);
             if(tag) {
-                this.tags.set(tag.idTag, tag);
+                tags.set(tag.idTag, tag);
             }
         }
+        
+        return tags;
     }
 
-    /** Set an array of categories for this resource */
     public set(tags: Tag[]) {
         this.tags.clear();
         for(const t of tags) {
             this.tags.set(t.idTag, t);
         }
+    }
+
+    public remove(tag: Tag) {
+        this.tags.delete(tag.idTag);
     }
 }

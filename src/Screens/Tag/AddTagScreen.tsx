@@ -1,16 +1,16 @@
 import { View, ScrollView, ToastAndroid } from 'react-native'
 import React, { useState } from 'react'
-import Tag from '../../Common/Class/Tag';
 import TopBar from '../../components/Inputs/TopBar';
 import CommonStyles from '../../styles/CommonStyles';
 import TitleScreen from '../../components/TitleScreen';
 import InputText from '../../components/Inputs/InputText';
 import TextIconButton from '../../components/Buttons/TextIconButton';
 import AddTagStyles from '../../styles/Screens/Tag/AddTagStyles';
+import TagBuilder from '../../Common/Class/TagBuilder';
 
 export default function AddTagScreen({ navigation, route } : any) {
 
-    const tag:Tag = route.params.tag;
+    const tag:TagBuilder = route.params.tag;
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -47,8 +47,7 @@ export default function AddTagScreen({ navigation, route } : any) {
                     </View>
                 </ScrollView>
             </View>
-                <TextIconButton callBack={onClickSaveTag} isLoading={isLoading} text={'Enregistrer'} showIcon={false} buttonStyle={AddTagStyles.button}/>
-      
+            <TextIconButton callBack={onClickSaveTag} isLoading={isLoading} text={'Enregistrer'} showIcon={false} buttonStyle={AddTagStyles.button}/>
         </View>
     )
 }

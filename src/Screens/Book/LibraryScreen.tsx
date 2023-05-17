@@ -9,6 +9,7 @@ import { COLORS } from '../../Common/CommonColors'
 import LibraryStyles from '../../styles/Screens/Book/LibraryStyles'
 import TextIconButton from '../../components/Buttons/TextIconButton'
 import Client from '../../Common/Class/Client'
+import BookBuilder from '../../Common/Class/BookBuilder'
 
 export default function LibraryScreen({ navigation, route } : any) {
 
@@ -39,7 +40,7 @@ export default function LibraryScreen({ navigation, route } : any) {
     }, []);
     
     const onClickAddBook = () => {
-        const book = new Book(client);
+        const book:BookBuilder = new BookBuilder(client);
         navigation.navigate('AddBookScreen', { book });
     };
 

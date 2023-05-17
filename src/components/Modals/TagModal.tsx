@@ -12,18 +12,19 @@ interface Props {
     tag: Tag;
     showModal: boolean;
     setShowModal: React.Dispatch<React.SetStateAction<boolean>> ;
-    onRefresh: () => Promise<void>;
+    onRefresh?: () => Promise<void>;
 }
 
 export default function TagModal({ tag, showModal, setShowModal, onRefresh }: Props) {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
+
     const onDeleteTag = async () => {
         setIsLoading(true);
         try {
             await tag.client.tagService.deleteTag(tag);
-            onRefresh();
+            onRefresh && onRefresh();
             setShowModal(!showModal);
         } catch(error) {
             console.log(error);

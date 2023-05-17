@@ -1,6 +1,6 @@
+import { APITagData } from "../Type/Data";
 import TagBookService from "../services/TagBookService";
 import Base from "./Base";
-import Book from "./Book";
 import Client from "./Client";
 
 export default class Tag extends Base {
@@ -13,11 +13,11 @@ export default class Tag extends Base {
     public tagBooksService: TagBookService;
 
 
-    constructor(client:Client, textTag?:string, colorTag?:number, idTag?:number) {
+    constructor(client:Client, data: APITagData) {
         super(client);
-        this.idTag=idTag ? idTag : 0;
-        this.textTag=textTag ? textTag : "";
-        this.colorTag=colorTag ? colorTag : 0;
+        this.idTag = data.idTag ? data.idTag : 0;
+        this.textTag = data.textTag ? data.textTag : "";
+        this.colorTag = data.colorTag ? data.colorTag : 0;
 
         this.tagBooksService = new TagBookService(this);
     }

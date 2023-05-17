@@ -8,7 +8,7 @@ import TopBar from '../../components/Inputs/TopBar'
 import { COLORS } from '../../Common/CommonColors'
 import TextIconButton from '../../components/Buttons/TextIconButton'
 import Client from '../../Common/Class/Client'
-import Tag from '../../Common/Class/Tag'
+import TagBuilder from '../../Common/Class/TagBuilder'
 
 export default function TagsScreen({navigation, route } : any) {
 
@@ -47,7 +47,7 @@ export default function TagsScreen({navigation, route } : any) {
     };
 
     const onClickAddTag = () => {
-        const tag = new Tag(client);
+        const tag = new TagBuilder(client);
         navigation.navigate('AddTagScreen', { tag });
     };
 
