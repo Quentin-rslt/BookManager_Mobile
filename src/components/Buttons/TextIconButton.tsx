@@ -1,4 +1,4 @@
-import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Text, TouchableOpacity } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react'
 import TextIconButtonStyles from '../../styles/components/Buttons/TextIconButtonStyles';

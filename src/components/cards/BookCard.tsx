@@ -13,7 +13,6 @@ type Props = {
 }
 
 export default function BookCard({book, onRefresh} : Props) {
-
     const [showModal, setShowModal] = useState<boolean>(false);
 
     return (
@@ -28,9 +27,9 @@ export default function BookCard({book, onRefresh} : Props) {
                 </View>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}  style={BookCardStyles.tagList}>
                     {
-                        book.tags.map((tag, idTag) =>
+                        Array.from(book.bookTagsService.tags.values()).map((tag, idTag) =>
                             <View key={idTag}>   
-                                <TagSticker tag={tag}/>
+                                <TagSticker tag={tag} onRefresh={onRefresh}/>
                             </View>
                         )
                     }

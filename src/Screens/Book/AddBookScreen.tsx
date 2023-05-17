@@ -85,7 +85,7 @@ export default function AddBookScreen({ navigation, route } : any) {
                             <Text style={AddBookStyles.text}>Tags : </Text>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                                 {
-                                    book.tags.map((tag, idTag) => 
+                                    Array.from(book.bookTagsService.tags.values()).map((tag, idTag) => 
                                         <TagSticker key={idTag} tag={tag}/>
                                     )
                                 }

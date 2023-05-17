@@ -5,6 +5,8 @@ import TextIconButton from '../Buttons/TextIconButton';
 import { COLORS } from '../../Common/CommonColors';
 import TagModalStyles from '../../styles/components/Modals/TagModalStyles';
 import BookCard from '../Cards/BookCard';
+import GestureRecognizer from 'react-native-swipe-gestures';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 interface Props {
     tag: Tag;
@@ -36,35 +38,32 @@ export default function TagModal({ tag, showModal, setShowModal, onRefresh }: Pr
     }, []);
 
     return (
-        <Modal style={TagModalStyles.modalContainer} animationType="slide" transparent={true} visible={showModal} onRequestClose={() => setShowModal(!showModal)}>
-            <View style={TagModalStyles.container}>
-                <ScrollView style={TagModalStyles.scrollViewContainer} showsVerticalScrollIndicator={false}>
-                    <TextIconButton 
-                        callBack={() => setShowModal(!showModal)} 
-                        iconSize={24} 
-                        text={' Retour '} 
-                        iconName={'arrow-left-top'} 
-                        iconColor={COLORS.background} 
-                        buttonStyle={TagModalStyles.returnButton}
-                    />
-                    <Text style={TagModalStyles.textTag}>{tag.textTag}</Text>
-                    {   
-                        tag.books.size !== 0 &&
-                        <View>
-                            <Text style={TagModalStyles.textHolder}>Livres : ({tag.books.size})</Text>
-                            {
-                                Array.from(tag.books.values()).map((book, idBook) => 
-                                    <BookCard key={idBook} book={book} onRefresh={onRefreshBooks}/>
-                                )
-                            }
-                        </View>
-                    }
-                </ScrollView>
-                <View style={TagModalStyles.buttonsContainer}>
-                    <TextIconButton callBack={() => setShowModal(!showModal)} showIcon={false} text='Modifier' buttonStyle={TagModalStyles.button}/>
-                    <TextIconButton callBack={onDeleteTag} isLoading={isLoading} showIcon={false} text='Supprimer' buttonStyle={TagModalStyles.button}/>
+        <GestureRecognizer style={{flex: 1}} onSwipeDown={ () => setShowModal(false) }>
+            <Modal style={TagModalStyles.modalContainer} animationType="slide" transparent={true} visible={showModal} onRequestClose={() => setShowModal(!showModal)}>
+                <View style={TagModalStyles.container}>
+                    <View style={TagModalStyles.returnButton}>
+                        <MaterialCommunityIcons name={'minus'} size={35} color={COLORS.accentColor}/>
+                    </View>
+                    <ScrollView style={TagModalStyles.scrollViewContainer} showsVerticalScrollIndicator={false}>
+                        <Text style={TagModalStyles.textTag}>{tag.textTag}</Text>
+                        {   
+                            tag.tagBooksService.books.size !== 0 &&
+                            <View>
+                                <Text style={TagModalStyles.textHolder}>Livres : ({tag.tagBooksService.books.size.toString()})</Text>
+                                {
+                                    Array.from(tag.tagBooksService.books.values()).map((book, idBook) => 
+                                        <BookCard key={idBook} book={book} onRefresh={onRefreshBooks}/>
+                                    )
+                                }
+                            </View>
+                        }
+                    </ScrollView>
+                    <View style={TagModalStyles.buttonsContainer}>
+                        <TextIconButton callBack={() => setShowModal(!showModal)} showIcon={false} text='Modifier' buttonStyle={TagModalStyles.button}/>
+                        <TextIconButton callBack={onDeleteTag} isLoading={isLoading} showIcon={false} text='Supprimer' buttonStyle={TagModalStyles.button}/>
+                    </View>
                 </View>
-            </View>
-        </Modal>
+            </Modal>
+        </GestureRecognizer>
     )
 }

@@ -1,9 +1,13 @@
+import { APIBookData } from "../Type/Data";
+import BookTagService from "../services/BookTagService";
 import Base from "./Base";
 import Client from "./Client";
 import Reading from "./Reading";
 import Tag from "./Tag";
 
 export default class Book extends Base {
+    public data: APIBookData;
+
     public idBook: number;
 
     public title:string;
@@ -20,19 +24,21 @@ export default class Book extends Base {
     
     public readings: Array<Reading>;
     
-    public tags: Array<Tag>;
+    public bookTagsService: BookTagService;
 
-    constructor(client:Client, title?:string, author?:string, numberOP?:number, notePerso?:number, releaseYear?:string, summary?:string, readings?: Array<Reading>, tags?: Array<Tag>, idBook?:number) {
+    constructor(client:Client, data: APIBookData) {
         super(client);
-        this.idBook=idBook ? idBook : 0;
-        this.title=title ? title : "";
-        this.author=author ? author : "";
-        this.numberOP=numberOP ? numberOP : 0;
-        this.notePerso=notePerso ? notePerso : 0;
-        this.releaseYear=releaseYear ? releaseYear : "2023";
-        this.summary=summary ? summary : "";
-        this.readings=readings ? readings : [];
-        this.tags=tags ? tags : [];
+        this.data = data;
+        this.idBook=data.idBook ? data.idBook : 0;
+        this.title=data.title ? data.title : "";
+        this.author=data.author ? data.author : "";
+        this.numberOP=data.numberOP ? data.numberOP : 0;
+        this.notePerso=data.notePerso ? data.notePerso : 0;
+        this.releaseYear=data.releaseYear ? data.releaseYear : "2023";
+        this.summary=data.summary ? data.summary : "";
+        this.readings=data.readings ? data.readings : [];
+
+        this.bookTagsService= new BookTagService(this);
     }
 
     public toJSON() {
@@ -45,7 +51,7 @@ export default class Book extends Base {
             releaseYear: this.releaseYear,
             summary: this.summary,
             readings: Array.from(this.readings),
-            tags: Array.from(this.tags),
+            tags: Array.from(this.bookTagsService.tags.values()),
         }
     }
     
@@ -96,16 +102,6 @@ export default class Book extends Base {
 
     public deleteReading(value: number) {
         this.readings.splice(value, 1);
-        return this;
-    }
-
-    public setTags(value: Array<Tag>) {
-        this.tags = value;
-        return this;
-    }
-
-    public addTag(value: Tag) {
-        this.tags.push(value);
         return this;
     }
 } 

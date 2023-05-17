@@ -30,7 +30,7 @@ export default function TagsModal({ book, showModal, setShowModal }: Props) {
             newTags.push(item);
         }
 
-        book.setTags(newTags);
+        book.bookTagsService.set(newTags);
     }
 
     return (

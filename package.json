@@ -31,6 +31,7 @@
     "react-native-multiple-select": "^0.5.12",
     "react-native-navigation-container": "^1.0.6",
     "react-native-paper": "^5.2.0",
+    "react-native-swipe-gestures": "^1.0.5",
     "react-native-vector-icons": "^9.2.0",
     "react-native-web": "~0.18.9",
     "sharp-cli": "^4.1.0"

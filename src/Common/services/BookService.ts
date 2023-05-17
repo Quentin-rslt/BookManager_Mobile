@@ -2,6 +2,7 @@ import axios from 'axios';
 import Book from '../Class/Book';
 import Client from '../Class/Client';
 import BaseService from './BaseService';
+import { APIBookData } from '../Type/Data';
 
 export default class BookService extends BaseService {
 
@@ -13,13 +14,14 @@ export default class BookService extends BaseService {
     }
 
     public async fetchBooks(){
-        const res = await axios.get(`${this.getIp()}/api/book/all`);
-        
-        if(res.status === 200) {
+        const res: APIBookData[] = (await axios.get(`${this.getIp()}/api/book/all`)).data;
+
+        if(res) {
             this.books = new Map();
-            for(const book of res.data) {
+            for(const book of res) {
                 this.addBook(book);
             }
+            
 
             return this.books;
         }
@@ -31,7 +33,7 @@ export default class BookService extends BaseService {
         const data = book.toJSON();
         const res = await axios.post(`${this.getIp()}/api/addBook`, data);
 
-        const newBook:Book = res.data;
+        const newBook:APIBookData = res.data;
         
         return this.addBook(newBook);
     }
@@ -42,10 +44,9 @@ export default class BookService extends BaseService {
         this.removeBook(book.idBook);
     }
 
-    public addBook(b:Book){
-        const book = new Book(this.client, b.title, b.author, b.numberOP, b.notePerso, b.releaseYear, b.summary, b.readings, b.tags, b.idBook);
+    public addBook(b:APIBookData){
+        const book = new Book(this.client, b);
         this.books.set(book.idBook, book);
-
         return book;
     }
 
