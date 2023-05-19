@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, ToastAndroid } from 'react-native'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import CommonStyles from '../../styles/CommonStyles'
 import TitleScreen from '../../components/TitleScreen'
 import AddBookStyles from '../../styles/Screens/Book/AddBookStyles'
@@ -24,7 +24,10 @@ export default function AddBookScreen({ navigation, route } : any) {
     const [refresh, setRefresh] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [showModal, setShowModal] = useState<boolean>(false);
-    
+    const onRefreshBooks = useCallback(async () => {
+        setIsLoading(true);
+        setIsLoading(false);
+    }, []);
     const onClickSaveBook = async () => {
         setIsLoading(true);
         
@@ -86,7 +89,7 @@ export default function AddBookScreen({ navigation, route } : any) {
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                                 {
                                     book.tags.map((tag, idTag) => 
-                                        <TagSticker key={idTag} tag={tag} canShowModal={false}/>
+                                        <TagSticker key={idTag} tag={tag} onRefresh={onRefreshBooks}/>
                                     )
                                 }
                                 <TextIconButton callBack={() => setShowModal(true)} iconName={'square-edit-outline'} iconSize={15} showText={false} buttonStyle={AddBookStyles.addTagContainer}/>

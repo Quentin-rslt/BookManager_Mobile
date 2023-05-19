@@ -19,5 +19,9 @@ export default StyleSheet.create({
         color: COLORS.background,
         height: 45,
         borderRadius : 17,
+        shadowColor: COLORS.Black,
+        shadowOpacity: 0.5,
+        shadowOffset: { width: 4, height: 4},
+        elevation: 5,
     },
 });

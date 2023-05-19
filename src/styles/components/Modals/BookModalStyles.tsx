@@ -9,29 +9,31 @@ export default StyleSheet.create({
         justifyContent: 'center',
     },
     container: {
-        backgroundColor: COLORS.backgroundLight,
-        height: "90%",
-        marginTop: "10%",
-        borderRadius: 25,
-        marginHorizontal: 10,
-        paddingHorizontal: 20,
+        position: 'absolute',
+        bottom: 0,
+
+        backgroundColor: COLORS.background,
+        height: "80%",
+        marginTop: 5,
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
         paddingBottom: 20,
         shadowColor: COLORS.Black,
         shadowOpacity: 0.5,
         shadowOffset: { width: 4, height: 4},
         elevation: 5,
     },
-    scrollViewContainer: {
-        display: 'flex',
-        width: "100%",
-        height: "100%",
+    bookContainer: {
+        margin: 20,
         marginBottom: 55,
+        backgroundColor: COLORS.backgroundLight,
+        borderRadius: 25,
     },
     returnButton : {
         alignItems: 'center',
         justifyContent: 'center',
         width: "100%",
-        height: 30,
+        marginTop: "31%",
     },
     buttonsContainer: {
         display: 'flex',
@@ -41,7 +43,7 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         position: 'absolute',
         bottom: 20,
-        left: 20,
+        paddingHorizontal: 20,
     },
     button: {
         backgroundColor: COLORS.clickableColor,
@@ -50,12 +52,17 @@ export default StyleSheet.create({
         width: "48%",
         justifyContent: 'center',
         borderRadius : 17,
+        shadowColor: COLORS.Black,
+        shadowOpacity: 0.5,
+        shadowOffset: { width: 4, height: 4},
+        elevation: 5,
     },
     title: {
         fontSize: 30,
         fontWeight: '800',
         color: COLORS.foreground,
         textAlign: 'center',
+        marginHorizontal: 20,
     },
     author: {
         fontSize: 16,
@@ -66,6 +73,7 @@ export default StyleSheet.create({
         marginBottom: 20,
     },
     text: {
+        paddingHorizontal: 20,
         fontSize: 14,
         fontWeight: '800',
         color: COLORS.foreground,
@@ -80,6 +88,7 @@ export default StyleSheet.create({
         textAlign: 'left',
     },
     statsContainer: {
+        paddingHorizontal: 20,
         display: 'flex',
         flexDirection: 'row',
         width: "100%",
@@ -89,6 +98,7 @@ export default StyleSheet.create({
         marginBottom: 20,
     },
     textHolder: {
+        paddingHorizontal: 20,
         fontSize: 13,
         fontWeight: '800',
         color: COLORS.foregroundHolder,
@@ -97,9 +107,12 @@ export default StyleSheet.create({
     },
     tagsContainer: {
         marginTop: 5,
+        marginHorizontal: 20,
         marginBottom: 20,
     },
     readingsContainer: {
+        width: "100%",
+        paddingHorizontal: 20,
         marginTop: 5,
         marginBottom: 20,
     },

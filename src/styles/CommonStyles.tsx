@@ -50,6 +50,10 @@ export default StyleSheet.create({
         height: 55,
         backgroundColor: COLORS.clickableColor,
         borderRadius: 17,
+        shadowColor: COLORS.Black,
+        shadowOpacity: 0.5,
+        shadowOffset: { width: 4, height: 4},
+        elevation: 5,
     },
     holderText: {
         position: 'absolute',

@@ -6,13 +6,14 @@ import { COLORS } from '../../Common/CommonColors';
 import TagModalStyles from '../../styles/components/Modals/TagModalStyles';
 import BookCard from '../Cards/BookCard';
 import GestureRecognizer from 'react-native-swipe-gestures';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
+import CommonStyles from '../../styles/CommonStyles';
 
 interface Props {
     tag: Tag;
     showModal: boolean;
     setShowModal: React.Dispatch<React.SetStateAction<boolean>> ;
-    onRefresh?: () => Promise<void>;
+    onRefresh: () => Promise<void>;
 }
 
 export default function TagModal({ tag, showModal, setShowModal, onRefresh }: Props) {
@@ -24,7 +25,8 @@ export default function TagModal({ tag, showModal, setShowModal, onRefresh }: Pr
         setIsLoading(true);
         try {
             await tag.client.tagService.deleteTag(tag);
-            onRefresh && onRefresh();
+            onRefresh();
+            
             setShowModal(!showModal);
         } catch(error) {
             console.log(error);
@@ -41,24 +43,26 @@ export default function TagModal({ tag, showModal, setShowModal, onRefresh }: Pr
     return (
         <GestureRecognizer style={{flex: 1}} onSwipeDown={ () => setShowModal(false) }>
             <Modal style={TagModalStyles.modalContainer} animationType="slide" transparent={true} visible={showModal} onRequestClose={() => setShowModal(!showModal)}>
+                <View style={TagModalStyles.returnButton}>
+                    <Feather name={'minus'} size={65} color={COLORS.accentColor}/>
+                </View>
                 <View style={TagModalStyles.container}>
-                    <View style={TagModalStyles.returnButton}>
-                        <MaterialCommunityIcons name={'minus'} size={35} color={COLORS.accentColor}/>
+                    <View style={TagModalStyles.tagsContainer}>
+                        <ScrollView style={CommonStyles.scrollViewContainer} showsVerticalScrollIndicator={false}>
+                            <Text style={TagModalStyles.textTag}>{tag.textTag}</Text>
+                            {   
+                                tag.tagBooksService.books.size !== 0 &&
+                                <View style={TagModalStyles.booksContainer}>
+                                    <Text style={TagModalStyles.textHolder}>Livres : ({tag.tagBooksService.books.size.toString()})</Text>
+                                    {
+                                        Array.from(tag.tagBooksService.books.values()).map((book, idBook) => 
+                                            <BookCard key={idBook} book={book} onRefresh={onRefreshBooks}/>
+                                        )
+                                    }
+                                </View>
+                            }
+                        </ScrollView>
                     </View>
-                    <ScrollView style={TagModalStyles.scrollViewContainer} showsVerticalScrollIndicator={false}>
-                        <Text style={TagModalStyles.textTag}>{tag.textTag}</Text>
-                        {   
-                            tag.tagBooksService.books.size !== 0 &&
-                            <View>
-                                <Text style={TagModalStyles.textHolder}>Livres : ({tag.tagBooksService.books.size.toString()})</Text>
-                                {
-                                    Array.from(tag.tagBooksService.books.values()).map((book, idBook) => 
-                                        <BookCard key={idBook} book={book} onRefresh={onRefreshBooks}/>
-                                    )
-                                }
-                            </View>
-                        }
-                    </ScrollView>
                     <View style={TagModalStyles.buttonsContainer}>
                         <TextIconButton callBack={() => setShowModal(!showModal)} showIcon={false} text='Modifier' buttonStyle={TagModalStyles.button}/>
                         <TextIconButton callBack={onDeleteTag} isLoading={isLoading} showIcon={false} text='Supprimer' buttonStyle={TagModalStyles.button}/>

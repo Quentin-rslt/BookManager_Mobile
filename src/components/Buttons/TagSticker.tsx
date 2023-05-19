@@ -7,7 +7,7 @@ import TagModal from '../Modals/TagModal';
 
 interface Props {
     tag: Tag;
-    onRefresh?: () => Promise<void>;
+    onRefresh: () => Promise<void>;
     canShowModal?: boolean;
 }
 
