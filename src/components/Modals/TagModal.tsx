@@ -11,12 +11,13 @@ import CommonStyles from '../../styles/CommonStyles';
 
 interface Props {
     tag: Tag;
-    showModal: boolean;
-    setShowModal: React.Dispatch<React.SetStateAction<boolean>> ;
-    onRefresh: () => Promise<void>;
+    showModalTag: boolean;
+    setShowModalTag: React.Dispatch<React.SetStateAction<boolean>> ;
+    onRefresh: () => Promise<void> | void;
+    navigation: any;
 }
 
-export default function TagModal({ tag, showModal, setShowModal, onRefresh }: Props) {
+export default function TagModal({ tag, showModalTag, setShowModalTag, onRefresh, navigation }: Props) {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -27,7 +28,7 @@ export default function TagModal({ tag, showModal, setShowModal, onRefresh }: Pr
             await tag.client.tagService.deleteTag(tag);
             onRefresh();
             
-            setShowModal(!showModal);
+            setShowModalTag(!showModalTag);
         } catch(error) {
             console.log(error);
             ToastAndroid.show("Problème lors de la suppression du tag" , ToastAndroid.CENTER);
@@ -35,19 +36,14 @@ export default function TagModal({ tag, showModal, setShowModal, onRefresh }: Pr
         setIsLoading(false);
     };
 
-    const onRefreshBooks = useCallback(async () => {
-        setIsLoading(true);
-        setIsLoading(false);
-    }, []);
-
     return (
-        <GestureRecognizer style={{flex: 1}} onSwipeDown={ () => setShowModal(false) }>
-            <Modal style={TagModalStyles.modalContainer} animationType="slide" transparent={true} visible={showModal} onRequestClose={() => setShowModal(!showModal)}>
-                <View style={TagModalStyles.returnButton}>
-                    <Feather name={'minus'} size={65} color={COLORS.accentColor}/>
-                </View>
+        <GestureRecognizer style={{flex: 1}} onSwipeDown={ () => setShowModalTag(false) }>
+            <Modal style={TagModalStyles.modalContainer} animationType="slide" transparent={true} visible={showModalTag} onRequestClose={() => setShowModalTag(!showModalTag)}>
                 <View style={TagModalStyles.container}>
-                    <View style={TagModalStyles.tagsContainer}>
+                    <View style={TagModalStyles.returnButton}>
+                        <Feather name={'minus'} size={65} color={COLORS.accentColor}/>
+                    </View>
+                    <View style={TagModalStyles.tagContainer}>
                         <ScrollView style={CommonStyles.scrollViewContainer} showsVerticalScrollIndicator={false}>
                             <Text style={TagModalStyles.textTag}>{tag.textTag}</Text>
                             {   
@@ -56,7 +52,7 @@ export default function TagModal({ tag, showModal, setShowModal, onRefresh }: Pr
                                     <Text style={TagModalStyles.textHolder}>Livres : ({tag.tagBooksService.books.size.toString()})</Text>
                                     {
                                         Array.from(tag.tagBooksService.books.values()).map((book, idBook) => 
-                                            <BookCard key={idBook} book={book} onRefresh={onRefreshBooks}/>
+                                            <BookCard key={idBook} book={book} onRefresh={onRefresh} navigation={navigation}/>
                                         )
                                     }
                                 </View>
@@ -64,7 +60,7 @@ export default function TagModal({ tag, showModal, setShowModal, onRefresh }: Pr
                         </ScrollView>
                     </View>
                     <View style={TagModalStyles.buttonsContainer}>
-                        <TextIconButton callBack={() => setShowModal(!showModal)} showIcon={false} text='Modifier' buttonStyle={TagModalStyles.button}/>
+                        <TextIconButton callBack={() => setShowModalTag(!showModalTag)} showIcon={false} text='Modifier' buttonStyle={TagModalStyles.button}/>
                         <TextIconButton callBack={onDeleteTag} isLoading={isLoading} showIcon={false} text='Supprimer' buttonStyle={TagModalStyles.button}/>
                     </View>
                 </View>

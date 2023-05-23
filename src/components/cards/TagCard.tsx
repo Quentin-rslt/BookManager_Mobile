@@ -8,21 +8,22 @@ import TagModal from '../Modals/TagModal';
 type Props = {
     tag: Tag;
     onRefresh: () => Promise<void>;
+    navigation: any;
 }
 
-export default function TagCard({tag, onRefresh} : Props) {
+export default function TagCard({tag, onRefresh, navigation} : Props) {
 
-    const [showModal, setShowModal] = useState<boolean>(false);
+    const [showModalTag, setShowModalTag] = useState<boolean>(false);
 
     return (
-        <TouchableOpacity style={TagCardStyles.container} onPress={() => setShowModal(true)}>
+        <TouchableOpacity style={TagCardStyles.container} onPress={() => setShowModalTag(true)}>
             <View style={TagCardStyles.containerButton}>
                 <Text style={TagCardStyles.text} numberOfLines={1}>{tag.textTag}</Text>
                 <View style={TagCardStyles.numberBook}>
                     <NumberIcon iconNumber={tag.tagBooksService.books.size} iconName={"book-open-outline"} />
                 </View>
             </View>
-            <TagModal tag={tag} showModal={showModal} setShowModal={setShowModal} onRefresh={onRefresh}/>
+            <TagModal tag={tag} showModalTag={showModalTag} setShowModalTag={setShowModalTag} onRefresh={onRefresh} navigation={navigation}/>
         </TouchableOpacity>
     )
 }

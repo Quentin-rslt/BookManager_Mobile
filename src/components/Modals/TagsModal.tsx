@@ -10,9 +10,10 @@ import TitleScreen from '../TitleScreen';
 import BookBuilder from '../../Common/Class/BookBuilder';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import GestureRecognizer from 'react-native-swipe-gestures';
+import BookTagService from '../../Common/services/BookTagService';
 
 interface Props {
-    book: Book|BookBuilder;
+    book: BookBuilder;
     showModal: boolean;
     setShowModal: React.Dispatch<React.SetStateAction<boolean>>; 
 }
@@ -32,7 +33,7 @@ export default function TagsModal({ book, showModal, setShowModal }: Props) {
             const tag = client.tagService.tags.get(+selectedTag);
             tag && newTags.push(tag);
         }
-
+        
         book.setTags(newTags);
     }
 

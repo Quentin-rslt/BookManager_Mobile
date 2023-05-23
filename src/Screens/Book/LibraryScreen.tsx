@@ -24,12 +24,12 @@ export default function LibraryScreen({ navigation, route } : any) {
         });
     }, [navigation]);
 
-    const onRefresh = useCallback(async () => {
+    const onRefresh = async () => {
         const books = client.bookService.books.values();
         setBooks([...Array.from(books)]);
-    }, []);
+    };
 
-    const onRefreshFecthAPI = useCallback(async () => {
+    const onRefreshFecthAPI = async () => {
         setIsLoading(true);
         try{    
             setBooks(Array.from((await client.bookService.fetchBooks()).values()));
@@ -37,7 +37,7 @@ export default function LibraryScreen({ navigation, route } : any) {
             ToastAndroid.show("Problème lors du chargement des livres" , ToastAndroid.CENTER);
         }
         setIsLoading(false);
-    }, []);
+    };
     
     const onClickAddBook = () => {
         const book:BookBuilder = new BookBuilder(client);
@@ -65,7 +65,7 @@ export default function LibraryScreen({ navigation, route } : any) {
                     ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun livre n'a été trouvé"}</Text>}
                     contentContainerStyle = {LibraryStyles.booksContainer}
                     data={books}
-                    renderItem={({item}) => <BookCard key={item.idBook} book={item} onRefresh={onRefresh}/>}
+                    renderItem={({item}) => <BookCard key={item.idBook} book={item} onRefresh={onRefresh} navigation={navigation}/>}
                     keyExtractor={item => item.idBook.toString()}
                     refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}
                     ListHeaderComponent={renderHeader}

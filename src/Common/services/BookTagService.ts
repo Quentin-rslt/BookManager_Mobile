@@ -6,7 +6,6 @@ export default class BookTagService extends BaseService {
 
     public book:Book;
 
-
     constructor(book: Book){
         super(book.client);
         this.book = book;
@@ -23,13 +22,6 @@ export default class BookTagService extends BaseService {
         }
         
         return tags;
-    }
-
-    public set(tags: Tag[]) {
-        this.tags.clear();
-        for(const t of tags) {
-            this.tags.set(t.idTag, t);
-        }
     }
 
     public remove(tag: Tag) {

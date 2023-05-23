@@ -9,15 +9,20 @@ import BookModal from '../Modals/BookModal';
 
 type Props = {
     book: Book;
-    onRefresh: () => Promise<void>;
+    onRefresh: () => Promise<void> | void;
+    navigation: any;
 }
 
-export default function BookCard({book, onRefresh} : Props) {
-    const [showModal, setShowModal] = useState<boolean>(false);
+export default function BookCard({book, onRefresh, navigation} : Props) {
+    const [showModalBook, setShowModalBook] = useState<boolean>(false);
+
+    const onClickBookCard =() => {
+        setShowModalBook(true);
+    };
 
     return (
         <View>
-            <TouchableOpacity style={BookCardStyles.container} onPress={() => setShowModal(true)}>
+            <TouchableOpacity style={BookCardStyles.container} onPress={onClickBookCard}>
                 <View>
                     <Text style={BookCardStyles.titleStyle} numberOfLines={1}>{book.title}</Text>
                     <View style={BookCardStyles.containerReleaseAuthor}>
@@ -29,7 +34,7 @@ export default function BookCard({book, onRefresh} : Props) {
                     {
                         Array.from(book.bookTagsService.tags.values()).map((tag, idTag) =>
                             <View key={idTag}>   
-                                <TagSticker tag={tag} onRefresh={onRefresh}/>
+                                <TagSticker tag={tag} onRefresh={onRefresh} navigation={navigation}/>
                             </View>
                         )
                     }
@@ -40,7 +45,7 @@ export default function BookCard({book, onRefresh} : Props) {
                     <NumberIcon iconNumber={book.notePerso} iconName={"star"}/>
                 </View>
             </TouchableOpacity>
-            <BookModal book={book} showModal={showModal} setShowModal={setShowModal} onRefresh={onRefresh}/>
+            <BookModal book={book} showModalBook={showModalBook} setShowModalBook={setShowModalBook} onRefresh={onRefresh} navigation={navigation}/>
         </View>
     )
 }

@@ -24,10 +24,12 @@ export default function AddBookScreen({ navigation, route } : any) {
     const [refresh, setRefresh] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [showModal, setShowModal] = useState<boolean>(false);
-    const onRefreshBooks = useCallback(async () => {
+
+    const onRefreshScreen = () => {
         setIsLoading(true);
         setIsLoading(false);
-    }, []);
+    };
+
     const onClickSaveBook = async () => {
         setIsLoading(true);
         
@@ -89,7 +91,7 @@ export default function AddBookScreen({ navigation, route } : any) {
                             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                                 {
                                     book.tags.map((tag, idTag) => 
-                                        <TagSticker key={idTag} tag={tag} onRefresh={onRefreshBooks}/>
+                                        <TagSticker key={idTag} tag={tag} onRefresh={onRefreshScreen} navigation={navigation}/>
                                     )
                                 }
                                 <TextIconButton callBack={() => setShowModal(true)} iconName={'square-edit-outline'} iconSize={15} showText={false} buttonStyle={AddBookStyles.addTagContainer}/>

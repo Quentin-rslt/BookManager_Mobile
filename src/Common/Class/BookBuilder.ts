@@ -1,4 +1,5 @@
 import Base from "./Base";
+import Book from "./Book";
 import Client from "./Client";
 import Reading from "./Reading";
 import Tag from "./Tag";
@@ -59,6 +60,18 @@ export default class BookBuilder extends Base {
             readings: Array.from(this.readings),
             tags: Array.from(this.tags),
         }
+    }
+
+    public bookToBuilder(book:Book) {
+        this.idBook = book.idBook;
+        this.title = book.title;
+        this.author = book.author;
+        this.numberOP = book.numberOP;
+        this.notePerso = book.notePerso;
+        this.releaseYear = book.releaseYear;
+        this.summary = book.summary;
+        this.readings = book.readings;
+        this.tags = Array.from(book.bookTagsService.tags.values());
     }
     
     public setIdBook(value: number) {

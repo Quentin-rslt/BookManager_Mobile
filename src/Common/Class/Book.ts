@@ -1,6 +1,7 @@
 import { APIBookData } from "../Type/Data";
 import BookTagService from "../services/BookTagService";
 import Base from "./Base";
+import BookBuilder from "./BookBuilder";
 import Client from "./Client";
 import Reading from "./Reading";
 import Tag from "./Tag";
@@ -54,58 +55,18 @@ export default class Book extends Base {
             tags: Array.from(this.bookTagsService.tags.values()),
         }
     }
-    
-    public setIdBook(value: number) {
-        this.idBook = value;
-        return this;
-    }
 
-    public setTitle(value: string) {
-        this.title = value;
-        return this;
-    }
-
-    public setAuthor(value: string) {
-        this.author = value;
-        return this;
-    }
-
-    public setNumberOP(value: number) {
-        this.numberOP = value;
-        return this;
-    }
-
-    public setNotePerso(value: number) {
-        this.notePerso = value;
-        return this;
-    }
-
-    public setReleaseYear(value: string) {
-        this.releaseYear = value;
-        return this;
-    }
-
-    public setSummary(value: string) {
-        this.summary = value;
-        return this;
-    }
-
-    public setReadings(value: Array<Reading>) {
-        this.readings = value;
-        return this;
-    }
-
-    public addReading(value: Reading) {
-        this.readings.push(value);
-        return this;
-    }
-
-    public deleteReading(value: number) {
-        this.readings.splice(value, 1);
-        return this;
-    }
-    
-    public setTags(value:Tag[]){
-        this.bookTagsService.set(value);
+    public update(data: APIBookData){
+        this.data=data;
+        this.idBook=data.idBook;
+        this.title=data.title;
+        this.author=data.author;
+        this.numberOP=data.numberOP;
+        this.notePerso=data.notePerso;
+        this.releaseYear=data.releaseYear;
+        this.summary=data.summary;
+        this.readings=data.readings;
+        
+        this.bookTagsService= new BookTagService(this);
     }
 } 

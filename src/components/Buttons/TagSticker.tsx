@@ -7,21 +7,22 @@ import TagModal from '../Modals/TagModal';
 
 interface Props {
     tag: Tag;
-    onRefresh: () => Promise<void>;
-    canShowModal?: boolean;
+    onRefresh: () => Promise<void> | void;
+    navigation: any;
 }
 
-export default function TagSticker({tag, onRefresh, canShowModal=true} : Props) {
+export default function TagSticker({tag, onRefresh, navigation} : Props) {
 
-    const [showModal, setShowModal] = useState<boolean>(false);
+    const [showModalTag, setShowModalTag] = useState<boolean>(false);
+
+    const onClickTagSticker = () => {
+        setShowModalTag(true);
+    };
 
     return (
         <View>
-            <TextIconButton callBack={() => setShowModal(true)} showIcon={false} buttonStyle={TagStickerStyles.container} textStyle={TagStickerStyles.textTag} text={tag.textTag} numberOfLineText={1}/>
-            {
-                canShowModal && 
-                <TagModal tag={tag} showModal={showModal} setShowModal={setShowModal} onRefresh={onRefresh}/>
-            }
+            <TextIconButton callBack={onClickTagSticker} showIcon={false} buttonStyle={TagStickerStyles.container} textStyle={TagStickerStyles.textTag} text={tag.textTag} numberOfLineText={1}/>
+            <TagModal tag={tag} showModalTag={showModalTag} setShowModalTag={setShowModalTag} onRefresh={onRefresh} navigation={navigation}/>
         </View>
     )
 }

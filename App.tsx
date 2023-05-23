@@ -9,6 +9,7 @@ import Client from './src/Common/Class/Client';
 import CommonStyles from './src/styles/CommonStyles';
 import { COLORS } from './src/Common/CommonColors';
 import AddTagScreen from './src/Screens/Tag/AddTagScreen';
+import EditBookScreen from './src/Screens/Book/EditBookScreen';
 
 const Stack = createStackNavigator();
 
@@ -42,6 +43,7 @@ export default function App() {
             <Stack.Navigator>
                 <Stack.Screen name="NavBar" component={NavBar} options={{ headerShown: false }} initialParams={{ client }}/>
                 <Stack.Screen name="AddBookScreen" component={AddBookScreen} options={{ headerShown: false, animationEnabled: false }} initialParams={{ client }}/>
+                <Stack.Screen name="EditBookScreen" component={EditBookScreen} options={{ headerShown: false, animationEnabled: false }} initialParams={{ client }}/>
                 <Stack.Screen name="AddTagScreen" component={AddTagScreen} options={{ headerShown: false, animationEnabled: false }} initialParams={{ client }}/>
             </Stack.Navigator>
         </NavigationContainer>

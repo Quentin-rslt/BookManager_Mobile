@@ -11,15 +11,17 @@ import GestureRecognizer from 'react-native-swipe-gestures'
 import { Feather } from '@expo/vector-icons';
 import TextIconButton from '../Buttons/TextIconButton'
 import CommonStyles from '../../styles/CommonStyles'
+import BookBuilder from '../../Common/Class/BookBuilder'
 
 interface Props {
     book: Book;
-    showModal: boolean;
-    setShowModal: React.Dispatch<React.SetStateAction<boolean>> ;
-    onRefresh: () => Promise<void>;
+    showModalBook: boolean;
+    setShowModalBook: React.Dispatch<React.SetStateAction<boolean>> ;
+    onRefresh: () => Promise<void> | void;
+    navigation: any
 }
 
-export default function BookModal({ book, showModal, setShowModal, onRefresh }: Props) {
+export default function BookModal({ book, showModalBook, setShowModalBook, onRefresh, navigation }: Props) {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -28,7 +30,7 @@ export default function BookModal({ book, showModal, setShowModal, onRefresh }: 
         try {
             await book.client.bookService.deleteBook(book);
             onRefresh();
-            setShowModal(!showModal);
+            setShowModalBook(!showModalBook);
         } catch(error) {
             console.log(error);
             ToastAndroid.show("Problème lors de la suppression du livre" , ToastAndroid.CENTER);
@@ -36,18 +38,20 @@ export default function BookModal({ book, showModal, setShowModal, onRefresh }: 
         setIsLoading(false);
     }
 
-    const onRefreshTags = useCallback(async () => {
-        setIsLoading(true);
-        setIsLoading(false);
-    }, []);
+    const onEditBook = () => {
+        setShowModalBook(!showModalBook);
+        const newBook:BookBuilder = new BookBuilder(book.client);
+        newBook.bookToBuilder(book);
+        navigation.navigate('EditBookScreen', { newBook });
+    };
 
     return (
-        <GestureRecognizer style={{flex: 1}} onSwipeDown={ () => setShowModal(false) }>
-            <Modal style={BookModalStyles.modalContainer} animationType="slide" transparent={true} visible={showModal} onRequestClose={() => setShowModal(!showModal)}>
-                <View style={BookModalStyles.returnButton}>
-                    <Feather name={'minus'} size={65} color={COLORS.accentColor}/>
-                </View>
+        <GestureRecognizer style={{flex: 1}} onSwipeDown={ () => setShowModalBook(false) }>
+            <Modal style={BookModalStyles.modalContainer} animationType="slide" transparent={true} visible={showModalBook} onRequestClose={() => setShowModalBook(!showModalBook)}>
                 <View style={BookModalStyles.container}>
+                    <View style={BookModalStyles.returnButton}>
+                        <Feather name={'minus'} size={65} color={COLORS.accentColor}/>
+                    </View>
                     <View style={BookModalStyles.bookContainer}>
                         <ScrollView style={CommonStyles.scrollViewContainer} showsVerticalScrollIndicator={false}>
                             <Text style={BookModalStyles.title}>{book.title}</Text>
@@ -66,7 +70,7 @@ export default function BookModal({ book, showModal, setShowModal, onRefresh }: 
                                     <ScrollView horizontal showsHorizontalScrollIndicator={false} style={BookModalStyles.tagsContainer}>
                                         {
                                             Array.from(book.bookTagsService.tags.values()).map((tag, idTag) => 
-                                                <TagSticker key={idTag} tag={tag} onRefresh={onRefreshTags}/>
+                                                <TagSticker key={idTag} tag={tag} onRefresh={onRefresh} navigation={navigation}/>
                                             )
                                         }
                                     </ScrollView>
@@ -95,7 +99,7 @@ export default function BookModal({ book, showModal, setShowModal, onRefresh }: 
                         </ScrollView>
                     </View>
                     <View style={BookModalStyles.buttonsContainer}>
-                        <TextIconButton callBack={() => setShowModal(!showModal)} showIcon={false} text='Modifier' buttonStyle={BookModalStyles.button}/>
+                        <TextIconButton callBack={onEditBook} showIcon={false} text='Modifier' buttonStyle={BookModalStyles.button}/>
                         <TextIconButton callBack={onDeleteBook} isLoading={isLoading} showIcon={false} text='Supprimer' buttonStyle={BookModalStyles.button}/>
                     </View>
                 </View>

@@ -1,5 +1,5 @@
 import { View, Text, FlatList, RefreshControl, ToastAndroid } from 'react-native'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CommonStyles from '../../styles/CommonStyles'
 import TitleScreen from '../../components/TitleScreen'
 import TagCard from '../../components/Cards/TagCard'
@@ -23,12 +23,12 @@ export default function TagsScreen({navigation, route } : any) {
         });
     }, [navigation]);
 
-    const onRefresh = useCallback(async () => {
+    const onRefresh = async () => {
         const tags = Array.from(client.tagService.tags.values());
         setTags([...tags]);
-    }, []);
+    };
 
-    const onRefreshFecthAPI = useCallback(async () => {
+    const onRefreshFecthAPI = async () => {
         setIsLoading(true);
         try{
             const tags = Array.from((await client.tagService.fetchTags()).values());
@@ -37,7 +37,7 @@ export default function TagsScreen({navigation, route } : any) {
             ToastAndroid.show("Problème lors du chargement des tags" , ToastAndroid.CENTER);
         }
         setIsLoading(false);
-    }, []);
+    };
 
     const onChangeSearch = (text : string) => {
         const filteredTags = Array.from(client.tagService.tags.values()).filter((tag) =>
@@ -68,7 +68,7 @@ export default function TagsScreen({navigation, route } : any) {
                     initialNumToRender={2}
                     numColumns={2}
                     data={tags}
-                    renderItem={({item}) => <TagCard key={item.idTag} tag={item} onRefresh={onRefresh}/>}
+                    renderItem={({item}) => <TagCard key={item.idTag} tag={item} onRefresh={onRefresh} navigation={navigation}/>}
                     keyExtractor={item => item.idTag.toString()}
                     refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}
                     ListHeaderComponent={renderHeader}

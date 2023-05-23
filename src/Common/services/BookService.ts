@@ -39,6 +39,15 @@ export default class BookService extends BaseService {
         return this.addBook(newBook);
     }
 
+    public async editBook(book: BookBuilder){
+        const data = book.toJSON();
+        const res = await axios.put(`${this.getIp()}/api/updateBook/${book.idBook}`, data);
+
+        const newBook:APIBookData = res.data;
+
+        return this.updateBook(newBook);
+    }
+
     public async deleteBook(book: Book) {
         await axios.delete(`${this.getIp()}/api/deleteBook/${book.idBook}`);
 
@@ -49,6 +58,14 @@ export default class BookService extends BaseService {
         const book = new Book(this.client, data);
         this.books.set(book.idBook, book);
         return book;
+    }
+
+    public updateBook(data:APIBookData){
+        const book = this.books.get(data.idBook);
+        if(book){
+            book.update(data);
+            return book;
+        }
     }
 
     public removeBook(idBook:number){
