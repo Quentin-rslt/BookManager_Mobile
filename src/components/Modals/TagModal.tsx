@@ -8,6 +8,7 @@ import BookCard from '../Cards/BookCard';
 import GestureRecognizer from 'react-native-swipe-gestures';
 import { Feather } from '@expo/vector-icons';
 import CommonStyles from '../../styles/CommonStyles';
+import TagBuilder from '../../Common/Class/TagBuilder';
 
 interface Props {
     tag: Tag;
@@ -36,6 +37,13 @@ export default function TagModal({ tag, showModalTag, setShowModalTag, onRefresh
         setIsLoading(false);
     };
 
+    const onEditTag = () => {
+        setShowModalTag(!showModalTag);
+        const newTag:TagBuilder = new TagBuilder(tag.client);
+        newTag.tagToBuilder(tag);
+        navigation.navigate('EditTagScreen', { newTag });
+    }
+
     return (
         <GestureRecognizer style={{flex: 1}} onSwipeDown={ () => setShowModalTag(false) }>
             <Modal style={TagModalStyles.modalContainer} animationType="slide" transparent={true} visible={showModalTag} onRequestClose={() => setShowModalTag(!showModalTag)}>
@@ -60,7 +68,7 @@ export default function TagModal({ tag, showModalTag, setShowModalTag, onRefresh
                         </ScrollView>
                     </View>
                     <View style={TagModalStyles.buttonsContainer}>
-                        <TextIconButton callBack={() => setShowModalTag(!showModalTag)} showIcon={false} text='Modifier' buttonStyle={TagModalStyles.button}/>
+                        <TextIconButton callBack={onEditTag} showIcon={false} text='Modifier' buttonStyle={TagModalStyles.button}/>
                         <TextIconButton callBack={onDeleteTag} isLoading={isLoading} showIcon={false} text='Supprimer' buttonStyle={TagModalStyles.button}/>
                     </View>
                 </View>

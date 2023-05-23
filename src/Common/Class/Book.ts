@@ -29,22 +29,22 @@ export default class Book extends Base {
 
     constructor(client:Client, data: APIBookData) {
         super(client);
-        this.data=data;
-        this.idBook=data.idBook ? data.idBook : 0;
-        this.title=data.title ? data.title : "";
-        this.author=data.author ? data.author : "";
-        this.numberOP=data.numberOP ? data.numberOP : 0;
-        this.notePerso=data.notePerso ? data.notePerso : 0;
-        this.releaseYear=data.releaseYear ? data.releaseYear : "2023";
-        this.summary=data.summary ? data.summary : "";
-        this.readings=data.readings ? data.readings : [];
+        this.data = data;
+        this.idBook = data.idBook ? data.idBook : 0;
+        this.title = data.title ? data.title : "";
+        this.author = data.author ? data.author : "";
+        this.numberOP = data.numberOP ? data.numberOP : 0;
+        this.notePerso = data.notePerso ? data.notePerso : 0;
+        this.releaseYear = data.releaseYear ? data.releaseYear : "2023";
+        this.summary = data.summary ? data.summary : "";
+        this.readings = data.readings ? data.readings : [];
         
-        this.bookTagsService= new BookTagService(this);
+        this.bookTagsService = new BookTagService(this);
     }
 
     public toJSON() {
         return {
-            idBook : this.idBook,
+            idBook: this.idBook,
             title: this.title,
             author: this.author,
             numberOP: this.numberOP,
@@ -57,16 +57,16 @@ export default class Book extends Base {
     }
 
     public update(data: APIBookData){
-        this.data=data;
-        this.idBook=data.idBook;
-        this.title=data.title;
-        this.author=data.author;
-        this.numberOP=data.numberOP;
-        this.notePerso=data.notePerso;
-        this.releaseYear=data.releaseYear;
-        this.summary=data.summary;
-        this.readings=data.readings;
+        this.data =data;
+        this.idBook = data.idBook;
+        this.title = data.title;
+        this.author = data.author;
+        this.numberOP = data.numberOP;
+        this.notePerso = data.notePerso;
+        this.releaseYear = data.releaseYear;
+        this.summary = data.summary;
+        this.readings = data.readings;
         
-        this.bookTagsService= new BookTagService(this);
+        this.bookTagsService = new BookTagService(this);
     }
 } 

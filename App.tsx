@@ -10,6 +10,7 @@ import CommonStyles from './src/styles/CommonStyles';
 import { COLORS } from './src/Common/CommonColors';
 import AddTagScreen from './src/Screens/Tag/AddTagScreen';
 import EditBookScreen from './src/Screens/Book/EditBookScreen';
+import EditTagScreen from './src/Screens/Tag/EditTagScreen';
 
 const Stack = createStackNavigator();
 
@@ -45,6 +46,7 @@ export default function App() {
                 <Stack.Screen name="AddBookScreen" component={AddBookScreen} options={{ headerShown: false, animationEnabled: false }} initialParams={{ client }}/>
                 <Stack.Screen name="EditBookScreen" component={EditBookScreen} options={{ headerShown: false, animationEnabled: false }} initialParams={{ client }}/>
                 <Stack.Screen name="AddTagScreen" component={AddTagScreen} options={{ headerShown: false, animationEnabled: false }} initialParams={{ client }}/>
+                <Stack.Screen name="EditTagScreen" component={EditTagScreen} options={{ headerShown: false, animationEnabled: false }} initialParams={{ client }}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

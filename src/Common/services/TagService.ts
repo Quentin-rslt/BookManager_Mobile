@@ -39,6 +39,15 @@ export default class TagService extends BaseService {
         return this.addTag(newTag);
     }
 
+    public async editTag(tag: TagBuilder){
+        const data = tag.toJSON();
+        const res = await axios.put(`${this.getIp()}/api/updateTag/${tag.idTag}`, data);
+
+        const newBook:APITagData = res.data;
+
+        return this.updateTag(newBook);
+    }
+
     public async deleteTag(tag: Tag){
         await axios.delete(`${this.getIp()}/api/deleteTag/${tag.idTag}`);
 
@@ -49,6 +58,14 @@ export default class TagService extends BaseService {
         const tag = new Tag(this.client, data);
         this.tags.set(data.idTag, tag);
         return tag;
+    }
+
+    public updateTag(data:APITagData){
+        const tag = this.tags.get(data.idTag);
+        if(tag){
+            tag.update(data);
+            return tag;
+        }
     }
 
     public removeTag(tag: Tag){
