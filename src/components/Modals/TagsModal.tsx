@@ -1,6 +1,5 @@
 import { Modal, View } from 'react-native'
-import React, { useState } from 'react'
-import Book from '../../Common/Class/Book';
+import React, { useEffect, useState } from 'react'
 import MultiSelect from 'react-native-multiple-select'
 import TagsModalStyles from '../../styles/components/Modals/TagsModalStyles';
 import TextIconButton from '../Buttons/TextIconButton';
@@ -8,9 +7,8 @@ import { COLORS } from '../../Common/CommonColors';
 import Tag from '../../Common/Class/Tag';
 import TitleScreen from '../TitleScreen';
 import BookBuilder from '../../Common/Class/BookBuilder';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 import GestureRecognizer from 'react-native-swipe-gestures';
-import BookTagService from '../../Common/services/BookTagService';
 
 interface Props {
     book: BookBuilder;
@@ -23,9 +21,9 @@ export default function TagsModal({ book, showModal, setShowModal }: Props) {
     const client = book.client;
     const tags = Array.from(client.tagService.tags.values());
 
-    const [selectedTags, setSelectedTags] = useState<string[]>();
+    const [selectedTags, setSelectedTags] = useState<number[]>([]);
 
-    const onSelectedItemsChange = (selectedTags:string[]) => {
+    const onSelectedItemsChange = (selectedTags:number[]) => {
         const newTags: Tag[]= [];
         setSelectedTags(selectedTags);
  
@@ -33,19 +31,25 @@ export default function TagsModal({ book, showModal, setShowModal }: Props) {
             const tag = client.tagService.tags.get(+selectedTag);
             tag && newTags.push(tag);
         }
-        
+
         book.setTags(newTags);
     }
 
+    useEffect(() => {
+        for(const tag of book.tags) {
+            selectedTags.push(tag.idTag);
+        }
+    }, []);
+
     return (
         <GestureRecognizer style={{flex: 1}} onSwipeDown={ () => setShowModal(false) }>
-            <Modal animationType="slide" transparent={true} visible={showModal} onRequestClose={() => setShowModal(!showModal)}>
+            <Modal style={TagsModalStyles.modalContainer} animationType="slide" transparent={true} visible={showModal} onRequestClose={() => setShowModal(!showModal)}>
                 <View style={TagsModalStyles.container}>
                     <View style={TagsModalStyles.returnButton}>
-                        <MaterialCommunityIcons name={'minus'} size={35} color={COLORS.accentColor}/>
+                        <Feather name={'minus'} size={65} color={COLORS.accentColor}/>
                     </View>
-                    <TitleScreen title='Tags'/>
                     <View style={TagsModalStyles.multiSelectContainer}> 
+                        <TitleScreen title='Tags'/>
                         <MultiSelect
                             fixedHeight={true}
                             items={tags}

@@ -11,7 +11,7 @@ export default StyleSheet.create({
     container: {
         position: 'absolute',
         bottom: 0,
-        height: '80%',
+        height: '83%',
         width: "100%",
         backgroundColor: COLORS.background,
         borderTopLeftRadius: 25,

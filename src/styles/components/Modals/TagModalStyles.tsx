@@ -12,7 +12,7 @@ export default StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         width: "100%",
-        height: '80%',
+        height: '83%',
         backgroundColor: COLORS.background,
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
