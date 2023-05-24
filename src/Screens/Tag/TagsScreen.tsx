@@ -1,14 +1,14 @@
 import { View, Text, FlatList, RefreshControl, ToastAndroid } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import CommonStyles from '../../styles/CommonStyles'
 import TitleScreen from '../../components/TitleScreen'
-import TagCard from '../../components/Cards/TagCard'
+import TagCard from '../../components/cards/TagCard'
 import TagsStyles from '../../styles/Screens/Tag/TagsStyles'
-import TopBar from '../../components/Inputs/TopBar'
-import { COLORS } from '../../Common/CommonColors'
+import TopBar from '../../components/TopBar'
+import { COLORS } from '../../library/CommonColors'
 import TextIconButton from '../../components/Buttons/TextIconButton'
-import Client from '../../Common/Class/Client'
-import TagBuilder from '../../Common/Class/TagBuilder'
+import Client from '../../library/class/Client'
+import TagBuilder from '../../library/builders/TagBuilder'
 
 export default function TagsScreen({navigation, route } : any) {
 

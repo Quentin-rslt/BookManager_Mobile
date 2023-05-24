@@ -1,17 +1,17 @@
 import { Text, View, Modal, ToastAndroid } from 'react-native'
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import BookModalStyles from '../../styles/components/Modals/BookModalStyles'
-import Book from '../../Common/Class/Book'
-import { COLORS } from '../../Common/CommonColors'
+import Book from '../../library/class/Book'
+import { COLORS } from '../../library/CommonColors'
 import { ScrollView } from 'react-native-gesture-handler'
 import TagSticker from '../Buttons/TagSticker'
-import ReadingCard from '../Cards/ReadingCard'
+import ReadingCard from '../cards/ReadingCard'
 import NumberIcon from '../NumberIcon'
 import GestureRecognizer from 'react-native-swipe-gestures'
 import { Feather } from '@expo/vector-icons';
 import TextIconButton from '../Buttons/TextIconButton'
 import CommonStyles from '../../styles/CommonStyles'
-import BookBuilder from '../../Common/Class/BookBuilder'
+import BookBuilder from '../../library/builders/BookBuilder'
 
 interface Props {
     book: Book;
@@ -40,8 +40,7 @@ export default function BookModal({ book, showModalBook, setShowModalBook, onRef
 
     const onEditBook = () => {
         setShowModalBook(!showModalBook);
-        const newBook:BookBuilder = new BookBuilder(book.client);
-        newBook.bookToBuilder(book);
+        const newBook:BookBuilder = new BookBuilder(book.client, book.toJSON());
         navigation.navigate('EditBookScreen', { newBook });
     };
 
@@ -64,12 +63,12 @@ export default function BookModal({ book, showModalBook, setShowModalBook, onRef
                                 <Text style={BookModalStyles.textNumber}>{book.releaseYear}</Text>
                             </View>
                             {
-                                book.bookTagsService.tags.size !== 0 && 
+                                book.tags.size !== 0 && 
                                 <View>
-                                    <Text style={BookModalStyles.textHolder}>Tags : ({book.bookTagsService.tags.size.toString()})</Text>
+                                    <Text style={BookModalStyles.textHolder}>Tags : ({book.tags.size.toString()})</Text>
                                     <ScrollView horizontal showsHorizontalScrollIndicator={false} style={BookModalStyles.tagsContainer}>
                                         {
-                                            Array.from(book.bookTagsService.tags.values()).map((tag, idTag) => 
+                                            Array.from(book.tags.values()).map((tag, idTag) => 
                                                 <TagSticker key={idTag} tag={tag} onRefresh={onRefresh} navigation={navigation}/>
                                             )
                                         }

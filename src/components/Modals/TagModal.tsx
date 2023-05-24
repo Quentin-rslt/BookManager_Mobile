@@ -1,14 +1,14 @@
 import { View, Text, Modal, ScrollView, ToastAndroid } from 'react-native'
-import React, { useCallback, useState } from 'react'
-import Tag from '../../Common/Class/Tag';
+import React, { useState } from 'react'
+import Tag from '../../library/class/Tag';
 import TextIconButton from '../Buttons/TextIconButton';
-import { COLORS } from '../../Common/CommonColors';
+import { COLORS } from '../../library/CommonColors';
 import TagModalStyles from '../../styles/components/Modals/TagModalStyles';
-import BookCard from '../Cards/BookCard';
+import BookCard from '../cards/BookCard';
 import GestureRecognizer from 'react-native-swipe-gestures';
 import { Feather } from '@expo/vector-icons';
 import CommonStyles from '../../styles/CommonStyles';
-import TagBuilder from '../../Common/Class/TagBuilder';
+import TagBuilder from '../../library/builders/TagBuilder';
 
 interface Props {
     tag: Tag;
@@ -39,8 +39,7 @@ export default function TagModal({ tag, showModalTag, setShowModalTag, onRefresh
 
     const onEditTag = () => {
         setShowModalTag(!showModalTag);
-        const newTag:TagBuilder = new TagBuilder(tag.client);
-        newTag.tagToBuilder(tag);
+        const newTag:TagBuilder = new TagBuilder(tag.client, tag.toJSON());
         navigation.navigate('EditTagScreen', { newTag });
     }
 
@@ -55,11 +54,11 @@ export default function TagModal({ tag, showModalTag, setShowModalTag, onRefresh
                         <ScrollView style={CommonStyles.scrollViewContainer} showsVerticalScrollIndicator={false}>
                             <Text style={TagModalStyles.textTag}>{tag.textTag}</Text>
                             {   
-                                tag.tagBooksService.books.size !== 0 &&
+                                tag.books.size !== 0 &&
                                 <View style={TagModalStyles.booksContainer}>
-                                    <Text style={TagModalStyles.textHolder}>Livres : ({tag.tagBooksService.books.size.toString()})</Text>
+                                    <Text style={TagModalStyles.textHolder}>Livres : ({tag.books.size.toString()})</Text>
                                     {
-                                        Array.from(tag.tagBooksService.books.values()).map((book, idBook) => 
+                                        Array.from(tag.books.values()).map((book, idBook) => 
                                             <BookCard key={idBook} book={book} onRefresh={onRefresh} navigation={navigation}/>
                                         )
                                     }

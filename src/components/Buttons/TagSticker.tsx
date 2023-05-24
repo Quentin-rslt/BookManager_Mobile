@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import TagStickerStyles from '../../styles/components/Buttons/TagStickerStyles';
-import Tag from '../../Common/Class/Tag';
+import Tag from '../../library/class/Tag';
 import TextIconButton from './TextIconButton';
 import { View } from 'react-native';
 import TagModal from '../Modals/TagModal';

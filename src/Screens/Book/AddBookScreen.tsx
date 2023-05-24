@@ -1,17 +1,17 @@
 import { View, Text, ScrollView, ToastAndroid } from 'react-native'
-import React, { useCallback, useState } from 'react'
+import { useState } from 'react'
 import CommonStyles from '../../styles/CommonStyles'
 import TitleScreen from '../../components/TitleScreen'
 import AddBookStyles from '../../styles/Screens/Book/AddBookStyles'
-import TopBar from '../../components/Inputs/TopBar'
 import TextIconButton from '../../components/Buttons/TextIconButton'
 import InputText from '../../components/Inputs/InputText'
-import ReadingCard from '../../components/Cards/ReadingCard'
+import ReadingCard from '../../components/cards/ReadingCard'
 import TagSticker from '../../components/Buttons/TagSticker'
 import DatePicker from '../../components/Buttons/DatePicker'
 import { LogBox } from 'react-native';
 import TagsModal from '../../components/Modals/TagsModal'
-import BookBuilder from '../../Common/Class/BookBuilder'
+import BookBuilder from '../../library/builders/BookBuilder'
+import TopBar from '../../components/TopBar'
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',

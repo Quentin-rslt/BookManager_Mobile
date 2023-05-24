@@ -1,6 +1,6 @@
-import { APITagData } from "../Type/Data";
-import TagBookService from "../services/TagBookService";
+import { APITagData } from "../type/Data";
 import Base from "./Base";
+import Book from "./Book";
 import Client from "./Client";
 
 export default class Tag extends Base {
@@ -12,17 +12,13 @@ export default class Tag extends Base {
     
     public colorTag: number;
 
-    public tagBooksService: TagBookService;
-
 
     constructor(client:Client, data: APITagData) {
         super(client);
         this.data = data;
-        this.idTag = data.idTag ? data.idTag : 0;
-        this.textTag = data.textTag ? data.textTag : "";
-        this.colorTag = data.colorTag ? data.colorTag : 0;
-
-        this.tagBooksService = new TagBookService(this);
+        this.idTag = data.idTag;
+        this.textTag = data.textTag;
+        this.colorTag = data.colorTag;
     }
 
     public toJSON() {
@@ -30,6 +26,7 @@ export default class Tag extends Base {
             idTag: this.idTag,
             textTag: this.textTag,
             colorTag: this.colorTag,
+            books: this.books,
         }
     }
 
@@ -38,7 +35,19 @@ export default class Tag extends Base {
         this.idTag = data.idTag;
         this.textTag = data.textTag;
         this.colorTag = data.colorTag;
+    }
+
+    get books(){
+        const books = new Map<number, Book>();
         
-        this.tagBooksService = new TagBookService(this);
+        for(const b of this.client.bookService.books.values()){
+            for(const t of b.tags.values()){
+                if(t.idTag === this.idTag) {
+                    books.set(b.idBook, b);
+                }
+            }
+        }
+
+        return books;
     }
 }

@@ -4,10 +4,10 @@
     "slug": "Mobile_App",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/logo_BookManager.png",
+    "icon": "./assets/logo_BookManager.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./src/assets/logo_BookManager.png",
+      "image": "./assets/logo_BookManager.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,12 +22,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/logo_BookManager.png",
+        "foregroundImage": "./assets/logo_BookManager.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./src/assets/logo_BookManager.png"
+      "favicon": "./assets/logo_BookManager.png"
     },
     "androidStatusBar": {
       "backgroundColor": "#262222",

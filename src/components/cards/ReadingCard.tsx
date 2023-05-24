@@ -1,11 +1,11 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import ReadingCardStyles from '../../styles/components/Cards/ReadingCardStyles'
-import { COLORS } from '../../Common/CommonColors';
-import Reading from '../../Common/Class/Reading';
-import Book from '../../Common/Class/Book';
+import ReadingCardStyles from '../../styles/components/cards/ReadingCardStyles'
+import { COLORS } from '../../library/CommonColors';
+import Reading from '../../library/class/Reading';
+import Book from '../../library/class/Book';
 import TextIconButton from '../Buttons/TextIconButton';
-import BookBuilder from '../../Common/Class/BookBuilder';
+import BookBuilder from '../../library/builders/BookBuilder';
 
 interface Props {
     book: Book|BookBuilder;
@@ -26,8 +26,10 @@ export default function ReadingCard({reading, showDeleteButton=false, book, refr
     const delay = (((endReadingDate.getTime() - startReadingDate.getTime()) / 86400000) + 1).toFixed(0);
 
     const onClickDeleteReading = () => {
-        book.deleteReading(idReading);
-        setRefresh && setRefresh(!refresh);
+        if(book instanceof BookBuilder){
+            book.deleteReading(idReading);
+            setRefresh && setRefresh(!refresh);
+        }
     };
 
     return (

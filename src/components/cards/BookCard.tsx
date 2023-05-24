@@ -1,7 +1,7 @@
 import { Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
-import Book from '../../Common/Class/Book'
-import BookCardStyles from '../../styles/components/Cards/BookCardStyles';
+import Book from '../../library/class/Book'
+import BookCardStyles from '../../styles/components/cards/BookCardStyles';
 import TagSticker from '../Buttons/TagSticker';
 import NumberIcon from '../NumberIcon';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -32,7 +32,7 @@ export default function BookCard({book, onRefresh, navigation} : Props) {
                 </View>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}  style={BookCardStyles.tagList}>
                     {
-                        Array.from(book.bookTagsService.tags.values()).map((tag, idTag) =>
+                        Array.from(book.tags.values()).map((tag, idTag) =>
                             <View key={idTag}>   
                                 <TagSticker tag={tag} onRefresh={onRefresh} navigation={navigation}/>
                             </View>
