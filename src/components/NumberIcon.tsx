@@ -2,7 +2,7 @@ import { Text, View } from 'react-native'
 import React from 'react'
 import NumberIconStyles from '../styles/components/NumberIconStyles';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { COLORS } from '../Common/CommonColors';
+import { COLORS } from '../library/CommonColors';
 
 type Props = {
     iconNumber: number;

@@ -1,9 +1,9 @@
 import { TextInput, View } from 'react-native'
-import TopBarStyles from '../../styles/components/Inputs/TopBarStyles'
-import { COLORS } from '../../Common/CommonColors';
+import { COLORS } from '../library/CommonColors';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
-import TextIconButton from '../buttons/TextIconButton';
+import TopBarStyles from '../styles/components/TopBarStyles';
+import TextIconButton from './Buttons/TextIconButton';
 
 type Props = {
     onChangeSearch ?: (text: string) => void;

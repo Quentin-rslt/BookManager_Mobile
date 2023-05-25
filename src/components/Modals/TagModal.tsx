@@ -1,14 +1,14 @@
 import { View, Text, Modal, ScrollView, ToastAndroid } from 'react-native'
 import React, { useState } from 'react'
-import Tag from '../../Common/class/Tag';
-import TextIconButton from '../buttons/TextIconButton';
-import { COLORS } from '../../Common/CommonColors';
+import Tag from '../../library/class/Tag';
+import TextIconButton from '../Buttons/TextIconButton';
+import { COLORS } from '../../library/CommonColors';
 import TagModalStyles from '../../styles/components/Modals/TagModalStyles';
 import BookCard from '../Cards/BookCard';
 import GestureRecognizer from 'react-native-swipe-gestures';
 import { Feather } from '@expo/vector-icons';
 import CommonStyles from '../../styles/CommonStyles';
-import TagBuilder from '../../Common/class/TagBuilder';
+import TagBuilder from '../../library/builders/TagBuilder';
 
 interface Props {
     tag: Tag;

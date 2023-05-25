@@ -1,11 +1,11 @@
 import { Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
-import Book from '../../Common/class/Book'
+import Book from '../../library/class/Book'
 import BookCardStyles from '../../styles/components/Cards/BookCardStyles';
-import TagSticker from '../buttons/TagSticker';
+import TagSticker from '../Buttons/TagSticker';
 import NumberIcon from '../NumberIcon';
 import { ScrollView } from 'react-native-gesture-handler';
-import BookModal from '../modals/BookModal';
+import BookModal from '../Modals/BookModal';
 
 type Props = {
     book: Book;

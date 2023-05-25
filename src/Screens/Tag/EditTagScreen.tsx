@@ -1,12 +1,12 @@
 import { View, ScrollView, ToastAndroid } from 'react-native'
 import { useState } from 'react'
-import TopBar from '../../components/inputs/TopBar';
+import TopBar from '../../components/TopBar';
 import CommonStyles from '../../styles/CommonStyles';
 import TitleScreen from '../../components/TitleScreen';
-import InputText from '../../components/inputs/InputText';
-import TextIconButton from '../../components/buttons/TextIconButton';
-import EditTagStyles from '../../styles/Screens/tag/EditTagStyles';
-import TagBuilder from '../../Common/class/TagBuilder';
+import InputText from '../../components/Inputs/InputText';
+import TextIconButton from '../../components/Buttons/TextIconButton';
+import EditTagStyles from '../../styles/Screens/Tag/EditTagStyles';
+import TagBuilder from '../../library/builders/TagBuilder';
 
 export default function AddTagScreen({ navigation, route } : any) {
 

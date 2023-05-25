@@ -1,13 +1,12 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import DatePickerStyles from '../../styles/components/Buttons/DatePickerStyles';
-import Reading from '../../Common/class/Reading';
+import Reading from '../../library/class/Reading';
 import TextIconButton from './TextIconButton';
 import CommonStyles from '../../styles/CommonStyles';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { COLORS } from '../../Common/CommonColors';
-import Book from '../../Common/class/Book';
-import BookBuilder from '../../Common/builders/BookBuilder';
+import { COLORS } from '../../library/CommonColors';
+import BookBuilder from '../../library/builders/BookBuilder';
 
 interface Props {
     book: BookBuilder;

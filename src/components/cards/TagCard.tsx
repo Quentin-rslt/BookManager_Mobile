@@ -2,8 +2,8 @@ import { Text, TouchableOpacity, View } from 'react-native'
 import NumberIcon from '../NumberIcon';
 import TagCardStyles from '../../styles/components/Cards/TagCardStyles';
 import { useState } from 'react';
-import Tag from '../../Common/class/Tag';
-import TagModal from '../modals/TagModal';
+import Tag from '../../library/class/Tag';
+import TagModal from '../Modals/TagModal';
 
 type Props = {
     tag: Tag;
