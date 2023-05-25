@@ -1,7 +1,7 @@
 import { ActivityIndicator, Text, TouchableOpacity } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react'
-import TextIconButtonStyles from '../../styles/components/Buttons/TextIconButtonStyles';
+import TextIconButtonStyles from '../../styles/components/buttons/TextIconButtonStyles';
 import { COLORS } from '../../library/CommonColors';
 
 interface Props {

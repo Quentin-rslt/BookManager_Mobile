@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import ReadingCardStyles from '../../styles/components/Cards/ReadingCardStyles'
+import ReadingCardStyles from '../../styles/components/cards/ReadingCardStyles'
 import { COLORS } from '../../library/CommonColors';
 import Reading from '../../library/class/Reading';
 import Book from '../../library/class/Book';

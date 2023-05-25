@@ -1,6 +1,6 @@
 import { Text, TouchableOpacity, View } from 'react-native'
 import NumberIcon from '../NumberIcon';
-import TagCardStyles from '../../styles/components/Cards/TagCardStyles';
+import TagCardStyles from '../../styles/components/cards/TagCardStyles';
 import { useState } from 'react';
 import Tag from '../../library/class/Tag';
 import TagModal from '../Modals/TagModal';

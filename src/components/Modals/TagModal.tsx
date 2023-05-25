@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Tag from '../../library/class/Tag';
 import TextIconButton from '../Buttons/TextIconButton';
 import { COLORS } from '../../library/CommonColors';
-import TagModalStyles from '../../styles/components/Modals/TagModalStyles';
+import TagModalStyles from '../../styles/components/modals/TagModalStyles';
 import BookCard from '../Cards/BookCard';
 import GestureRecognizer from 'react-native-swipe-gestures';
 import { Feather } from '@expo/vector-icons';

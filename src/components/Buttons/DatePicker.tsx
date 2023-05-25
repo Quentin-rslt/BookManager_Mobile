@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
-import DatePickerStyles from '../../styles/components/Buttons/DatePickerStyles';
+import DatePickerStyles from '../../styles/components/buttons/DatePickerStyles';
 import Reading from '../../library/class/Reading';
 import TextIconButton from './TextIconButton';
 import CommonStyles from '../../styles/CommonStyles';

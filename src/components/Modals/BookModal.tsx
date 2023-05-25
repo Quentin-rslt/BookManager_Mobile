@@ -1,6 +1,6 @@
 import { Text, View, Modal, ToastAndroid } from 'react-native'
 import React, { useState } from 'react'
-import BookModalStyles from '../../styles/components/Modals/BookModalStyles'
+import BookModalStyles from '../../styles/components/modals/BookModalStyles'
 import Book from '../../library/class/Book'
 import { COLORS } from '../../library/CommonColors'
 import { ScrollView } from 'react-native-gesture-handler'

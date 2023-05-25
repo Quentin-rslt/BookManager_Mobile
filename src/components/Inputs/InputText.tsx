@@ -1,6 +1,6 @@
 import { View, Text, TextInput, KeyboardTypeOptions } from 'react-native'
 import React from 'react'
-import InputTextStyles from '../../styles/components/Inputs/InputTextStyles';
+import InputTextStyles from '../../styles/components/inputs/InputTextStyles';
 import CommonStyles from '../../styles/CommonStyles';
 
 interface Props {
