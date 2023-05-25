@@ -74,8 +74,4 @@ export default class Book extends Base {
         
         return tags;
     }
-
-    public remove(tag: Tag) {
-        this.tags.delete(tag.idTag);
-    }
 } 
