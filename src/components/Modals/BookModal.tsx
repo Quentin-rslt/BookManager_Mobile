@@ -40,8 +40,7 @@ export default function BookModal({ book, showModalBook, setShowModalBook, onRef
 
     const onEditBook = () => {
         setShowModalBook(!showModalBook);
-        const newBook:BookBuilder = new BookBuilder(book.client);
-        newBook.bookToBuilder(book);
+        const newBook:BookBuilder = new BookBuilder(book.client, book.toJSON());
         navigation.navigate('EditBookScreen', { newBook });
     };
 
@@ -64,12 +63,12 @@ export default function BookModal({ book, showModalBook, setShowModalBook, onRef
                                 <Text style={BookModalStyles.textNumber}>{book.releaseYear}</Text>
                             </View>
                             {
-                                book.bookTagsService.tags.size !== 0 && 
+                                book.tags.size !== 0 && 
                                 <View>
-                                    <Text style={BookModalStyles.textHolder}>Tags : ({book.bookTagsService.tags.size.toString()})</Text>
+                                    <Text style={BookModalStyles.textHolder}>Tags : ({book.tags.size.toString()})</Text>
                                     <ScrollView horizontal showsHorizontalScrollIndicator={false} style={BookModalStyles.tagsContainer}>
                                         {
-                                            Array.from(book.bookTagsService.tags.values()).map((tag, idTag) => 
+                                            Array.from(book.tags.values()).map((tag, idTag) => 
                                                 <TagSticker key={idTag} tag={tag} onRefresh={onRefresh} navigation={navigation}/>
                                             )
                                         }

@@ -26,8 +26,10 @@ export default function ReadingCard({reading, showDeleteButton=false, book, refr
     const delay = (((endReadingDate.getTime() - startReadingDate.getTime()) / 86400000) + 1).toFixed(0);
 
     const onClickDeleteReading = () => {
-        book.deleteReading(idReading);
-        setRefresh && setRefresh(!refresh);
+        if(book instanceof BookBuilder){
+            book.deleteReading(idReading);
+            setRefresh && setRefresh(!refresh);
+        }
     };
 
     return (

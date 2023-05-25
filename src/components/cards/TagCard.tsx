@@ -20,7 +20,7 @@ export default function TagCard({tag, onRefresh, navigation} : Props) {
             <View style={TagCardStyles.containerButton}>
                 <Text style={TagCardStyles.text} numberOfLines={1}>{tag.textTag}</Text>
                 <View style={TagCardStyles.numberBook}>
-                    <NumberIcon iconNumber={tag.tagBooksService.books.size} iconName={"book-open-outline"} />
+                    <NumberIcon iconNumber={tag.books.size} iconName={"book-open-outline"} />
                 </View>
             </View>
             <TagModal tag={tag} showModalTag={showModalTag} setShowModalTag={setShowModalTag} onRefresh={onRefresh} navigation={navigation}/>

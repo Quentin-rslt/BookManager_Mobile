@@ -15,7 +15,7 @@ export default class TagBookService extends BaseService {
         const books = new Map<number, Book>();
         
         for(const b of this.client.bookService.books.values()){
-            for(const t of b.bookTagsService.tags.values()){
+            for(const t of b.tags.values()){
                 if(t.idTag === this.tag.idTag) {
                     books.set(b.idBook, b);
                 }

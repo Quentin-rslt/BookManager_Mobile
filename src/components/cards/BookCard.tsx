@@ -32,7 +32,7 @@ export default function BookCard({book, onRefresh, navigation} : Props) {
                 </View>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}  style={BookCardStyles.tagList}>
                     {
-                        Array.from(book.bookTagsService.tags.values()).map((tag, idTag) =>
+                        Array.from(book.tags.values()).map((tag, idTag) =>
                             <View key={idTag}>   
                                 <TagSticker tag={tag} onRefresh={onRefresh} navigation={navigation}/>
                             </View>

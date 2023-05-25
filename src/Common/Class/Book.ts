@@ -1,7 +1,5 @@
 import { APIBookData } from "../Type/Data";
-import BookTagService from "../services/BookTagService";
 import Base from "./Base";
-import BookBuilder from "./BookBuilder";
 import Client from "./Client";
 import Reading from "./Reading";
 import Tag from "./Tag";
@@ -24,8 +22,6 @@ export default class Book extends Base {
     public summary: string;
     
     public readings: Array<Reading>;
-    
-    public bookTagsService: BookTagService;
 
     constructor(client:Client, data: APIBookData) {
         super(client);
@@ -38,8 +34,6 @@ export default class Book extends Base {
         this.releaseYear = data.releaseYear ? data.releaseYear : "2023";
         this.summary = data.summary ? data.summary : "";
         this.readings = data.readings ? data.readings : [];
-        
-        this.bookTagsService = new BookTagService(this);
     }
 
     public toJSON() {
@@ -52,7 +46,7 @@ export default class Book extends Base {
             releaseYear: this.releaseYear,
             summary: this.summary,
             readings: Array.from(this.readings),
-            tags: Array.from(this.bookTagsService.tags.values()),
+            tags: Array.from(this.tags.values()),
         }
     }
 
@@ -66,7 +60,22 @@ export default class Book extends Base {
         this.releaseYear = data.releaseYear;
         this.summary = data.summary;
         this.readings = data.readings;
+    }
+
+    get tags(){
+        const tags = new Map<number, Tag>();
+
+        for(const t of this.data.tags) {
+            const tag = this.client.tagService.tags.get(t.idTag);
+            if(tag) {
+                tags.set(tag.idTag, tag);
+            }
+        }
         
-        this.bookTagsService = new BookTagService(this);
+        return tags;
+    }
+
+    public remove(tag: Tag) {
+        this.tags.delete(tag.idTag);
     }
 } 

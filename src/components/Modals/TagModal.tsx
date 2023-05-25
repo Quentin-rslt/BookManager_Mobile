@@ -39,8 +39,7 @@ export default function TagModal({ tag, showModalTag, setShowModalTag, onRefresh
 
     const onEditTag = () => {
         setShowModalTag(!showModalTag);
-        const newTag:TagBuilder = new TagBuilder(tag.client);
-        newTag.tagToBuilder(tag);
+        const newTag:TagBuilder = new TagBuilder(tag.client, tag.toJSON());
         navigation.navigate('EditTagScreen', { newTag });
     }
 
@@ -55,11 +54,11 @@ export default function TagModal({ tag, showModalTag, setShowModalTag, onRefresh
                         <ScrollView style={CommonStyles.scrollViewContainer} showsVerticalScrollIndicator={false}>
                             <Text style={TagModalStyles.textTag}>{tag.textTag}</Text>
                             {   
-                                tag.tagBooksService.books.size !== 0 &&
+                                tag.books.size !== 0 &&
                                 <View style={TagModalStyles.booksContainer}>
-                                    <Text style={TagModalStyles.textHolder}>Livres : ({tag.tagBooksService.books.size.toString()})</Text>
+                                    <Text style={TagModalStyles.textHolder}>Livres : ({tag.books.size.toString()})</Text>
                                     {
-                                        Array.from(tag.tagBooksService.books.values()).map((book, idBook) => 
+                                        Array.from(tag.books.values()).map((book, idBook) => 
                                             <BookCard key={idBook} book={book} onRefresh={onRefresh} navigation={navigation}/>
                                         )
                                     }

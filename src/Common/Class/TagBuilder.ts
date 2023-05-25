@@ -1,6 +1,5 @@
 import Base from "./Base";
 import Client from "./Client";
-import Tag from "./Tag";
 
 export interface TagDataBuilder {
     idTag: number;
@@ -29,12 +28,6 @@ export default class TagBuilder extends Base {
             textTag: this.textTag,
             colorTag: this.colorTag,
         }
-    }
-
-    public tagToBuilder(tag: Tag) {
-        this.idTag = tag.idTag;
-        this.textTag = tag.textTag;
-        this.colorTag = tag.colorTag;
     }
 
     public setTextTag(value: string){
