@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import TagStickerStyles from '../../styles/components/buttons/TagStickerStyles';
+import TagStickerStyles from '../../styles/components/Buttons/TagStickerStyles';
 import Tag from '../../library/class/Tag';
 import TextIconButton from './TextIconButton';
 import { View } from 'react-native';

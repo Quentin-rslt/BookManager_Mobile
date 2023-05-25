@@ -5,7 +5,7 @@ import TitleScreen from '../../components/TitleScreen'
 import AddBookStyles from '../../styles/Screens/Book/AddBookStyles'
 import TextIconButton from '../../components/Buttons/TextIconButton'
 import InputText from '../../components/Inputs/InputText'
-import ReadingCard from '../../components/Cards/ReadingCard'
+import ReadingCard from '../../components/cards/ReadingCard'
 import TagSticker from '../../components/Buttons/TagSticker'
 import DatePicker from '../../components/Buttons/DatePicker'
 import { LogBox } from 'react-native';

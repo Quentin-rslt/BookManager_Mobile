@@ -2,7 +2,7 @@ import { View, Text, FlatList, RefreshControl, ToastAndroid } from 'react-native
 import { useEffect, useState } from 'react'
 import CommonStyles from '../../styles/CommonStyles'
 import TitleScreen from '../../components/TitleScreen'
-import TagCard from '../../components/Cards/TagCard'
+import TagCard from '../../components/cards/TagCard'
 import TagsStyles from '../../styles/Screens/Tag/TagsStyles'
 import TopBar from '../../components/TopBar'
 import { COLORS } from '../../library/CommonColors'

@@ -1,11 +1,11 @@
 import { Text, View, Modal, ToastAndroid } from 'react-native'
 import React, { useState } from 'react'
-import BookModalStyles from '../../styles/components/modals/BookModalStyles'
+import BookModalStyles from '../../styles/components/Modals/BookModalStyles'
 import Book from '../../library/class/Book'
 import { COLORS } from '../../library/CommonColors'
 import { ScrollView } from 'react-native-gesture-handler'
 import TagSticker from '../Buttons/TagSticker'
-import ReadingCard from '../Cards/ReadingCard'
+import ReadingCard from '../cards/ReadingCard'
 import NumberIcon from '../NumberIcon'
 import GestureRecognizer from 'react-native-swipe-gestures'
 import { Feather } from '@expo/vector-icons';

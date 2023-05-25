@@ -1,7 +1,7 @@
 import { Modal, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import MultiSelect from 'react-native-multiple-select'
-import TagsModalStyles from '../../styles/components/modals/TagsModalStyles';
+import TagsModalStyles from '../../styles/components/Modals/TagsModalStyles';
 import TextIconButton from '../Buttons/TextIconButton';
 import { COLORS } from '../../library/CommonColors';
 import Tag from '../../library/class/Tag';
