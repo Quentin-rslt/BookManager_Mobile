@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import TagStickerStyles from '../../styles/components/Buttons/TagStickerStyles';
-import Tag from '../../Common/Class/Tag';
+import Tag from '../../Common/class/Tag';
 import TextIconButton from './TextIconButton';
 import { View } from 'react-native';
-import TagModal from '../Modals/TagModal';
+import TagModal from '../modals/TagModal';
 
 interface Props {
     tag: Tag;

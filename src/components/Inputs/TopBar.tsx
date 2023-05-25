@@ -3,7 +3,7 @@ import TopBarStyles from '../../styles/components/Inputs/TopBarStyles'
 import { COLORS } from '../../Common/CommonColors';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
-import TextIconButton from '../Buttons/TextIconButton';
+import TextIconButton from '../buttons/TextIconButton';
 
 type Props = {
     onChangeSearch ?: (text: string) => void;

@@ -3,8 +3,8 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import NavBarStyles from '../../styles/components/Buttons/NavBarStyles';
 import { COLORS } from '../../Common/CommonColors';
-import LibraryScreen from '../../Screens/Book/LibraryScreen';
-import TagsScreen from '../../Screens/Tag/TagsScreen';
+import LibraryScreen from '../../Screens/book/LibraryScreen';
+import TagsScreen from '../../Screens/tag/TagsScreen';
 
 const Tab = createBottomTabNavigator();
 

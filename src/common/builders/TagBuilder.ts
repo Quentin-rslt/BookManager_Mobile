@@ -1,5 +1,5 @@
-import Base from "./Base";
-import Client from "./Client";
+import Base from "../class/Base";
+import Client from "../class/Client";
 
 export interface TagDataBuilder {
     idTag: number;
@@ -17,9 +17,9 @@ export default class TagBuilder extends Base {
 
     constructor(client:Client, data?: TagDataBuilder) {
         super(client);
-        this.idTag = data?.idTag ? data.idTag : 0;
-        this.textTag = data?.textTag ? data.textTag : "";
-        this.colorTag = data?.colorTag ? data.colorTag : 0;
+        this.idTag = data?.idTag ?? 0;
+        this.textTag = data?.textTag ?? "";
+        this.colorTag = data?.colorTag ?? 0;
     }
 
     public toJSON() {

@@ -1,7 +1,7 @@
-import Base from "./Base";
-import Client from "./Client";
-import Reading from "./Reading";
-import Tag from "./Tag";
+import Base from "../class/Base";
+import Client from "../class/Client";
+import Reading from "../class/Reading";
+import Tag from "../class/Tag";
 
 export interface BookDataBuilder {
     idBook: number;
@@ -36,15 +36,15 @@ export default class BookBuilder extends Base {
 
     constructor(client:Client, data?: BookDataBuilder) {
         super(client);
-        this.idBook=data?.idBook ?? 0;
-        this.title=data?.title ?? "";
-        this.author=data?.author ?? "";
-        this.numberOP=data?.numberOP ?? 0;
-        this.notePerso=data?.notePerso ?? 0;
-        this.releaseYear=data?.releaseYear ?? "2023";
-        this.summary=data?.summary ?? "";
-        this.readings=data?.readings ?? [];
-        this.tags=data?.tags ?? [];
+        this.idBook = data?.idBook ?? 0;
+        this.title = data?.title ?? "";
+        this.author = data?.author ?? "";
+        this.numberOP = data?.numberOP ?? 0;
+        this.notePerso = data?.notePerso ?? 0;
+        this.releaseYear = data?.releaseYear ?? "2023";
+        this.summary = data?.summary ?? "";
+        this.readings = data?.readings ?? [];
+        this.tags = data?.tags ?? [];
     }
 
     public toJSON() {
@@ -56,8 +56,8 @@ export default class BookBuilder extends Base {
             notePerso: this.notePerso,
             releaseYear: this.releaseYear,
             summary: this.summary,
-            readings: Array.from(this.readings),
-            tags: Array.from(this.tags),
+            readings: this.readings,
+            tags: this.tags,
         }
     }
     

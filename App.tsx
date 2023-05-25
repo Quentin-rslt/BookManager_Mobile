@@ -2,15 +2,15 @@ import React, { useMemo } from 'react';
 import { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { ActivityIndicator, View } from 'react-native';
-import NavBar from './src/components/Buttons/NavBar';
+import NavBar from './src/components/buttons/NavBar';
 import { createStackNavigator } from '@react-navigation/stack';
-import AddBookScreen from './src/Screens/Book/AddBookScreen';
-import Client from './src/Common/Class/Client';
+import AddBookScreen from './src/Screens/book/AddBookScreen';
+import Client from './src/Common/class/Client';
 import CommonStyles from './src/styles/CommonStyles';
 import { COLORS } from './src/Common/CommonColors';
-import AddTagScreen from './src/Screens/Tag/AddTagScreen';
-import EditBookScreen from './src/Screens/Book/EditBookScreen';
-import EditTagScreen from './src/Screens/Tag/EditTagScreen';
+import AddTagScreen from './src/Screens/tag/AddTagScreen';
+import EditBookScreen from './src/Screens/book/EditBookScreen';
+import EditTagScreen from './src/Screens/tag/EditTagScreen';
 
 const Stack = createStackNavigator();
 

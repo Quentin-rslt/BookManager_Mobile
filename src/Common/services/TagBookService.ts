@@ -1,5 +1,5 @@
-import Book from '../Class/Book';
-import Tag from '../Class/Tag';
+import Book from '../class/Book';
+import Tag from '../class/Tag';
 import BaseService from './BaseService';
 
 export default class TagBookService extends BaseService {

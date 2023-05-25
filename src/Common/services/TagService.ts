@@ -1,9 +1,9 @@
 import axios from 'axios';
-import Client from '../Class/Client';
-import Tag from '../Class/Tag';
+import Client from '../class/Client';
+import Tag from '../class/Tag';
 import BaseService from './BaseService';
-import TagBuilder from '../Class/TagBuilder';
-import { APITagData } from '../Type/Data';
+import TagBuilder from '../class/TagBuilder';
+import { APITagData } from '../type/Data';
 
 export default class TagService extends BaseService {
 

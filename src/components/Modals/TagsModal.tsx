@@ -2,11 +2,11 @@ import { Modal, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import MultiSelect from 'react-native-multiple-select'
 import TagsModalStyles from '../../styles/components/Modals/TagsModalStyles';
-import TextIconButton from '../Buttons/TextIconButton';
+import TextIconButton from '../buttons/TextIconButton';
 import { COLORS } from '../../Common/CommonColors';
-import Tag from '../../Common/Class/Tag';
+import Tag from '../../Common/class/Tag';
 import TitleScreen from '../TitleScreen';
-import BookBuilder from '../../Common/Class/BookBuilder';
+import BookBuilder from '../../Common/builders/BookBuilder';
 import { Feather } from '@expo/vector-icons';
 import GestureRecognizer from 'react-native-swipe-gestures';
 

@@ -1,9 +1,9 @@
 import axios from 'axios';
-import Book from '../Class/Book';
-import Client from '../Class/Client';
+import Book from '../class/Book';
+import Client from '../class/Client';
 import BaseService from './BaseService';
-import { APIBookData } from '../Type/Data';
-import BookBuilder from '../Class/BookBuilder';
+import { APIBookData } from '../type/Data';
+import BookBuilder from '../builders/BookBuilder';
 
 export default class BookService extends BaseService {
 

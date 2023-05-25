@@ -1,4 +1,4 @@
-import Client from "../Class/Client";
+import Client from "./Client";
 
 export default class Base {
     

@@ -2,14 +2,13 @@ import { FlatList, RefreshControl, Text, ToastAndroid, View } from 'react-native
 import CommonStyles from '../../styles/CommonStyles'
 import TitleScreen from '../../components/TitleScreen'
 import BookCard from '../../components/Cards/BookCard'
-import { useCallback, useEffect, useState } from 'react'
-import Book from '../../Common/Class/Book'
-import TopBar from '../../components/Inputs/TopBar'
+import { useEffect, useState } from 'react'
+import TopBar from '../../components/inputs/TopBar'
 import { COLORS } from '../../Common/CommonColors'
-import LibraryStyles from '../../styles/Screens/Book/LibraryStyles'
-import TextIconButton from '../../components/Buttons/TextIconButton'
-import Client from '../../Common/Class/Client'
-import BookBuilder from '../../Common/Class/BookBuilder'
+import LibraryStyles from '../../styles/Screens/book/LibraryStyles'
+import TextIconButton from '../../components/buttons/TextIconButton'
+import Client from '../../Common/class/Client'
+import BookBuilder from '../../Common/builders/BookBuilder'
 
 export default function LibraryScreen({ navigation, route } : any) {
 
@@ -75,6 +74,6 @@ export default function LibraryScreen({ navigation, route } : any) {
                 </View>
             </View>
         </View>
-  )
+    )
 }
 

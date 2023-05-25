@@ -1,4 +1,4 @@
-import { View, Text, KeyboardType, TextInput, KeyboardTypeOptions } from 'react-native'
+import { View, Text, TextInput, KeyboardTypeOptions } from 'react-native'
 import React from 'react'
 import InputTextStyles from '../../styles/components/Inputs/InputTextStyles';
 import CommonStyles from '../../styles/CommonStyles';

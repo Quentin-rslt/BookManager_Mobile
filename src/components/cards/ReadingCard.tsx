@@ -2,10 +2,10 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import ReadingCardStyles from '../../styles/components/Cards/ReadingCardStyles'
 import { COLORS } from '../../Common/CommonColors';
-import Reading from '../../Common/Class/Reading';
-import Book from '../../Common/Class/Book';
-import TextIconButton from '../Buttons/TextIconButton';
-import BookBuilder from '../../Common/Class/BookBuilder';
+import Reading from '../../Common/class/Reading';
+import Book from '../../Common/class/Book';
+import TextIconButton from '../buttons/TextIconButton';
+import BookBuilder from '../../Common/builders/BookBuilder';
 
 interface Props {
     book: Book|BookBuilder;

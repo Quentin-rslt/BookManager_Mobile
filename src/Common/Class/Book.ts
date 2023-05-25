@@ -1,4 +1,4 @@
-import { APIBookData } from "../Type/Data";
+import { APIBookData } from "../type/Data";
 import Base from "./Base";
 import Client from "./Client";
 import Reading from "./Reading";
@@ -26,14 +26,14 @@ export default class Book extends Base {
     constructor(client:Client, data: APIBookData) {
         super(client);
         this.data = data;
-        this.idBook = data.idBook ? data.idBook : 0;
-        this.title = data.title ? data.title : "";
-        this.author = data.author ? data.author : "";
-        this.numberOP = data.numberOP ? data.numberOP : 0;
-        this.notePerso = data.notePerso ? data.notePerso : 0;
-        this.releaseYear = data.releaseYear ? data.releaseYear : "2023";
-        this.summary = data.summary ? data.summary : "";
-        this.readings = data.readings ? data.readings : [];
+        this.idBook = data.idBook;
+        this.title = data.title;
+        this.author = data.author;
+        this.numberOP = data.numberOP;
+        this.notePerso = data.notePerso;
+        this.releaseYear = data.releaseYear;
+        this.summary = data.summary;
+        this.readings = data.readings;
     }
 
     public toJSON() {
@@ -51,7 +51,7 @@ export default class Book extends Base {
     }
 
     public update(data: APIBookData){
-        this.data =data;
+        this.data = data;
         this.idBook = data.idBook;
         this.title = data.title;
         this.author = data.author;

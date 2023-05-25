@@ -1,17 +1,17 @@
 import { View, Text, ScrollView, ToastAndroid } from 'react-native'
-import React, { useCallback, useState } from 'react'
+import { useState } from 'react'
 import CommonStyles from '../../styles/CommonStyles'
 import TitleScreen from '../../components/TitleScreen'
-import EditBookStyles from '../../styles/Screens/Book/EditBookStyles'
-import TopBar from '../../components/Inputs/TopBar'
-import TextIconButton from '../../components/Buttons/TextIconButton'
-import InputText from '../../components/Inputs/InputText'
+import EditBookStyles from '../../styles/Screens/book/EditBookStyles'
+import TopBar from '../../components/inputs/TopBar'
+import TextIconButton from '../../components/buttons/TextIconButton'
+import InputText from '../../components/inputs/InputText'
 import ReadingCard from '../../components/Cards/ReadingCard'
-import TagSticker from '../../components/Buttons/TagSticker'
-import DatePicker from '../../components/Buttons/DatePicker'
+import TagSticker from '../../components/buttons/TagSticker'
+import DatePicker from '../../components/buttons/DatePicker'
 import { LogBox } from 'react-native';
-import TagsModal from '../../components/Modals/TagsModal'
-import BookBuilder from '../../Common/Class/BookBuilder'
+import TagsModal from '../../components/modals/TagsModal'
+import BookBuilder from '../../Common/builders/BookBuilder'
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
@@ -25,10 +25,10 @@ export default function EditBookScreen({ navigation, route } : any) {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [showModal, setShowModal] = useState<boolean>(false);
 
-    const onRefreshBooks = useCallback(async () => {
+    const onRefreshBooks = async () => {
         setIsLoading(true);
         setIsLoading(false);
-    }, []);
+    };
 
     const onClickSaveBook = async () => {
         setIsLoading(true);

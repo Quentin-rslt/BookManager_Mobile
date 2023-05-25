@@ -1,4 +1,4 @@
-import { APITagData } from "../Type/Data";
+import { APITagData } from "../type/Data";
 import Base from "./Base";
 import Book from "./Book";
 import Client from "./Client";
@@ -16,9 +16,9 @@ export default class Tag extends Base {
     constructor(client:Client, data: APITagData) {
         super(client);
         this.data = data;
-        this.idTag = data.idTag ? data.idTag : 0;
-        this.textTag = data.textTag ? data.textTag : "";
-        this.colorTag = data.colorTag ? data.colorTag : 0;
+        this.idTag = data.idTag;
+        this.textTag = data.textTag;
+        this.colorTag = data.colorTag;
     }
 
     public toJSON() {
