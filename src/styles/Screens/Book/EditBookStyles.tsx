@@ -52,7 +52,7 @@ export default StyleSheet.create({
         height: 150,
         marginBottom: 15,
         paddingHorizontal: 10,
-        borderRadius: 40,
+        borderRadius: 35,
         shadowColor: 'black',
         shadowOpacity: 0.3,
         shadowOffset: { width: 4, height: 4},

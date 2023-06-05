@@ -55,7 +55,7 @@ export default StyleSheet.create({
         height: 45,
         width: "48%",
         justifyContent: 'center',
-        borderRadius : 17,
+        borderRadius : 40,
         shadowColor: COLORS.Black,
         shadowOpacity: 0.5,
         shadowOffset: { width: 4, height: 4},
