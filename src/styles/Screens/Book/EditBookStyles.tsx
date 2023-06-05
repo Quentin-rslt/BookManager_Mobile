@@ -17,7 +17,7 @@ export default StyleSheet.create({
         backgroundColor: COLORS.clickableColor,
         color: COLORS.background,
         height: 45,
-        borderRadius : 17,
+        borderRadius : 40,
         shadowColor: COLORS.Black,
         shadowOpacity: 0.5,
         shadowOffset: { width: 4, height: 4},
@@ -25,12 +25,11 @@ export default StyleSheet.create({
     },
     tagsContainer: {
         alignItem: 'center',
-        width: "85%",
+        width: "95%",
         height: 40,
         display : "flex",
         flexDirection : "row",
         overflow: 'scroll',
-        marginBottom: 5,
         paddingTop: 5
     },
     addTagContainer: {
@@ -49,29 +48,26 @@ export default StyleSheet.create({
     },
     descriptionContainer: {
         backgroundColor: COLORS.componentBackground,
-        width: '85%',
+        width: '95%',
         height: 150,
         marginBottom: 15,
         paddingHorizontal: 10,
-        borderRadius: 20,
+        borderRadius: 40,
         shadowColor: 'black',
         shadowOpacity: 0.3,
         shadowOffset: { width: 4, height: 4},
         elevation: 5,
     },
-    spinnerContainer: {
-        width: '85%',
-    },
     inputNumberContainer: {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: '85%',
+        width: '95%',
     },
     inputNumber: {
         width: '45%',
     },
     readingsContainer: {
-        width: '85%',
+        width: '95%',
     }
 });

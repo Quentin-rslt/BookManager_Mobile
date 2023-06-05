@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     booksContainer : {
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
         justifyContent: 'center',
         paddingBottom: 80,
     },

@@ -4,11 +4,11 @@ import { COLORS } from "../../../library/CommonColors";
 export default StyleSheet.create({
     txtFieldBackground: {
         justifyContent: 'center',
-        width: '85%',
+        width: '95%',
         height: 55,
-        marginBottom: 15,
+        marginBottom: 10,
         paddingHorizontal: 10,
-        borderRadius: 20,
+        borderRadius: 40,
         backgroundColor: COLORS.componentBackground,
         shadowColor: 'black',
         shadowOpacity: 0.3,

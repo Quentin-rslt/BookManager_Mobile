@@ -4,11 +4,11 @@ import { COLORS } from "../../../library/CommonColors";
 export default StyleSheet.create({
     container: {
         width:"100%",
-        height:150,
+        height:135,
         overflow:'hidden',
         backgroundColor: COLORS.componentBackground,
-        borderRadius : 30,
-        marginBottom: 30,
+        borderRadius : 40,
+        marginBottom: 12,
         shadowColor: 'black',
         shadowOpacity: 0.3,
         shadowOffset: { width: 4, height: 4},
@@ -32,7 +32,7 @@ export default StyleSheet.create({
     },
     tagList: {
         height:30,
-        marginTop : 13,
+        marginTop : 5,
         marginHorizontal:20,
     },
     numberContainer: {

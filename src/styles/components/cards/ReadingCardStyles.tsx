@@ -9,7 +9,7 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         width: '100%',
         height: 90,
-        borderRadius : 20,
+        borderRadius : 35,
         marginBottom: 15,
         paddingHorizontal: 20,
         shadowColor: 'black',

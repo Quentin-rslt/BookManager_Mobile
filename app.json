@@ -30,7 +30,7 @@
       "favicon": "./assets/logo_BookManager.png"
     },
     "androidStatusBar": {
-      "backgroundColor": "#262222",
+      "backgroundColor": "#1f1b1b",
       "translucent": false
     }
   }

@@ -14,9 +14,9 @@ export default StyleSheet.create({
         width: "100%",
         height: '83%',
         backgroundColor: COLORS.background,
-        borderTopLeftRadius: 25,
-        borderTopRightRadius: 25,
-        paddingBottom: 100,
+        borderTopLeftRadius: 40,
+        borderTopRightRadius: 40,
+        paddingBottom: 75,
         shadowColor: COLORS.Black,
         shadowOpacity: 0.5,
         shadowOffset: { width: 4, height: 4},
@@ -24,9 +24,9 @@ export default StyleSheet.create({
     },
     tagContainer: {
         height: '100%',
-        margin: 20,
+        margin: 10,
         backgroundColor: COLORS.backgroundLight,
-        borderRadius: 25,
+        borderRadius: 40,
     },
     returnButton : {
         position: 'absolute',
@@ -36,7 +36,7 @@ export default StyleSheet.create({
         top: -40,
     },
     booksContainer: {
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
         marginTop: 20,
     },
     buttonsContainer: {
@@ -46,8 +46,8 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         position: 'absolute',
-        bottom: 20,
-        paddingHorizontal: 20,
+        bottom: 10,
+        paddingHorizontal: 10,
     },
     button: {
         backgroundColor: COLORS.clickableColor,

@@ -43,6 +43,11 @@ export default function StatsScreen({ navigation, route } : any) {
                         <NumberIcon iconName={"tag"} iconNumber={tags.length} iconFontSize={50} iconSize={50}/>
                         <NumberIcon iconName={"eye-outline"} iconNumber={readings.length} iconFontSize={50} iconSize={50}/>
                     </View>
+                    {
+                        readings.map((reading) => 
+                            <Text key={reading.idReading}>{reading.book?.title}</Text>
+                        )
+                    }
                 </ScrollView>
             </View>
         </View>

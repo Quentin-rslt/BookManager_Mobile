@@ -3,12 +3,12 @@ import { COLORS } from "../../../library/CommonColors";
 
 export default StyleSheet.create({
     container : {
-        width: "47%",
+        width: "48%",
         aspectRatio: 1,
         overflow:'hidden',
         backgroundColor: COLORS.componentBackground,
-        borderRadius : 30,
-        marginBottom: 19,
+        borderRadius : 40,
+        marginBottom: 12,
         shadowColor: 'black',
         shadowOpacity: 0.3,
         shadowOffset: { width: 4, height: 4},
