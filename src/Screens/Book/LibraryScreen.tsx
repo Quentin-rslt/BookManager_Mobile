@@ -31,6 +31,7 @@ export default function LibraryScreen({ navigation, route } : any) {
     const onRefreshFecthAPI = async () => {
         setIsLoading(true);
         try{    
+            await client.fetchAll();
             setBooks(Array.from((await client.bookService.fetchBooks()).values()));
         } catch(error) {
             ToastAndroid.show("Problème lors du chargement des livres" , ToastAndroid.CENTER);

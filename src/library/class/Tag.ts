@@ -4,6 +4,7 @@ import Book from "./Book";
 import Client from "./Client";
 
 export default class Tag extends Base {
+    
     public data: APITagData;
 
     public idTag: number;
@@ -11,7 +12,6 @@ export default class Tag extends Base {
     public textTag: string;
     
     public colorTag: number;
-
 
     constructor(client:Client, data: APITagData) {
         super(client);

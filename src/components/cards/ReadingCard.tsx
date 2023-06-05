@@ -6,12 +6,13 @@ import Reading from '../../library/class/Reading';
 import Book from '../../library/class/Book';
 import TextIconButton from '../Buttons/TextIconButton';
 import BookBuilder from '../../library/builders/BookBuilder';
+import ReadingBuilder from '../../library/builders/ReadingBuilder';
 
 interface Props {
     book: Book|BookBuilder;
     refresh?: boolean;
     setRefresh?: React.Dispatch<React.SetStateAction<boolean>>;
-    reading : Reading;
+    reading : Reading|ReadingBuilder;
     idReading : number;
     showDeleteButton?: boolean;
 }

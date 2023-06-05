@@ -7,6 +7,7 @@ import CommonStyles from '../../styles/CommonStyles';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { COLORS } from '../../library/CommonColors';
 import BookBuilder from '../../library/builders/BookBuilder';
+import ReadingBuilder from '../../library/builders/ReadingBuilder';
 
 interface Props {
     book: BookBuilder;
@@ -42,7 +43,11 @@ export default function DatesPickers({book, refresh, setRefresh} : Props) {
     }
 
     const onClickAddReading = () => {
-        book.addReading(new Reading(startDateReading, endDateReading));
+        const reading:ReadingBuilder = new ReadingBuilder(book.client);
+        reading.setStartReadingDate(startDateReading);
+        reading.setEndReadingDate(endDateReading);
+
+        book.addReading(reading);
         setRefresh(!refresh);
     }
 

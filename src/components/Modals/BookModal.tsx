@@ -83,12 +83,12 @@ export default function BookModal({ book, showModalBook, setShowModalBook, onRef
                                 </View>
                             }
                             {
-                                book.readings.length !== 0 &&
+                                book.readings.size !== 0 &&
                                 <View>
-                                    <Text style={BookModalStyles.textHolder}>Lectures : ({book.readings.length})</Text>
+                                    <Text style={BookModalStyles.textHolder}>Lectures : ({book.readings.size})</Text>
                                     <View style={BookModalStyles.readingsContainer}>
                                         {
-                                            book.readings.map((reading, idReading) => 
+                                            Array.from(book.readings.values()).map((reading, idReading) => 
                                                 <ReadingCard key={idReading} reading={reading} showDeleteButton={false} idReading={idReading} book={book}/>
                                             )
                                         }

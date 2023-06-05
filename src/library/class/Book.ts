@@ -5,6 +5,7 @@ import Reading from "./Reading";
 import Tag from "./Tag";
 
 export default class Book extends Base {
+    
     public data: APIBookData;
 
     public idBook: number;
@@ -20,8 +21,6 @@ export default class Book extends Base {
     public releaseYear: string;
     
     public summary: string;
-    
-    public readings: Array<Reading>;
 
     constructor(client:Client, data: APIBookData) {
         super(client);
@@ -33,7 +32,6 @@ export default class Book extends Base {
         this.notePerso = data.notePerso;
         this.releaseYear = data.releaseYear;
         this.summary = data.summary;
-        this.readings = data.readings;
     }
 
     public toJSON() {
@@ -45,7 +43,7 @@ export default class Book extends Base {
             notePerso: this.notePerso,
             releaseYear: this.releaseYear,
             summary: this.summary,
-            readings: Array.from(this.readings),
+            readings: Array.from(this.readings.values()),
             tags: Array.from(this.tags.values()),
         }
     }
@@ -59,7 +57,6 @@ export default class Book extends Base {
         this.notePerso = data.notePerso;
         this.releaseYear = data.releaseYear;
         this.summary = data.summary;
-        this.readings = data.readings;
     }
 
     get tags(){
@@ -73,5 +70,18 @@ export default class Book extends Base {
         }
         
         return tags;
+    }
+
+    get readings(){
+        const readings = new Map<number, Reading>();
+        
+        for(const r of this.data.readings) {
+            const reading = this.client.readingService.readings.get(r.idReading);
+            if(reading) {
+                readings.set(reading.idReading, reading);
+            }
+        }
+        
+        return readings;
     }
 } 

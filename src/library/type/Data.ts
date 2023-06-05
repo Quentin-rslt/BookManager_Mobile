@@ -6,23 +6,23 @@ export interface APIBookData {
     notePerso: number;
     releaseYear: string;
     summary: string;
-    readings: APIReadingData[];
-    
+    readings: APIBookReading[];
     tags: APIBookTag[];
 }
 export type APITagBook = Omit<APIBookData, "tags">;
 
 export interface APIReadingData {
-    idReading:number;
-    startReadingDate:Date;
-    endReadingDate:Date;
+    idReading: number;
+    startReadingDate: Date;
+    endReadingDate: Date;
+    book: APIBookData;
 }
+export type APIBookReading = Omit<APIReadingData, "book">;
 
 export interface APITagData {
     idTag: number;
     textTag: string;
     colorTag: number;
-
     books: APITagBook[];
 }
 export type APIBookTag = Omit<APITagData, "books">;

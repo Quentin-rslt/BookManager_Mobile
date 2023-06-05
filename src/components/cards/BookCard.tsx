@@ -40,7 +40,7 @@ export default function BookCard({book, onRefresh, navigation} : Props) {
                     }
                 </ScrollView>
                 <View style={BookCardStyles.numberContainer}>
-                    <NumberIcon iconNumber={book.readings.length} iconName={"eye-outline"}/>
+                    <NumberIcon iconNumber={book.readings.size} iconName={"eye-outline"}/>
                     <NumberIcon iconNumber={book.numberOP} iconName={"book-open-page-variant-outline"}/>
                     <NumberIcon iconNumber={book.notePerso} iconName={"star"}/>
                 </View>

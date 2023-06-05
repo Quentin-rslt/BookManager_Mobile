@@ -1,10 +1,11 @@
 import React from 'react'
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import NavBarStyles from '../../styles/components/Buttons/NavBarStyles';
 import { COLORS } from '../../library/CommonColors';
 import LibraryScreen from '../../Screens/Book/LibraryScreen';
 import TagsScreen from '../../Screens/Tag/TagsScreen';
+import StatsScreen from '../../Screens/StatsScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,6 +41,16 @@ export default function NavBar({ route } : any) {
                 options={{
                     tabBarIcon: ({ color }) => (
                         <MaterialCommunityIcons name="tag-multiple" color={color} size={40}/>
+                    ),
+                }}
+                initialParams={{client}}
+            />
+            <Tab.Screen
+                name="Stats"
+                component={StatsScreen}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <Ionicons name="ios-stats-chart" color={color} size={33}/>
                     ),
                 }}
                 initialParams={{client}}

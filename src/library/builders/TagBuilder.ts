@@ -8,6 +8,7 @@ export interface TagDataBuilder {
 }
 
 export default class TagBuilder extends Base {
+    
     public idTag: number;
     
     public textTag: string;

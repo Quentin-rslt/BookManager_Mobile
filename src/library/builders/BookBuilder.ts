@@ -2,6 +2,7 @@ import Base from "../class/Base";
 import Client from "../class/Client";
 import Reading from "../class/Reading";
 import Tag from "../class/Tag";
+import ReadingBuilder from "./ReadingBuilder";
 
 export interface BookDataBuilder {
     idBook: number;
@@ -11,7 +12,7 @@ export interface BookDataBuilder {
     notePerso: number;
     releaseYear: string;
     summary: string;
-    readings: Array<Reading>;
+    readings: Array<ReadingBuilder>;
     tags: Array<Tag>;
 }
 
@@ -30,7 +31,7 @@ export default class BookBuilder extends Base {
     
     public summary: string;
     
-    public readings: Array<Reading>;
+    public readings: Array<ReadingBuilder>;
     
     public tags: Array<Tag>;
 
@@ -96,12 +97,12 @@ export default class BookBuilder extends Base {
         return this;
     }
 
-    public setReadings(value: Array<Reading>) {
+    public setReadings(value: Array<ReadingBuilder>) {
         this.readings = value;
         return this;
     }
 
-    public addReading(value: Reading) {
+    public addReading(value: ReadingBuilder) {
         this.readings.push(value);
         return this;
     }
