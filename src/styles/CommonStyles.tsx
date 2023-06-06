@@ -7,19 +7,22 @@ export default StyleSheet.create({
         backgroundColor: COLORS.background,
         alignItems: 'center',
         justifyContent: 'center',
-      },
-      content : {
-        backgroundColor: COLORS.backgroundLight,
+    },
+    scrollViewContainer: {
         width: '100%',
         position: 'absolute',
-        top : 75,
-        bottom: 60,
-        borderRadius : 40,
+        top : 50,
+        bottom: 45,
+        marginVertical : 20,
     },
-    scrollViewContainer : {
+    scrollViewModal: {
         marginVertical : 20,
     },
     flatListContainer : {
+        width: '100%',
+        position: 'absolute',
+        top : 50,
+        bottom: 85,
         marginVertical : 20,
     },
     loader: {
@@ -38,7 +41,7 @@ export default StyleSheet.create({
     },
     buttonContainer: {
         position:'absolute',
-        bottom: 35,
+        bottom: 80,
         right: 30,
     },
     addButton: {

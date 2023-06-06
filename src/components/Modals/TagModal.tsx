@@ -50,26 +50,24 @@ export default function TagModal({ tag, showModalTag, setShowModalTag, onRefresh
                     <View style={TagModalStyles.returnButton}>
                         <Feather name={'minus'} size={65} color={COLORS.accentColor}/>
                     </View>
-                    <View style={TagModalStyles.tagContainer}>
-                        <ScrollView style={CommonStyles.scrollViewContainer} showsVerticalScrollIndicator={false}>
-                            <Text style={TagModalStyles.textTag}>{tag.textTag}</Text>
-                            {   
-                                tag.books.size !== 0 &&
-                                <View style={TagModalStyles.booksContainer}>
-                                    <Text style={TagModalStyles.textHolder}>Livres : ({tag.books.size.toString()})</Text>
-                                    {
-                                        Array.from(tag.books.values()).map((book, idBook) => 
-                                            <BookCard key={idBook} book={book} onRefresh={onRefresh} navigation={navigation}/>
-                                        )
-                                    }
-                                </View>
-                            }
-                        </ScrollView>
-                    </View>
-                    <View style={TagModalStyles.buttonsContainer}>
-                        <TextIconButton callBack={onEditTag} showIcon={false} text='Modifier' buttonStyle={TagModalStyles.button}/>
-                        <TextIconButton callBack={onDeleteTag} isLoading={isLoading} showIcon={false} text='Supprimer' buttonStyle={TagModalStyles.button}/>
-                    </View>
+                    <ScrollView style={CommonStyles.scrollViewModal} showsVerticalScrollIndicator={false}>
+                        <Text style={TagModalStyles.textTag}>{tag.textTag}</Text>
+                        {   
+                            tag.books.size !== 0 &&
+                            <View style={TagModalStyles.booksContainer}>
+                                <Text style={TagModalStyles.textHolder}>Livres : ({tag.books.size.toString()})</Text>
+                                {
+                                    Array.from(tag.books.values()).map((book, idBook) => 
+                                        <BookCard key={idBook} book={book} onRefresh={onRefresh} navigation={navigation}/>
+                                    )
+                                }
+                            </View>
+                        }
+                    </ScrollView>
+                </View>
+                <View style={TagModalStyles.buttonsContainer}>
+                    <TextIconButton callBack={onEditTag} showIcon={false} text='Modifier' buttonStyle={TagModalStyles.button}/>
+                    <TextIconButton callBack={onDeleteTag} isLoading={isLoading} showIcon={false} text='Supprimer' buttonStyle={TagModalStyles.button}/>
                 </View>
             </Modal>
         </GestureRecognizer>

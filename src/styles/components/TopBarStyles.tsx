@@ -14,10 +14,10 @@ export default StyleSheet.create({
     },
     textInput : {
         justifyContent: 'center',
-        backgroundColor : COLORS.backgroundLight,
+        backgroundColor : COLORS.componentBackground,
         height: "100%",
         width : "90%",
-        borderRadius : 40,
+        borderRadius : 15,
         paddingLeft : 20,
         paddingRight : 20,
         fontWeight : "700",

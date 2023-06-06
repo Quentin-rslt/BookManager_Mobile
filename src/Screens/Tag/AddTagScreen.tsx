@@ -39,14 +39,12 @@ export default function AddTagScreen({ navigation, route } : any) {
     return (
         <View style={CommonStyles.container}>
             <TopBar iconButtonShow={true} searchBarShow={false}/>
-            <View style={CommonStyles.content}>
-                <ScrollView style={CommonStyles.scrollViewContainer}>
-                    <TitleScreen title={"Ajouter un tag"}/>
-                    <View style={AddTagStyles.container}>
-                        <InputText placeholder={'Titre du tag'} defaultValue={tag.textTag} onChangeText={onChangeTextTag}/>
-                    </View>
-                </ScrollView>
-            </View>
+            <ScrollView style={CommonStyles.scrollViewContainer}>
+                <TitleScreen title={"Ajouter un tag"}/>
+                <View style={AddTagStyles.container}>
+                    <InputText placeholder={'Titre du tag'} defaultValue={tag.textTag} onChangeText={onChangeTextTag}/>
+                </View>
+            </ScrollView>
             <TextIconButton callBack={onClickSaveTag} isLoading={isLoading} text={'Enregistrer'} showIcon={false} buttonStyle={AddTagStyles.button}/>
         </View>
     )

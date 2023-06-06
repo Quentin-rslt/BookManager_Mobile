@@ -75,42 +75,40 @@ export default function EditBookScreen({ navigation, route } : any) {
     return (
         <View style={CommonStyles.container}>
             <TopBar iconButtonShow={true} searchBarShow={false}/>
-            <View style={CommonStyles.content}>
-                <ScrollView style={CommonStyles.scrollViewContainer}>
-                    <TitleScreen title={"Modifier un livre"}/>
-                    <View style={EditBookStyles.container}>
-                        <InputText placeholder={'Titre'} defaultValue={newBook.title} onChangeText={onChangeTitle}/>
-                        <InputText placeholder={'Autheur'} defaultValue={newBook.author} onChangeText={onChangeAuthor}/>
-                        <View style={EditBookStyles.inputNumberContainer}>
-                            <InputText placeholder={'Page'} containerStyle={EditBookStyles.inputNumber} defaultValue={newBook.numberOP.toString()} keyboardType='numeric' onChangeText={onChangeNumberOP}/>
-                            <InputText placeholder={'Note'} containerStyle={EditBookStyles.inputNumber} defaultValue={newBook.notePerso.toString()} keyboardType='numeric' onChangeText={onChangeNotePerso}/>
-                        </View>
-                        <InputText placeholder={'Année de sortie'} defaultValue={newBook.releaseYear} keyboardType='numeric' onChangeText={onChangeReleaseYear}/>
-                        <View style={EditBookStyles.tagsContainer}>
-                            <Text style={EditBookStyles.text}>Tags : </Text>
-                            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                                {
-                                   newBook.tags.map((tag, idTag) => 
-                                        <TagSticker key={idTag} tag={tag} onRefresh={onRefreshBooks} navigation={navigation}/>
-                                    )
-                                }
-                                <TextIconButton callBack={() => setShowModal(true)} iconName={'square-edit-outline'} iconSize={15} showText={false} buttonStyle={EditBookStyles.addTagContainer}/>
-                                <TagsModal book={newBook} showModal={showModal} setShowModal={setShowModal}/>
-                            </ScrollView>
-                        </View>
-                        <InputText placeholder={'Description'} multiline={true} defaultValue={newBook.summary} containerStyle={EditBookStyles.descriptionContainer} onChangeText={onChangeSummary}/>
-                        <View style={EditBookStyles.readingsContainer}>
-                            <Text style={EditBookStyles.text}>Lectures : </Text>
-                            <DatePicker book={newBook} setRefresh={setRefresh} refresh={refresh}/>
+            <ScrollView style={CommonStyles.scrollViewContainer}>
+                <TitleScreen title={"Modifier un livre"}/>
+                <View style={EditBookStyles.container}>
+                    <InputText placeholder={'Titre'} defaultValue={newBook.title} onChangeText={onChangeTitle}/>
+                    <InputText placeholder={'Autheur'} defaultValue={newBook.author} onChangeText={onChangeAuthor}/>
+                    <View style={EditBookStyles.inputNumberContainer}>
+                        <InputText placeholder={'Page'} containerStyle={EditBookStyles.inputNumber} defaultValue={newBook.numberOP.toString()} keyboardType='numeric' onChangeText={onChangeNumberOP}/>
+                        <InputText placeholder={'Note'} containerStyle={EditBookStyles.inputNumber} defaultValue={newBook.notePerso.toString()} keyboardType='numeric' onChangeText={onChangeNotePerso}/>
+                    </View>
+                    <InputText placeholder={'Année de sortie'} defaultValue={newBook.releaseYear} keyboardType='numeric' onChangeText={onChangeReleaseYear}/>
+                    <View style={EditBookStyles.tagsContainer}>
+                        <Text style={EditBookStyles.text}>Tags : </Text>
+                        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                             {
-                                newBook.readings.map((reading, idReading) => 
-                                    <ReadingCard key={idReading} reading={reading} showDeleteButton={true} idReading={idReading} book={newBook} setRefresh={setRefresh} refresh={refresh}/>
+                                newBook.tags.map((tag, idTag) => 
+                                    <TagSticker key={idTag} tag={tag} onRefresh={onRefreshBooks} navigation={navigation}/>
                                 )
                             }
-                        </View>
+                            <TextIconButton callBack={() => setShowModal(true)} iconName={'square-edit-outline'} iconSize={15} showText={false} buttonStyle={EditBookStyles.addTagContainer}/>
+                            <TagsModal book={newBook} showModal={showModal} setShowModal={setShowModal}/>
+                        </ScrollView>
                     </View>
-                </ScrollView>
-            </View>
+                    <InputText placeholder={'Description'} multiline={true} defaultValue={newBook.summary} containerStyle={EditBookStyles.descriptionContainer} onChangeText={onChangeSummary}/>
+                    <View style={EditBookStyles.readingsContainer}>
+                        <Text style={EditBookStyles.text}>Lectures : </Text>
+                        <DatePicker book={newBook} setRefresh={setRefresh} refresh={refresh}/>
+                        {
+                            newBook.readings.map((reading, idReading) => 
+                                <ReadingCard key={idReading} reading={reading} showDeleteButton={true} idReading={idReading} book={newBook} setRefresh={setRefresh} refresh={refresh}/>
+                            )
+                        }
+                    </View>
+                </View>
+            </ScrollView>
             <TextIconButton callBack={onClickSaveBook} isLoading={isLoading} text={'Enregistrer'} showIcon={false} buttonStyle={EditBookStyles.button}/>
         </View>
     )

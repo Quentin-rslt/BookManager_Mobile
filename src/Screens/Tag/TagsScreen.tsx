@@ -60,22 +60,20 @@ export default function TagsScreen({navigation, route } : any) {
     return (
         <View style={CommonStyles.container}>
             <TopBar onChangeSearch={(text) => onChangeSearch(text)}/>
-            <View style={CommonStyles.content}>
-                <FlatList style={CommonStyles.flatListContainer} 
-                    ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun tag n'a été trouvé"}</Text>}
-                    columnWrapperStyle={TagsStyles.columnWrapperStyle}
-                    contentContainerStyle = {TagsStyles.tagsContainer}
-                    initialNumToRender={2}
-                    numColumns={2}
-                    data={tags}
-                    renderItem={({item}) => <TagCard key={item.idTag} tag={item} onRefresh={onRefresh} navigation={navigation}/>}
-                    keyExtractor={item => item.idTag.toString()}
-                    refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}
-                    ListHeaderComponent={renderHeader}
-                />
-                <View style={CommonStyles.buttonContainer}>
-                    <TextIconButton callBack={onClickAddTag} iconSize={22} text={'Ajouter un tag'} iconName={'plus'} buttonStyle={CommonStyles.addButton} iconColor={COLORS.background}/>
-                </View>
+            <FlatList style={CommonStyles.flatListContainer} 
+                ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun tag n'a été trouvé"}</Text>}
+                columnWrapperStyle={TagsStyles.columnWrapperStyle}
+                contentContainerStyle = {TagsStyles.tagsContainer}
+                initialNumToRender={2}
+                numColumns={2}
+                data={tags}
+                renderItem={({item}) => <TagCard key={item.idTag} tag={item} onRefresh={onRefresh} navigation={navigation}/>}
+                keyExtractor={item => item.idTag.toString()}
+                refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}
+                ListHeaderComponent={renderHeader}
+            />
+            <View style={CommonStyles.buttonContainer}>
+                <TextIconButton callBack={onClickAddTag} iconSize={22} text={'Ajouter un tag'} iconName={'plus'} buttonStyle={CommonStyles.addButton} iconColor={COLORS.background}/>
             </View>
         </View>
     ) 
