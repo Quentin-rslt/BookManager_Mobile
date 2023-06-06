@@ -2,18 +2,12 @@ import { StyleSheet } from "react-native";
 import { COLORS } from "../../../library/CommonColors";
 
 export default StyleSheet.create({
-    modalContainer: {
-        width: "100%",
-        height: "100%",
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     container: {
         position: 'absolute',
         bottom: 0,
         width: "100%",
-        height: '83%',
-        backgroundColor: COLORS.backgroundLight,
+        height: '80%',
+        backgroundColor: COLORS.background,
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
         paddingBottom: 55,

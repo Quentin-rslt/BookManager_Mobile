@@ -3,7 +3,7 @@ export enum COLORS {
     foregroundHolder = '#887474',
     componentBackground = "#302323",
     background = '#1f1616',
-    backgroundLight = '#251a1a',
+    backgroundLight = '#281c1c',
     accentColor = '#c53e3e',
     clickableColor = '#c67979',
     transparent = 'transparent',

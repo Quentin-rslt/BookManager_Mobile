@@ -18,7 +18,7 @@ export default StyleSheet.create({
     },
     flatListContainer: {
         width: '100%',
-        marginBottom: 80,
+        marginBottom: 85,
     },
     titleScrollView: {
         marginTop: 60,

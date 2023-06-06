@@ -1,4 +1,4 @@
-import { Modal, View } from 'react-native'
+import { View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import MultiSelect from 'react-native-multiple-select'
 import TagsModalStyles from '../../styles/components/Modals/TagsModalStyles';
@@ -8,7 +8,7 @@ import Tag from '../../library/class/Tag';
 import TitleScreen from '../TitleScreen';
 import BookBuilder from '../../library/builders/BookBuilder';
 import { Feather } from '@expo/vector-icons';
-import GestureRecognizer from 'react-native-swipe-gestures';
+import Modal from "react-native-modal";
 
 interface Props {
     book: BookBuilder;
@@ -42,43 +42,47 @@ export default function TagsModal({ book, showModal, setShowModal }: Props) {
     }, []);
 
     return (
-        <GestureRecognizer style={{flex: 1}} onSwipeDown={ () => setShowModal(false) }>
-            <Modal style={TagsModalStyles.modalContainer} animationType="slide" transparent={true} visible={showModal} onRequestClose={() => setShowModal(!showModal)}>
-                <View style={TagsModalStyles.container}>
-                    <View style={TagsModalStyles.returnButton}>
-                        <Feather name={'minus'} size={65} color={COLORS.accentColor}/>
-                    </View>
-                    <View style={TagsModalStyles.multiSelectContainer}> 
-                        <View style={{marginBottom: 15}}>
-                            <TitleScreen title='Tags'/>
-                        </View>
-                        <MultiSelect
-                            fixedHeight={true}
-                            items={tags}
-                            displayKey="textTag"
-                            uniqueKey="idTag"
-                            onSelectedItemsChange={onSelectedItemsChange}
-                            selectedItems={selectedTags}
-                            selectText="Sélectioner un tag"
-                            searchInputPlaceholderText="Chercher un tag..."
-                            textColor={COLORS.foregroundHolder}
-                            tagRemoveIconColor={COLORS.accentColor}
-                            tagBorderColor={COLORS.foreground}
-                            tagTextColor={COLORS.foreground}
-                            selectedItemTextColor={COLORS.accentColor}
-                            selectedItemIconColor={COLORS.accentColor}
-                            itemTextColor={COLORS.foreground}
-                            hideSubmitButton={true}
-                            styleRowList={{backgroundColor: COLORS.backgroundLight}}
-                            hideDropdown={true}
-                            noItemsText="Pas de tags trouvés"
-                            styleInputGroup={{backgroundColor: COLORS.backgroundLight, paddingBottom: 5}}
-                            styleDropdownMenuSubsection={{backgroundColor: COLORS.backgroundLight, height: 50, paddingLeft: 5, marginBottom: 20, borderBottomColor: COLORS.foreground}}
-                        />
-                    </View>
-                    <TextIconButton callBack={() => setShowModal(!showModal)} showIcon={false} text='Valider' buttonStyle={TagsModalStyles.button}/>
+        <Modal 
+            style={{ margin: 0 }} 
+            isVisible={showModal} 
+            onBackdropPress={() => setShowModal(false)} 
+            onSwipeComplete={() => setShowModal(false)} 
+            swipeDirection={'down'}
+        >
+            <View style={TagsModalStyles.container}>
+                <View style={TagsModalStyles.returnButton}>
+                    <Feather name={'minus'} size={65} color={COLORS.accentColor}/>
                 </View>
-            </Modal>
-        </GestureRecognizer>
+                <View style={TagsModalStyles.multiSelectContainer}> 
+                    <View style={{marginBottom: 15}}>
+                        <TitleScreen title='Tags'/>
+                    </View>
+                    <MultiSelect
+                        fixedHeight={true}
+                        items={tags}
+                        displayKey="textTag"
+                        uniqueKey="idTag"
+                        onSelectedItemsChange={onSelectedItemsChange}
+                        selectedItems={selectedTags}
+                        selectText="Sélectioner un tag"
+                        searchInputPlaceholderText="Chercher un tag..."
+                        textColor={COLORS.foregroundHolder}
+                        tagRemoveIconColor={COLORS.accentColor}
+                        tagBorderColor={COLORS.foreground}
+                        tagTextColor={COLORS.foreground}
+                        selectedItemTextColor={COLORS.accentColor}
+                        selectedItemIconColor={COLORS.accentColor}
+                        itemTextColor={COLORS.foreground}
+                        hideSubmitButton={true}
+                        styleRowList={{backgroundColor: COLORS.background}}
+                        hideDropdown={true}
+                        noItemsText="Pas de tags trouvés"
+                        styleInputGroup={{backgroundColor: COLORS.background, paddingBottom: 5}}
+                        styleDropdownMenuSubsection={{backgroundColor: COLORS.background, height: 50, paddingLeft: 5, marginBottom: 20, borderBottomColor: COLORS.foreground}}
+                    />
+                </View>
+                <TextIconButton callBack={() => setShowModal(!showModal)} showIcon={false} text='Valider' buttonStyle={TagsModalStyles.button}/>
+            </View>
+        </Modal>
     )
 }

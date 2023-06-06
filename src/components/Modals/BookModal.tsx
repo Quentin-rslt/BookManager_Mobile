@@ -1,4 +1,4 @@
-import { Text, View, Modal, ToastAndroid } from 'react-native'
+import { Text, View, ToastAndroid } from 'react-native'
 import React, { useState } from 'react'
 import BookModalStyles from '../../styles/components/Modals/BookModalStyles'
 import Book from '../../library/class/Book'
@@ -7,11 +7,12 @@ import { ScrollView } from 'react-native-gesture-handler'
 import TagSticker from '../Buttons/TagSticker'
 import ReadingCard from '../cards/ReadingCard'
 import NumberIcon from '../NumberIcon'
-import GestureRecognizer from 'react-native-swipe-gestures'
 import { Feather } from '@expo/vector-icons';
 import TextIconButton from '../Buttons/TextIconButton'
 import CommonStyles from '../../styles/CommonStyles'
 import BookBuilder from '../../library/builders/BookBuilder'
+import Modal from "react-native-modal";
+import GestureRecognizer from 'react-native-swipe-gestures'
 
 interface Props {
     book: Book;
@@ -45,8 +46,12 @@ export default function BookModal({ book, showModalBook, setShowModalBook, onRef
     };
 
     return (
-        <GestureRecognizer style={{flex: 1}} onSwipeDown={ () => setShowModalBook(false) }>
-            <Modal style={BookModalStyles.modalContainer} animationType="slide" transparent={true} visible={showModalBook} onRequestClose={() => setShowModalBook(!showModalBook)}>
+        <GestureRecognizer style={{flex: 1}} onSwipeDown={ () => setShowModalBook(false)}>
+            <Modal 
+                style={{ margin: 0 }} 
+                isVisible={showModalBook} 
+                onBackdropPress={() => setShowModalBook(false)}
+            >
                 <View style={BookModalStyles.container}>
                     <View style={BookModalStyles.returnButton}>
                         <Feather name={'minus'} size={65} color={COLORS.accentColor}/>
