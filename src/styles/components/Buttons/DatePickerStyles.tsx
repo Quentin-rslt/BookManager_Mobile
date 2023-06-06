@@ -35,11 +35,22 @@ export default StyleSheet.create({
         fontSize: 15,
         fontWeight: '800',
         top: 7,
+        left: -12,
     },
     dateContainer: {
         justifyContent: 'center',
         height: 55,
         marginRight: 25,
-        paddingHorizontal: 22,
+        paddingHorizontal: 30,
+    },
+    holderText: {
+        position: 'absolute',
+        textAlign: 'left',
+        color: COLORS.foregroundHolder,
+        width: '100%',
+        top: 10,
+        left: 15,
+        fontSize: 13,
+        lineHeight: 16,
     },
 });

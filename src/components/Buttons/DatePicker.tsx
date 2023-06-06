@@ -55,7 +55,7 @@ export default function DatesPickers({book, refresh, setRefresh} : Props) {
         <View style={DatePickerStyles.container}>
             <View style={DatePickerStyles.datesContainer}>
                 <TouchableOpacity style={DatePickerStyles.dateContainer} onPress={onClickStartReading}>
-                    <Text style={CommonStyles.holderText}> Début </Text>
+                    <Text style={DatePickerStyles.holderText}> Début </Text>
                     <Text style={DatePickerStyles.dateText}>{startDateReading.toLocaleDateString()}</Text>
                     {
                         showStartDate && (
@@ -71,7 +71,7 @@ export default function DatesPickers({book, refresh, setRefresh} : Props) {
                     }
                 </TouchableOpacity>
                 <TouchableOpacity style={DatePickerStyles.dateContainer} onPress={onClickEndReading}>
-                    <Text style={CommonStyles.holderText}> Fin </Text>
+                    <Text style={DatePickerStyles.holderText}> Fin </Text>
                     <Text style={DatePickerStyles.dateText}>{endDateReading.toLocaleDateString()}</Text>
                     {
                         showEndDate && (

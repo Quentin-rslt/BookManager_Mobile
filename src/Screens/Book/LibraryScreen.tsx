@@ -51,15 +51,12 @@ export default function LibraryScreen({ navigation, route } : any) {
         setBooks([...filteredBooks]);
     };
 
-    const renderHeader = () => {
-        return(
-            <TitleScreen title={'Bibliothèque'}/>
-        )
-    };
-
     return (
         <View style={CommonStyles.container}>
             <TopBar onChangeSearch={(text) => onChangeSearch(text)}/>
+            <View style={CommonStyles.titleFlatList}>
+                <TitleScreen title={'Bibliothèque'}/>
+            </View>
             <FlatList style={CommonStyles.flatListContainer} 
                 ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun livre n'a été trouvé"}</Text>}
                 contentContainerStyle = {LibraryStyles.booksContainer}
@@ -67,7 +64,6 @@ export default function LibraryScreen({ navigation, route } : any) {
                 renderItem={({item}) => <BookCard key={item.idBook} book={item} onRefresh={onRefresh} navigation={navigation}/>}
                 keyExtractor={item => item.idBook.toString()}
                 refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}
-                ListHeaderComponent={renderHeader}
             />
             <View style={CommonStyles.buttonContainer}>
                 <TextIconButton callBack={onClickAddBook} iconSize={22} text={'Ajouter un livre'} buttonStyle={CommonStyles.addButton} iconName={'plus'} iconColor={COLORS.background}/>

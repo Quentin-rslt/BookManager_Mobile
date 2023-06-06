@@ -75,8 +75,10 @@ export default function AddBookScreen({ navigation, route } : any) {
     return (
         <View style={CommonStyles.container}>
             <TopBar iconButtonShow={true} searchBarShow={false}/>
-            <ScrollView style={CommonStyles.scrollViewContainer}>
+            <View style={CommonStyles.titleScrollView}>
                 <TitleScreen title={"Ajouter un livre"}/>
+            </View>
+            <ScrollView style={CommonStyles.scrollViewContainer}>
                 <View style={AddBookStyles.container}>
                     <InputText placeholder={'Titre'} defaultValue={book.title} onChangeText={onChangeTitle}/>
                     <InputText placeholder={'Autheur'} defaultValue={book.author} onChangeText={onChangeAuthor}/>
@@ -85,21 +87,21 @@ export default function AddBookScreen({ navigation, route } : any) {
                         <InputText placeholder={'Note'} containerStyle={AddBookStyles.inputNumber} defaultValue={book.notePerso.toString()} keyboardType='numeric' onChangeText={onChangeNotePerso}/>
                     </View>
                     <InputText placeholder={'Année de sortie'} defaultValue={book.releaseYear} keyboardType='numeric' onChangeText={onChangeReleaseYear}/>
-                    <View style={AddBookStyles.tagsContainer}>
-                        <Text style={AddBookStyles.text}>Tags : </Text>
-                        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    <View style={{width: "95%"}}>
+                        <Text style={AddBookStyles.textHolder}>Tags : </Text>
+                        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={AddBookStyles.tagsContainer}>
+                            <TextIconButton callBack={() => setShowModal(true)} iconName={'square-edit-outline'} iconSize={15} showText={false} buttonStyle={AddBookStyles.addTagContainer}/>
                             {
                                 book.tags.map((tag, idTag) => 
                                     <TagSticker key={idTag} tag={tag} onRefresh={onRefreshScreen} navigation={navigation}/>
                                 )
                             }
-                            <TextIconButton callBack={() => setShowModal(true)} iconName={'square-edit-outline'} iconSize={15} showText={false} buttonStyle={AddBookStyles.addTagContainer}/>
                             <TagsModal book={book} showModal={showModal} setShowModal={setShowModal}/>
                         </ScrollView>
                     </View>
                     <InputText placeholder={'Description'} multiline={true} containerStyle={AddBookStyles.descriptionContainer} onChangeText={onChangeSummary}/>
                     <View style={AddBookStyles.readingsContainer}>
-                        <Text style={AddBookStyles.text}>Lectures : </Text>
+                        <Text style={AddBookStyles.textHolder}>Lectures : </Text>
                         <DatePicker book={book} setRefresh={setRefresh} refresh={refresh}/>
                         {
                             book.readings.map((reading, idReading) => 

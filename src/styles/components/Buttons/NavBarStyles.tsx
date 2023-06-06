@@ -5,8 +5,7 @@ export default StyleSheet.create({
     container: {
         position: 'absolute',
         height: 55,
-        marginHorizontal: 15,
-        bottom :10,
+        margin: 10,
         elevation: 5,
         borderTopWidth: 0,
         borderRadius: 15,

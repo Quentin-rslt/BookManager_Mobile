@@ -40,7 +40,9 @@ export default function AddTagScreen({ navigation, route } : any) {
         <View style={CommonStyles.container}>
             <TopBar iconButtonShow={true} searchBarShow={false}/>
             <ScrollView style={CommonStyles.scrollViewContainer}>
-                <TitleScreen title={"Ajouter un tag"}/>
+                <View style={CommonStyles.titleScrollView}>
+                    <TitleScreen title={"Ajouter un tag"}/>
+                </View>
                 <View style={AddTagStyles.container}>
                     <InputText placeholder={'Titre du tag'} defaultValue={tag.textTag} onChangeText={onChangeTextTag}/>
                 </View>

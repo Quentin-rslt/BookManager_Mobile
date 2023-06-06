@@ -1,7 +1,7 @@
 export enum COLORS {
-    foreground = '#e8d0d0',
-    foregroundHolder = '#827d7d',
-    componentBackground = "#2c2121",
+    foreground = '#e8c3c3',
+    foregroundHolder = '#887474',
+    componentBackground = "#302323",
     background = '#1f1616',
     backgroundLight = '#251a1a',
     accentColor = '#c53e3ee5',

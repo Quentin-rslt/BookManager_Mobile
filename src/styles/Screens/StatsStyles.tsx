@@ -22,7 +22,7 @@ export default StyleSheet.create({
         left: 20,
         paddingHorizontal: 20,
         height: 50,
-        borderRadius : 17,
+        borderRadius : 40,
         shadowColor: COLORS.Black,
         shadowOpacity: 0.5,
         shadowOffset: { width: 4, height: 4},

@@ -16,7 +16,7 @@ export default StyleSheet.create({
         backgroundColor: COLORS.backgroundLight,
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
-        paddingBottom: 45,
+        paddingBottom: 55,
         shadowColor: COLORS.Black,
         shadowOpacity: 0.5,
         shadowOffset: { width: -4, height: -4},
@@ -56,7 +56,6 @@ export default StyleSheet.create({
         fontWeight: '800',
         color: COLORS.foreground,
         textAlign: 'center',
-        marginHorizontal: 10,
     },
     author: {
         fontSize: 16,

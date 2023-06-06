@@ -7,7 +7,7 @@ export default StyleSheet.create({
         height:135,
         overflow:'hidden',
         backgroundColor: COLORS.componentBackground,
-        borderRadius : 20,
+        borderRadius : 15,
         marginBottom: 15,
         shadowColor: 'black',
         shadowOpacity: 0.3,

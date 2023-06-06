@@ -15,7 +15,7 @@ interface Props {
   export default function InputText({placeholder, multiline=false, containerStyle, onChangeText, keyboardType = 'ascii-capable', defaultValue = ''} : Props) {
     return (
         <View style={[InputTextStyles.txtFieldBackground, containerStyle]}>
-            <Text style={CommonStyles.holderText}>{placeholder}</Text>
+            <Text style={InputTextStyles.holderText}>{placeholder}</Text>
             <TextInput multiline={multiline} keyboardType={keyboardType} defaultValue={defaultValue} style={InputTextStyles.inputText} onChangeText={onChangeText}/>
         </View>
     )

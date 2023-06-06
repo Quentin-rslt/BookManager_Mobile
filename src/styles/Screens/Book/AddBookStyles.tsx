@@ -3,10 +3,10 @@ import { COLORS } from "../../../library/CommonColors";
 
 export default StyleSheet.create({
     container: {
+        width: "100%",
+        height: "100%",
+        alignItems: 'center',
         justifyContent: 'center',
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
     },
     button: {
         justifyContent: 'center',
@@ -26,25 +26,26 @@ export default StyleSheet.create({
     tagsContainer: {
         alignItem: 'center',
         width: "95%",
-        height: 40,
+        marginBottom: 10,
         display : "flex",
         flexDirection : "row",
         overflow: 'scroll',
-        paddingTop: 5
     },
     addTagContainer: {
         justifyContent: 'center',
         paddingHorizontal: 15,
         height: 23,
         backgroundColor: COLORS.accentColor,
-        borderRadius: 17,
+        borderRadius: 17, 
+        marginHorizontal: 10,
     },
-    text: {
-        textAlignVertical: 'center',
-        marginRight : 15,
-        marginLeft : 15,
-        paddingBottom : 10,
+    textHolder: {
+        fontSize: 13,
+        fontWeight: '800',
         color: COLORS.foregroundHolder,
+        textAlign: 'center',
+        marginBottom: 5,
+        marginRight: 20,
     },
     descriptionContainer: {
         backgroundColor: COLORS.componentBackground,

@@ -23,6 +23,16 @@ export default StyleSheet.create({
         height: '100%',
         overflow:'hidden',
         paddingTop: 25,
-        paddingLeft: 8,
+        paddingLeft: 5,
+    },
+    holderText: {
+        position: 'absolute',
+        textAlign: 'left',
+        color: COLORS.foregroundHolder,
+        width: '100%',
+        top: 10,
+        left: 15,
+        fontSize: 13,
+        lineHeight: 16,
     },
 })

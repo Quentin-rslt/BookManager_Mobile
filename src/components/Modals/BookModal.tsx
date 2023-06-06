@@ -54,7 +54,6 @@ export default function BookModal({ book, showModalBook, setShowModalBook, onRef
                     <ScrollView style={CommonStyles.scrollViewModal} showsVerticalScrollIndicator={false}>
                         <Text style={BookModalStyles.title}>{book.title}</Text>
                         <Text style={BookModalStyles.author}>{book.author}</Text>
-
                         <Text style={BookModalStyles.textHolder}>Statistiques : </Text>
                         <View style={BookModalStyles.statsContainer}>
                             <NumberIcon iconNumber={book.numberOP} iconName={"book-open-page-variant-outline"} iconSize={30} iconFontSize={30}/>

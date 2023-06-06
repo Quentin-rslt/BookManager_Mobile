@@ -10,20 +10,22 @@ export default StyleSheet.create({
     },
     scrollViewContainer: {
         width: '100%',
-        position: 'absolute',
-        top : 50,
-        bottom: 45,
-        marginVertical : 20,
+        marginVertical : 10,
+        marginBottom: 62,
     },
     scrollViewModal: {
-        marginVertical : 20,
+        marginVertical : 10,
     },
-    flatListContainer : {
+    flatListContainer: {
         width: '100%',
-        position: 'absolute',
-        top : 50,
-        bottom: 85,
-        marginVertical : 20,
+        marginBottom: 80,
+    },
+    titleScrollView: {
+        marginTop: 60,
+    },
+    titleFlatList: {
+        marginTop: 60,
+        marginBottom: 10,
     },
     loader: {
         position: 'absolute',
@@ -57,16 +59,6 @@ export default StyleSheet.create({
         shadowOpacity: 0.5,
         shadowOffset: { width: 4, height: 4},
         elevation: 5,
-    },
-    holderText: {
-        position: 'absolute',
-        textAlign: 'left',
-        color: COLORS.foregroundHolder,
-        width: '100%',
-        top: 10,
-        left: 20,
-        fontSize: 13,
-        lineHeight: 16,
     },
     image: {
         resizeMode: "contain",

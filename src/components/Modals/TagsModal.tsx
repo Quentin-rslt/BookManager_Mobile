@@ -49,7 +49,9 @@ export default function TagsModal({ book, showModal, setShowModal }: Props) {
                         <Feather name={'minus'} size={65} color={COLORS.accentColor}/>
                     </View>
                     <View style={TagsModalStyles.multiSelectContainer}> 
-                        <TitleScreen title='Tags'/>
+                        <View style={{marginBottom: 15}}>
+                            <TitleScreen title='Tags'/>
+                        </View>
                         <MultiSelect
                             fixedHeight={true}
                             items={tags}
