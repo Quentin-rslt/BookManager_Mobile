@@ -4,7 +4,7 @@ import Client from "../class/Client";
 export interface TagDataBuilder {
     idTag: number;
     textTag: string;
-    colorTag: number;
+    colorTag: string;
 }
 
 export default class TagBuilder extends Base {
@@ -13,14 +13,14 @@ export default class TagBuilder extends Base {
     
     public textTag: string;
     
-    public colorTag: number;
+    public colorTag: string;
 
 
     constructor(client:Client, data?: TagDataBuilder) {
         super(client);
         this.idTag = data?.idTag ?? 0;
         this.textTag = data?.textTag ?? "";
-        this.colorTag = data?.colorTag ?? 0;
+        this.colorTag = data?.colorTag ?? "#c53e3ee5";
     }
 
     public toJSON() {
@@ -31,13 +31,13 @@ export default class TagBuilder extends Base {
         }
     }
 
-    public setTextTag(value: string){
-        this.textTag = value;
+    public setTextTag(textTag: string){
+        this.textTag = textTag;
         return this;
     }
 
-    public setColorTag(value: number){
-        this.colorTag = value;
+    public setColorTag(colorTag: string){
+        this.colorTag = colorTag;
         return this;
     }
 }

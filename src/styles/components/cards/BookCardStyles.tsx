@@ -27,11 +27,10 @@ export default StyleSheet.create({
         fontSize: 15,
         fontWeight: '500',
         marginLeft: 15,
-        marginTop: 5,
     },
     tagList: {
         height:30,
-        marginTop : 7,
+        marginTop : 10 ,
         marginHorizontal:15,
     },
     numberContainer: {

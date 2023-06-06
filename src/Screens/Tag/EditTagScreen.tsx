@@ -1,4 +1,4 @@
-import { View, ScrollView, ToastAndroid } from 'react-native'
+import { View, ScrollView, ToastAndroid, Text } from 'react-native'
 import { useState } from 'react'
 import TopBar from '../../components/TopBar';
 import CommonStyles from '../../styles/CommonStyles';
@@ -39,12 +39,16 @@ export default function AddTagScreen({ navigation, route } : any) {
     return (
         <View style={CommonStyles.container}>
             <TopBar iconButtonShow={true} searchBarShow={false}/>
+            <View style={CommonStyles.titleScrollView}>
+                <TitleScreen title={"Modifier un tag"}/>
+            </View>
             <ScrollView style={CommonStyles.scrollViewContainer}>
-                <View style={CommonStyles.titleScrollView}>
-                    <TitleScreen title={"Modifier un tag"}/>
-                </View>
                 <View style={EditTagStyles.container}>
                     <InputText placeholder={'Titre du tag'} defaultValue={newTag.textTag} onChangeText={onChangeTextTag}/>
+                    <View style={EditTagStyles.colorContainer}>
+                        <Text style={EditTagStyles.textHolder}>Couleur du tag :</Text>
+                        <View style={[{backgroundColor: newTag.colorTag}, EditTagStyles.colorTag]}></View>
+                    </View>
                 </View>
             </ScrollView>
             <TextIconButton callBack={onClickSaveTag} isLoading={isLoading} text={'Enregistrer'} showIcon={false} buttonStyle={EditTagStyles.button}/>

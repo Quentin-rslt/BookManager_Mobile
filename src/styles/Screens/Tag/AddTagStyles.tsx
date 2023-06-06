@@ -24,4 +24,25 @@ export default StyleSheet.create({
         shadowOffset: { width: 4, height: 4},
         elevation: 5,
     },
+    colorContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        width: "100%",
+        paddingHorizontal: 10,
+        marginTop: 50,
+    },
+    colorTag: {
+        width: 50, 
+        aspectRatio: 2.5, 
+        borderRadius: 20,
+    },
+    textHolder: {
+        fontSize: 13,
+        fontWeight: '800',
+        color: COLORS.foregroundHolder,
+        textAlign: 'left',
+        marginRight: 20,
+        marginBottom: 10,
+        paddingHorizontal: 10,
+    },
 });

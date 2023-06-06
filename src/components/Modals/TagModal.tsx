@@ -52,6 +52,10 @@ export default function TagModal({ tag, showModalTag, setShowModalTag, onRefresh
                     </View>
                     <ScrollView style={CommonStyles.scrollViewModal} showsVerticalScrollIndicator={false}>
                         <Text style={TagModalStyles.textTag}>{tag.textTag}</Text>
+                        <View style={TagModalStyles.colorContainer}>
+                            <Text style={TagModalStyles.textHolder}>Couleur :</Text>
+                            <View style={[{backgroundColor: tag.colorTag}, TagModalStyles.colorTag]}></View>
+                        </View>
                         {   
                             tag.books.size !== 0 &&
                             <View style={TagModalStyles.booksContainer}>

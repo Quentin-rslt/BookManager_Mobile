@@ -11,7 +11,7 @@ export default class Tag extends Base {
     
     public textTag: string;
     
-    public colorTag: number;
+    public colorTag: string;
 
     constructor(client:Client, data: APITagData) {
         super(client);

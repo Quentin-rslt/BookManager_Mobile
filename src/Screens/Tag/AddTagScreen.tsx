@@ -1,4 +1,4 @@
-import { View, ScrollView, ToastAndroid } from 'react-native'
+import { View, ScrollView, ToastAndroid, Text } from 'react-native'
 import React, { useState } from 'react'
 import TopBar from '../../components/TopBar';
 import CommonStyles from '../../styles/CommonStyles';
@@ -19,6 +19,7 @@ export default function AddTagScreen({ navigation, route } : any) {
 
         try{
             if(tag.textTag != ""){
+                tag.setColorTag('#c53e3ee5');
                 await tag.client.tagService.createTag(tag);
                 
                 navigation.goBack();
@@ -39,12 +40,16 @@ export default function AddTagScreen({ navigation, route } : any) {
     return (
         <View style={CommonStyles.container}>
             <TopBar iconButtonShow={true} searchBarShow={false}/>
+            <View style={CommonStyles.titleScrollView}>
+                <TitleScreen title={"Ajouter un tag"}/>
+            </View>
             <ScrollView style={CommonStyles.scrollViewContainer}>
-                <View style={CommonStyles.titleScrollView}>
-                    <TitleScreen title={"Ajouter un tag"}/>
-                </View>
                 <View style={AddTagStyles.container}>
                     <InputText placeholder={'Titre du tag'} defaultValue={tag.textTag} onChangeText={onChangeTextTag}/>
+                    <View style={AddTagStyles.colorContainer}>
+                        <Text style={AddTagStyles.textHolder}>Couleur du tag :</Text>
+                        <View style={[{backgroundColor: tag.colorTag}, AddTagStyles.colorTag]}></View>
+                    </View>
                 </View>
             </ScrollView>
             <TextIconButton callBack={onClickSaveTag} isLoading={isLoading} text={'Enregistrer'} showIcon={false} buttonStyle={AddTagStyles.button}/>

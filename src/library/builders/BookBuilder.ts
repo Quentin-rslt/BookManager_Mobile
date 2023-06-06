@@ -12,6 +12,7 @@ export interface BookDataBuilder {
     notePerso: number;
     releaseYear: string;
     summary: string;
+    isFav: boolean;
     readings: Array<ReadingBuilder>;
     tags: Array<Tag>;
 }
@@ -31,6 +32,8 @@ export default class BookBuilder extends Base {
     
     public summary: string;
     
+    public isFav: boolean;
+    
     public readings: Array<ReadingBuilder>;
     
     public tags: Array<Tag>;
@@ -44,6 +47,7 @@ export default class BookBuilder extends Base {
         this.notePerso = data?.notePerso ?? 0;
         this.releaseYear = data?.releaseYear ?? "2023";
         this.summary = data?.summary ?? "";
+        this.isFav = data?.isFav ?? false;
         this.readings = data?.readings ?? [];
         this.tags = data?.tags ?? [];
     }
@@ -57,63 +61,69 @@ export default class BookBuilder extends Base {
             notePerso: this.notePerso,
             releaseYear: this.releaseYear,
             summary: this.summary,
+            isFav: this.isFav,
             readings: this.readings,
             tags: this.tags,
         }
     }
     
-    public setIdBook(value: number) {
-        this.idBook = value;
+    public setIdBook(idBook: number) {
+        this.idBook = idBook;
         return this;
     }
 
-    public setTitle(value: string) {
-        this.title = value;
+    public setTitle(title: string) {
+        this.title = title;
         return this;
     }
 
-    public setAuthor(value: string) {
-        this.author = value;
+    public setAuthor(author: string) {
+        this.author = author;
         return this;
     }
 
-    public setNumberOP(value: number) {
-        this.numberOP = value;
+    public setNumberOP(numberOP: number) {
+        this.numberOP = numberOP;
         return this;
     }
 
-    public setNotePerso(value: number) {
-        this.notePerso = value;
+    public setNotePerso(notePerso: number) {
+        this.notePerso = notePerso;
         return this;
     }
 
-    public setReleaseYear(value: string) {
-        this.releaseYear = value;
+    public setReleaseYear(releaseYear: string) {
+        this.releaseYear = releaseYear;
         return this;
     }
 
-    public setSummary(value: string) {
-        this.summary = value;
+    public setIsFav(isFav: boolean) {
+        this.isFav = isFav;
         return this;
     }
 
-    public setReadings(value: Array<ReadingBuilder>) {
-        this.readings = value;
+    public setSummary(summary: string) {
+        this.summary = summary;
         return this;
     }
 
-    public addReading(value: ReadingBuilder) {
-        this.readings.push(value);
+    public setReadings(readings: Array<ReadingBuilder>) {
+        this.readings = readings;
         return this;
     }
 
-    public deleteReading(value: number) {
-        this.readings.splice(value, 1);
+    public addReading(readings: ReadingBuilder) {
+        this.readings.push(readings);
         return this;
     }
 
-    public setTags(value: Tag[]) {
-        this.tags  = value;
+    public deleteReading(readings: number) {
+        this.readings.splice(readings, 1);
+        return this;
+    }
+
+    public setTags(tags: Tag[]) {
+        this.tags  = tags;
         return this;
     }
 } 

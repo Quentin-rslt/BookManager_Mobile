@@ -6,7 +6,6 @@ export default StyleSheet.create({
         marginRight : 5,
     },
     textTag: {
-        backgroundColor: COLORS.accentColor,
         color: COLORS.background,
         paddingLeft: 7,
         paddingRight: 7,

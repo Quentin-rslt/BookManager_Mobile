@@ -21,7 +21,7 @@ export default function TagSticker({tag, onRefresh, navigation} : Props) {
 
     return (
         <View>
-            <TextIconButton callBack={onClickTagSticker} showIcon={false} buttonStyle={TagStickerStyles.container} textStyle={TagStickerStyles.textTag} text={tag.textTag} numberOfLineText={1}/>
+            <TextIconButton callBack={onClickTagSticker} showIcon={false} buttonStyle={TagStickerStyles.container} textStyle={[{backgroundColor: tag.colorTag}, TagStickerStyles.textTag]} text={tag.textTag} numberOfLineText={1}/>
             <TagModal tag={tag} showModalTag={showModalTag} setShowModalTag={setShowModalTag} onRefresh={onRefresh} navigation={navigation}/>
         </View>
     )

@@ -55,11 +55,24 @@ export default StyleSheet.create({
         shadowOffset: { width: 4, height: 4},
         elevation: 5,
     },
+    colorContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        width: "100%",
+        paddingHorizontal: 10,
+        marginTop: 20,
+    },
+    colorTag: {
+        width: 50, 
+        aspectRatio: 2.5, 
+        borderRadius: 20,
+    },
     textTag: {
         fontSize: 35,
         fontWeight: '800',
         color: COLORS.foreground,
         textAlign: 'center',
+        marginBottom: 10,
     },
     textHolder: {
         fontSize: 13,

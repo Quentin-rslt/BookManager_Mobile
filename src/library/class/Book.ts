@@ -22,6 +22,8 @@ export default class Book extends Base {
     
     public summary: string;
 
+    public isFav: boolean;
+
     constructor(client:Client, data: APIBookData) {
         super(client);
         this.data = data;
@@ -32,6 +34,7 @@ export default class Book extends Base {
         this.notePerso = data.notePerso;
         this.releaseYear = data.releaseYear;
         this.summary = data.summary;
+        this.isFav = data.isFav;
     }
 
     public toJSON() {
@@ -43,6 +46,7 @@ export default class Book extends Base {
             notePerso: this.notePerso,
             releaseYear: this.releaseYear,
             summary: this.summary,
+            isFav: this.isFav,
             readings: Array.from(this.readings.values()),
             tags: Array.from(this.tags.values()),
         }
@@ -57,6 +61,7 @@ export default class Book extends Base {
         this.notePerso = data.notePerso;
         this.releaseYear = data.releaseYear;
         this.summary = data.summary;
+        this.isFav = data.isFav;
     }
 
     get tags(){
