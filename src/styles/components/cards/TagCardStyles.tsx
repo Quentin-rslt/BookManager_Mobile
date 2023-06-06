@@ -3,12 +3,12 @@ import { COLORS } from "../../../library/CommonColors";
 
 export default StyleSheet.create({
     container : {
-        width: "48%",
+        width: "100%",
         aspectRatio: 1,
         overflow:'hidden',
         backgroundColor: COLORS.componentBackground,
         borderRadius : 15,
-        marginBottom: 12,
+        marginBottom: 15,
         shadowColor: 'black',
         shadowOpacity: 0.3,
         shadowOffset: { width: 4, height: 4},
@@ -16,20 +16,17 @@ export default StyleSheet.create({
     },
     containerButton : {
         width: "100%",
-        aspectRatio: 1,
-        overflow:'hidden',
+        height: "100%"
     },
     text : {
         fontSize: 25,
         fontWeight: '800',
         color: COLORS.foreground,
-        marginLeft : 15,
-        marginRight : 15,
-        marginTop: 30, 
+        margin: 15,
     },
     numberBook : {
         position : 'absolute',
-        right : 20,
-        bottom : 15,
+        right : 15,
+        bottom : 10,
     }
 });

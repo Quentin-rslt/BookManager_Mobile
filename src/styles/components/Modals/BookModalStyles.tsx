@@ -63,16 +63,16 @@ export default StyleSheet.create({
         color: COLORS.foregroundHolder,
         textAlign: 'center', 
         marginTop: 15,     
-        marginBottom: 20,
+        marginBottom: 15,
     },
-    text: {
+    description: {
         paddingHorizontal: 10,
         fontSize: 14,
         fontWeight: '800',
         color: COLORS.foreground,
         textAlign: 'left',
         marginTop: 5,
-        marginBottom: 20,
+        marginBottom: 15,
     },
     textNumber: {
         fontSize: 30,
@@ -87,8 +87,7 @@ export default StyleSheet.create({
         width: "100%",
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginTop: 5,
-        marginBottom: 20,
+        marginBottom: 15,
     },
     textHolder: {
         paddingHorizontal: 10,
@@ -96,17 +95,16 @@ export default StyleSheet.create({
         fontWeight: '800',
         color: COLORS.foregroundHolder,
         textAlign: 'left',
-        marginRight: 20,
+        marginRight: 10,
     },
     tagsContainer: {
         marginTop: 5,
-        marginHorizontal: 20,
-        marginBottom: 20,
+        marginHorizontal: 10,
+        marginBottom: 15,
     },
     readingsContainer: {
         width: "100%",
         paddingHorizontal: 10,
         marginTop: 5,
-        marginBottom: 20,
     },
 });

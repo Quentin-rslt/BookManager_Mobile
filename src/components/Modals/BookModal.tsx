@@ -77,7 +77,7 @@ export default function BookModal({ book, showModalBook, setShowModalBook, onRef
                             book.summary != "" && 
                             <View>
                                 <Text style={BookModalStyles.textHolder}>Description : </Text>
-                                <Text style={BookModalStyles.text}>{book.summary}</Text>
+                                <Text style={BookModalStyles.description}>{book.summary}</Text>
                             </View>
                         }
                         {

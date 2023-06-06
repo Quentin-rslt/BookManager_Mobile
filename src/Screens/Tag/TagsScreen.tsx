@@ -64,7 +64,11 @@ export default function TagsScreen({navigation, route } : any) {
                 initialNumToRender={2}
                 numColumns={2}
                 data={tags}
-                renderItem={({item}) => <TagCard key={item.idTag} tag={item} onRefresh={onRefresh} navigation={navigation}/>}
+                renderItem={({item, index}) => 
+                    <View style={{flex: 1,marginLeft: index % 2 !== 0 ? 20 : 0}}>
+                        <TagCard key={item.idTag} tag={item} onRefresh={onRefresh} navigation={navigation}/>
+                    </View>
+                }
                 keyExtractor={item => item.idTag.toString()}
                 refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}
             />

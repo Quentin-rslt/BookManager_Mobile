@@ -4,6 +4,6 @@ export default StyleSheet.create({
     booksContainer : {
         paddingHorizontal: 10,
         justifyContent: 'center',
-        paddingBottom: 80,
+        paddingBottom: 50,
     },
 });

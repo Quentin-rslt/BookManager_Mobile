@@ -4,7 +4,7 @@ import { COLORS } from "../../../library/CommonColors";
 export default StyleSheet.create({
     container: {
         width:"100%",
-        height:135,
+        height:130,
         overflow:'hidden',
         backgroundColor: COLORS.componentBackground,
         borderRadius : 15,
@@ -18,22 +18,21 @@ export default StyleSheet.create({
         color: COLORS.foreground,
         fontSize: 20,
         fontWeight: '800',
-        marginLeft: 20,
-        marginRight: 20,
+        marginHorizontal: 15,
         overflow: 'hidden',
-        marginTop: 15,
+        marginTop: 10,
     },
     authorStyle: {
-        color: COLORS.foreground,
+        color: COLORS.foregroundHolder,
         fontSize: 15,
         fontWeight: '500',
-        marginLeft: 20,
+        marginLeft: 15,
         marginTop: 5,
     },
     tagList: {
         height:30,
-        marginTop : 5,
-        marginHorizontal:20,
+        marginTop : 7,
+        marginHorizontal:15,
     },
     numberContainer: {
         position:'absolute',
@@ -42,10 +41,9 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         width: "100%",
-        bottom: 15,
+        bottom: 10,
         left: 0,
-        paddingLeft: 20,
-        paddingRight: 20,
+        paddingHorizontal: 15,
     },
     containerReleaseAuthor: {
         display : "flex",
@@ -56,7 +54,7 @@ export default StyleSheet.create({
         color: COLORS.foreground,
         fontSize: 15,
         fontWeight: '500',
-        right : 20,
+        right : 15,
         marginTop: 5,
     }
 });
