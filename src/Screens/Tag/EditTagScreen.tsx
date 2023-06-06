@@ -7,12 +7,14 @@ import InputText from '../../components/Inputs/InputText';
 import TextIconButton from '../../components/Buttons/TextIconButton';
 import EditTagStyles from '../../styles/Screens/Tag/EditTagStyles';
 import TagBuilder from '../../library/builders/TagBuilder';
+import ColorModal from '../../components/Modals/ColorModal';
 
 export default function AddTagScreen({ navigation, route } : any) {
 
     const newTag:TagBuilder = route.params.newTag;
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [showModal, setShowModal] = useState(false);
 
     const onClickSaveTag = async () => {
         setIsLoading(true);
@@ -47,7 +49,8 @@ export default function AddTagScreen({ navigation, route } : any) {
                     <InputText placeholder={'Titre du tag'} defaultValue={newTag.textTag} onChangeText={onChangeTextTag}/>
                     <View style={EditTagStyles.colorContainer}>
                         <Text style={EditTagStyles.textHolder}>Couleur du tag :</Text>
-                        <View style={[{backgroundColor: newTag.colorTag}, EditTagStyles.colorTag]}></View>
+                        <TextIconButton showText={false} showIcon={false}  buttonStyle={[{backgroundColor: newTag.colorTag}, EditTagStyles.colorTag]} callBack={() => setShowModal(true)}/>
+                        <ColorModal setShowModal={setShowModal} showModal={showModal} tag={newTag}/>
                     </View>
                 </View>
             </ScrollView>
