@@ -4,7 +4,7 @@ export enum COLORS {
     componentBackground = "#302323",
     background = '#1f1616',
     backgroundLight = '#251a1a',
-    accentColor = '#c53e3ee5',
+    accentColor = '#c53e3e',
     clickableColor = '#c67979',
     transparent = 'transparent',
     Black = '#220b0b',

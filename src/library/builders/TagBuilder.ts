@@ -20,7 +20,7 @@ export default class TagBuilder extends Base {
         super(client);
         this.idTag = data?.idTag ?? 0;
         this.textTag = data?.textTag ?? "";
-        this.colorTag = data?.colorTag ?? "#c53e3ee5";
+        this.colorTag = data?.colorTag ?? "#c53e3e";
     }
 
     public toJSON() {

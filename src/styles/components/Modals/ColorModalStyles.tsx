@@ -11,8 +11,9 @@ export default StyleSheet.create({
     container: {
         position: 'absolute',
         bottom: 0,
-        height: '52%',
+        height: '60%',
         width: "100%",
+        paddingBottom:100,
         backgroundColor: COLORS.componentBackground,
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
@@ -21,7 +22,7 @@ export default StyleSheet.create({
         shadowOffset: { width: -4, height: -4},
         elevation: -10,
     },
-    multiSelectContainer: {
+    colorPicker: {
         height: '100%',
         margin: 10,
     },
