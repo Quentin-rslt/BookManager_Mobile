@@ -63,8 +63,8 @@ export default StyleSheet.create({
         marginTop: 20,
     },
     colorTag: {
-        width: 50, 
-        aspectRatio: 2.5, 
+        width: 20, 
+        aspectRatio: 1.05, 
         borderRadius: 20,
     },
     textTag: {

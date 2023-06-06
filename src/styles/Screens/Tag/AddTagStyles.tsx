@@ -7,7 +7,7 @@ export default StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        marginTop: '15%',
+        marginTop: "15%",
     },
     button: {
         justifyContent: 'center',
@@ -25,16 +25,26 @@ export default StyleSheet.create({
         elevation: 5,
     },
     colorContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        width: "100%",
-        paddingHorizontal: 10,
-        marginTop: 50,
+        width: "95%",
+        justifyContent: 'center',
+        backgroundColor: COLORS.componentBackground,
+        padding: 15,
+        borderRadius: 15,
     },
     colorTag: {
-        width: 50, 
-        aspectRatio: 2.5, 
-        borderRadius: 20,
+        width: 20, 
+        aspectRatio: 1.05, 
+        borderRadius: 10,
+    },
+    textColorTag: {
+        width: "100%",
+        textAlign: 'center',
+        marginTop: 15,
+        color: COLORS.foreground
+    },
+    resultColorContainer: {
+        display: 'flex', 
+        flexDirection: 'row',
     },
     textHolder: {
         fontSize: 13,
@@ -43,6 +53,8 @@ export default StyleSheet.create({
         textAlign: 'left',
         marginRight: 20,
         marginBottom: 10,
-        paddingHorizontal: 10,
+    },
+    titleScrollView: {
+        marginTop: "20%",
     },
 });

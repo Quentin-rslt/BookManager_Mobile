@@ -21,6 +21,7 @@ export default function TagCard({tag, onRefresh, navigation} : Props) {
             <View style={TagCardStyles.containerButton}>
                 <Text style={TagCardStyles.text} numberOfLines={1}>{tag.textTag}</Text>
                 <View style={TagCardStyles.numberBook}>
+                    <View style={[{backgroundColor: tag.colorTag}, TagCardStyles.colorTag]}/>
                     <NumberIcon iconNumber={tag.books.size} iconName={"book-open-outline"} iconColor={COLORS.foregroundHolder}/>
                 </View>
             </View>

@@ -25,8 +25,17 @@ export default StyleSheet.create({
         margin: 15,
     },
     numberBook : {
-        position : 'absolute',
-        right : 15,
-        bottom : 10,
-    }
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+        paddingHorizontal: 15,
+        marginBottom: 10,
+        marginTop: 'auto'
+    },
+    colorTag: {
+        width: 20, 
+        aspectRatio: 1.05, 
+        borderRadius: 10,
+    },
 });

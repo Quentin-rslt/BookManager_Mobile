@@ -13,7 +13,7 @@ export default StyleSheet.create({
         bottom: 0,
         height: '52%',
         width: "100%",
-        backgroundColor: COLORS.componentBackground,
+        backgroundColor: COLORS.backgroundLight,
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
         shadowColor: COLORS.Black,

@@ -69,11 +69,11 @@ export default function TagsModal({ book, showModal, setShowModal }: Props) {
                             selectedItemIconColor={COLORS.accentColor}
                             itemTextColor={COLORS.foreground}
                             hideSubmitButton={true}
-                            styleRowList={{backgroundColor: COLORS.componentBackground}}
+                            styleRowList={{backgroundColor: COLORS.backgroundLight}}
                             hideDropdown={true}
                             noItemsText="Pas de tags trouvés"
-                            styleInputGroup={{backgroundColor: COLORS.componentBackground, paddingBottom: 5}}
-                            styleDropdownMenuSubsection={{backgroundColor: COLORS.componentBackground, height: 50, paddingLeft: 5, marginBottom: 20, borderBottomColor: COLORS.foreground}}
+                            styleInputGroup={{backgroundColor: COLORS.backgroundLight, paddingBottom: 5}}
+                            styleDropdownMenuSubsection={{backgroundColor: COLORS.backgroundLight, height: 50, paddingLeft: 5, marginBottom: 20, borderBottomColor: COLORS.foreground}}
                         />
                     </View>
                     <TextIconButton callBack={() => setShowModal(!showModal)} showIcon={false} text='Valider' buttonStyle={TagsModalStyles.button}/>

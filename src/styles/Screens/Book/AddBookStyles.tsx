@@ -35,7 +35,7 @@ export default StyleSheet.create({
         justifyContent: 'center',
         paddingHorizontal: 15,
         height: 23,
-        backgroundColor: COLORS.accentColor,
+        backgroundColor: COLORS.clickableColor,
         borderRadius: 17, 
         marginHorizontal: 10,
     },
