@@ -4,12 +4,13 @@ import { COLORS } from "../../../library/CommonColors";
 export default StyleSheet.create({
     container: {
         position: 'absolute',
+        bottom: 0,
         height: 60,
-        margin: 10,
-        elevation: 5,
         borderTopWidth: 0,
-        borderRadius: 15,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        marginHorizontal: 5,
         backgroundColor: COLORS.backgroundLight,
-        borderTopColor: COLORS.transparent,
+        elevation: 15,
     },
 });

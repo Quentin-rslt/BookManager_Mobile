@@ -18,14 +18,14 @@ export default StyleSheet.create({
     },
     flatListContainer: {
         width: '100%',
-        marginBottom: 85,
+        marginBottom: 5,
     },
     titleScrollView: {
         marginTop: 60,
     },
     titleFlatList: {
-        marginTop: 60,
-        marginBottom: 10,
+        marginTop: 70,
+        marginBottom: 20,
     },
     loader: {
         position: 'absolute',
@@ -43,8 +43,8 @@ export default StyleSheet.create({
     },
     buttonContainer: {
         position:'absolute',
-        bottom: 80,
-        right: 30,
+        bottom: 90,
+        right: 15,
     },
     addButton: {
         alignItems: 'center',

@@ -3,9 +3,9 @@ export enum COLORS {
     foregroundHolder = '#887474',
     componentBackground = "#302323",
     background = '#1f1616',
-    backgroundLight = '#281c1c',
+    backgroundLight = '#271b1b',
     accentColor = '#c53e3e',
-    clickableColor = '#c67979',
+    clickableColor = '#c57070',
     transparent = 'transparent',
     Black = '#220b0b',
 }

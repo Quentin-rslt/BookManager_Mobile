@@ -9,6 +9,8 @@ import LibraryStyles from '../../styles/Screens/Book/LibraryStyles'
 import TextIconButton from '../../components/Buttons/TextIconButton'
 import Client from '../../library/class/Client'
 import BookBuilder from '../../library/builders/BookBuilder'
+import { LinearGradient } from 'expo-linear-gradient'
+import MaskedView from '@react-native-masked-view/masked-view'
 
 export default function LibraryScreen({ navigation, route } : any) {
 
