@@ -6,15 +6,29 @@ import NumberIcon from '../../components/NumberIcon'
 import TagSticker from '../../components/Buttons/TagSticker'
 import ReadingCard from '../../components/cards/ReadingCard'
 import TextIconButton from '../../components/Buttons/TextIconButton'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import BookBuilder from '../../library/builders/BookBuilder'
 import TopBar from '../../components/TopBar'
 
 export default function BookScreen({ navigation, route } : any) {
 
-    const book:Book = route.params.book;
-    
+    const [book, setBook] = useState<Book>(route.params.book);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [refresh, setRefresh] = useState<boolean>(false);
+
+    useEffect(() => {
+        navigation.addListener('focus', () => {
+            onRefresh();
+            console.log(book.title)
+        });
+    }, [navigation]);
+
+    const onRefresh = () => {
+        const newBook = book.client.bookService.books.get(book.idBook);
+        if(newBook){
+            setBook(newBook);
+        }
+    };
 
     const onDeleteBook = async () => {
         setIsLoading(true);

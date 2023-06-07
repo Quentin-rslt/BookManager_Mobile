@@ -29,7 +29,7 @@ export default StyleSheet.create({
     },
     returnButtonContainer : {   
         position:'absolute',
-        left: 20,
+        left: 10,
     },
     returnButton: {
         alignItems: 'center',
@@ -37,12 +37,13 @@ export default StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         paddingHorizontal: 10,
-        height: 50,
-        backgroundColor: COLORS.clickableColor,
         borderRadius: 40,
         shadowColor: COLORS.Black,
         shadowOpacity: 0.5,
         shadowOffset: { width: 4, height: 4},
         elevation: 5,
+    },
+    textReturn: {
+        color: COLORS.foregroundHolder,
     }
 });

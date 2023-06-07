@@ -1,10 +1,7 @@
 import { View, Text, ScrollView, ToastAndroid } from 'react-native'
 import React, { useState } from 'react'
 import Tag from '../../library/class/Tag';
-import { COLORS } from '../../library/CommonColors';
 import TagStyles from '../../styles/Screens/Tag/TagStyles';
-import { Feather } from '@expo/vector-icons';
-import CommonStyles from '../../styles/CommonStyles';
 import TextIconButton from '../../components/Buttons/TextIconButton';
 import BookCard from '../../components/cards/BookCard';
 import TagBuilder from '../../library/builders/TagBuilder';

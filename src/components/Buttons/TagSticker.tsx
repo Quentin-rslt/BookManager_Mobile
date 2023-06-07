@@ -2,6 +2,7 @@ import TagStickerStyles from '../../styles/components/Buttons/TagStickerStyles';
 import Tag from '../../library/class/Tag';
 import TextIconButton from './TextIconButton';
 import { View } from 'react-native';
+import TagModal from '../Modals/TagModal';
 
 interface Props {
     tag: Tag;

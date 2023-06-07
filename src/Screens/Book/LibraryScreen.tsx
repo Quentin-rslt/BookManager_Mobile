@@ -23,7 +23,7 @@ export default function LibraryScreen({ navigation, route } : any) {
         });
     }, [navigation]);
 
-    const onRefresh = async () => {
+    const onRefresh = () => {
         const books = client.bookService.books.values();
         setBooks([...Array.from(books)]);
     };
