@@ -11,6 +11,8 @@ import { COLORS } from './src/library/CommonColors';
 import AddTagScreen from './src/Screens/Tag/AddTagScreen';
 import EditBookScreen from './src/Screens/Book/EditBookScreen';
 import EditTagScreen from './src/Screens/Tag/EditTagScreen';
+import BookScreen from './src/Screens/Book/BookScreen';
+import TagScreen from './src/Screens/Tag/TagScreen';
 
 const Stack = createStackNavigator();
 
@@ -43,8 +45,10 @@ export default function App() {
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name="NavBar" component={NavBar} options={{ headerShown: false }} initialParams={{ client }}/>
+                <Stack.Screen name="BookScreen" component={BookScreen} options={{ headerShown: false, animationEnabled: false }} initialParams={{ client }}/>
                 <Stack.Screen name="AddBookScreen" component={AddBookScreen} options={{ headerShown: false, animationEnabled: false }} initialParams={{ client }}/>
                 <Stack.Screen name="EditBookScreen" component={EditBookScreen} options={{ headerShown: false, animationEnabled: false }} initialParams={{ client }}/>
+                <Stack.Screen name="TagScreen" component={TagScreen} options={{ headerShown: false, animationEnabled: false }} initialParams={{ client }}/>
                 <Stack.Screen name="AddTagScreen" component={AddTagScreen} options={{ headerShown: false, animationEnabled: false }} initialParams={{ client }}/>
                 <Stack.Screen name="EditTagScreen" component={EditTagScreen} options={{ headerShown: false, animationEnabled: false }} initialParams={{ client }}/>
             </Stack.Navigator>

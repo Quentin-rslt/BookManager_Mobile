@@ -72,7 +72,7 @@ export default function BookModal({ book, showModalBook, setShowModalBook, onRef
                                 <ScrollView horizontal showsHorizontalScrollIndicator={false} style={BookModalStyles.tagsContainer}>
                                     {
                                         Array.from(book.tags.values()).map((tag, idTag) => 
-                                            <TagSticker key={idTag} tag={tag} onRefresh={onRefresh} navigation={navigation}/>
+                                            <TagSticker key={idTag} tag={tag} navigation={navigation}/>
                                         )
                                     }
                                 </ScrollView>

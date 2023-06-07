@@ -93,7 +93,7 @@ export default function AddBookScreen({ navigation, route } : any) {
                             <TextIconButton callBack={() => setShowModal(true)} iconName={'square-edit-outline'} iconSize={15} showText={false} buttonStyle={AddBookStyles.addTagContainer}/>
                             {
                                 book.tags.map((tag, idTag) => 
-                                    <TagSticker key={idTag} tag={tag} onRefresh={onRefreshScreen} navigation={navigation}/>
+                                    <TagSticker key={idTag} tag={tag} navigation={navigation}/>
                                 )
                             }
                             <TagsModal book={book} showModal={showModal} setShowModal={setShowModal}/>

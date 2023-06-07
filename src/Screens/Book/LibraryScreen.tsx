@@ -9,8 +9,6 @@ import LibraryStyles from '../../styles/Screens/Book/LibraryStyles'
 import TextIconButton from '../../components/Buttons/TextIconButton'
 import Client from '../../library/class/Client'
 import BookBuilder from '../../library/builders/BookBuilder'
-import { LinearGradient } from 'expo-linear-gradient'
-import MaskedView from '@react-native-masked-view/masked-view'
 
 export default function LibraryScreen({ navigation, route } : any) {
 
@@ -63,7 +61,7 @@ export default function LibraryScreen({ navigation, route } : any) {
                 ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun livre n'a été trouvé"}</Text>}
                 contentContainerStyle = {LibraryStyles.booksContainer}
                 data={books}
-                renderItem={({item}) => <BookCard key={item.idBook} book={item} onRefresh={onRefresh} navigation={navigation}/>}
+                renderItem={({item}) => <BookCard key={item.idBook} book={item} navigation={navigation}/>}
                 keyExtractor={item => item.idBook.toString()}
                 refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}
             />
