@@ -5,7 +5,7 @@ export default StyleSheet.create({
     scrollViewContainer: {
         width: '100%',
         marginBottom: 10,
-        marginTop: 100,
+        marginTop: 90,
     },
     title: {
         paddingHorizontal: 15,

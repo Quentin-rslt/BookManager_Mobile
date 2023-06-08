@@ -3,7 +3,7 @@ import { COLORS } from "../../../library/CommonColors";
 
 export default StyleSheet.create({
     booksContainer: {
-        paddingHorizontal: 10,
+        paddingHorizontal: 15,
         justifyContent: 'center',
         paddingBottom: 50,
     },
@@ -14,7 +14,7 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         width: '100%',
         marginTop : 100,
-        marginBottom: 20,
+        marginBottom: 15,
         paddingHorizontal: 15,
     },
     textHeaderContainer: {
@@ -31,6 +31,6 @@ export default StyleSheet.create({
         marginLeft: 5,
     },
     buttonHeader: {
-        marginRight: 30,
+        marginRight: 5,
     }
 });

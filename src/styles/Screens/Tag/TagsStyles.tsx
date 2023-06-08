@@ -6,7 +6,7 @@ export default StyleSheet.create({
         paddingBottom: 50,
     },
     columnWrapperStyle: {
-        paddingHorizontal: 10,
+        paddingHorizontal: 15,
         justifyContent: 'space-between',
     },
     headerContainer: {
@@ -16,7 +16,7 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         width: '100%',
         marginTop : 100,
-        marginBottom: 20,
+        marginBottom: 15,
         paddingHorizontal: 15,
     },
     textHeaderContainer: {
@@ -33,6 +33,6 @@ export default StyleSheet.create({
         marginLeft: 5,
     },
     buttonHeader: {
-        marginRight: 30,
+        marginRight: 5,
     }
 });

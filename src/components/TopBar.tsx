@@ -27,7 +27,7 @@ export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveBu
             {
                 returnButtonShow && 
                 <View style={TopBarStyles.returnButtonContainer}>
-                    <TextIconButton callBack={() => navigation.goBack()} iconSize={30} iconName={'chevron-left'} iconColor={COLORS.foreground} buttonStyle={TopBarStyles.returnButton}/>
+                    <TextIconButton callBack={() => navigation.goBack()} iconSize={35} iconName={'chevron-left'} iconColor={COLORS.foreground} buttonStyle={TopBarStyles.returnButton}/>
                 </View>
             }
             {
@@ -43,7 +43,8 @@ export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveBu
                 saveButtonShow && onClickSaveButton && 
                 <TextIconButton 
                     callBack={onClickSaveButton} 
-                    iconSize={20} 
+                    iconSize={20}
+                    showIcon={false} 
                     isLoading={isLoadingSaveButton}
                     iconName={'arrow-collapse-down'}
                     iconColor={COLORS.accentColor}

@@ -5,6 +5,7 @@ import TagStyles from '../../styles/Screens/Tag/TagStyles';
 import BookCard from '../../components/cards/BookCard';
 import TopBar from '../../components/TopBar';
 import EditTagModal from '../../components/Modals/EditTagModal';
+import CommonStyles from '../../styles/CommonStyles';
 
 export default function TagScreen({ navigation, route } : any) {
 
@@ -18,7 +19,7 @@ export default function TagScreen({ navigation, route } : any) {
     };
 
     return (
-        <View style={TagStyles.container}>
+        <View style={CommonStyles.container}>
             <TopBar returnButtonShow moreButtonShow searchBarShow={false} onClickButtonMore={onClickMoreButton}/>
             <ScrollView style={TagStyles.scrollViewContainer} showsVerticalScrollIndicator={false}>
                 <Text style={TagStyles.textTag}>{tag.textTag}</Text>

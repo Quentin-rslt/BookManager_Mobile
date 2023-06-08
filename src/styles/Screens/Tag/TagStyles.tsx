@@ -2,16 +2,10 @@ import { StyleSheet } from "react-native";
 import { COLORS } from "../../../library/CommonColors";
 
 export default StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: COLORS.background,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     scrollViewContainer: {
         width: '100%',
-        marginBottom: 65,
-        marginTop: 60,
+        marginBottom: 10,
+        marginTop: 90,
     },
     returnButton : {
         position: 'absolute',
@@ -21,14 +15,14 @@ export default StyleSheet.create({
         top: -40,
     },
     booksContainer: {
-        paddingHorizontal: 10,
+        paddingHorizontal: 15,
         marginTop: 20,
     },
     colorContainer: {
         display: 'flex',
         flexDirection: 'row',
         width: "100%",
-        paddingHorizontal: 10,
+        paddingHorizontal: 15,
         marginTop: 20,
     },
     colorTag: {
@@ -37,7 +31,7 @@ export default StyleSheet.create({
         borderRadius: 20,
     },
     textTag: {
-        fontSize: 35,
+        fontSize: 30,
         fontWeight: '800',
         color: COLORS.foreground,
         textAlign: 'center',

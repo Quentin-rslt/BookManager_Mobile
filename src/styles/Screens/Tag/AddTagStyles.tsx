@@ -10,7 +10,7 @@ export default StyleSheet.create({
         marginTop: "15%",
     },
     colorContainer: {
-        width: "95%",
+        width: "94%",
         justifyContent: 'center',
         backgroundColor: COLORS.componentBackground,
         padding: 15,

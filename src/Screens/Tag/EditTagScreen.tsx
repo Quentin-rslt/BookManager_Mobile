@@ -3,7 +3,6 @@ import { useState } from 'react'
 import TopBar from '../../components/TopBar';
 import CommonStyles from '../../styles/CommonStyles';
 import InputText from '../../components/Inputs/InputText';
-import TextIconButton from '../../components/Buttons/TextIconButton';
 import EditTagStyles from '../../styles/Screens/Tag/EditTagStyles';
 import TagBuilder from '../../library/builders/TagBuilder';
 import ColorPicker from 'react-native-wheel-color-picker';
@@ -77,7 +76,6 @@ export default function AddTagScreen({ navigation, route } : any) {
                     </View>
                 </View>
             </ScrollView>
-            <TextIconButton callBack={onClickSaveTag} isLoading={isLoading} text={'Enregistrer'} showIcon={false} buttonStyle={EditTagStyles.button}/>
         </View>
     )
 }
