@@ -12,7 +12,6 @@ import { LogBox } from 'react-native';
 import TagsModal from '../../components/Modals/TagsModal'
 import BookBuilder from '../../library/builders/BookBuilder'
 import { COLORS } from '../../library/CommonColors'
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',

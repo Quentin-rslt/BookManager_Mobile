@@ -44,4 +44,11 @@ export default StyleSheet.create({
         width: "100%",
         top: -40,
     },
+    titleModal: {
+        color: COLORS.foreground,
+        fontSize: 25,
+        width: '100%',
+        textAlign: 'center',
+        marginTop: 10,
+    }
 });

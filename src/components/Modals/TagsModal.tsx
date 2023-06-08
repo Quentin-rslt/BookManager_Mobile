@@ -54,7 +54,7 @@ export default function TagsModal({ book, showModal, setShowModal }: Props) {
                 </View>
                 <View style={TagsModalStyles.multiSelectContainer}> 
                     <View style={{marginBottom: 15}}>
-                        <Text>Tags</Text>
+                        <Text style={TagsModalStyles.titleModal}>Tags</Text>
                     </View>
                     <MultiSelect
                         fixedHeight={true}

@@ -2,13 +2,10 @@ import { View, ScrollView, ToastAndroid, Text, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import TopBar from '../../components/TopBar';
 import CommonStyles from '../../styles/CommonStyles';
-import TitleScreen from '../../components/TitleScreen';
 import InputText from '../../components/Inputs/InputText';
-import TextIconButton from '../../components/Buttons/TextIconButton';
 import AddTagStyles from '../../styles/Screens/Tag/AddTagStyles';
 import TagBuilder from '../../library/builders/TagBuilder';
 import ColorPicker from 'react-native-wheel-color-picker';
-import { COLORS } from '../../library/CommonColors';
 
 export default function AddTagScreen({ navigation, route } : any) {
 

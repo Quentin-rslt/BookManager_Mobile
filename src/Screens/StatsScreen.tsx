@@ -1,12 +1,7 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import CommonStyles from '../styles/CommonStyles'
-import TextIconButton from '../components/Buttons/TextIconButton';
-import { COLORS } from '../library/CommonColors';
-import StatsStyles from '../styles/Screens/StatsStyles';
-import TitleScreen from '../components/TitleScreen';
 import Client from '../library/class/Client';
-import NumberIcon from '../components/NumberIcon';
 
 export default function StatsScreen({ navigation, route } : any) {
 

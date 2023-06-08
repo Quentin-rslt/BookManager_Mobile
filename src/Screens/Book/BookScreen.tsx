@@ -1,16 +1,13 @@
-import { Text, View, ToastAndroid } from 'react-native'
+import { Text, View } from 'react-native'
 import BookStyles from '../../styles/Screens/Book/BookStyles'
 import Book from '../../library/class/Book'
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
+import { ScrollView } from 'react-native-gesture-handler'
 import NumberIcon from '../../components/NumberIcon'
 import TagSticker from '../../components/Buttons/TagSticker'
 import ReadingCard from '../../components/cards/ReadingCard'
-import TextIconButton from '../../components/Buttons/TextIconButton'
 import { useEffect, useState } from 'react'
-import BookBuilder from '../../library/builders/BookBuilder'
 import TopBar from '../../components/TopBar'
 import CommonStyles from '../../styles/CommonStyles'
-import { COLORS } from '../../library/CommonColors'
 import EditBookModal from '../../components/Modals/EditBookModal'
 
 export default function BookScreen({ navigation, route } : any) {

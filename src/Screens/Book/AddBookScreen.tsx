@@ -12,7 +12,6 @@ import TagsModal from '../../components/Modals/TagsModal'
 import BookBuilder from '../../library/builders/BookBuilder'
 import TopBar from '../../components/TopBar'
 import { COLORS } from '../../library/CommonColors'
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',

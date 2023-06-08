@@ -1,10 +1,8 @@
-import { View, Text, ScrollView, ToastAndroid } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import Tag from '../../library/class/Tag';
 import TagStyles from '../../styles/Screens/Tag/TagStyles';
-import TextIconButton from '../../components/Buttons/TextIconButton';
 import BookCard from '../../components/cards/BookCard';
-import TagBuilder from '../../library/builders/TagBuilder';
 import TopBar from '../../components/TopBar';
 import EditTagModal from '../../components/Modals/EditTagModal';
 
