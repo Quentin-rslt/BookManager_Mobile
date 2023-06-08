@@ -70,13 +70,7 @@ export default function EditBookScreen({ navigation, route } : any) {
 
     return (
         <View style={CommonStyles.container}>
-            <TopBar returnButtonShow={true} searchBarShow={false}/>
-            <View style={EditBookStyles.headerContainer}>
-                <View style={EditBookStyles.textHeaderContainer}>
-                    <Text style={EditBookStyles.textHeader}>Modifier un livre</Text>
-                </View>
-                <TextIconButton callBack={onClickSaveBook} iconSize={30} showText={false} buttonStyle={EditBookStyles.buttonHeader} iconName={'content-save-outline'} iconColor={COLORS.accentColor}/>
-            </View>
+            <TopBar returnButtonShow searchBarShow={false} saveButtonShow onClickSaveButton={onClickSaveBook} isLoadingSaveButton={isLoading}/>
             <ScrollView style={CommonStyles.scrollViewContainer}>
                 <View style={EditBookStyles.container}>
                     <InputText placeholder={'Titre'} defaultValue={newBook.title} onChangeText={onChangeTitle}/>
@@ -89,7 +83,7 @@ export default function EditBookScreen({ navigation, route } : any) {
                     <View style={{width: "95%"}}  >
                         <Text style={EditBookStyles.textHolder}>Tags : </Text>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={EditBookStyles.tagsContainer}>
-                            <TextIconButton callBack={() => setShowModal(true)} iconName={'square-edit-outline'} iconColor={COLORS.background} iconSize={20} showText={false} buttonStyle={EditBookStyles.addTagContainer}/>
+                            <TextIconButton callBack={() => setShowModal(true)} iconName={'square-edit-outline'} iconColor={COLORS.background} iconSize={17} showText={false} buttonStyle={EditBookStyles.addTagContainer}/>
                             {
                                 newBook.tags.map((tag, idTag) => 
                                     <TagSticker key={idTag} tag={tag} navigation={navigation}/>

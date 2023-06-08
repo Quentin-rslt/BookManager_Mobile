@@ -34,22 +34,7 @@ export default function StatsScreen({ navigation, route } : any) {
 
     return (
         <View style={CommonStyles.container}>
-            <TextIconButton callBack={() => navigation.goBack()} text='Bibliothèque' iconSize={24} iconName={'bookshelf'} iconColor={COLORS.background} buttonStyle={StatsStyles.homeButton}/>
-            <ScrollView style={CommonStyles.scrollViewContainer}>
-                <View style={CommonStyles.titleScrollView}>
-                    <TitleScreen title='Statistiques'/>
-                </View>
-                <View style={StatsStyles.container}>
-                    <NumberIcon iconName={"book-open-outline"} iconNumber={books.length} iconFontSize={50} iconSize={50}/>
-                    <NumberIcon iconName={"tag"} iconNumber={tags.length} iconFontSize={50} iconSize={50}/>
-                    <NumberIcon iconName={"eye-outline"} iconNumber={readings.length} iconFontSize={50} iconSize={50}/>
-                </View>
-                {
-                    readings.map((reading) => 
-                        <Text key={reading.idReading}>{reading.book?.title}</Text>
-                    )
-                }
-            </ScrollView>
+
         </View>
     )
 }

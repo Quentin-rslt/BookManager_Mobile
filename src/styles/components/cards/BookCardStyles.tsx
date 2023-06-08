@@ -7,7 +7,7 @@ export default StyleSheet.create({
         height:130,
         overflow:'hidden',
         backgroundColor: COLORS.componentBackground,
-        borderRadius : 15,
+        borderRadius : 10,
         marginBottom: 15,
         shadowColor: 'black',
         shadowOpacity: 0.3,
@@ -23,7 +23,7 @@ export default StyleSheet.create({
         marginTop: 10,
     },
     authorStyle: {
-        color: COLORS.foregroundHolder,
+        color: COLORS.foreground,
         fontSize: 15,
         fontWeight: '500',
         marginLeft: 15,

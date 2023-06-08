@@ -57,10 +57,10 @@ export default function TagsScreen({navigation, route } : any) {
             <TopBar onChangeSearch={(text) => onChangeSearch(text)}/>
             <View style={TagsStyles.headerContainer}>
                 <View style={TagsStyles.textHeaderContainer}>
-                    <MaterialCommunityIcons name="tag-multiple" color={COLORS.accentColor} size={35}/>
+                    <MaterialCommunityIcons name="tag-multiple" color={COLORS.accentColor} size={30}/>
                     <Text style={TagsStyles.textHeader}>Mes Tags</Text>
                 </View>
-                <TextIconButton callBack={onClickAddTag} iconSize={35} showText={false} buttonStyle={TagsStyles.buttonHeader} iconName={'plus'} iconColor={COLORS.accentColor}/>
+                <TextIconButton callBack={onClickAddTag} iconSize={30} showText={false} buttonStyle={TagsStyles.buttonHeader} iconName={'plus'} iconColor={COLORS.foreground}/>
             </View>
             <FlatList style={CommonStyles.flatListContainer} 
                 ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun tag n'a été trouvé"}</Text>}

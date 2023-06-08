@@ -30,8 +30,7 @@ export default function LibraryScreen({ navigation, route } : any) {
 
     const onRefreshFecthAPI = async () => {
         setIsLoading(true);
-        try{    
-            await client.fetchAll();
+        try{
             setBooks(Array.from((await client.bookService.fetchBooks()).values()));
         } catch(error) {
             ToastAndroid.show("Problème lors du chargement des livres" , ToastAndroid.CENTER);
@@ -56,10 +55,10 @@ export default function LibraryScreen({ navigation, route } : any) {
             <TopBar onChangeSearch={(text) => onChangeSearch(text)}/>
             <View style={LibraryStyles.headerContainer}>
                 <View style={LibraryStyles.textHeaderContainer}>
-                    <MaterialCommunityIcons name="bookshelf" color={COLORS.accentColor} size={35}/>
+                    <MaterialCommunityIcons name="bookshelf" color={COLORS.accentColor} size={30}/>
                     <Text style={LibraryStyles.textHeader}>Ma Bibliothèque</Text>
                 </View>
-                <TextIconButton callBack={onClickAddBook} iconSize={35} showText={false} buttonStyle={LibraryStyles.buttonHeader} iconName={'plus'} iconColor={COLORS.accentColor}/>
+                <TextIconButton callBack={onClickAddBook} iconSize={30} showText={false} buttonStyle={LibraryStyles.buttonHeader} iconName={'plus'} iconColor={COLORS.foreground}/>
             </View>
             <FlatList style={CommonStyles.flatListContainer} 
                 ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun livre n'a été trouvé"}</Text>}

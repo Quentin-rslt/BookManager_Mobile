@@ -12,11 +12,14 @@ type Props = {
     searchBarShow?: boolean;
     moreButtonShow?: boolean;
     onClickButtonMore?: () => void;
+    saveButtonShow?: boolean;
+    onClickSaveButton?: () => void;
+    isLoadingSaveButton?: boolean;
 }
 
 type TopBarStackParamList = {};
 
-export default function TopBar({onChangeSearch, onClickButtonMore, moreButtonShow = false, returnButtonShow = false, searchBarShow = true} : Props) {
+export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveButton, isLoadingSaveButton = false, saveButtonShow = false, moreButtonShow = false, returnButtonShow = false, searchBarShow = true} : Props) {
     const navigation = useNavigation<StackNavigationProp<TopBarStackParamList>>();
 
     return (
@@ -24,7 +27,7 @@ export default function TopBar({onChangeSearch, onClickButtonMore, moreButtonSho
             {
                 returnButtonShow && 
                 <View style={TopBarStyles.returnButtonContainer}>
-                    <TextIconButton callBack={() => navigation.goBack()} iconSize={35} iconName={'chevron-left'} iconColor={COLORS.foregroundHolder} buttonStyle={TopBarStyles.returnButton}/>
+                    <TextIconButton callBack={() => navigation.goBack()} iconSize={30} iconName={'chevron-left'} iconColor={COLORS.foreground} buttonStyle={TopBarStyles.returnButton}/>
                 </View>
             }
             {
@@ -33,9 +36,21 @@ export default function TopBar({onChangeSearch, onClickButtonMore, moreButtonSho
             {
                 moreButtonShow && onClickButtonMore &&
                 <TouchableOpacity onPress={onClickButtonMore} style={TopBarStyles.moreButtonContainer}>
-                    <Feather name={'more-vertical'} size={27} color={COLORS.accentColor}/>
+                    <Feather name={'more-vertical'} size={25} color={COLORS.accentColor}/>
                 </TouchableOpacity>
-
+            }
+            {
+                saveButtonShow && onClickSaveButton && 
+                <TextIconButton 
+                    callBack={onClickSaveButton} 
+                    iconSize={20} 
+                    isLoading={isLoadingSaveButton}
+                    iconName={'arrow-collapse-down'}
+                    iconColor={COLORS.accentColor}
+                    text='Enregistrer'
+                    buttonStyle={TopBarStyles.saveButton} 
+                    textStyle={TopBarStyles.textSaveButton}
+                />
             }
         </View>
   )

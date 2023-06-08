@@ -6,32 +6,22 @@ import TextIconButton from '../../components/Buttons/TextIconButton';
 import BookCard from '../../components/cards/BookCard';
 import TagBuilder from '../../library/builders/TagBuilder';
 import TopBar from '../../components/TopBar';
+import EditTagModal from '../../components/Modals/EditTagModal';
 
 export default function TagScreen({ navigation, route } : any) {
 
     const tag:Tag = route.params.tag;
     
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [showModal, setShowModal] = useState<boolean>(false);
 
-    const onDeleteTag = async () => {
-        setIsLoading(true);
-        try {
-            await tag.client.tagService.deleteTag(tag);
-        } catch(error) {
-            console.log(error);
-            ToastAndroid.show("Problème lors de la suppression du tag" , ToastAndroid.CENTER);
-        }
-        setIsLoading(false);
+    const onClickMoreButton = () => {
+        setShowModal(true);
     };
-
-    const onEditTag = () => {
-        const newTag:TagBuilder = new TagBuilder(tag.client, tag.toJSON());
-        navigation.navigate('EditTagScreen', { newTag });
-    }
 
     return (
         <View style={TagStyles.container}>
-            <TopBar returnButtonShow={true} searchBarShow={false}/>
+            <TopBar returnButtonShow moreButtonShow searchBarShow={false} onClickButtonMore={onClickMoreButton}/>
             <ScrollView style={TagStyles.scrollViewContainer} showsVerticalScrollIndicator={false}>
                 <Text style={TagStyles.textTag}>{tag.textTag}</Text>
                 <View style={TagStyles.colorContainer}>
@@ -50,10 +40,7 @@ export default function TagScreen({ navigation, route } : any) {
                     </View>
                 }
             </ScrollView>
-            <View style={TagStyles.buttonsContainer}>
-                <TextIconButton callBack={onEditTag} showIcon={false} text='Modifier' buttonStyle={TagStyles.button}/>
-                <TextIconButton callBack={onDeleteTag} isLoading={isLoading} showIcon={false} text='Supprimer' buttonStyle={TagStyles.button}/>
-            </View>
+            <EditTagModal isLoading={isLoading} setIsLoading={setIsLoading} navigation={navigation} showModal={showModal} setShowModal={setShowModal} tag={tag} />
         </View>
     )
 }

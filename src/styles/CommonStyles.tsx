@@ -9,22 +9,14 @@ export default StyleSheet.create({
         justifyContent: 'center',
     },
     scrollViewContainer: {
+        height: "100%",
         width: '100%',
-        marginVertical : 10,
-    },
-    scrollViewModal: {
-        marginVertical : 10,
+        marginTop: 100,
+        marginBottom : 10,
     },
     flatListContainer: {
         width: '100%',
         marginBottom: 5,
-    },
-    titleScrollView: {
-        marginTop: 60,
-    },
-    titleFlatList: {
-        marginTop: 70,
-        marginBottom: 20,
     },
     loader: {
         position: 'absolute',

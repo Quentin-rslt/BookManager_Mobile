@@ -4,12 +4,12 @@ import { COLORS } from "../../library/CommonColors";
 export default StyleSheet.create({
     container : {
         position: 'absolute',
-        top:20,
+        top: 20,
         alignItems : "center",
         justifyContent: 'center',
         display: 'flex',
         flexDirection: 'row',
-        width : "100%",
+        width : "95%",
         height : 50,
     },
     textInput : {
@@ -17,9 +17,8 @@ export default StyleSheet.create({
         backgroundColor : COLORS.componentBackground,
         height: "100%",
         width : "90%",
-        borderRadius : 15,
-        paddingLeft : 20,
-        paddingRight : 20,
+        borderRadius : 10,
+        paddingHorizontal: 20,
         fontWeight : "700",
         color : COLORS.foreground,
         shadowColor: COLORS.Black,
@@ -29,7 +28,7 @@ export default StyleSheet.create({
     },
     returnButtonContainer : {   
         position:'absolute',
-        left: 10,
+        left: 0,
     },
     moreButtonContainer : {   
         position:'absolute',
@@ -45,5 +44,20 @@ export default StyleSheet.create({
     },
     textReturn: {
         color: COLORS.foregroundHolder,
-    }
+    },
+    saveButton: {
+        display: 'flex',
+        flexDirection: 'row',
+        position: 'absolute',
+        right: 15,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+    },
+    textSaveButton: {
+        color: COLORS.foreground,
+        fontSize: 17,
+        fontWeight: '700',
+        textAlign: 'left',
+        marginLeft: 5,
+    },
 });

@@ -70,13 +70,7 @@ export default function AddBookScreen({ navigation, route } : any) {
 
     return (
         <View style={CommonStyles.container}>
-            <TopBar returnButtonShow={true} searchBarShow={false}/>
-            <View style={AddBookStyles.headerContainer}>
-                <View style={AddBookStyles.textHeaderContainer}>
-                    <Text style={AddBookStyles.textHeader}>Ajouter un livre</Text>
-                </View>
-                <TextIconButton callBack={onClickSaveBook} isLoading={isLoading} iconSize={30} showText={false} buttonStyle={AddBookStyles.buttonHeader} iconName={'content-save-outline'} iconColor={COLORS.accentColor}/>
-            </View>
+            <TopBar returnButtonShow searchBarShow={false} saveButtonShow onClickSaveButton={onClickSaveBook} isLoadingSaveButton={isLoading}/>
             <ScrollView style={CommonStyles.scrollViewContainer}>
                 <View style={AddBookStyles.container}>
                     <InputText placeholder={'Titre'} defaultValue={book.title} onChangeText={onChangeTitle}/>
@@ -89,7 +83,7 @@ export default function AddBookScreen({ navigation, route } : any) {
                     <View style={{width: "95%"}}>
                         <Text style={AddBookStyles.textHolder}>Tags : </Text>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={AddBookStyles.tagsContainer}>
-                            <TextIconButton callBack={() => setShowModal(true)} iconColor={COLORS.background} iconName={'square-edit-outline'} iconSize={20} showText={false} buttonStyle={AddBookStyles.addTagContainer}/>
+                            <TextIconButton callBack={() => setShowModal(true)} iconColor={COLORS.background} iconName={'square-edit-outline'} iconSize={17} showText={false} buttonStyle={AddBookStyles.addTagContainer}/>
                             {
                                 book.tags.map((tag, idTag) => 
                                     <TagSticker key={idTag} tag={tag} navigation={navigation}/>

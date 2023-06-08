@@ -27,7 +27,7 @@ export default StyleSheet.create({
     },
     textHeader: {
         color: COLORS.foreground,
-        fontSize: 30,
+        fontSize: 25,
         fontWeight: '800',
         textAlign: 'left',
         marginLeft: 5,
