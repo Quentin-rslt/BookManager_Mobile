@@ -56,7 +56,7 @@ export default function AddTagScreen({ navigation, route } : any) {
 
     return (
         <View style={CommonStyles.container}>
-            <TopBar iconButtonShow={true} searchBarShow={false}/>
+            <TopBar returnButtonShow={true} searchBarShow={false}/>
             <View style={EditTagStyles.titleScrollView}>
                 <TitleScreen title={"Modifier un tag"}/>
             </View>

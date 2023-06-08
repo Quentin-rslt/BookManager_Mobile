@@ -4,7 +4,7 @@ import { COLORS } from "../../library/CommonColors";
 export default StyleSheet.create({
     container : {
         position: 'absolute',
-        top:5,
+        top:20,
         alignItems : "center",
         justifyContent: 'center',
         display: 'flex',
@@ -31,6 +31,10 @@ export default StyleSheet.create({
         position:'absolute',
         left: 10,
     },
+    moreButtonContainer : {   
+        position:'absolute',
+        right: 20,
+    },
     returnButton: {
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -38,10 +42,6 @@ export default StyleSheet.create({
         flexDirection: 'row',
         paddingHorizontal: 10,
         borderRadius: 40,
-        shadowColor: COLORS.Black,
-        shadowOpacity: 0.5,
-        shadowOffset: { width: 4, height: 4},
-        elevation: 5,
     },
     textReturn: {
         color: COLORS.foregroundHolder,

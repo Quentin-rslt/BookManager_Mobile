@@ -17,7 +17,7 @@ export default function NavBar({ route } : any) {
         <Tab.Navigator
             initialRouteName="Library"
             screenOptions={{
-                tabBarInactiveTintColor: COLORS.clickableColor,
+                tabBarInactiveTintColor: COLORS.foregroundHolder,
                 tabBarActiveTintColor: COLORS.accentColor,
                 tabBarShowLabel: false,
                 tabBarHideOnKeyboard: true,

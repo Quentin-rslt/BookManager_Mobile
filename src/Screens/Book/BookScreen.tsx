@@ -1,7 +1,7 @@
 import { Text, View, ToastAndroid } from 'react-native'
 import BookStyles from '../../styles/Screens/Book/BookStyles'
 import Book from '../../library/class/Book'
-import { ScrollView } from 'react-native-gesture-handler'
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import NumberIcon from '../../components/NumberIcon'
 import TagSticker from '../../components/Buttons/TagSticker'
 import ReadingCard from '../../components/cards/ReadingCard'
@@ -9,17 +9,19 @@ import TextIconButton from '../../components/Buttons/TextIconButton'
 import { useEffect, useState } from 'react'
 import BookBuilder from '../../library/builders/BookBuilder'
 import TopBar from '../../components/TopBar'
+import CommonStyles from '../../styles/CommonStyles'
+import { COLORS } from '../../library/CommonColors'
+import EditBookModal from '../../components/Modals/EditBookModal'
 
 export default function BookScreen({ navigation, route } : any) {
 
     const [book, setBook] = useState<Book>(route.params.book);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [refresh, setRefresh] = useState<boolean>(false);
+    const [showModal, setShowModal] = useState<boolean>(false);
 
     useEffect(() => {
         navigation.addListener('focus', () => {
             onRefresh();
-            console.log(book.title)
         });
     }, [navigation]);
 
@@ -30,24 +32,13 @@ export default function BookScreen({ navigation, route } : any) {
         }
     };
 
-    const onDeleteBook = async () => {
-        setIsLoading(true);
-        try {
-            await book.client.bookService.deleteBook(book);
-        } catch(error) {
-            console.log(error);
-            ToastAndroid.show("Problème lors de la suppression du livre" , ToastAndroid.CENTER);
-        }
-        setIsLoading(false);
-    }
-
-    const onEditBook = () => {
-        const newBook:BookBuilder = new BookBuilder(book.client, book.toJSON());
-        navigation.navigate('EditBookScreen', { newBook });
+    const onClickMoreButton = () => {
+        setShowModal(true);
     };
+
     return (
-        <View style={BookStyles.container}>
-            <TopBar iconButtonShow={true} searchBarShow={false}/>
+        <View style={CommonStyles.container}>
+            <TopBar returnButtonShow moreButtonShow searchBarShow={false} onClickButtonMore={onClickMoreButton}/>
             <ScrollView style={BookStyles.scrollViewContainer} showsVerticalScrollIndicator={false}>
                 <Text style={BookStyles.title}>{book.title}</Text>
                 <Text style={BookStyles.author}>{book.author}</Text>
@@ -91,10 +82,7 @@ export default function BookScreen({ navigation, route } : any) {
                     </View>
                 }
             </ScrollView>
-            <View style={BookStyles.buttonsContainer}>
-                <TextIconButton callBack={onEditBook} showIcon={false} text='Modifier' buttonStyle={BookStyles.button}/>
-                <TextIconButton callBack={onDeleteBook} isLoading={isLoading} showIcon={false} text='Supprimer' buttonStyle={BookStyles.button}/>
-            </View>
+            <EditBookModal book={book} navigation={navigation} isLoading={isLoading} setIsLoading={setIsLoading} showModal={showModal} setShowModal={setShowModal}/>
         </View>
     )
 }

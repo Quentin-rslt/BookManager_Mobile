@@ -9,6 +9,7 @@ import { COLORS } from '../../library/CommonColors'
 import TextIconButton from '../../components/Buttons/TextIconButton'
 import Client from '../../library/class/Client'
 import TagBuilder from '../../library/builders/TagBuilder'
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function TagsScreen({navigation, route } : any) {
 
@@ -54,8 +55,12 @@ export default function TagsScreen({navigation, route } : any) {
     return (
         <View style={CommonStyles.container}>
             <TopBar onChangeSearch={(text) => onChangeSearch(text)}/>
-            <View style={CommonStyles.titleFlatList}>
-                <TitleScreen title={'Tags'}/>
+            <View style={TagsStyles.headerContainer}>
+                <View style={TagsStyles.textHeaderContainer}>
+                    <MaterialCommunityIcons name="tag-multiple" color={COLORS.accentColor} size={35}/>
+                    <Text style={TagsStyles.textHeader}>Mes Tags</Text>
+                </View>
+                <TextIconButton callBack={onClickAddTag} iconSize={35} showText={false} buttonStyle={TagsStyles.buttonHeader} iconName={'plus'} iconColor={COLORS.accentColor}/>
             </View>
             <FlatList style={CommonStyles.flatListContainer} 
                 ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun tag n'a été trouvé"}</Text>}
@@ -66,15 +71,12 @@ export default function TagsScreen({navigation, route } : any) {
                 data={tags}
                 renderItem={({item, index}) => 
                     <View style={{flex: 1,marginLeft: index % 2 !== 0 ? 20 : 0}}>
-                        <TagCard key={item.idTag} tag={item} onRefresh={onRefresh} navigation={navigation}/>
+                        <TagCard key={item.idTag} tag={item} navigation={navigation}/>
                     </View>
                 }
                 keyExtractor={item => item.idTag.toString()}
                 refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}
             />
-            <View style={CommonStyles.buttonContainer}>
-                <TextIconButton callBack={onClickAddTag} iconSize={22} text={'Ajouter un tag'} iconName={'plus'} buttonStyle={CommonStyles.addButton} iconColor={COLORS.background}/>
-            </View>
         </View>
     ) 
 }

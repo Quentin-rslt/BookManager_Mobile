@@ -10,6 +10,7 @@ interface Props {
     text ?: string;
     iconName ?: any;
     iconColor ?: string;
+    loadColor?: string;
     buttonStyle?: any;
     textStyle?: any;
     showIcon ?: boolean;
@@ -18,9 +19,9 @@ interface Props {
     numberOfLineText ?: number;
 }
 
-export default function TextIconButton({callBack, iconName, iconSize, iconColor, buttonStyle, textStyle, text, showIcon = true, showText = true, isLoading = false, numberOfLineText= 2} : Props) {
+export default function TextIconButton({callBack, loadColor = COLORS.accentColor, iconName, iconSize, iconColor, buttonStyle, textStyle, text, showIcon = true, showText = true, isLoading = false, numberOfLineText= 2} : Props) {
     return (
-        isLoading ? <ActivityIndicator size="small" color={COLORS.background} style={buttonStyle}/> :
+        isLoading ? <ActivityIndicator size="small" color={loadColor} style={buttonStyle}/> :
         <TouchableOpacity onPress={callBack} style={buttonStyle}>
             {
                 showIcon && <MaterialCommunityIcons name={iconName} size={iconSize} color={iconColor}/>

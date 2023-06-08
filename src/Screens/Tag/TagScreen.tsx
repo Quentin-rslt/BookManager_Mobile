@@ -31,7 +31,7 @@ export default function TagScreen({ navigation, route } : any) {
 
     return (
         <View style={TagStyles.container}>
-            <TopBar iconButtonShow={true} searchBarShow={false}/>
+            <TopBar returnButtonShow={true} searchBarShow={false}/>
             <ScrollView style={TagStyles.scrollViewContainer} showsVerticalScrollIndicator={false}>
                 <Text style={TagStyles.textTag}>{tag.textTag}</Text>
                 <View style={TagStyles.colorContainer}>

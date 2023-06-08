@@ -42,7 +42,7 @@ export default function ReadingCard({reading, showDeleteButton=false, book, refr
                 <Text style={ReadingCardStyles.textDate}>{endReadingString}</Text>
                 {
                     showDeleteButton &&
-                    <TextIconButton callBack={onClickDeleteReading} showText={false} iconName={'delete'} iconSize={24} iconColor={COLORS.accentColor}/>
+                    <TextIconButton callBack={onClickDeleteReading} showText={false} iconName={'delete-outline'} iconSize={24} iconColor={COLORS.accentColor}/>
                 }
             </View>
         </View>

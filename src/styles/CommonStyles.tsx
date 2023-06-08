@@ -11,7 +11,6 @@ export default StyleSheet.create({
     scrollViewContainer: {
         width: '100%',
         marginVertical : 10,
-        marginBottom: 62,
     },
     scrollViewModal: {
         marginVertical : 10,
@@ -40,25 +39,6 @@ export default StyleSheet.create({
         color: COLORS.foreground,
         width: "100%",
         marginTop : 20,
-    },
-    buttonContainer: {
-        position:'absolute',
-        bottom: 90,
-        right: 15,
-    },
-    addButton: {
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        display: 'flex',
-        flexDirection: 'row',
-        paddingHorizontal: 10,
-        height: 55,
-        backgroundColor: COLORS.clickableColor,
-        borderRadius: 40,
-        shadowColor: COLORS.Black,
-        shadowOpacity: 0.5,
-        shadowOffset: { width: 4, height: 4},
-        elevation: 5,
     },
     image: {
         resizeMode: "contain",

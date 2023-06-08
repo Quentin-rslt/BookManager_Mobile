@@ -1,6 +1,5 @@
 import { FlatList, RefreshControl, Text, ToastAndroid, View } from 'react-native'
 import CommonStyles from '../../styles/CommonStyles'
-import TitleScreen from '../../components/TitleScreen'
 import BookCard from '../../components/cards/BookCard'
 import { useEffect, useState } from 'react'
 import TopBar from '../../components/TopBar'
@@ -9,6 +8,7 @@ import LibraryStyles from '../../styles/Screens/Book/LibraryStyles'
 import TextIconButton from '../../components/Buttons/TextIconButton'
 import Client from '../../library/class/Client'
 import BookBuilder from '../../library/builders/BookBuilder'
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function LibraryScreen({ navigation, route } : any) {
 
@@ -54,8 +54,12 @@ export default function LibraryScreen({ navigation, route } : any) {
     return (
         <View style={CommonStyles.container}>
             <TopBar onChangeSearch={(text) => onChangeSearch(text)}/>
-            <View style={CommonStyles.titleFlatList}>
-                <TitleScreen title={'Bibliothèque'}/>
+            <View style={LibraryStyles.headerContainer}>
+                <View style={LibraryStyles.textHeaderContainer}>
+                    <MaterialCommunityIcons name="bookshelf" color={COLORS.accentColor} size={35}/>
+                    <Text style={LibraryStyles.textHeader}>Ma Bibliothèque</Text>
+                </View>
+                <TextIconButton callBack={onClickAddBook} iconSize={35} showText={false} buttonStyle={LibraryStyles.buttonHeader} iconName={'plus'} iconColor={COLORS.accentColor}/>
             </View>
             <FlatList style={CommonStyles.flatListContainer} 
                 ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun livre n'a été trouvé"}</Text>}
@@ -65,9 +69,6 @@ export default function LibraryScreen({ navigation, route } : any) {
                 keyExtractor={item => item.idBook.toString()}
                 refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}
             />
-            <View style={CommonStyles.buttonContainer}>
-                <TextIconButton callBack={onClickAddBook} iconSize={22} text={'Ajouter un livre'} buttonStyle={CommonStyles.addButton} iconName={'plus'} iconColor={COLORS.background}/>
-            </View>
         </View>
     )
 }

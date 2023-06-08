@@ -1,5 +1,4 @@
 import { Text, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
 import Book from '../../library/class/Book'
 import BookCardStyles from '../../styles/components/cards/BookCardStyles';
 import TagSticker from '../Buttons/TagSticker';

@@ -1,7 +1,6 @@
 import { View, Text, ScrollView, ToastAndroid } from 'react-native'
 import { useState } from 'react'
 import CommonStyles from '../../styles/CommonStyles'
-import TitleScreen from '../../components/TitleScreen'
 import AddBookStyles from '../../styles/Screens/Book/AddBookStyles'
 import TextIconButton from '../../components/Buttons/TextIconButton'
 import InputText from '../../components/Inputs/InputText'
@@ -12,6 +11,8 @@ import { LogBox } from 'react-native';
 import TagsModal from '../../components/Modals/TagsModal'
 import BookBuilder from '../../library/builders/BookBuilder'
 import TopBar from '../../components/TopBar'
+import { COLORS } from '../../library/CommonColors'
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
@@ -24,11 +25,6 @@ export default function AddBookScreen({ navigation, route } : any) {
     const [refresh, setRefresh] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [showModal, setShowModal] = useState<boolean>(false);
-
-    const onRefreshScreen = () => {
-        setIsLoading(true);
-        setIsLoading(false);
-    };
 
     const onClickSaveBook = async () => {
         setIsLoading(true);
@@ -74,9 +70,12 @@ export default function AddBookScreen({ navigation, route } : any) {
 
     return (
         <View style={CommonStyles.container}>
-            <TopBar iconButtonShow={true} searchBarShow={false}/>
-            <View style={CommonStyles.titleScrollView}>
-                <TitleScreen title={"Ajouter un livre"}/>
+            <TopBar returnButtonShow={true} searchBarShow={false}/>
+            <View style={AddBookStyles.headerContainer}>
+                <View style={AddBookStyles.textHeaderContainer}>
+                    <Text style={AddBookStyles.textHeader}>Ajouter un livre</Text>
+                </View>
+                <TextIconButton callBack={onClickSaveBook} isLoading={isLoading} iconSize={30} showText={false} buttonStyle={AddBookStyles.buttonHeader} iconName={'content-save-outline'} iconColor={COLORS.accentColor}/>
             </View>
             <ScrollView style={CommonStyles.scrollViewContainer}>
                 <View style={AddBookStyles.container}>
@@ -90,7 +89,7 @@ export default function AddBookScreen({ navigation, route } : any) {
                     <View style={{width: "95%"}}>
                         <Text style={AddBookStyles.textHolder}>Tags : </Text>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={AddBookStyles.tagsContainer}>
-                            <TextIconButton callBack={() => setShowModal(true)} iconName={'square-edit-outline'} iconSize={15} showText={false} buttonStyle={AddBookStyles.addTagContainer}/>
+                            <TextIconButton callBack={() => setShowModal(true)} iconColor={COLORS.background} iconName={'square-edit-outline'} iconSize={20} showText={false} buttonStyle={AddBookStyles.addTagContainer}/>
                             {
                                 book.tags.map((tag, idTag) => 
                                     <TagSticker key={idTag} tag={tag} navigation={navigation}/>
@@ -111,7 +110,6 @@ export default function AddBookScreen({ navigation, route } : any) {
                     </View>
                 </View>
             </ScrollView>
-            <TextIconButton callBack={onClickSaveBook} isLoading={isLoading} text={'Enregistrer'} showIcon={false} buttonStyle={AddBookStyles.button}/>
         </View>
     )
 }
