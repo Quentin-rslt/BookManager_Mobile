@@ -8,7 +8,7 @@ export default StyleSheet.create({
     textTag: {
         color: COLORS.background,
         paddingHorizontal: 8,
-        paddingVertical: 5,    
+        paddingVertical: 4,    
         borderRadius : 15,
         fontSize: 12,
         fontWeight: '700',

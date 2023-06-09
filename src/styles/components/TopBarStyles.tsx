@@ -2,23 +2,49 @@ import { StyleSheet } from "react-native";
 import { COLORS } from "../../library/CommonColors";
 
 export default StyleSheet.create({
-    topContainer : {
+    topContainer: {
         display: 'flex',
         flexDirection: 'row',
         alignItems : 'center',
         justifyContent: 'space-between',
         width: '100%',
+        marginTop : 30,
         marginBottom: 15,
         paddingHorizontal: 15,
-        height: 50,
+    },
+    textHeaderContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems : 'center',
+        justifyContent: 'center',
+    },
+    textHeader: {
+        color: COLORS.foreground,
+        fontSize: 25,
+        fontWeight: '800',
+        textAlign: 'left',
+        marginLeft: 5,
+    },
+    buttonHeader: {
+        marginRight: 5,
+    },
+    bottomContainer : {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems : 'center',
+        justifyContent: 'space-between',
+        width: '100%',
+        marginBottom: 20,
+        paddingHorizontal: 15,
+        height: 40,
     },
     textInput : {
         justifyContent: 'center',
         backgroundColor : COLORS.componentBackground,
         height: "100%",
         width : "100%",
-        borderRadius : 10,
-        paddingHorizontal: 20,
+        borderRadius : 5,
+        paddingHorizontal: 15,
         fontWeight : "700",
         color : COLORS.foreground,
         shadowColor: COLORS.Black,
@@ -56,38 +82,12 @@ export default StyleSheet.create({
     textSaveButton: {
         backgroundColor: COLORS.accentColor,
         color: COLORS.background,
-        fontSize: 15,
+        fontSize: 13,
         fontWeight: '700',
         textAlign: 'left',
         paddingVertical: 6,
         paddingHorizontal : 15,
         borderRadius: 20,
         marginLeft: 5,
-    },
-    headerContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems : 'center',
-        justifyContent: 'space-between',
-        width: '100%',
-        marginTop : 40,
-        marginBottom: 15,
-        paddingHorizontal: 15,
-    },
-    textHeaderContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems : 'center',
-        justifyContent: 'center',
-    },
-    textHeader: {
-        color: COLORS.foreground,
-        fontSize: 25,
-        fontWeight: '800',
-        textAlign: 'left',
-        marginLeft: 5,
-    },
-    buttonHeader: {
-        marginRight: 5,
     },
 });

@@ -16,7 +16,7 @@ export default StyleSheet.create({
         backgroundColor: COLORS.componentBackground,
         padding: 15,
         marginBottom: 100,
-        borderRadius: 15,
+        borderRadius: 10,
         shadowColor: 'black',
         shadowOpacity: 0.5,
         shadowOffset: { width: 4, height: 4},

@@ -5,10 +5,11 @@ export default StyleSheet.create({
     container: {
         position: 'absolute',
         bottom: 0,
-        height: 60,
+        height: 55,
         borderTopWidth: 0,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
+        paddingHorizontal: 20,
         backgroundColor: COLORS.backgroundLight,
         elevation: 15,
     },

@@ -32,7 +32,7 @@ export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveBu
         <View style={{width: '100%'}}>
             {
                 onClickButtonHeader && headerShow && 
-                <View style={TopBarStyles.headerContainer}>
+                <View style={TopBarStyles.topContainer}>
                     <View style={TopBarStyles.textHeaderContainer}>
                         <MaterialCommunityIcons name={iconNameTitleHeader} color={COLORS.accentColor} size={30}/>
                         <Text style={TopBarStyles.textHeader}>{titleHeader}</Text>
@@ -40,7 +40,7 @@ export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveBu
                     <TextIconButton callBack={onClickButtonHeader} iconSize={30} showText={false} buttonStyle={TopBarStyles.buttonHeader} iconName={iconNameButtonHeader} iconColor={COLORS.foreground}/>
                 </View>
             }
-            <View style={[TopBarStyles.topContainer, !headerShow && {marginTop: 20,}]}>
+            <View style={[TopBarStyles.bottomContainer, !headerShow && {marginTop: 30, marginBottom: 10}]}>
                 {
                     returnButtonShow && 
                     <View style={TopBarStyles.returnButtonContainer}>

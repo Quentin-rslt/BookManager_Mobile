@@ -28,7 +28,7 @@ export default StyleSheet.create({
         height: 40,
         backgroundColor: COLORS.transparent,
         shadowColor: COLORS.transparent,
-        borderRadius: 15,
+        borderRadius: 10,
     },
     dateText: {
         color: COLORS.foreground,
