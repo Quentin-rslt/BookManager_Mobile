@@ -1,5 +1,5 @@
 import { View, ToastAndroid } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Book from '../../library/class/Book';
 import BookBuilder from '../../library/builders/BookBuilder';
 import Modal from "react-native-modal";
@@ -9,22 +9,23 @@ import { Feather } from '@expo/vector-icons';
 import TextIconButton from '../Buttons/TextIconButton';
 
 interface Props {
-    isLoading: boolean;
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
     showModal: boolean;
     setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
     book: Book;
     navigation: any;
 }
 
-export default function EditBookModal({isLoading, setIsLoading, showModal, setShowModal, book, navigation}: Props) {
+export default function EditBookModal({showModal, setShowModal, book, navigation}: Props) {
+
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const onDeleteBook = async () => {
         setIsLoading(true);
         try {
             await book.client.bookService.deleteBook(book);
-            setShowModal(false);
+            
             navigation.goBack();
+            setShowModal(false);
         } catch(error) {
             console.log(error);
             ToastAndroid.show("Problème lors de la suppression du livre" , ToastAndroid.CENTER);

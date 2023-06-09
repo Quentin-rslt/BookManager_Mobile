@@ -1,5 +1,5 @@
 import { View, ToastAndroid } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Modal from "react-native-modal";
 import EditModalBookStyles from '../../styles/components/Modals/EditModalBookStyles';
 import { COLORS } from '../../library/CommonColors';
@@ -9,20 +9,21 @@ import Tag from '../../library/class/Tag';
 import TagBuilder from '../../library/builders/TagBuilder';
 
 interface Props {
-    isLoading: boolean;
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
     showModal: boolean;
     setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-    tag: Tag;
+    newTag: Tag;
     navigation: any;
 }
 
-export default function EditTagModal({isLoading, setIsLoading, showModal, setShowModal, tag, navigation}: Props) {
+export default function EditTagModal({showModal, setShowModal, newTag: tag, navigation}: Props) {
+
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const onDeleteTag = async () => {
         setIsLoading(true);
         try {
             await tag.client.tagService.deleteTag(tag);
+            
             navigation.goBack();
             setShowModal(false);
         } catch(error) {

@@ -17,7 +17,7 @@ export default function HomeScreen({ navigation, route } : any) {
         });
     }, [navigation]);
 
-    const onRefresh = async () => {
+    const onRefresh = () => {
         const books = client.bookService.books.values();
         const tags = client.tagService.tags.values();
         const readings = client.readingService.readings.values();

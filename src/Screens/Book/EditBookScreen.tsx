@@ -30,9 +30,11 @@ export default function EditBookScreen({ navigation, route } : any) {
         
         try{
             if(newBook.title != "" && newBook.author != ""){
-                await newBook.client.bookService.editBook(newBook);
+                const book = await newBook.client.bookService.editBook(newBook);
 
-                navigation.goBack();
+                if(book) {
+                    navigation.navigate('BookScreen', { book });
+                }
             } else {
                 ToastAndroid.show("Veuillez mettre un titre et un author" , ToastAndroid.CENTER);
             }

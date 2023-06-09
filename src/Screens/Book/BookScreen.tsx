@@ -12,22 +12,9 @@ import EditBookModal from '../../components/Modals/EditBookModal'
 
 export default function BookScreen({ navigation, route } : any) {
 
-    const [book, setBook] = useState<Book>(route.params.book);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const book:Book = route.params.book;
+    
     const [showModal, setShowModal] = useState<boolean>(false);
-
-    useEffect(() => {
-        navigation.addListener('focus', () => {
-            onRefresh();
-        });
-    }, [navigation]);
-
-    const onRefresh = () => {
-        const newBook = book.client.bookService.books.get(book.idBook);
-        if(newBook){
-            setBook(newBook);
-        }
-    };
 
     const onClickMoreButton = () => {
         setShowModal(true);
@@ -79,7 +66,7 @@ export default function BookScreen({ navigation, route } : any) {
                     </View>
                 }
             </ScrollView>
-            <EditBookModal book={book} navigation={navigation} isLoading={isLoading} setIsLoading={setIsLoading} showModal={showModal} setShowModal={setShowModal}/>
+            <EditBookModal book={book} navigation={navigation} showModal={showModal} setShowModal={setShowModal}/>
         </View>
     )
 }

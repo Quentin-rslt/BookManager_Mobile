@@ -10,8 +10,7 @@ import CommonStyles from '../../styles/CommonStyles';
 export default function TagScreen({ navigation, route } : any) {
 
     const tag:Tag = route.params.tag;
-    
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+
     const [showModal, setShowModal] = useState<boolean>(false);
 
     const onClickMoreButton = () => {
@@ -39,7 +38,7 @@ export default function TagScreen({ navigation, route } : any) {
                     </View>
                 }
             </ScrollView>
-            <EditTagModal isLoading={isLoading} setIsLoading={setIsLoading} navigation={navigation} showModal={showModal} setShowModal={setShowModal} tag={tag} />
+            <EditTagModal navigation={navigation} showModal={showModal} setShowModal={setShowModal} newTag={tag} />
         </View>
     )
 }

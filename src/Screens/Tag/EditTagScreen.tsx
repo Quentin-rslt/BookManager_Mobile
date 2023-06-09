@@ -19,9 +19,11 @@ export default function AddTagScreen({ navigation, route } : any) {
 
         try{
             if(newTag.textTag != ""){
-                await newTag.client.tagService.editTag(newTag);
+                const tag = await newTag.client.tagService.editTag(newTag);
                 
-                navigation.goBack();
+                if(tag) {
+                    navigation.navigate('TagScreen', { tag });
+                }
             } else {
                 ToastAndroid.show("Veuillez titre pour le tag" , ToastAndroid.CENTER);
             }

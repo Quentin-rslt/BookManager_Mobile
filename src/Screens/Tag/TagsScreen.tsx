@@ -23,7 +23,7 @@ export default function TagsScreen({navigation, route } : any) {
         });
     }, [navigation]);
 
-    const onRefresh = async () => {
+    const onRefresh = () => {
         const tags = Array.from(client.tagService.tags.values());
         setTags([...tags]);
     };
