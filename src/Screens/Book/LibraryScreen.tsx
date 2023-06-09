@@ -3,12 +3,9 @@ import CommonStyles from '../../styles/CommonStyles'
 import BookCard from '../../components/cards/BookCard'
 import { useEffect, useState } from 'react'
 import TopBar from '../../components/TopBar'
-import { COLORS } from '../../library/CommonColors'
 import LibraryStyles from '../../styles/Screens/Book/LibraryStyles'
-import TextIconButton from '../../components/Buttons/TextIconButton'
 import Client from '../../library/class/Client'
 import BookBuilder from '../../library/builders/BookBuilder'
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function LibraryScreen({ navigation, route } : any) {
 
@@ -16,6 +13,7 @@ export default function LibraryScreen({ navigation, route } : any) {
 
     const [books, setBooks] = useState(Array.from(client.bookService.books.values()));
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [searchText, setSearchText] = useState<string>('');
 
     useEffect(() => {
         navigation.addListener('focus', () => {
@@ -26,6 +24,7 @@ export default function LibraryScreen({ navigation, route } : any) {
     const onRefresh = () => {
         const books = client.bookService.books.values();
         setBooks([...Array.from(books)]);
+        setSearchText('');
     };
 
     const onRefreshFecthAPI = async () => {
@@ -35,6 +34,7 @@ export default function LibraryScreen({ navigation, route } : any) {
         } catch(error) {
             ToastAndroid.show("Problème lors du chargement des livres" , ToastAndroid.CENTER);
         }
+        setSearchText('');
         setIsLoading(false);
     };
     
@@ -44,6 +44,7 @@ export default function LibraryScreen({ navigation, route } : any) {
     };
 
     const onChangeSearch = (text : string) => {
+        setSearchText(text);
         const filteredBooks = Array.from(client.bookService.books.values()).filter((book) =>
             book.title.toLowerCase().includes(text.toLowerCase()) || book.author.toUpperCase().includes(text.toUpperCase())
         );
@@ -52,7 +53,7 @@ export default function LibraryScreen({ navigation, route } : any) {
 
     return (
         <View style={CommonStyles.container}>
-            <TopBar onChangeSearch={(text) => onChangeSearch(text)} headerShow onClickButtonHeader={onClickAddBook} titleHeader='Ma Bibliothéque' iconNameTitleHeader={'bookshelf'} iconNameButtonHeader={'plus'}/>
+            <TopBar value={searchText} onChangeSearch={(text) => onChangeSearch(text)} headerShow onClickButtonHeader={onClickAddBook} titleHeader='Ma Bibliothéque' iconNameTitleHeader={'bookshelf'} iconNameButtonHeader={'plus'}/>
             <FlatList style={CommonStyles.flatListContainer} 
                 ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun livre n'a été trouvé"}</Text>}
                 contentContainerStyle = {LibraryStyles.booksContainer}

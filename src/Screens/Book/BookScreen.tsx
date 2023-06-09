@@ -5,7 +5,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import NumberIcon from '../../components/NumberIcon'
 import TagSticker from '../../components/Buttons/TagSticker'
 import ReadingCard from '../../components/cards/ReadingCard'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import TopBar from '../../components/TopBar'
 import CommonStyles from '../../styles/CommonStyles'
 import EditBookModal from '../../components/Modals/EditBookModal'
@@ -13,7 +13,7 @@ import EditBookModal from '../../components/Modals/EditBookModal'
 export default function BookScreen({ navigation, route } : any) {
 
     const book:Book = route.params.book;
-    
+
     const [showModal, setShowModal] = useState<boolean>(false);
 
     const onClickMoreButton = () => {

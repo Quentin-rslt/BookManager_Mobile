@@ -70,7 +70,7 @@ export default StyleSheet.create({
         alignItems : 'center',
         justifyContent: 'space-between',
         width: '100%',
-        marginTop : 50,
+        marginTop : 40,
         marginBottom: 15,
         paddingHorizontal: 15,
     },

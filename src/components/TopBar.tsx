@@ -10,6 +10,7 @@ type Props = {
     onChangeSearch?: (text: string) => void;
     returnButtonShow?: boolean;
     searchBarShow?: boolean;
+    value?: string;
     moreButtonShow?: boolean;
     onClickButtonMore?: () => void;
     saveButtonShow?: boolean;
@@ -24,7 +25,7 @@ type Props = {
 
 type TopBarStackParamList = {};
 
-export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveButton, onClickButtonHeader, headerShow = false , iconNameTitleHeader = '', iconNameButtonHeader = '' , titleHeader = '', isLoadingSaveButton = false, saveButtonShow = false, moreButtonShow = false, returnButtonShow = false, searchBarShow = true} : Props) {
+export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveButton, onClickButtonHeader, headerShow = false , iconNameTitleHeader = '', iconNameButtonHeader = '' , titleHeader = '', isLoadingSaveButton = false, saveButtonShow = false, moreButtonShow = false, returnButtonShow = false, searchBarShow = true, value = ''} : Props) {
     const navigation = useNavigation<StackNavigationProp<TopBarStackParamList>>();
 
     return (
@@ -47,7 +48,7 @@ export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveBu
                     </View>
                 }
                 {
-                    searchBarShow && <TextInput placeholder="Search" placeholderTextColor={COLORS.foregroundHolder}  style={TopBarStyles.textInput} onChangeText={onChangeSearch}/>
+                    searchBarShow && <TextInput value={value} placeholder="Search" placeholderTextColor={COLORS.foregroundHolder}  style={TopBarStyles.textInput} onChangeText={onChangeSearch}/>
                 }
                 {
                     moreButtonShow && onClickButtonMore &&

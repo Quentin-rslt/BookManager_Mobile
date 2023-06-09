@@ -4,11 +4,8 @@ import CommonStyles from '../../styles/CommonStyles'
 import TagCard from '../../components/cards/TagCard'
 import TagsStyles from '../../styles/Screens/Tag/TagsStyles'
 import TopBar from '../../components/TopBar'
-import { COLORS } from '../../library/CommonColors'
-import TextIconButton from '../../components/Buttons/TextIconButton'
 import Client from '../../library/class/Client'
 import TagBuilder from '../../library/builders/TagBuilder'
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function TagsScreen({navigation, route } : any) {
 
@@ -16,6 +13,7 @@ export default function TagsScreen({navigation, route } : any) {
 
     const [tags, setTags] = useState(Array.from(client.tagService.tags.values()));
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [searchText, setSearchText] = useState<string>('');
 
     useEffect(() => {
         navigation.addListener('focus', () => {
@@ -26,6 +24,7 @@ export default function TagsScreen({navigation, route } : any) {
     const onRefresh = () => {
         const tags = Array.from(client.tagService.tags.values());
         setTags([...tags]);
+        setSearchText('');
     };
 
     const onRefreshFecthAPI = async () => {
@@ -37,6 +36,7 @@ export default function TagsScreen({navigation, route } : any) {
             ToastAndroid.show("Problème lors du chargement des tags" , ToastAndroid.CENTER);
         }
         setIsLoading(false);
+        setSearchText('');
     };
 
     const onChangeSearch = (text : string) => {
@@ -44,6 +44,7 @@ export default function TagsScreen({navigation, route } : any) {
             tag.textTag.toLowerCase().includes(text.toLowerCase())
         );
         setTags([...filteredTags]);
+        setSearchText(text);
     };
 
     const onClickAddTag = () => {
@@ -53,7 +54,7 @@ export default function TagsScreen({navigation, route } : any) {
 
     return (
         <View style={CommonStyles.container}>
-            <TopBar onChangeSearch={(text) => onChangeSearch(text)} headerShow iconNameTitleHeader={'tag-multiple'} iconNameButtonHeader={'plus'} titleHeader='Mes Tags' onClickButtonHeader={onClickAddTag}/>
+            <TopBar value={searchText} onChangeSearch={(text) => onChangeSearch(text)} headerShow iconNameTitleHeader={'tag-multiple'} iconNameButtonHeader={'plus'} titleHeader='Mes Tags' onClickButtonHeader={onClickAddTag}/>
             <FlatList style={CommonStyles.flatListContainer} 
                 ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun tag n'a été trouvé"}</Text>}
                 columnWrapperStyle={TagsStyles.columnWrapperStyle}
