@@ -2,16 +2,15 @@ import { StyleSheet } from "react-native";
 import { COLORS } from "../../library/CommonColors";
 
 export default StyleSheet.create({
-    container : {
-        position: 'absolute',
-        top: 20,
-        alignItems : "center",
-        justifyContent: 'center',
+    topContainer : {
         display: 'flex',
         flexDirection: 'row',
-        width : "100%",
+        alignItems : 'center',
+        justifyContent: 'space-between',
+        width: '100%',
+        marginBottom: 15,
         paddingHorizontal: 15,
-        height : 50,
+        height: 50,
     },
     textInput : {
         justifyContent: 'center',
@@ -64,5 +63,31 @@ export default StyleSheet.create({
         paddingHorizontal : 15,
         borderRadius: 20,
         marginLeft: 5,
+    },
+    headerContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems : 'center',
+        justifyContent: 'space-between',
+        width: '100%',
+        marginTop : 50,
+        marginBottom: 15,
+        paddingHorizontal: 15,
+    },
+    textHeaderContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems : 'center',
+        justifyContent: 'center',
+    },
+    textHeader: {
+        color: COLORS.foreground,
+        fontSize: 25,
+        fontWeight: '800',
+        textAlign: 'left',
+        marginLeft: 5,
+    },
+    buttonHeader: {
+        marginRight: 5,
     },
 });

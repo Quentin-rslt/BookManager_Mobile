@@ -9,30 +9,4 @@ export default StyleSheet.create({
         paddingHorizontal: 15,
         justifyContent: 'space-between',
     },
-    headerContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems : 'center',
-        justifyContent: 'space-between',
-        width: '100%',
-        marginTop : 100,
-        marginBottom: 15,
-        paddingHorizontal: 15,
-    },
-    textHeaderContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems : 'center',
-        justifyContent: 'center',
-    },
-    textHeader: {
-        color: COLORS.foreground,
-        fontSize: 25,
-        fontWeight: '800',
-        textAlign: 'left',
-        marginLeft: 5,
-    },
-    buttonHeader: {
-        marginRight: 5,
-    }
 });

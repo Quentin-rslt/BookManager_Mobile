@@ -52,14 +52,7 @@ export default function LibraryScreen({ navigation, route } : any) {
 
     return (
         <View style={CommonStyles.container}>
-            <TopBar onChangeSearch={(text) => onChangeSearch(text)}/>
-            <View style={LibraryStyles.headerContainer}>
-                <View style={LibraryStyles.textHeaderContainer}>
-                    <MaterialCommunityIcons name="bookshelf" color={COLORS.accentColor} size={30}/>
-                    <Text style={LibraryStyles.textHeader}>Ma Bibliothèque</Text>
-                </View>
-                <TextIconButton callBack={onClickAddBook} iconSize={30} showText={false} buttonStyle={LibraryStyles.buttonHeader} iconName={'plus'} iconColor={COLORS.foreground}/>
-            </View>
+            <TopBar onChangeSearch={(text) => onChangeSearch(text)} headerShow onClickButtonHeader={onClickAddBook} titleHeader='Ma Bibliothéque' iconNameTitleHeader={'bookshelf'} iconNameButtonHeader={'plus'}/>
             <FlatList style={CommonStyles.flatListContainer} 
                 ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun livre n'a été trouvé"}</Text>}
                 contentContainerStyle = {LibraryStyles.booksContainer}

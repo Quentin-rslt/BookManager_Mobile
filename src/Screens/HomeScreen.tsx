@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import CommonStyles from '../styles/CommonStyles'
 import Client from '../library/class/Client';
 
-export default function StatsScreen({ navigation, route } : any) {
+export default function HomeScreen({ navigation, route } : any) {
 
     const client:Client = route.params.client;
 

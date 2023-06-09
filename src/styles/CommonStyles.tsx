@@ -11,7 +11,7 @@ export default StyleSheet.create({
     scrollViewContainer: {
         height: "100%",
         width: '100%',
-        marginTop: 100,
+        marginTop: 20,
         marginBottom : 10,
     },
     flatListContainer: {
