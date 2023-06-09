@@ -3,17 +3,19 @@ import { COLORS } from "../../../library/CommonColors";
 
 export default StyleSheet.create({
     container: {
+        width: "100%",
+        height: "100%",
+        alignItems: 'center',
         justifyContent: 'center',
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
+        paddingHorizontal: 15,
         marginTop: "15%",
     },
     colorContainer: {
-        width: "94%",
+        width: "100%",
         justifyContent: 'center',
         backgroundColor: COLORS.componentBackground,
         padding: 15,
+        marginBottom: 100,
         borderRadius: 15,
         shadowColor: 'black',
         shadowOpacity: 0.5,

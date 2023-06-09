@@ -6,16 +6,15 @@ export default StyleSheet.create({
         width: '100%',
         marginBottom: 10,
         marginTop: 90,
+        paddingHorizontal: 15,
     },
     title: {
-        paddingHorizontal: 15,
         fontSize: 30,
         fontWeight: '800',
         color: COLORS.foreground,
         textAlign: 'center',
     },
     author: {
-        paddingHorizontal: 15,
         fontSize: 15,
         fontWeight: '800',
         color: COLORS.foregroundHolder,
@@ -23,7 +22,6 @@ export default StyleSheet.create({
         marginBottom: 30,
     },
     description: {
-        paddingHorizontal: 15,
         fontSize: 14,
         fontWeight: '800',
         color: COLORS.foreground,
@@ -38,7 +36,6 @@ export default StyleSheet.create({
         textAlign: 'left',
     },
     statsContainer: {
-        paddingHorizontal: 15,
         display: 'flex',
         flexDirection: 'row',
         width: "100%",
@@ -47,7 +44,6 @@ export default StyleSheet.create({
         marginBottom: 15,
     },
     textHolder: {
-        paddingHorizontal: 15,
         fontSize: 13,
         fontWeight: '800',
         color: COLORS.foregroundHolder,
@@ -56,12 +52,10 @@ export default StyleSheet.create({
     },
     tagsContainer: {
         marginTop: 5,
-        marginHorizontal: 15,
         marginBottom: 15,
     },
     readingsContainer: {
         width: "100%",
-        paddingHorizontal: 15,
         marginTop: 5,
     },
 });

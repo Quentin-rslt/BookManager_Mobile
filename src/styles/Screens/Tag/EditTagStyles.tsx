@@ -3,11 +3,12 @@ import { COLORS } from "../../../library/CommonColors";
 
 export default StyleSheet.create({
     container: {
+        width: "100%",
+        height: "100%",
+        alignItems: 'center',
         justifyContent: 'center',
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        marginTop: '15%',
+        paddingHorizontal: 15,
+        marginTop: "15%",
     },
     button: {
         justifyContent: 'center',
@@ -25,11 +26,16 @@ export default StyleSheet.create({
         elevation: 5,
     },
     colorContainer: {
-        width: "95%",
+        width: "100%",
         justifyContent: 'center',
         backgroundColor: COLORS.componentBackground,
         padding: 15,
+        marginBottom: 100,
         borderRadius: 15,
+        shadowColor: 'black',
+        shadowOpacity: 0.5,
+        shadowOffset: { width: 4, height: 4},
+        elevation: 5,
     },
     colorTag: {
         width: 20, 

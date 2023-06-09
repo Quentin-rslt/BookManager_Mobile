@@ -9,7 +9,6 @@ export default StyleSheet.create({
         borderTopWidth: 0,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
-        marginHorizontal: 10,
         backgroundColor: COLORS.backgroundLight,
         elevation: 15,
     },

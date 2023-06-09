@@ -60,9 +60,9 @@ export default StyleSheet.create({
         fontSize: 15,
         fontWeight: '700',
         textAlign: 'left',
-        paddingVertical: 5,
-        paddingHorizontal : 10,
-        borderRadius: 15,
+        paddingVertical: 6,
+        paddingHorizontal : 15,
+        borderRadius: 20,
         marginLeft: 5,
     },
 });

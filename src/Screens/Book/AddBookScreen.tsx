@@ -79,7 +79,7 @@ export default function AddBookScreen({ navigation, route } : any) {
                         <InputText placeholder={'Note'} containerStyle={AddBookStyles.inputNumber} defaultValue={book.notePerso.toString()} keyboardType='numeric' onChangeText={onChangeNotePerso}/>
                     </View>
                     <InputText placeholder={'Année de sortie'} defaultValue={book.releaseYear} keyboardType='numeric' onChangeText={onChangeReleaseYear}/>
-                    <View style={{width: "95%"}}>
+                    <View style={{width: "100%"}}>
                         <Text style={AddBookStyles.textHolder}>Tags : </Text>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={AddBookStyles.tagsContainer}>
                             <TextIconButton callBack={() => setShowModal(true)} iconColor={COLORS.background} iconName={'square-edit-outline'} iconSize={17} showText={false} buttonStyle={AddBookStyles.addTagContainer}/>

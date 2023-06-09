@@ -6,6 +6,7 @@ export default StyleSheet.create({
         width: '100%',
         marginBottom: 10,
         marginTop: 90,
+        paddingHorizontal: 15,
     },
     returnButton : {
         position: 'absolute',
@@ -15,14 +16,12 @@ export default StyleSheet.create({
         top: -40,
     },
     booksContainer: {
-        paddingHorizontal: 15,
         marginTop: 20,
     },
     colorContainer: {
         display: 'flex',
         flexDirection: 'row',
         width: "100%",
-        paddingHorizontal: 15,
         marginTop: 20,
     },
     colorTag: {
@@ -42,8 +41,7 @@ export default StyleSheet.create({
         fontWeight: '800',
         color: COLORS.foregroundHolder,
         textAlign: 'left',
-        marginRight: 20,
-        marginBottom: 10,
-        paddingHorizontal: 10,
+        marginRight: 10,
+        marginBottom: 5,
     },
 })

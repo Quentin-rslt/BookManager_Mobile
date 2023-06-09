@@ -27,7 +27,7 @@ export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveBu
             {
                 returnButtonShow && 
                 <View style={TopBarStyles.returnButtonContainer}>
-                    <TextIconButton callBack={() => navigation.goBack()} iconSize={35} iconName={'chevron-left'} iconColor={COLORS.foreground} buttonStyle={TopBarStyles.returnButton}/>
+                    <TextIconButton callBack={() => navigation.goBack()} iconSize={30} iconName={'chevron-left'} iconColor={COLORS.foreground} buttonStyle={TopBarStyles.returnButton}/>
                 </View>
             }
             {
