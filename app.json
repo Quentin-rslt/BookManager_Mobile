@@ -4,12 +4,12 @@
     "slug": "Mobile_App",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo_BookManager.png",
+    "icon": "./assets/adaptive-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/logo_BookManager.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#201818"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,12 +22,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo_BookManager.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#201818"
       }
     },
     "web": {
-      "favicon": "./assets/logo_BookManager.png"
+      "favicon": "./assets/adaptive-icon.png"
     },
     "androidStatusBar": {
       "backgroundColor": "#201818",

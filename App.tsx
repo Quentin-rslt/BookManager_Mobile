@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, View, Image } from 'react-native';
 import NavBar from './src/components/Buttons/NavBar';
 import { createStackNavigator } from '@react-navigation/stack';
 import AddBookScreen from './src/Screens/Book/AddBookScreen';
@@ -36,7 +36,8 @@ export default function App() {
     if(!isLoad) {
         return (
             <View style={CommonStyles.container}>
-                <ActivityIndicator style={CommonStyles.firstLoader} size="large" color={COLORS.accentColor}/>
+                <ActivityIndicator style={CommonStyles.firstLoader} size="small" color={COLORS.accentColor}/>
+                <Image style={CommonStyles.image} source={require("./assets/splash.png")}/>
             </View>
         )
     }

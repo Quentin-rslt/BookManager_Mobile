@@ -38,6 +38,6 @@ export default StyleSheet.create({
     },
     firstLoader: {
         position: 'absolute',
-        bottom: "50%",
+        bottom: "40%",
     },
 });
