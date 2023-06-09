@@ -2,13 +2,10 @@ import { View, ScrollView, ToastAndroid, Text, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import TopBar from '../../components/TopBar';
 import CommonStyles from '../../styles/CommonStyles';
-import TitleScreen from '../../components/TitleScreen';
 import InputText from '../../components/Inputs/InputText';
-import TextIconButton from '../../components/Buttons/TextIconButton';
 import AddTagStyles from '../../styles/Screens/Tag/AddTagStyles';
 import TagBuilder from '../../library/builders/TagBuilder';
 import ColorPicker from 'react-native-wheel-color-picker';
-import { createErrorHandler } from 'expo/build/errors/ExpoErrorManager';
 
 export default function AddTagScreen({ navigation, route } : any) {
 
@@ -57,10 +54,7 @@ export default function AddTagScreen({ navigation, route } : any) {
 
     return (
         <View style={CommonStyles.container}>
-            <TopBar iconButtonShow={true} searchBarShow={false}/>
-            <View style={AddTagStyles.titleScrollView}>
-                <TitleScreen title={"Ajouter un tag"}/>
-            </View>
+            <TopBar returnButtonShow searchBarShow={false} saveButtonShow onClickSaveButton={onClickSaveTag} isLoadingSaveButton={isLoading}/>
             <ScrollView style={CommonStyles.scrollViewContainer}>
                 <View style={AddTagStyles.container}>
                     <InputText placeholder={'Titre du tag'} defaultValue={tag.textTag} onChangeText={onChangeTextTag}/>
@@ -82,7 +76,6 @@ export default function AddTagScreen({ navigation, route } : any) {
                     </View>
                 </View>
             </ScrollView>
-            <TextIconButton callBack={onClickSaveTag} isLoading={isLoading} text={'Enregistrer'} showIcon={false} buttonStyle={AddTagStyles.button}/>
         </View>
     )
 }

@@ -4,10 +4,9 @@ import { COLORS } from "../../../library/CommonColors";
 export default StyleSheet.create({
     container : {
         width: "100%",
-        aspectRatio: 1,
+        aspectRatio: 1.7,
         overflow:'hidden',
-        backgroundColor: COLORS.componentBackground,
-        borderRadius : 15,
+        borderRadius : 10,
         marginBottom: 15,
         shadowColor: 'black',
         shadowOpacity: 0.3,
@@ -25,13 +24,9 @@ export default StyleSheet.create({
         margin: 15,
     },
     numberBook : {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: '100%',
-        paddingHorizontal: 15,
-        marginBottom: 10,
-        marginTop: 'auto'
+        position: 'absolute',
+        bottom : 10,
+        right: 10,
     },
     colorTag: {
         width: 20, 

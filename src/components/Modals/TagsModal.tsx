@@ -1,11 +1,10 @@
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import MultiSelect from 'react-native-multiple-select'
 import TagsModalStyles from '../../styles/components/Modals/TagsModalStyles';
 import TextIconButton from '../Buttons/TextIconButton';
 import { COLORS } from '../../library/CommonColors';
 import Tag from '../../library/class/Tag';
-import TitleScreen from '../TitleScreen';
 import BookBuilder from '../../library/builders/BookBuilder';
 import { Feather } from '@expo/vector-icons';
 import Modal from "react-native-modal";
@@ -55,7 +54,7 @@ export default function TagsModal({ book, showModal, setShowModal }: Props) {
                 </View>
                 <View style={TagsModalStyles.multiSelectContainer}> 
                     <View style={{marginBottom: 15}}>
-                        <TitleScreen title='Tags'/>
+                        <Text style={TagsModalStyles.titleModal}>Tags</Text>
                     </View>
                     <MultiSelect
                         fixedHeight={true}

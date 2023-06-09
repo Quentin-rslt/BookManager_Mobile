@@ -1,7 +1,6 @@
 import { View, Text, ScrollView, ToastAndroid } from 'react-native'
 import { useState } from 'react'
 import CommonStyles from '../../styles/CommonStyles'
-import TitleScreen from '../../components/TitleScreen'
 import EditBookStyles from '../../styles/Screens/Book/EditBookStyles'
 import TopBar from '../../components/TopBar'
 import TextIconButton from '../../components/Buttons/TextIconButton'
@@ -12,6 +11,7 @@ import DatePicker from '../../components/Buttons/DatePicker'
 import { LogBox } from 'react-native';
 import TagsModal from '../../components/Modals/TagsModal'
 import BookBuilder from '../../library/builders/BookBuilder'
+import { COLORS } from '../../library/CommonColors'
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
@@ -25,19 +25,16 @@ export default function EditBookScreen({ navigation, route } : any) {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [showModal, setShowModal] = useState<boolean>(false);
 
-    const onRefreshBooks = async () => {
-        setIsLoading(true);
-        setIsLoading(false);
-    };
-
     const onClickSaveBook = async () => {
         setIsLoading(true);
         
         try{
             if(newBook.title != "" && newBook.author != ""){
-                await newBook.client.bookService.editBook(newBook);
+                const book = await newBook.client.bookService.editBook(newBook);
 
-                navigation.goBack();
+                if(book) {
+                    navigation.navigate('BookScreen', { book });
+                }
             } else {
                 ToastAndroid.show("Veuillez mettre un titre et un author" , ToastAndroid.CENTER);
             }
@@ -74,10 +71,7 @@ export default function EditBookScreen({ navigation, route } : any) {
 
     return (
         <View style={CommonStyles.container}>
-            <TopBar iconButtonShow={true} searchBarShow={false}/>
-            <View style={CommonStyles.titleScrollView}>
-                <TitleScreen title={"Modifier un livre"}/>
-            </View>
+            <TopBar returnButtonShow searchBarShow={false} saveButtonShow onClickSaveButton={onClickSaveBook} isLoadingSaveButton={isLoading}/>
             <ScrollView style={CommonStyles.scrollViewContainer}>
                 <View style={EditBookStyles.container}>
                     <InputText placeholder={'Titre'} defaultValue={newBook.title} onChangeText={onChangeTitle}/>
@@ -90,10 +84,10 @@ export default function EditBookScreen({ navigation, route } : any) {
                     <View style={{width: "95%"}}  >
                         <Text style={EditBookStyles.textHolder}>Tags : </Text>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={EditBookStyles.tagsContainer}>
-                            <TextIconButton callBack={() => setShowModal(true)} iconName={'square-edit-outline'} iconSize={15} showText={false} buttonStyle={EditBookStyles.addTagContainer}/>
+                            <TextIconButton callBack={() => setShowModal(true)} iconName={'square-edit-outline'} iconColor={COLORS.background} iconSize={17} showText={false} buttonStyle={EditBookStyles.addTagContainer}/>
                             {
                                 newBook.tags.map((tag, idTag) => 
-                                    <TagSticker key={idTag} tag={tag} onRefresh={onRefreshBooks} navigation={navigation}/>
+                                    <TagSticker key={idTag} tag={tag} navigation={navigation}/>
                                 )
                             }
                             <TagsModal book={newBook} showModal={showModal} setShowModal={setShowModal}/>
@@ -111,7 +105,6 @@ export default function EditBookScreen({ navigation, route } : any) {
                     </View>
                 </View>
             </ScrollView>
-            <TextIconButton callBack={onClickSaveBook} isLoading={isLoading} text={'Enregistrer'} showIcon={false} buttonStyle={EditBookStyles.button}/>
         </View>
     )
 }

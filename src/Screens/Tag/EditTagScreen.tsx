@@ -2,9 +2,7 @@ import { View, ScrollView, ToastAndroid, Text, TextInput } from 'react-native'
 import { useState } from 'react'
 import TopBar from '../../components/TopBar';
 import CommonStyles from '../../styles/CommonStyles';
-import TitleScreen from '../../components/TitleScreen';
 import InputText from '../../components/Inputs/InputText';
-import TextIconButton from '../../components/Buttons/TextIconButton';
 import EditTagStyles from '../../styles/Screens/Tag/EditTagStyles';
 import TagBuilder from '../../library/builders/TagBuilder';
 import ColorPicker from 'react-native-wheel-color-picker';
@@ -21,9 +19,11 @@ export default function AddTagScreen({ navigation, route } : any) {
 
         try{
             if(newTag.textTag != ""){
-                await newTag.client.tagService.editTag(newTag);
+                const tag = await newTag.client.tagService.editTag(newTag);
                 
-                navigation.goBack();
+                if(tag) {
+                    navigation.navigate('TagScreen', { tag });
+                }
             } else {
                 ToastAndroid.show("Veuillez titre pour le tag" , ToastAndroid.CENTER);
             }
@@ -56,10 +56,7 @@ export default function AddTagScreen({ navigation, route } : any) {
 
     return (
         <View style={CommonStyles.container}>
-            <TopBar iconButtonShow={true} searchBarShow={false}/>
-            <View style={EditTagStyles.titleScrollView}>
-                <TitleScreen title={"Modifier un tag"}/>
-            </View>
+            <TopBar returnButtonShow searchBarShow={false} saveButtonShow onClickSaveButton={onClickSaveTag} isLoadingSaveButton={isLoading}/>
             <ScrollView style={CommonStyles.scrollViewContainer}>
                 <View style={EditTagStyles.container}>
                     <InputText placeholder={'Titre du tag'} defaultValue={newTag.textTag} onChangeText={onChangeTextTag}/>
@@ -81,7 +78,6 @@ export default function AddTagScreen({ navigation, route } : any) {
                     </View>
                 </View>
             </ScrollView>
-            <TextIconButton callBack={onClickSaveTag} isLoading={isLoading} text={'Enregistrer'} showIcon={false} buttonStyle={EditTagStyles.button}/>
         </View>
     )
 }

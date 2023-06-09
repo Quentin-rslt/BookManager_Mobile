@@ -1,32 +1,76 @@
-import { TextInput, View } from 'react-native'
+import { TextInput, TouchableOpacity, View, Text } from 'react-native'
 import { COLORS } from '../library/CommonColors';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 import TopBarStyles from '../styles/components/TopBarStyles';
 import TextIconButton from './Buttons/TextIconButton';
+import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 
 type Props = {
-    onChangeSearch ?: (text: string) => void;
-    iconButtonShow ?: boolean;
-    searchBarShow ?: boolean;
+    onChangeSearch?: (text: string) => void;
+    returnButtonShow?: boolean;
+    searchBarShow?: boolean;
+    value?: string;
+    moreButtonShow?: boolean;
+    onClickButtonMore?: () => void;
+    saveButtonShow?: boolean;
+    onClickSaveButton?: () => void;
+    isLoadingSaveButton?: boolean;
+    headerShow?: boolean;
+    titleHeader?: string;
+    iconNameButtonHeader?: any;
+    iconNameTitleHeader?: any;
+    onClickButtonHeader?: () => void;
 }
 
 type TopBarStackParamList = {};
 
-export default function TopBar({onChangeSearch, iconButtonShow=false, searchBarShow= true} : Props) {
+export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveButton, onClickButtonHeader, headerShow = false , iconNameTitleHeader = '', iconNameButtonHeader = '' , titleHeader = '', isLoadingSaveButton = false, saveButtonShow = false, moreButtonShow = false, returnButtonShow = false, searchBarShow = true, value = ''} : Props) {
     const navigation = useNavigation<StackNavigationProp<TopBarStackParamList>>();
 
     return (
-        <View style={TopBarStyles.container}>
+        <View style={{width: '100%'}}>
             {
-                iconButtonShow && 
-                <View style={TopBarStyles.returnButtonContainer}>
-                    <TextIconButton callBack={() => navigation.goBack()} iconSize={24} text={' Retour '} iconName={'arrow-left-top'} iconColor={COLORS.background} buttonStyle={TopBarStyles.returnButton}/>
+                onClickButtonHeader && headerShow && 
+                <View style={TopBarStyles.headerContainer}>
+                    <View style={TopBarStyles.textHeaderContainer}>
+                        <MaterialCommunityIcons name={iconNameTitleHeader} color={COLORS.accentColor} size={30}/>
+                        <Text style={TopBarStyles.textHeader}>{titleHeader}</Text>
+                    </View>
+                    <TextIconButton callBack={onClickButtonHeader} iconSize={30} showText={false} buttonStyle={TopBarStyles.buttonHeader} iconName={iconNameButtonHeader} iconColor={COLORS.foreground}/>
                 </View>
             }
-            {
-                searchBarShow && <TextInput placeholder="Search" placeholderTextColor={COLORS.foregroundHolder}  style={TopBarStyles.textInput} onChangeText={onChangeSearch}/>
-            }
+            <View style={[TopBarStyles.topContainer, !headerShow && {marginTop: 20,}]}>
+                {
+                    returnButtonShow && 
+                    <View style={TopBarStyles.returnButtonContainer}>
+                        <TextIconButton callBack={() => navigation.goBack()} iconSize={30} iconName={'chevron-left'} iconColor={COLORS.foreground} buttonStyle={TopBarStyles.returnButton}/>
+                    </View>
+                }
+                {
+                    searchBarShow && <TextInput value={value} placeholder="Search" placeholderTextColor={COLORS.foregroundHolder}  style={TopBarStyles.textInput} onChangeText={onChangeSearch}/>
+                }
+                {
+                    moreButtonShow && onClickButtonMore &&
+                    <TouchableOpacity onPress={onClickButtonMore} style={TopBarStyles.moreButtonContainer}>
+                        <Feather name={'more-vertical'} size={25} color={COLORS.accentColor}/>
+                    </TouchableOpacity>
+                }
+                {
+                    saveButtonShow && onClickSaveButton && 
+                    <TextIconButton 
+                        callBack={onClickSaveButton} 
+                        iconSize={20}
+                        showIcon={false} 
+                        isLoading={isLoadingSaveButton}
+                        iconName={'arrow-collapse-down'}
+                        iconColor={COLORS.accentColor}
+                        text='Enregistrer'
+                        buttonStyle={TopBarStyles.saveButton} 
+                        textStyle={TopBarStyles.textSaveButton}
+                    />
+                }
+            </View>
         </View>
   )
 }

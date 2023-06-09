@@ -1,12 +1,9 @@
 import { View, Text, FlatList, RefreshControl, ToastAndroid } from 'react-native'
 import { useEffect, useState } from 'react'
 import CommonStyles from '../../styles/CommonStyles'
-import TitleScreen from '../../components/TitleScreen'
 import TagCard from '../../components/cards/TagCard'
 import TagsStyles from '../../styles/Screens/Tag/TagsStyles'
 import TopBar from '../../components/TopBar'
-import { COLORS } from '../../library/CommonColors'
-import TextIconButton from '../../components/Buttons/TextIconButton'
 import Client from '../../library/class/Client'
 import TagBuilder from '../../library/builders/TagBuilder'
 
@@ -16,6 +13,7 @@ export default function TagsScreen({navigation, route } : any) {
 
     const [tags, setTags] = useState(Array.from(client.tagService.tags.values()));
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [searchText, setSearchText] = useState<string>('');
 
     useEffect(() => {
         navigation.addListener('focus', () => {
@@ -23,9 +21,10 @@ export default function TagsScreen({navigation, route } : any) {
         });
     }, [navigation]);
 
-    const onRefresh = async () => {
+    const onRefresh = () => {
         const tags = Array.from(client.tagService.tags.values());
         setTags([...tags]);
+        setSearchText('');
     };
 
     const onRefreshFecthAPI = async () => {
@@ -37,6 +36,7 @@ export default function TagsScreen({navigation, route } : any) {
             ToastAndroid.show("Problème lors du chargement des tags" , ToastAndroid.CENTER);
         }
         setIsLoading(false);
+        setSearchText('');
     };
 
     const onChangeSearch = (text : string) => {
@@ -44,6 +44,7 @@ export default function TagsScreen({navigation, route } : any) {
             tag.textTag.toLowerCase().includes(text.toLowerCase())
         );
         setTags([...filteredTags]);
+        setSearchText(text);
     };
 
     const onClickAddTag = () => {
@@ -53,10 +54,7 @@ export default function TagsScreen({navigation, route } : any) {
 
     return (
         <View style={CommonStyles.container}>
-            <TopBar onChangeSearch={(text) => onChangeSearch(text)}/>
-            <View style={CommonStyles.titleFlatList}>
-                <TitleScreen title={'Tags'}/>
-            </View>
+            <TopBar value={searchText} onChangeSearch={(text) => onChangeSearch(text)} headerShow iconNameTitleHeader={'tag-multiple'} iconNameButtonHeader={'plus'} titleHeader='Mes Tags' onClickButtonHeader={onClickAddTag}/>
             <FlatList style={CommonStyles.flatListContainer} 
                 ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun tag n'a été trouvé"}</Text>}
                 columnWrapperStyle={TagsStyles.columnWrapperStyle}
@@ -66,15 +64,12 @@ export default function TagsScreen({navigation, route } : any) {
                 data={tags}
                 renderItem={({item, index}) => 
                     <View style={{flex: 1,marginLeft: index % 2 !== 0 ? 20 : 0}}>
-                        <TagCard key={item.idTag} tag={item} onRefresh={onRefresh} navigation={navigation}/>
+                        <TagCard key={item.idTag} tag={item} navigation={navigation}/>
                     </View>
                 }
                 keyExtractor={item => item.idTag.toString()}
                 refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}
             />
-            <View style={CommonStyles.buttonContainer}>
-                <TextIconButton callBack={onClickAddTag} iconSize={22} text={'Ajouter un tag'} iconName={'plus'} buttonStyle={CommonStyles.addButton} iconColor={COLORS.background}/>
-            </View>
         </View>
     ) 
 }

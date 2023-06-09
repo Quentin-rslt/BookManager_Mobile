@@ -1,23 +1,19 @@
 import { Text, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
 import Book from '../../library/class/Book'
 import BookCardStyles from '../../styles/components/cards/BookCardStyles';
 import TagSticker from '../Buttons/TagSticker';
 import NumberIcon from '../NumberIcon';
 import { ScrollView } from 'react-native-gesture-handler';
-import BookModal from '../Modals/BookModal';
 
 type Props = {
     book: Book;
-    onRefresh: () => Promise<void> | void;
     navigation: any;
 }
 
-export default function BookCard({book, onRefresh, navigation} : Props) {
-    const [showModalBook, setShowModalBook] = useState<boolean>(false);
-
+export default function BookCard({book, navigation} : Props) {
+    
     const onClickBookCard =() => {
-        setShowModalBook(true);
+        navigation.navigate('BookScreen', { book });
     };
 
     return (
@@ -34,7 +30,7 @@ export default function BookCard({book, onRefresh, navigation} : Props) {
                     {
                         Array.from(book.tags.values()).map((tag, idTag) =>
                             <View key={idTag}>   
-                                <TagSticker tag={tag} onRefresh={onRefresh} navigation={navigation}/>
+                                <TagSticker tag={tag} navigation={navigation}/>
                             </View>
                         )
                     }
@@ -45,7 +41,6 @@ export default function BookCard({book, onRefresh, navigation} : Props) {
                     <NumberIcon iconNumber={book.notePerso} iconName={"star"}/>
                 </View>
             </TouchableOpacity>
-            <BookModal book={book} showModalBook={showModalBook} setShowModalBook={setShowModalBook} onRefresh={onRefresh} navigation={navigation}/>
         </View>
     )
 }

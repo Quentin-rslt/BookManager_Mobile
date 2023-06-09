@@ -1,11 +1,12 @@
 import { StyleSheet } from "react-native";
+import { COLORS } from "../../../library/CommonColors";
 
 export default StyleSheet.create({
     tagsContainer : {
-        paddingBottom: 150,
+        paddingBottom: 50,
     },
     columnWrapperStyle: {
-        paddingHorizontal: 10,
+        paddingHorizontal: 15,
         justifyContent: 'space-between',
-    }
+    },
 });

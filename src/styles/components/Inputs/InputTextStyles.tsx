@@ -4,7 +4,7 @@ import { COLORS } from "../../../library/CommonColors";
 export default StyleSheet.create({
     txtFieldBackground: {
         justifyContent: 'center',
-        width: '95%',
+        width: '100%',
         height: 55,
         marginBottom: 10,
         paddingHorizontal: 10,

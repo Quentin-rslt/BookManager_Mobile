@@ -2,12 +2,6 @@ import { StyleSheet } from "react-native";
 import { COLORS } from "../../../library/CommonColors";
 
 export default StyleSheet.create({
-    modalContainer: {
-        width: "100%",
-        height: "100%",
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     container: {
         position: 'absolute',
         bottom: 0,
@@ -33,7 +27,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         position: 'absolute',
-        backgroundColor: COLORS.clickableColor,
+        backgroundColor: COLORS.accentColor,
         color: COLORS.background,
         height: 45,
         borderRadius : 40,
@@ -50,4 +44,11 @@ export default StyleSheet.create({
         width: "100%",
         top: -40,
     },
+    titleModal: {
+        color: COLORS.foreground,
+        fontSize: 25,
+        width: '100%',
+        textAlign: 'center',
+        marginTop: 10,
+    }
 });
