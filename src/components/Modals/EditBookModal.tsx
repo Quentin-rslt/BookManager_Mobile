@@ -50,8 +50,8 @@ export default function EditBookModal({showModal, setShowModal, book, navigation
                 <View style={EditModalBookStyles.returnButton}>
                     <Feather name={'minus'} size={65} color={COLORS.accentColor}/>
                 </View>
-                <TextIconButton callBack={onEditBook} iconSize={30} text='Modifier le livre' iconName={'square-edit-outline'} iconColor={COLORS.accentColor} buttonStyle={EditModalBookStyles.editButton} textStyle={EditModalBookStyles.textEditButton}/>
-                <TextIconButton callBack={onDeleteBook} isLoading={isLoading} iconSize={30} text='Supprimer le livre' iconName={'delete-outline'} iconColor={COLORS.accentColor} buttonStyle={EditModalBookStyles.editButton} textStyle={EditModalBookStyles.textEditButton}/>
+                <TextIconButton callBack={onEditBook} iconSize={25} text='Modifier le livre' iconName={'square-edit-outline'} iconColor={COLORS.accentColor} buttonStyle={EditModalBookStyles.editButton} textStyle={EditModalBookStyles.textEditButton}/>
+                <TextIconButton callBack={onDeleteBook} isLoading={isLoading} iconSize={25} text='Supprimer le livre' iconName={'delete-outline'} iconColor={COLORS.accentColor} buttonStyle={EditModalBookStyles.editButton} textStyle={EditModalBookStyles.textEditButton}/>
             </View>
         </Modal>
     )

@@ -5,7 +5,7 @@ export default StyleSheet.create({
     container: {
         position: 'absolute',
         bottom: 0,
-        height: '20%',
+        height: '14%',
         width: "100%",
         backgroundColor: COLORS.background,
         borderTopLeftRadius: 20,
@@ -14,6 +14,7 @@ export default StyleSheet.create({
         shadowOpacity: 0.5,
         shadowOffset: { width: -4, height: -4},
         elevation: -10,
+        justifyContent: 'center',
     },
     returnButton: {
         position: 'absolute',
@@ -27,7 +28,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 15,
-        marginTop: 35,
+        paddingVertical: 10,
     },
     textEditButton: {
         color: COLORS.foreground,

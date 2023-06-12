@@ -81,7 +81,7 @@ export default function EditBookScreen({ navigation, route } : any) {
                         <InputText placeholder={'Note'} containerStyle={EditBookStyles.inputNumber} defaultValue={newBook.notePerso.toString()} keyboardType='numeric' onChangeText={onChangeNotePerso}/>
                     </View>
                     <InputText placeholder={'Année de sortie'} defaultValue={newBook.releaseYear} keyboardType='numeric' onChangeText={onChangeReleaseYear}/>
-                    <View style={{width: "95%"}}  >
+                    <View style={{width: "100%"}}  >
                         <Text style={EditBookStyles.textHolder}>Tags : </Text>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={EditBookStyles.tagsContainer}>
                             <TextIconButton callBack={() => setShowModal(true)} iconName={'square-edit-outline'} iconColor={COLORS.background} iconSize={17} showText={false} buttonStyle={EditBookStyles.addTagContainer}/>

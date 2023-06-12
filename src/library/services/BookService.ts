@@ -20,7 +20,8 @@ export default class BookService extends BaseService {
         const res = (await axios.get(`${this.getIp()}/api/book/all`));
 
         if(res.status === 200) {
-            const data: APIBookData[] = res.data
+            const data: APIBookData[] = res.data;
+            
             this.books = new Map();
             for(const book of data) {
                 this.addBook(book);
@@ -59,7 +60,7 @@ export default class BookService extends BaseService {
 
     public addBook(data: APIBookData){
         const book = new Book(this.client, data);
-
+        
         this.books.set(book.idBook, book);
         this.addReadings(data);
 

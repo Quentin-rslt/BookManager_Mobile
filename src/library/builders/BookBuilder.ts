@@ -61,7 +61,7 @@ export default class BookBuilder extends Base {
             notePerso: this.notePerso,
             releaseYear: this.releaseYear,
             summary: this.summary,
-            isFav: this.isFav,
+            fav: this.isFav,
             readings: this.readings,
             tags: this.tags,
         }

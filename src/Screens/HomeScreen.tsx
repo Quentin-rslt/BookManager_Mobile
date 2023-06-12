@@ -5,14 +5,13 @@ import Client from '../library/class/Client';
 import TopBar from '../components/TopBar';
 import { ScrollView } from 'react-native-gesture-handler';
 import HomeStyles from '../styles/Screens/HomeStyles';
-import Book from '../library/class/Book';
-import Reading from '../library/class/Reading';
+import BookCard from '../components/cards/BookCard';
 
 export default function HomeScreen({ navigation, route } : any) {
 
     const client:Client = route.params.client;
 
-    const [recentListenBooks, setRecentListenBooks] = useState(Array.from(client.bookService.books.values()));
+    const [favBooks, setRecentListenBooks] = useState(Array.from(client.bookService.books.values()));
     const [tags, setTags] = useState(Array.from(client.tagService.tags.values()));
     const [readings, setReadings] = useState(Array.from(client.readingService.readings.values()));
     
@@ -32,9 +31,10 @@ export default function HomeScreen({ navigation, route } : any) {
     };
 
     const getBooks = () => {
-        const today = new Date();
-        const books:Book[] = [];
-
+        // Fav book list
+        const books = Array.from(client.bookService.books.values()).filter((book) =>
+            book.isFav === true
+        );
         setRecentListenBooks([...books.slice(0, 6)]);
     }
 
@@ -42,25 +42,32 @@ export default function HomeScreen({ navigation, route } : any) {
         <View style={CommonStyles.container}>
             <TopBar searchBarShow={false} headerShow onClickButtonHeader={onRefresh} titleHeader='Bonjour' iconNameTitleHeader={'home-variant'} iconNameButtonHeader={'cog-outline'}/>
             <ScrollView style={CommonStyles.scrollViewContainer}>
-                <View style={HomeStyles.recentListenBookContainer}>
-                    {
-                        recentListenBooks.map((book, idBook) => 
-                            <Text key={idBook} style={{color: 'white'}}>{book.title}</Text>
-                        )
-                    }
-                </View>
-                <View>
-                    <ScrollView horizontal>
+                <View style={HomeStyles.container}>
+                    <View style={HomeStyles.favBooksContainer}>
+                        <Text style={HomeStyles.textHolder}>Livres favoris</Text>
+                        <ScrollView style={HomeStyles.favBooksScrollView} horizontal showsHorizontalScrollIndicator={false}>
+                            {
+                                favBooks.map((book, idBook) => 
+                                    <View key={idBook} style={HomeStyles.bookCardContainer}>
+                                        <BookCard key={idBook} book={book} navigation={navigation}/>
+                                    </View>
+                                )
+                            }
+                        </ScrollView>
+                    </View>
+                    <View>
+                        <ScrollView horizontal>
 
-                    </ScrollView>
-                </View>
-                <View>
-                    <ScrollView horizontal>
+                        </ScrollView>
+                    </View>
+                    <View>
+                        <ScrollView horizontal>
 
-                    </ScrollView>
-                </View>
-                <View>
+                        </ScrollView>
+                    </View>
+                    <View>
 
+                    </View>
                 </View>
             </ScrollView>
         </View>

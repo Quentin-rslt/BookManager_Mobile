@@ -50,8 +50,8 @@ export default function EditTagModal({showModal, setShowModal, newTag: tag, navi
                 <View style={EditModalBookStyles.returnButton}>
                     <Feather name={'minus'} size={65} color={COLORS.accentColor}/>
                 </View>
-                <TextIconButton callBack={onEditTag} iconSize={30} text='Modifier le tag' iconName={'square-edit-outline'} iconColor={COLORS.accentColor} buttonStyle={EditModalBookStyles.editButton} textStyle={EditModalBookStyles.textEditButton}/>
-                <TextIconButton callBack={onDeleteTag} isLoading={isLoading} iconSize={30} text='Supprimer le tag' iconName={'delete-outline'} iconColor={COLORS.accentColor} buttonStyle={EditModalBookStyles.editButton} textStyle={EditModalBookStyles.textEditButton}/>
+                <TextIconButton callBack={onEditTag} iconSize={25} text='Modifier le tag' iconName={'square-edit-outline'} iconColor={COLORS.accentColor} buttonStyle={EditModalBookStyles.editButton} textStyle={EditModalBookStyles.textEditButton}/>
+                <TextIconButton callBack={onDeleteTag} isLoading={isLoading} iconSize={25} text='Supprimer le tag' iconName={'delete-outline'} iconColor={COLORS.accentColor} buttonStyle={EditModalBookStyles.editButton} textStyle={EditModalBookStyles.textEditButton}/>
             </View>
         </Modal>
     )

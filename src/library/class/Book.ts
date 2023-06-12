@@ -34,7 +34,7 @@ export default class Book extends Base {
         this.notePerso = data.notePerso;
         this.releaseYear = data.releaseYear;
         this.summary = data.summary;
-        this.isFav = data.isFav;
+        this.isFav = data.fav;
     }
 
     public toJSON() {
@@ -61,7 +61,7 @@ export default class Book extends Base {
         this.notePerso = data.notePerso;
         this.releaseYear = data.releaseYear;
         this.summary = data.summary;
-        this.isFav = data.isFav;
+        this.isFav = data.fav;
     }
 
     get tags(){

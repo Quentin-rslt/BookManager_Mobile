@@ -6,7 +6,7 @@ export interface APIBookData {
     notePerso: number;
     releaseYear: string;
     summary: string;
-    isFav: boolean;
+    fav: boolean;
     readings: APIBookReading[];
     tags: APIBookTag[];
 }

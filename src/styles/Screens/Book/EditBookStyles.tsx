@@ -22,7 +22,8 @@ export default StyleSheet.create({
         height: 26,
         backgroundColor: COLORS.accentColor,
         borderRadius: 17, 
-        marginRight: 15,
+        marginRight: 10,
+        marginLeft: 5,
     },
     textHolder: {
         fontSize: 13,
@@ -30,7 +31,7 @@ export default StyleSheet.create({
         color: COLORS.foregroundHolder,
         textAlign: 'left',
         marginBottom: 5,
-        marginRight: 20,
+        marginHorizontal: 15,
     },
     descriptionContainer: {
         backgroundColor: COLORS.componentBackground,
