@@ -40,37 +40,29 @@ export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveBu
                     <TextIconButton callBack={onClickButtonHeader} iconSize={30} showText={false} buttonStyle={TopBarStyles.buttonHeader} iconName={iconNameButtonHeader} iconColor={COLORS.foreground}/>
                 </View>
             }
-            <View style={[TopBarStyles.bottomContainer, !headerShow && {marginTop: 30, marginBottom: 10}]}>
-                {
-                    returnButtonShow && 
-                    <View style={TopBarStyles.returnButtonContainer}>
-                        <TextIconButton callBack={() => navigation.goBack()} iconSize={30} iconName={'chevron-left'} iconColor={COLORS.foreground} buttonStyle={TopBarStyles.returnButton}/>
-                    </View>
-                }
-                {
-                    searchBarShow && <TextInput value={value} placeholder="Search" placeholderTextColor={COLORS.foregroundHolder}  style={TopBarStyles.textInput} onChangeText={onChangeSearch}/>
-                }
-                {
-                    moreButtonShow && onClickButtonMore &&
-                    <TouchableOpacity onPress={onClickButtonMore} style={TopBarStyles.moreButtonContainer}>
-                        <Feather name={'more-vertical'} size={25} color={COLORS.accentColor}/>
-                    </TouchableOpacity>
-                }
-                {
-                    saveButtonShow && onClickSaveButton && 
-                    <TextIconButton 
-                        callBack={onClickSaveButton} 
-                        iconSize={20}
-                        showIcon={false} 
-                        isLoading={isLoadingSaveButton}
-                        iconName={'arrow-collapse-down'}
-                        iconColor={COLORS.accentColor}
-                        text='Enregistrer'
-                        buttonStyle={TopBarStyles.saveButton} 
-                        textStyle={TopBarStyles.textSaveButton}
-                    />
-                }
-            </View>
+            {
+                <View style={[TopBarStyles.bottomContainer, !headerShow && {marginTop: 40, marginBottom: 20}]}>
+                    {
+                        returnButtonShow && 
+                        <View style={TopBarStyles.returnButtonContainer}>
+                            <TextIconButton callBack={() => navigation.goBack()} iconSize={30} iconName={'chevron-left'} iconColor={COLORS.foreground} buttonStyle={TopBarStyles.returnButton}/>
+                        </View>
+                    }
+                    {
+                        searchBarShow && <TextInput value={value} placeholder="Search" placeholderTextColor={COLORS.foregroundHolder}  style={TopBarStyles.textInput} onChangeText={onChangeSearch}/>
+                    }
+                    {
+                        moreButtonShow && onClickButtonMore &&
+                        <TouchableOpacity onPress={onClickButtonMore} style={TopBarStyles.moreButtonContainer}>
+                            <Feather name={'more-vertical'} size={25} color={COLORS.accentColor}/>
+                        </TouchableOpacity>
+                    }
+                    {
+                        saveButtonShow && onClickSaveButton && 
+                        <TextIconButton callBack={onClickSaveButton} isLoading={isLoadingSaveButton} text='Enregistrer' buttonStyle={TopBarStyles.saveButton} textStyle={TopBarStyles.textSaveButton}/>
+                    }
+                </View>
+            }
         </View>
   )
 }

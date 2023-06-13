@@ -1,6 +1,6 @@
 import { FlatList, RefreshControl, Text, ToastAndroid, View } from 'react-native'
 import CommonStyles from '../../styles/CommonStyles'
-import BookCard from '../../components/cards/BookCard'
+import BookCard from '../../components/cards/book/BookCard'
 import { useEffect, useState } from 'react'
 import TopBar from '../../components/TopBar'
 import LibraryStyles from '../../styles/Screens/Book/LibraryStyles'

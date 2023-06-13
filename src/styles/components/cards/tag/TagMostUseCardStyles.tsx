@@ -1,13 +1,12 @@
 import { StyleSheet } from "react-native";
-import { COLORS } from "../../../library/CommonColors";
+import { COLORS } from "../../../../library/CommonColors";
 
 export default StyleSheet.create({
     container : {
-        width: "100%",
+        width: 170,
         aspectRatio: 1.7,
         overflow:'hidden',
         borderRadius : 10,
-        marginBottom: 15,
         shadowColor: 'black',
         shadowOpacity: 0.3,
         shadowOffset: { width: 4, height: 4},
@@ -21,7 +20,7 @@ export default StyleSheet.create({
         fontSize: 25,
         fontWeight: '800',
         color: COLORS.foreground,
-        margin: 15,
+        margin: 10,
     },
     numberBook : {
         position: 'absolute',

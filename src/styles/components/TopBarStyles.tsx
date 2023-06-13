@@ -34,14 +34,12 @@ export default StyleSheet.create({
         alignItems : 'center',
         justifyContent: 'space-between',
         width: '100%',
-        marginBottom: 20,
         paddingHorizontal: 15,
-        height: 40,
     },
     textInput : {
         justifyContent: 'center',
         backgroundColor : COLORS.componentBackground,
-        height: "100%",
+        height: 40,
         width : "100%",
         borderRadius : 5,
         paddingHorizontal: 15,
@@ -51,6 +49,7 @@ export default StyleSheet.create({
         shadowOpacity: 0.5,
         shadowOffset: { width: 4, height: 4},
         elevation: 5,
+        marginBottom: 20,
     },
     returnButtonContainer : {   
         position:'absolute',

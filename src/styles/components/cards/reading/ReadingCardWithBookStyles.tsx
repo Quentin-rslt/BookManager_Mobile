@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { COLORS } from "../../../library/CommonColors";
+import { COLORS } from "../../../../library/CommonColors";
 
 export default StyleSheet.create({
     container: {
@@ -8,11 +8,11 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         width: '100%',
-        height: 90,
+        height: 110,
         borderRadius : 10,
         marginBottom: 10,
         paddingHorizontal: 15,
-        shadowColor: 'black',
+        shadowColor: COLORS.Black,
         shadowOpacity: 0.3,
         shadowOffset: { width: 4, height: 4},
         elevation: 5,
@@ -28,9 +28,9 @@ export default StyleSheet.create({
     textDate: {
         color: COLORS.foreground,
     },
-    textDelay: {
+    textTitleBook: {
         color: COLORS.foreground,
-        fontSize: 16,
+        fontSize: 20,
         width: '100%',
         marginTop: 15,
     }

@@ -2,7 +2,7 @@ import { View, Text, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import Tag from '../../library/class/Tag';
 import TagStyles from '../../styles/Screens/Tag/TagStyles';
-import BookCard from '../../components/cards/BookCard';
+import BookCard from '../../components/cards/book/BookCard';
 import TopBar from '../../components/TopBar';
 import EditTagModal from '../../components/Modals/EditTagModal';
 import CommonStyles from '../../styles/CommonStyles';

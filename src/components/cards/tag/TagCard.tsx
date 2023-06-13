@@ -1,8 +1,8 @@
 import { Text, TouchableOpacity, View } from 'react-native'
-import NumberIcon from '../NumberIcon';
-import TagCardStyles from '../../styles/components/cards/TagCardStyles';
-import Tag from '../../library/class/Tag';
-import { COLORS } from '../../library/CommonColors';
+import NumberIcon from '../../NumberIcon';
+import TagCardStyles from '../../../styles/components/cards/tag/TagCardStyles';
+import Tag from '../../../library/class/Tag';
+import { COLORS } from '../../../library/CommonColors';
 
 type Props = {
     tag: Tag;

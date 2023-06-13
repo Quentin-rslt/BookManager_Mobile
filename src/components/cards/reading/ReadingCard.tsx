@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import ReadingCardStyles from '../../styles/components/cards/ReadingCardStyles'
-import { COLORS } from '../../library/CommonColors';
-import Reading from '../../library/class/Reading';
-import Book from '../../library/class/Book';
-import TextIconButton from '../Buttons/TextIconButton';
-import BookBuilder from '../../library/builders/BookBuilder';
-import ReadingBuilder from '../../library/builders/ReadingBuilder';
+import ReadingCardStyles from '../../../styles/components/cards/reading/ReadingCardStyles'
+import { COLORS } from '../../../library/CommonColors';
+import Reading from '../../../library/class/Reading';
+import Book from '../../../library/class/Book';
+import TextIconButton from '../../Buttons/TextIconButton';
+import BookBuilder from '../../../library/builders/BookBuilder';
+import ReadingBuilder from '../../../library/builders/ReadingBuilder';
 
 interface Props {
     book: Book|BookBuilder;

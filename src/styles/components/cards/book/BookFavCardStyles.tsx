@@ -1,14 +1,13 @@
 import { StyleSheet } from "react-native";
-import { COLORS } from "../../../library/CommonColors";
+import { COLORS } from "../../../../library/CommonColors";
 
 export default StyleSheet.create({
     container: {
-        width:"100%",
-        height:130,
-        overflow:'hidden',
+        
+        width: 170,
+        aspectRatio: 1,
         backgroundColor: COLORS.componentBackground,
         borderRadius : 10,
-        marginBottom: 15,
         shadowColor: 'black',
         shadowOpacity: 0.3,
         shadowOffset: { width: 4, height: 4},
@@ -28,12 +27,7 @@ export default StyleSheet.create({
         fontWeight: '500',
         marginLeft: 15,
     },
-    tagList: {
-        height:30,
-        marginTop : 10 ,
-        marginHorizontal:15,
-    },
-    numberContainer: {
+    likeReleaseContainer: {
         position:'absolute',
         display : "flex",
         flexDirection : "row",
@@ -44,16 +38,9 @@ export default StyleSheet.create({
         left: 0,
         paddingHorizontal: 15,
     },
-    containerReleaseAuthor: {
-        display : "flex",
-        flexDirection : "row",
-    },
     releaseYear : {
-        position:'absolute',
         color: COLORS.foreground,
         fontSize: 15,
         fontWeight: '500',
-        right : 15,
-        marginTop: 5,
     }
 });

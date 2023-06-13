@@ -1,7 +1,7 @@
 import { View, Text, FlatList, RefreshControl, ToastAndroid } from 'react-native'
 import { useEffect, useState } from 'react'
 import CommonStyles from '../../styles/CommonStyles'
-import TagCard from '../../components/cards/TagCard'
+import TagCard from '../../components/cards/tag/TagCard'
 import TagsStyles from '../../styles/Screens/Tag/TagsStyles'
 import TopBar from '../../components/TopBar'
 import Client from '../../library/class/Client'
@@ -63,7 +63,7 @@ export default function TagsScreen({navigation, route } : any) {
                 numColumns={2}
                 data={tags}
                 renderItem={({item, index}) => 
-                    <View style={{flex: 1,marginLeft: index % 2 !== 0 ? 20 : 0}}>
+                    <View style={{flex: 1, marginLeft: index % 2 !== 0 ? 20 : 0}}>
                         <TagCard key={item.idTag} tag={item} navigation={navigation}/>
                     </View>
                 }
