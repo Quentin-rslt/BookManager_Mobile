@@ -4,7 +4,6 @@ import Client from '../class/Client';
 import BaseService from './BaseService';
 import { APIBookData } from '../type/Data';
 import BookBuilder from '../builders/BookBuilder';
-import ReadingBuilder from '../builders/ReadingBuilder';
 import Reading from '../class/Reading';
 
 export default class BookService extends BaseService {
@@ -31,6 +30,22 @@ export default class BookService extends BaseService {
         }
     
         return new Map();
+    }
+
+    public async favBook(book: BookBuilder){
+        const res = await axios.put(`${this.getIp()}/api/favBook/${book.idBook}/${book.isFav}`);
+
+        const newBook:APIBookData = res.data;
+
+        return this.updateBook(newBook);
+    }
+
+    public getFavBooks() {
+        const favBooks:Book[] = Array.from(this.books.values()).filter((book) =>
+            book.isFav === true
+        );
+
+        return favBooks;
     }
     
     public async createBook(book: BookBuilder) {

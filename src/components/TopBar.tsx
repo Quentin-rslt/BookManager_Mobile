@@ -41,7 +41,7 @@ export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveBu
                 </View>
             }
             {
-                <View style={[TopBarStyles.bottomContainer, !headerShow && {marginTop: 40, marginBottom: 20}]}>
+                <View style={[TopBarStyles.bottomContainer, !headerShow && {marginTop: 45, marginBottom: 20}]}>
                     {
                         returnButtonShow && 
                         <View style={TopBarStyles.returnButtonContainer}>

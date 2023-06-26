@@ -80,7 +80,7 @@ export default function AddBookScreen({ navigation, route } : any) {
                     </View>
                     <InputText placeholder={'Année de sortie'} defaultValue={book.releaseYear} keyboardType='numeric' onChangeText={onChangeReleaseYear}/>
                     <View style={{width: "100%"}}>
-                        <Text style={AddBookStyles.textHolder}>Tags : </Text>
+                        <Text style={AddBookStyles.textHolder}>Tags </Text>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={AddBookStyles.tagsContainer}>
                             <TextIconButton callBack={() => setShowModal(true)} iconColor={COLORS.background} iconName={'square-edit-outline'} iconSize={17} showText={false} buttonStyle={AddBookStyles.addTagContainer}/>
                             {
@@ -93,7 +93,7 @@ export default function AddBookScreen({ navigation, route } : any) {
                     </View>
                     <InputText placeholder={'Description'} multiline={true} containerStyle={AddBookStyles.descriptionContainer} onChangeText={onChangeSummary}/>
                     <View style={AddBookStyles.readingsContainer}>
-                        <Text style={AddBookStyles.textHolder}>Lectures : </Text>
+                        <Text style={AddBookStyles.textHolder}>Lectures </Text>
                         <DatePicker book={book} setRefresh={setRefresh} refresh={refresh}/>
                         {
                             book.readings.map((reading, idReading) => 

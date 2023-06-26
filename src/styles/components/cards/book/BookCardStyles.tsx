@@ -4,12 +4,11 @@ import { COLORS } from "../../../../library/CommonColors";
 export default StyleSheet.create({
     container: {
         width:"100%",
-        height:130,
-        overflow:'hidden',
         backgroundColor: COLORS.componentBackground,
         borderRadius : 10,
         marginBottom: 15,
-        shadowColor: 'black',
+        padding: 10,
+        shadowColor: COLORS.Black,
         shadowOpacity: 0.3,
         shadowOffset: { width: 4, height: 4},
         elevation: 5,
@@ -18,42 +17,26 @@ export default StyleSheet.create({
         color: COLORS.foreground,
         fontSize: 20,
         fontWeight: '800',
-        marginHorizontal: 15,
-        overflow: 'hidden',
-        marginTop: 10,
+        width: '90%'
     },
     authorStyle: {
         color: COLORS.foreground,
         fontSize: 15,
         fontWeight: '500',
-        marginLeft: 15,
     },
     tagList: {
         height:30,
         marginTop : 10 ,
-        marginHorizontal:15,
     },
-    numberContainer: {
-        position:'absolute',
+    lineContainer: {
         display : "flex",
         flexDirection : "row",
-        alignItems: 'center',
         justifyContent: 'space-between',
-        width: "100%",
-        bottom: 10,
-        left: 0,
-        paddingHorizontal: 15,
-    },
-    containerReleaseAuthor: {
-        display : "flex",
-        flexDirection : "row",
+        alignItems: 'center',
     },
     releaseYear : {
-        position:'absolute',
         color: COLORS.foreground,
-        fontSize: 15,
+        fontSize: 14,
         fontWeight: '500',
-        right : 15,
-        marginTop: 5,
     }
 });

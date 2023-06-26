@@ -62,7 +62,7 @@ export default function AddTagScreen({ navigation, route } : any) {
                     <InputText placeholder={'Titre du tag'} defaultValue={newTag.textTag} onChangeText={onChangeTextTag}/>
                     <View style={EditTagStyles.colorContainer}>
                         <View style={EditTagStyles.resultColorContainer}>
-                            <Text style={EditTagStyles.textHolder}>Couleur du tag :</Text>
+                            <Text style={EditTagStyles.textHolder}>Couleur du tag </Text>
                             <View style={[{backgroundColor: colorTag}, EditTagStyles.colorTag]}/>
                         </View>
                         <ColorPicker

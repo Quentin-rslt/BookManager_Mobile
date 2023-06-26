@@ -1,4 +1,4 @@
-import { View, Text, RefreshControl, ToastAndroid, ActivityIndicator } from 'react-native'
+import { View, Text, RefreshControl, ToastAndroid } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import CommonStyles from '../styles/CommonStyles'
 import Client from '../library/class/Client';
@@ -9,7 +9,6 @@ import BookFavCard from '../components/cards/book/BookFavCard';
 import BookRecentListenCard from '../components/cards/book/BookRecentListenCard';
 import TagMostUseCard from '../components/cards/tag/TagMostUseCard';
 import ReadingCardWithBook from '../components/cards/reading/ReadingCardWithBook';
-import { COLORS } from '../library/CommonColors';
 import TextIconButton from '../components/Buttons/TextIconButton';
 
 export default function HomeScreen({ navigation, route } : any) {
@@ -17,7 +16,7 @@ export default function HomeScreen({ navigation, route } : any) {
     const client:Client = route.params.client;
 
     const [favBooks, setFavBooks] = useState(Array.from(client.bookService.books.values()));
-    const [recentBooks, setRecentBooks] = useState(Array.from(client.bookService.books.values()));
+    const [recentBooks, setRecentBooks] = useState(client.bookService.getFavBooks());
     const [tags, setTags] = useState(Array.from(client.tagService.tags.values()));
     const [readings, setReadings] = useState(Array.from(client.readingService.readings.values()));
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -54,9 +53,7 @@ export default function HomeScreen({ navigation, route } : any) {
         setRecentBooks([...recentBooks.slice(0, 6)]);
 
         // Fav book list
-        const favBooks = Array.from(client.bookService.books.values()).filter((book) =>
-            book.isFav === true
-        );
+        const favBooks = client.bookService.getFavBooks();
         setFavBooks([...favBooks.slice(0, 5)]);
     }
 
@@ -70,7 +67,7 @@ export default function HomeScreen({ navigation, route } : any) {
             <ScrollView style={HomeStyles.scrollViewContainer} refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}>
                 <View style={HomeStyles.container}>
                     <View style={HomeStyles.itemsWrapperContainer}>
-                        <Text style={HomeStyles.textHolder}>Livres récemment lu</Text>
+                        {recentBooks.length !== 0 && <Text style={[HomeStyles.textHolder, {paddingLeft: 4}]}>Livres récemment lu</Text>}
                         <View style={HomeStyles.itemsWrapper}>
                             {
                                 recentBooks.map((book, idBook) => 
@@ -82,19 +79,19 @@ export default function HomeScreen({ navigation, route } : any) {
                         </View>
                     </View>
                     <View style={HomeStyles.itemsContainer}>
-                        <Text style={HomeStyles.textHolder}>Livres favoris ({favBooks.length})</Text>
+                        {favBooks.length !== 0 && <Text style={HomeStyles.textHolder}>Livres favoris ({favBooks.length})</Text>}
                         <ScrollView style={HomeStyles.itemsScrollView} horizontal showsHorizontalScrollIndicator={false}>
                             {
                                 favBooks.map((book, idBook) => 
                                     <View key={idBook} style={HomeStyles.favBookCardContainer}>
-                                        <BookFavCard key={idBook} book={book} navigation={navigation}/>
+                                        <BookFavCard key={idBook} book={book} navigation={navigation} setFavBooks={setFavBooks}/>
                                     </View>
                                 )
                             }
                         </ScrollView>
                     </View>
                     <View style={HomeStyles.itemsContainer}>
-                        <Text style={HomeStyles.textHolder}>Tags les plus utilisés</Text>
+                        {tags.length !== 0 && <Text style={HomeStyles.textHolder}>Tags les plus utilisés</Text>}
                         <ScrollView horizontal style={HomeStyles.itemsScrollView} showsHorizontalScrollIndicator={false}>
                             {
                                 tags.map((tag, idTag) => 
@@ -106,7 +103,7 @@ export default function HomeScreen({ navigation, route } : any) {
                         </ScrollView>
                     </View>
                     <View style={HomeStyles.itemsContainer}>
-                        <Text style={HomeStyles.textHolder}>Listes des lectures ({client.readingService.readings.size})</Text>
+                        {readings.length !== 0 && <Text style={HomeStyles.textHolder}>Listes des lectures ({client.readingService.readings.size})</Text>}
                         {
                             readings.map((reading, idReading) => 
                                 <ReadingCardWithBook key={idReading} reading={reading}/>

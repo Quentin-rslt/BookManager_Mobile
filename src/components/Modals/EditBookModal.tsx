@@ -38,6 +38,19 @@ export default function EditBookModal({showModal, setShowModal, book, navigation
         navigation.navigate('EditBookScreen', { newBook });
     };
 
+    const onLikedBook = async () => {
+        const bookBuilder:BookBuilder = new BookBuilder(book.client, book.toJSON());
+        bookBuilder.setIsFav(!book.isFav);
+
+        try {
+            await book.client.bookService.favBook(bookBuilder);
+            setShowModal(false);
+
+        } catch(error) {
+            ToastAndroid.show("Problème lors du like du livres" , ToastAndroid.CENTER);
+        }
+    };
+
     return (
         <Modal 
             style={{ margin: 0 }} 
@@ -52,6 +65,12 @@ export default function EditBookModal({showModal, setShowModal, book, navigation
                 </View>
                 <TextIconButton callBack={onEditBook} iconSize={25} text='Modifier le livre' iconName={'square-edit-outline'} iconColor={COLORS.accentColor} buttonStyle={EditModalBookStyles.editButton} textStyle={EditModalBookStyles.textEditButton}/>
                 <TextIconButton callBack={onDeleteBook} isLoading={isLoading} iconSize={25} text='Supprimer le livre' iconName={'delete-outline'} iconColor={COLORS.accentColor} buttonStyle={EditModalBookStyles.editButton} textStyle={EditModalBookStyles.textEditButton}/>
+                {
+                    book.isFav ?
+                    <TextIconButton callBack={onLikedBook} showText={true} text='Supprimer des favoris le livre' iconName={'cards-heart'} iconSize={25} iconColor={COLORS.accentColor} buttonStyle={EditModalBookStyles.editButton} textStyle={EditModalBookStyles.textEditButton}/>
+                    :  
+                    <TextIconButton callBack={onLikedBook} showText={true} text='Ajouter aux favoris le livre' iconName={'cards-heart-outline'} iconSize={25} iconColor={COLORS.accentColor} buttonStyle={EditModalBookStyles.editButton} textStyle={EditModalBookStyles.textEditButton}/>
+                }
             </View>
         </Modal>
     )

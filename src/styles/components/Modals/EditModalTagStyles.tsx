@@ -5,7 +5,7 @@ export default StyleSheet.create({
     container: {
         position: 'absolute',
         bottom: 0,
-        height: '14%',
+        height: '15%',
         width: "100%",
         backgroundColor: COLORS.background,
         borderTopLeftRadius: 20,
@@ -28,7 +28,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 15,
-        paddingVertical: 10,
+        paddingVertical: 12,
     },
     textEditButton: {
         color: COLORS.foreground,

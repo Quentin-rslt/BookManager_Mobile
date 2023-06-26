@@ -58,7 +58,7 @@ export default function LibraryScreen({ navigation, route } : any) {
                 ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun livre n'a été trouvé"}</Text>}
                 contentContainerStyle = {LibraryStyles.booksContainer}
                 data={books}
-                renderItem={({item}) => <BookCard key={item.idBook} book={item} navigation={navigation}/>}
+                renderItem={({item}) => <BookCard key={item.idBook} book={item} navigation={navigation} onRefresh={onRefresh}/>}
                 keyExtractor={item => item.idBook.toString()}
                 refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}
             />

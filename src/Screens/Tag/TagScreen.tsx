@@ -1,5 +1,5 @@
 import { View, Text, ScrollView } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Tag from '../../library/class/Tag';
 import TagStyles from '../../styles/Screens/Tag/TagStyles';
 import BookCard from '../../components/cards/book/BookCard';
@@ -12,6 +12,18 @@ export default function TagScreen({ navigation, route } : any) {
     const tag:Tag = route.params.tag;
 
     const [showModal, setShowModal] = useState<boolean>(false);
+    const [books, setBooks] = useState(Array.from(tag.books.values()));
+
+    useEffect(() => {
+        navigation.addListener('focus', () => {
+            onRefresh();
+        });
+    }, [navigation]);
+
+    const onRefresh = () => {
+        const books = tag.client.bookService.books.values();
+        setBooks([...Array.from(books)]);
+    };
 
     const onClickMoreButton = () => {
         setShowModal(true);
@@ -23,16 +35,16 @@ export default function TagScreen({ navigation, route } : any) {
             <ScrollView style={TagStyles.scrollViewContainer} showsVerticalScrollIndicator={false}>
                 <Text style={TagStyles.textTag}>{tag.textTag}</Text>
                 <View style={TagStyles.colorContainer}>
-                    <Text style={TagStyles.textHolder}>Couleur :</Text>
+                    <Text style={TagStyles.textHolder}>Couleur </Text>
                     <View style={[{backgroundColor: tag.colorTag}, TagStyles.colorTag]}></View>
                 </View>
                 {   
-                    tag.books.size !== 0 &&
+                    books.length !== 0 &&
                     <View style={TagStyles.booksContainer}>
-                        <Text style={TagStyles.textHolder}>Livres : ({tag.books.size.toString()})</Text>
+                        <Text style={TagStyles.textHolder}>Livres ({tag.books.size.toString()})</Text>
                         {
-                            Array.from(tag.books.values()).map((book, idBook) => 
-                                <BookCard key={idBook} book={book} navigation={navigation}/>
+                            books.map((book, idBook) => 
+                                <BookCard key={idBook} book={book} navigation={navigation} onRefresh={onRefresh}/>
                             )
                         }
                     </View>
