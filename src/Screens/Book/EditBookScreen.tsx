@@ -66,7 +66,7 @@ export default function EditBookScreen({ navigation, route } : any) {
     };
 
     const onChangeReleaseYear = (text : string) => {
-        newBook.setReleaseYear(text);
+        newBook.setReleaseYear(+text);
     };
 
     return (
@@ -80,7 +80,7 @@ export default function EditBookScreen({ navigation, route } : any) {
                         <InputText placeholder={'Page'} containerStyle={EditBookStyles.inputNumber} defaultValue={newBook.numberOP.toString()} keyboardType='numeric' onChangeText={onChangeNumberOP}/>
                         <InputText placeholder={'Note'} containerStyle={EditBookStyles.inputNumber} defaultValue={newBook.notePerso.toString()} keyboardType='numeric' onChangeText={onChangeNotePerso}/>
                     </View>
-                    <InputText placeholder={'Année de sortie'} defaultValue={newBook.releaseYear} keyboardType='numeric' onChangeText={onChangeReleaseYear}/>
+                    <InputText placeholder={'Année de sortie'} defaultValue={newBook.releaseYear.toString()} keyboardType='numeric' onChangeText={onChangeReleaseYear} maxLength={4}/>
                     <View style={{width: "100%"}}  >
                         <Text style={EditBookStyles.textHolder}>Tags </Text>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={EditBookStyles.tagsContainer}>

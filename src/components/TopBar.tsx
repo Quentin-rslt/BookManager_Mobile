@@ -21,11 +21,12 @@ type Props = {
     iconNameButtonHeader?: any;
     iconNameTitleHeader?: any;
     onClickButtonHeader?: () => void;
+    onClickSearchButton?: () => void;
 }
 
 type TopBarStackParamList = {};
 
-export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveButton, onClickButtonHeader, headerShow = false , iconNameTitleHeader = '', iconNameButtonHeader = '' , titleHeader = '', isLoadingSaveButton = false, saveButtonShow = false, moreButtonShow = false, returnButtonShow = false, searchBarShow = true, value = ''} : Props) {
+export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveButton, onClickButtonHeader, onClickSearchButton, headerShow = false , iconNameTitleHeader = '', iconNameButtonHeader = '' , titleHeader = '', isLoadingSaveButton = false, saveButtonShow = false, moreButtonShow = false, returnButtonShow = false, searchBarShow = true, value = ''} : Props) {
     const navigation = useNavigation<StackNavigationProp<TopBarStackParamList>>();
 
     return (
@@ -49,7 +50,15 @@ export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveBu
                         </View>
                     }
                     {
-                        searchBarShow && <TextInput value={value} placeholder="Search" placeholderTextColor={COLORS.foregroundHolder}  style={TopBarStyles.textInput} onChangeText={onChangeSearch}/>
+                        searchBarShow && onClickSearchButton &&
+                        <View style={TopBarStyles.searchContainer}>
+                            <TextInput value={value} placeholder="Recherche rapide..." placeholderTextColor={COLORS.foregroundHolder}  style={TopBarStyles.textInput} onChangeText={onChangeSearch}/>
+                            <TextIconButton callBack={onClickSearchButton} showIcon iconName={"magnify"} iconSize={30} iconColor={COLORS.foreground} buttonStyle={TopBarStyles.searchButton}/>
+                        </View>
+                    }
+                    {
+                        searchBarShow && !onClickSearchButton &&
+                        <TextInput value={value} placeholder="Recherche rapide..." placeholderTextColor={COLORS.foregroundHolder}  style={TopBarStyles.textInput} onChangeText={onChangeSearch}/>
                     }
                     {
                         moreButtonShow && onClickButtonMore &&

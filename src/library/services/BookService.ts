@@ -5,6 +5,7 @@ import BaseService from './BaseService';
 import { APIBookData } from '../type/Data';
 import BookBuilder from '../builders/BookBuilder';
 import Reading from '../class/Reading';
+import BookSearchCriteriaBuilder from '../builders/BookSearchCriteriaBuilder';
 
 export default class BookService extends BaseService {
 
@@ -71,6 +72,38 @@ export default class BookService extends BaseService {
 
         this.deleteReadings(book);
         this.removeBook(book.idBook);
+    }
+
+    public async searchBooksByCriteria(criteria: BookSearchCriteriaBuilder) {
+
+        const res = await axios.get(`${this.getIp()}/api/book/criteria`, {
+            params: {
+                c: criteria.toJSON()
+            }
+        });
+
+        if(res.status === 200) {
+            const data: APIBookData[] = res.data;
+            
+            const booksTampon = new Array<Book>();
+            for(const b of data) {
+                const newBook = new Book(this.client, b);
+                booksTampon.push(newBook);
+            }
+            const returnBooks = new Array<Book>();
+
+            for(const book of this.books.values()) {
+                for(const bookTampon of booksTampon) {
+                    if(book.title === bookTampon.title && book.author === bookTampon.author) {
+                        returnBooks.push(book);
+                    }
+                }
+            }
+
+            return returnBooks;
+        }
+    
+        return [];
     }
 
     public addBook(data: APIBookData){

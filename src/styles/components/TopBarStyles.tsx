@@ -36,6 +36,14 @@ export default StyleSheet.create({
         width: '100%',
         paddingHorizontal: 15,
     },
+    searchContainer: {
+        display: 'flex', 
+        flexDirection: 'row',
+        width: '100%',
+        alignItems: 'center', 
+        justifyContent: 'center',
+        paddingHorizontal: 22.5,
+    },
     textInput : {
         justifyContent: 'center',
         backgroundColor : COLORS.componentBackground,
@@ -50,6 +58,9 @@ export default StyleSheet.create({
         shadowOffset: { width: 4, height: 4},
         elevation: 5,
         marginBottom: 20,
+    },
+    searchButton: {
+        paddingLeft: 15,
     },
     returnButtonContainer : {   
         position:'absolute',

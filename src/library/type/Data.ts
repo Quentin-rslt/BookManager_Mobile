@@ -4,7 +4,7 @@ export interface APIBookData {
     author: string;
     numberOP: number;
     notePerso: number;
-    releaseYear: string;
+    releaseYear: number;
     summary: string;
     fav: boolean;
     readings: APIBookReading[];

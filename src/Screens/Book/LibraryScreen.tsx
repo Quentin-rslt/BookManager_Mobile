@@ -6,13 +6,18 @@ import TopBar from '../../components/TopBar'
 import LibraryStyles from '../../styles/Screens/Book/LibraryStyles'
 import Client from '../../library/class/Client'
 import BookBuilder from '../../library/builders/BookBuilder'
+import SearchBooksModal from '../../components/Modals/SearchBooksModal'
+import BookSearchCriteriaBuilder from '../../library/builders/BookSearchCriteriaBuilder'
 
 export default function LibraryScreen({ navigation, route } : any) {
 
-    const client:Client = route.params.client;
+    const client: Client = route.params.client;
+
+    const criteriaSearchBooks: BookSearchCriteriaBuilder = new BookSearchCriteriaBuilder(client);
 
     const [books, setBooks] = useState(Array.from(client.bookService.books.values()));
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [showModalSearch, setShowModalSearch] = useState<boolean>(false);
     const [searchText, setSearchText] = useState<string>('');
 
     useEffect(() => {
@@ -51,9 +56,13 @@ export default function LibraryScreen({ navigation, route } : any) {
         setBooks([...filteredBooks]);
     };
 
+    const onCLickSearchButton = () => {
+        setShowModalSearch(true);
+    };
+
     return (
         <View style={CommonStyles.container}>
-            <TopBar value={searchText} onChangeSearch={(text) => onChangeSearch(text)} headerShow onClickButtonHeader={onClickAddBook} titleHeader='Ma Bibliothéque' iconNameTitleHeader={'bookshelf'} iconNameButtonHeader={'plus'}/>
+            <TopBar value={searchText} onChangeSearch={(text) => onChangeSearch(text)} headerShow onClickButtonHeader={onClickAddBook} onClickSearchButton={onCLickSearchButton} titleHeader='Ma Bibliothéque' iconNameTitleHeader={'bookshelf'} iconNameButtonHeader={'plus'}/>
             <FlatList style={CommonStyles.flatListContainer} 
                 ListEmptyComponent={<Text style={CommonStyles.noItems}>{!isLoading && "Aucun livre n'a été trouvé"}</Text>}
                 contentContainerStyle = {LibraryStyles.booksContainer}
@@ -62,6 +71,7 @@ export default function LibraryScreen({ navigation, route } : any) {
                 keyExtractor={item => item.idBook.toString()}
                 refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}
             />
+            <SearchBooksModal showModal={showModalSearch} setShowModal={setShowModalSearch} setBooks={setBooks} criteriaBuilder={criteriaSearchBooks}/>
         </View>
     )
 }

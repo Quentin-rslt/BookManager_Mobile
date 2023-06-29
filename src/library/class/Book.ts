@@ -18,7 +18,7 @@ export default class Book extends Base {
 
     public notePerso: number;
     
-    public releaseYear: string;
+    public releaseYear: number;
     
     public summary: string;
 

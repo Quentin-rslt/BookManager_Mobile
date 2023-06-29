@@ -10,7 +10,7 @@ export interface BookDataBuilder {
     author: string;
     numberOP: number;
     notePerso: number;
-    releaseYear: string;
+    releaseYear: number;
     summary: string;
     isFav: boolean;
     readings: Array<ReadingBuilder>;
@@ -28,7 +28,7 @@ export default class BookBuilder extends Base {
 
     public notePerso: number;
     
-    public releaseYear: string;
+    public releaseYear: number;
     
     public summary: string;
     
@@ -45,7 +45,7 @@ export default class BookBuilder extends Base {
         this.author = data?.author ?? "";
         this.numberOP = data?.numberOP ?? 0;
         this.notePerso = data?.notePerso ?? 0;
-        this.releaseYear = data?.releaseYear ?? "2023";
+        this.releaseYear = data?.releaseYear ?? 2023;
         this.summary = data?.summary ?? "";
         this.isFav = data?.isFav ?? false;
         this.readings = data?.readings ?? [];
@@ -92,7 +92,7 @@ export default class BookBuilder extends Base {
         return this;
     }
 
-    public setReleaseYear(releaseYear: string) {
+    public setReleaseYear(releaseYear: number) {
         this.releaseYear = releaseYear;
         return this;
     }
