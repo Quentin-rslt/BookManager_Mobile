@@ -5,7 +5,7 @@ import BaseService from './BaseService';
 import { APIBookData } from '../type/Data';
 import BookBuilder from '../builders/BookBuilder';
 import Reading from '../class/Reading';
-import BookSearchCriteriaBuilder from '../builders/BookSearchCriteriaBuilder';
+import CriteriaSearchBooksBuilder from '../builders/CriteriaSearchBooksBuilder';
 
 export default class BookService extends BaseService {
 
@@ -35,7 +35,7 @@ export default class BookService extends BaseService {
         return new Map();
     }
 
-    public async fetchFilteredBooks(criteria: BookSearchCriteriaBuilder) {
+    public async fetchFilteredBooks(criteria: CriteriaSearchBooksBuilder) {
 
         const res = await axios.get(`${this.getIp()}/api/book/criteria`, {
             params: {

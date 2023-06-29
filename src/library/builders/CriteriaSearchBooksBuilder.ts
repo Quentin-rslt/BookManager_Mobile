@@ -1,7 +1,7 @@
 import Base from "../class/Base";
 import Client from "../class/Client";
 
-export default class BookSearchCriteriaBuilder extends Base {
+export default class CriteriaSearchBooksBuilder extends Base {
 
     public title: string;
 

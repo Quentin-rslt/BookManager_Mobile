@@ -6,7 +6,7 @@ import { Feather } from '@expo/vector-icons';
 import SearchBooksModalStyles from '../../styles/components/Modals/SearchBooksModalStyles';
 import InputText from '../Inputs/InputText';
 import TextIconButton from '../Buttons/TextIconButton';
-import BookSearchCriteriaBuilder from '../../library/builders/BookSearchCriteriaBuilder';
+import CriteriaSearchBooksBuilder from '../../library/builders/CriteriaSearchBooksBuilder';
 import Client from '../../library/class/Client';
 
 interface Props {
@@ -40,8 +40,9 @@ export default function SearchBooksModal({showModal, setShowModal, client, onRef
     };
 
     const onClickResetFiltered = () => {
-        client.criteriaSearchBooks = new BookSearchCriteriaBuilder(client);
+        client.criteriaSearchBooks = new CriteriaSearchBooksBuilder(client);
         client.isFilteredBooks = false;
+        client.bookService.filteredBooks = new Map();
         setIsFav(false);
         onRefresh();
         setShowModal(false);
@@ -93,7 +94,7 @@ export default function SearchBooksModal({showModal, setShowModal, client, onRef
                 </View>
                 <View style={SearchBooksModalStyles.buttonsContainer}>
                     <TextIconButton buttonStyle={SearchBooksModalStyles.searchButton} showIcon={false} text='Rechercher' callBack={onClickFiltered} isLoading={isLoading} loadColor={COLORS.background}/>
-                    <TextIconButton buttonStyle={SearchBooksModalStyles.searchButton} showIcon={false} text='Rénitialiser' callBack={onClickResetFiltered} isLoading={isLoading} loadColor={COLORS.background}/>
+                    <TextIconButton buttonStyle={SearchBooksModalStyles.searchButton} showIcon={false} text='Rénitialiser' callBack={onClickResetFiltered} loadColor={COLORS.background}/>
                 </View>
             </View>
         </View>

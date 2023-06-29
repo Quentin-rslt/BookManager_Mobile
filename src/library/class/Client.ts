@@ -1,4 +1,4 @@
-import BookSearchCriteriaBuilder from '../builders/BookSearchCriteriaBuilder';
+import CriteriaSearchBooksBuilder from '../builders/CriteriaSearchBooksBuilder';
 import BookService from '../services/BookService';
 import ReadingService from '../services/ReadingService';
 import TagService from '../services/TagService';
@@ -11,7 +11,7 @@ export default class Client {
 
     public readingService: ReadingService;
 
-    public criteriaSearchBooks: BookSearchCriteriaBuilder;
+    public criteriaSearchBooks: CriteriaSearchBooksBuilder;
 
     public isFilteredBooks: boolean;
 
@@ -19,7 +19,7 @@ export default class Client {
         this.bookService = new BookService(this);
         this.readingService = new ReadingService(this);
         this.tagService = new TagService(this);
-        this.criteriaSearchBooks = new BookSearchCriteriaBuilder(this);
+        this.criteriaSearchBooks = new CriteriaSearchBooksBuilder(this);
         this.isFilteredBooks = false;
     }
 

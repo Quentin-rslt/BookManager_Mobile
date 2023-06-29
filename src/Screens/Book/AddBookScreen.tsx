@@ -31,6 +31,7 @@ export default function AddBookScreen({ navigation, route } : any) {
         try{
             if(book.title != "" && book.author != ""){
                 await book.client.bookService.createBook(book);
+                book.client.criteriaSearchBooks && book.client.isFilteredBooks && await book.client.bookService.fetchFilteredBooks(book.client.criteriaSearchBooks);
  
                 navigation.goBack();
             } else {
