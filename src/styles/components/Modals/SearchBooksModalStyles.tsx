@@ -53,4 +53,16 @@ export default StyleSheet.create({
         padding: 10,
         marginTop: 30,
     },
+    holderText: {
+        color: COLORS.foregroundHolder,
+        fontSize: 13,
+        marginRight: 15,
+    },
+    likeContainer: {
+        display: 'flex', 
+        flexDirection: 'row', 
+        justifyContent: 'flex-start', 
+        width: '100%', 
+        alignItems: 'center'
+    }
 });

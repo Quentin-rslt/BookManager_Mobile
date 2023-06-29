@@ -13,8 +13,6 @@ export default function LibraryScreen({ navigation, route } : any) {
 
     const client: Client = route.params.client;
 
-    const criteriaSearchBooks: BookSearchCriteriaBuilder = new BookSearchCriteriaBuilder(client);
-
     const [books, setBooks] = useState(Array.from(client.bookService.books.values()));
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [showModalSearch, setShowModalSearch] = useState<boolean>(false);
@@ -71,7 +69,7 @@ export default function LibraryScreen({ navigation, route } : any) {
                 keyExtractor={item => item.idBook.toString()}
                 refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}
             />
-            <SearchBooksModal showModal={showModalSearch} setShowModal={setShowModalSearch} setBooks={setBooks} criteriaBuilder={criteriaSearchBooks}/>
+            <SearchBooksModal showModal={showModalSearch} setShowModal={setShowModalSearch} setBooks={setBooks} criteriaBuilder={client.criteriaSearchBooks}/>
         </View>
     )
 }

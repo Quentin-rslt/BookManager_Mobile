@@ -2,7 +2,6 @@ import { Text, ToastAndroid, TouchableOpacity, View } from 'react-native'
 import Book from '../../../library/class/Book'
 import BookCardStyles from '../../../styles/components/cards/book/BookCardStyles';
 import TagSticker from '../../Buttons/TagSticker';
-import NumberIcon from '../../NumberIcon';
 import { ScrollView } from 'react-native-gesture-handler';
 import TextIconButton from '../../Buttons/TextIconButton';
 import { COLORS } from '../../../library/CommonColors';

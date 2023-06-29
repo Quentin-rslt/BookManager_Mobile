@@ -1,3 +1,4 @@
+import BookSearchCriteriaBuilder from '../builders/BookSearchCriteriaBuilder';
 import BookService from '../services/BookService';
 import ReadingService from '../services/ReadingService';
 import TagService from '../services/TagService';
@@ -10,10 +11,13 @@ export default class Client {
 
     public readingService: ReadingService;
 
+    public criteriaSearchBooks: BookSearchCriteriaBuilder;
+
     constructor() {
         this.bookService = new BookService(this);
         this.readingService = new ReadingService(this);
         this.tagService = new TagService(this);
+        this.criteriaSearchBooks = new BookSearchCriteriaBuilder(this);
     }
 
     public async fetchAll() {
