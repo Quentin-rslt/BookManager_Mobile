@@ -48,7 +48,7 @@ export default StyleSheet.create({
     },
     searchButton: {
         backgroundColor: COLORS.accentColor,
-        width: '100%',
+        width: '48.5%',
         borderRadius: 10,
         padding: 10,
         marginTop: 30,
@@ -62,6 +62,13 @@ export default StyleSheet.create({
         display: 'flex', 
         flexDirection: 'row', 
         justifyContent: 'flex-start', 
+        width: '100%', 
+        alignItems: 'center'
+    },
+    buttonsContainer: {
+        display: 'flex', 
+        flexDirection: 'row', 
+        justifyContent: 'space-between', 
         width: '100%', 
         alignItems: 'center'
     }

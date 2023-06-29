@@ -6,35 +6,45 @@ import { Feather } from '@expo/vector-icons';
 import SearchBooksModalStyles from '../../styles/components/Modals/SearchBooksModalStyles';
 import InputText from '../Inputs/InputText';
 import TextIconButton from '../Buttons/TextIconButton';
-import Book from '../../library/class/Book';
 import BookSearchCriteriaBuilder from '../../library/builders/BookSearchCriteriaBuilder';
-import CommonStyles from '../../styles/CommonStyles';
+import Client from '../../library/class/Client';
 
 interface Props {
     showModal: boolean;
     setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-    setBooks: React.Dispatch<React.SetStateAction<Book[]>>;
-    criteriaBuilder: BookSearchCriteriaBuilder;
+    onRefresh: () => void;
+    client: Client;
 }
 
-export default function SearchBooksModal({showModal, setShowModal, setBooks, criteriaBuilder}: Props) {
+export default function SearchBooksModal({showModal, setShowModal, client, onRefresh}: Props) {
+
+    const criteriaBuilder = client.criteriaSearchBooks;
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isFav, setIsFav] = useState<boolean>(criteriaBuilder.isFav);
 
-    const onClickSearchButton = async() => {
+    const onClickFiltered = async() => {
         setIsLoading(true);
 
         try {
-            const newBooks = await criteriaBuilder.client.bookService.searchBooksByCriteria(criteriaBuilder);
-            
-            setBooks([...newBooks]);
-            setShowModal(false)
+            await client.bookService.fetchFilteredBooks(criteriaBuilder);
+
+            client.isFilteredBooks = true;
+            onRefresh();
+            setShowModal(false);
         } catch (error) {
-            //ToastAndroid.show("Problème lors de la recherche" , ToastAndroid.CENTER);
+            ToastAndroid.show("Problème lors de la recherche" , ToastAndroid.CENTER);
         }
 
         setIsLoading(false);
+    };
+
+    const onClickResetFiltered = () => {
+        client.criteriaSearchBooks = new BookSearchCriteriaBuilder(client);
+        client.isFilteredBooks = false;
+        setIsFav(false);
+        onRefresh();
+        setShowModal(false);
     };
 
     const onLikedBook = async () => {
@@ -81,7 +91,10 @@ export default function SearchBooksModal({showModal, setShowModal, setBooks, cri
                         <TextIconButton callBack={onLikedBook} showText={false} iconName={'cards-heart-outline'} iconSize={25} iconColor={COLORS.accentColor}/>
                     }
                 </View>
-                <TextIconButton buttonStyle={SearchBooksModalStyles.searchButton} showIcon={false} text='Rechercher' callBack={onClickSearchButton} isLoading={isLoading} loadColor={COLORS.background}/>
+                <View style={SearchBooksModalStyles.buttonsContainer}>
+                    <TextIconButton buttonStyle={SearchBooksModalStyles.searchButton} showIcon={false} text='Rechercher' callBack={onClickFiltered} isLoading={isLoading} loadColor={COLORS.background}/>
+                    <TextIconButton buttonStyle={SearchBooksModalStyles.searchButton} showIcon={false} text='Rénitialiser' callBack={onClickResetFiltered} isLoading={isLoading} loadColor={COLORS.background}/>
+                </View>
             </View>
         </View>
     </Modal>

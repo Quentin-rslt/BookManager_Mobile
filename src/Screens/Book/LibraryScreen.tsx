@@ -7,7 +7,7 @@ import LibraryStyles from '../../styles/Screens/Book/LibraryStyles'
 import Client from '../../library/class/Client'
 import BookBuilder from '../../library/builders/BookBuilder'
 import SearchBooksModal from '../../components/Modals/SearchBooksModal'
-import BookSearchCriteriaBuilder from '../../library/builders/BookSearchCriteriaBuilder'
+import Book from '../../library/class/Book'
 
 export default function LibraryScreen({ navigation, route } : any) {
 
@@ -25,17 +25,31 @@ export default function LibraryScreen({ navigation, route } : any) {
     }, [navigation]);
 
     const onRefresh = () => {
-        const books = client.bookService.books.values();
-        setBooks([...Array.from(books)]);
+        if(client.isFilteredBooks) {
+            const books = client.bookService.filteredBooks.values();
+            setBooks([...Array.from(books)]);
+        } else {
+            const books = client.bookService.books.values();
+            setBooks([...Array.from(books)]);
+        }
         setSearchText('');
     };
 
     const onRefreshFecthAPI = async () => {
         setIsLoading(true);
-        try{
-            setBooks(Array.from((await client.bookService.fetchBooks()).values()));
-        } catch(error) {
-            ToastAndroid.show("Problème lors du chargement des livres" , ToastAndroid.CENTER);
+
+        if(client.isFilteredBooks) {
+            try{
+                setBooks(Array.from((await client.bookService.fetchFilteredBooks(client.criteriaSearchBooks)).values()));
+            } catch(error) {
+                ToastAndroid.show("Problème lors du chargement des livres" , ToastAndroid.CENTER);
+            }
+        } else {
+            try{
+                setBooks(Array.from((await client.bookService.fetchBooks()).values()));
+            } catch(error) {
+                ToastAndroid.show("Problème lors du chargement des livres" , ToastAndroid.CENTER);
+            }
         }
         setSearchText('');
         setIsLoading(false);
@@ -48,10 +62,17 @@ export default function LibraryScreen({ navigation, route } : any) {
 
     const onChangeSearch = (text : string) => {
         setSearchText(text);
-        const filteredBooks = Array.from(client.bookService.books.values()).filter((book) =>
-            book.title.toLowerCase().includes(text.toLowerCase()) || book.author.toUpperCase().includes(text.toUpperCase())
-        );
-        setBooks([...filteredBooks]);
+        if(client.isFilteredBooks) {
+            const filteredBooks = Array.from(client.bookService.filteredBooks.values()).filter((book) =>
+                book.title.toLowerCase().includes(text.toLowerCase()) || book.author.toUpperCase().includes(text.toUpperCase())
+            );
+            setBooks([...filteredBooks]);
+        } else {
+            const filteredBooks = Array.from(client.bookService.books.values()).filter((book) =>
+                book.title.toLowerCase().includes(text.toLowerCase()) || book.author.toUpperCase().includes(text.toUpperCase())
+            );
+            setBooks([...filteredBooks]);
+        }
     };
 
     const onCLickSearchButton = () => {
@@ -69,7 +90,7 @@ export default function LibraryScreen({ navigation, route } : any) {
                 keyExtractor={item => item.idBook.toString()}
                 refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}
             />
-            <SearchBooksModal showModal={showModalSearch} setShowModal={setShowModalSearch} setBooks={setBooks} criteriaBuilder={client.criteriaSearchBooks}/>
+            <SearchBooksModal showModal={showModalSearch} setShowModal={setShowModalSearch} onRefresh={onRefresh} client={client}/>
         </View>
     )
 }

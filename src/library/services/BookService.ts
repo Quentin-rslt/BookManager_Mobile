@@ -10,10 +10,12 @@ import BookSearchCriteriaBuilder from '../builders/BookSearchCriteriaBuilder';
 export default class BookService extends BaseService {
 
     public books: Map<number, Book>;
+    public filteredBooks: Map<number, Book>;
 
     constructor(client: Client) {
         super(client);
         this.books = new Map();
+        this.filteredBooks = new Map();
     }
 
     public async fetchBooks(){
@@ -31,6 +33,29 @@ export default class BookService extends BaseService {
         }
     
         return new Map();
+    }
+
+    public async fetchFilteredBooks(criteria: BookSearchCriteriaBuilder) {
+
+        const res = await axios.get(`${this.getIp()}/api/book/criteria`, {
+            params: {
+                c: criteria.toJSON()
+            }
+        });
+
+        if(res.status === 200) {
+            const data: number[] = res.data;
+
+            this.filteredBooks = new Map();
+            for(const idBook of data) {
+                const book = this.books.get(idBook);
+                book && this.filteredBooks.set(book.idBook, book);
+            }
+
+            return this.filteredBooks;
+        }
+    
+        return [];
     }
 
     public async favBook(book: BookBuilder){
@@ -74,38 +99,6 @@ export default class BookService extends BaseService {
         this.removeBook(book.idBook);
     }
 
-    public async searchBooksByCriteria(criteria: BookSearchCriteriaBuilder) {
-
-        const res = await axios.get(`${this.getIp()}/api/book/criteria`, {
-            params: {
-                c: criteria.toJSON()
-            }
-        });
-
-        if(res.status === 200) {
-            const data: APIBookData[] = res.data;
-            
-            const booksTampon = new Array<Book>();
-            for(const b of data) {
-                const newBook = new Book(this.client, b);
-                booksTampon.push(newBook);
-            }
-            const returnBooks = new Array<Book>();
-
-            for(const book of this.books.values()) {
-                for(const bookTampon of booksTampon) {
-                    if(book.title === bookTampon.title && book.author === bookTampon.author) {
-                        returnBooks.push(book);
-                    }
-                }
-            }
-
-            return returnBooks;
-        }
-    
-        return [];
-    }
-
     public addBook(data: APIBookData){
         const book = new Book(this.client, data);
         
@@ -117,15 +110,22 @@ export default class BookService extends BaseService {
 
     public updateBook(data: APIBookData){
         const oldBook = this.books.get(data.idBook);
+        const oldFilteredBook = this.filteredBooks.get(data.idBook);
         if(oldBook){
             this.updateReadings(data, oldBook);
             oldBook.update(data);
             return oldBook;
         }
+        if(oldFilteredBook) {
+            this.updateReadings(data, oldFilteredBook);
+            oldFilteredBook.update(data);
+            return oldFilteredBook;
+        }
     }
 
     public removeBook(idBook: number){
         this.books.delete(idBook);
+        this.filteredBooks.delete(idBook);
     }
 
     public addReadings(book: APIBookData){

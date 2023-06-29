@@ -13,11 +13,14 @@ export default class Client {
 
     public criteriaSearchBooks: BookSearchCriteriaBuilder;
 
+    public isFilteredBooks: boolean;
+
     constructor() {
         this.bookService = new BookService(this);
         this.readingService = new ReadingService(this);
         this.tagService = new TagService(this);
         this.criteriaSearchBooks = new BookSearchCriteriaBuilder(this);
+        this.isFilteredBooks = false;
     }
 
     public async fetchAll() {
