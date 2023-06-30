@@ -46,14 +46,14 @@ export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveBu
                     {
                         returnButtonShow && 
                         <View style={TopBarStyles.returnButtonContainer}>
-                            <TextIconButton callBack={() => navigation.goBack()} iconSize={30} iconName={'chevron-left'} iconColor={COLORS.foreground} buttonStyle={TopBarStyles.returnButton}/>
+                            <TextIconButton callBack={() => navigation.goBack()} showText={false} iconSize={30} iconName={'chevron-left'} iconColor={COLORS.foreground} buttonStyle={TopBarStyles.returnButton}/>
                         </View>
                     }
                     {
                         searchBarShow && onClickSearchButton &&
                         <View style={TopBarStyles.searchContainer}>
                             <TextInput value={value} placeholder="Recherche rapide..." placeholderTextColor={COLORS.foregroundHolder}  style={TopBarStyles.textInput} onChangeText={onChangeSearch}/>
-                            <TextIconButton callBack={onClickSearchButton} showIcon iconName={"magnify"} iconSize={30} iconColor={COLORS.foreground} buttonStyle={TopBarStyles.searchButton}/>
+                            <TextIconButton callBack={onClickSearchButton} showText={false} showIcon iconName={"magnify"} iconSize={30} iconColor={COLORS.foreground} buttonStyle={TopBarStyles.searchButton}/>
                         </View>
                     }
                     {
@@ -68,7 +68,7 @@ export default function TopBar({onChangeSearch, onClickButtonMore, onClickSaveBu
                     }
                     {
                         saveButtonShow && onClickSaveButton && 
-                        <TextIconButton callBack={onClickSaveButton} isLoading={isLoadingSaveButton} text='Enregistrer' buttonStyle={TopBarStyles.saveButton} textStyle={TopBarStyles.textSaveButton}/>
+                        <TextIconButton showIcon={false} callBack={onClickSaveButton} isLoading={isLoadingSaveButton} text='Enregistrer' buttonStyle={TopBarStyles.saveButton} loadColor={COLORS.background}/>
                     }
                 </View>
             }

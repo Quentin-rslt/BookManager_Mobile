@@ -1,4 +1,4 @@
-import { ActivityIndicator, Text, TouchableOpacity } from 'react-native'
+import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react'
 import TextIconButtonStyles from '../../styles/components/Buttons/TextIconButtonStyles';
@@ -21,13 +21,30 @@ interface Props {
 
 export default function TextIconButton({callBack, loadColor = COLORS.accentColor, iconName, iconSize, iconColor, buttonStyle, textStyle, text, showIcon = true, showText = true, isLoading = false, numberOfLineText= 2} : Props) {
     return (
-        isLoading ? <ActivityIndicator size="small" color={loadColor} style={buttonStyle}/> :
-        <TouchableOpacity onPress={callBack} style={buttonStyle}>
+        <TouchableOpacity onPress={callBack} style={buttonStyle} disabled={isLoading}>
             {
-                showIcon && <MaterialCommunityIcons name={iconName} size={iconSize} color={iconColor}/>
+                !showText && showIcon && !isLoading ? <MaterialCommunityIcons name={iconName} size={iconSize} color={iconColor}/>
+                :
+                !showText && showIcon && isLoading && <ActivityIndicator size="small" color={loadColor}/>
+            }
+            {   
+                !showIcon && showText && !isLoading ? <Text style={[TextIconButtonStyles.text, textStyle]} numberOfLines={numberOfLineText}>{text}</Text> 
+                :
+                !showIcon && showText && isLoading && <ActivityIndicator size="small" color={loadColor} style={[textStyle]}/>
+                
             }
             {
-                showText && <Text style={[TextIconButtonStyles.text, textStyle]} numberOfLines={numberOfLineText}>{text}</Text>
+                showIcon && showText && !isLoading ?
+                <View style={{display: 'flex', flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+                    <MaterialCommunityIcons name={iconName} size={iconSize} color={iconColor}/>
+                    <Text style={[TextIconButtonStyles.text, textStyle]} numberOfLines={numberOfLineText}>{text}</Text> 
+                </View>
+                :
+                showIcon && showText &&
+                <View style={{display: 'flex', flexDirection: 'row', width: '100%', alignItems: 'center'}}>
+                    <ActivityIndicator size="small" color={loadColor}/>
+                    <Text style={[TextIconButtonStyles.text, textStyle]} numberOfLines={numberOfLineText}>{text}</Text> 
+                </View>
             }
         </TouchableOpacity>
     )

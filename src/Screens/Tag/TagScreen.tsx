@@ -21,7 +21,7 @@ export default function TagScreen({ navigation, route } : any) {
     }, [navigation]);
 
     const onRefresh = () => {
-        const books = tag.client.bookService.books.values();
+        const books = tag.books.values();
         setBooks([...Array.from(books)]);
     };
 

@@ -61,6 +61,7 @@ export default StyleSheet.create({
     },
     searchButton: {
         paddingLeft: 15,
+        marginBottom: 15,
     },
     returnButtonContainer : {   
         position:'absolute',
@@ -82,22 +83,17 @@ export default StyleSheet.create({
         color: COLORS.foregroundHolder,
     },
     saveButton: {
+        backgroundColor: COLORS.accentColor,
         display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         flexDirection: 'row',
         position: 'absolute',
         right: 20,
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-    },
-    textSaveButton: {
-        backgroundColor: COLORS.accentColor,
-        color: COLORS.background,
-        fontSize: 13,
-        fontWeight: '700',
-        textAlign: 'left',
-        paddingVertical: 6,
-        paddingHorizontal : 15,
+        width: 110,
         borderRadius: 20,
-        marginLeft: 5,
+        padding: 5,
+        marginTop: 30,
     },
+
 });

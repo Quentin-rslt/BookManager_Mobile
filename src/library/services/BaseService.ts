@@ -9,6 +9,6 @@ export default class BaseService {
     }
 
     public getIp(){
-        return "http://192.168.0.34:9000";
+        return process.env.API_URL;
     }
 }
