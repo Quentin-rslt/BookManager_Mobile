@@ -86,7 +86,7 @@ export default function EditBookScreen({ navigation, route } : any) {
                         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={EditBookStyles.tagsContainer}>
                             <TextIconButton callBack={() => setShowModal(true)} iconName={'square-edit-outline'} iconColor={COLORS.background} iconSize={17} showText={false} buttonStyle={EditBookStyles.addTagContainer}/>
                             {
-                                newBook.getTags().map((tag, idTag) => 
+                                newBook.tags.map((tag, idTag) => 
                                     <TagSticker key={idTag} tag={tag} navigation={navigation}/>
                                 )
                             }

@@ -122,12 +122,6 @@ export default class BookBuilder extends Base {
         return this;
     }
 
-    public getTags(){
-        return Array.from(this.tags.values()).sort((a, b) =>
-            a.idTag - b.idTag
-        );
-    }
-
     public setTags(tags: Tag[]) {
         this.tags  = tags;
         return this;

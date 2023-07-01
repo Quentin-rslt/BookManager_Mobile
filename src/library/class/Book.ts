@@ -78,9 +78,7 @@ export default class Book extends Base {
     }
 
     public getTags(){
-        return Array.from(this.tags.values()).sort((a, b) =>
-            a.idTag - b.idTag
-        );
+        return Array.from(this.tags.values());
     }
 
     get readings(){
