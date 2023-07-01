@@ -1,6 +1,5 @@
 import { APIReadingData } from "../type/Data";
 import Base from "./Base";
-import Book from "./Book";
 import Client from "./Client";
 
 export default class Reading extends Base {

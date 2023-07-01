@@ -6,12 +6,13 @@ import TagsStyles from '../../styles/Screens/Tag/TagsStyles'
 import TopBar from '../../components/TopBar'
 import Client from '../../library/class/Client'
 import TagBuilder from '../../library/builders/TagBuilder'
+import Tag from '../../library/class/Tag'
 
 export default function TagsScreen({navigation, route } : any) {
 
     const client:Client = route.params.client;
 
-    const [tags, setTags] = useState(Array.from(client.tagService.tags.values()));
+    const [tags, setTags] = useState(Array.from(client.tagService.getTags().values()));
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [searchText, setSearchText] = useState<string>('');
 
@@ -22,7 +23,7 @@ export default function TagsScreen({navigation, route } : any) {
     }, [navigation]);
 
     const onRefresh = () => {
-        const tags = Array.from(client.tagService.tags.values());
+        const tags = Array.from(client.tagService.getTags().values());
         setTags([...tags]);
         setSearchText('');
     };
@@ -30,8 +31,8 @@ export default function TagsScreen({navigation, route } : any) {
     const onRefreshFecthAPI = async () => {
         setIsLoading(true);
         try{
-            const tags = Array.from((await client.tagService.fetchTags()).values());
-            setTags([...tags]);
+            await client.tagService.fetchTags();
+            onRefresh();
         } catch(error) {
             ToastAndroid.show("Problème lors du chargement des tags" , ToastAndroid.CENTER);
         }

@@ -13,7 +13,7 @@ export default function LibraryScreen({ navigation, route } : any) {
 
     const client: Client = route.params.client;
 
-    const [books, setBooks] = useState(Array.from(client.bookService.books.values()));
+    const [books, setBooks] = useState(Array.from(client.bookService.getBooks().values()));
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [showModalSearch, setShowModalSearch] = useState<boolean>(false);
     const [searchText, setSearchText] = useState<string>('');
@@ -26,10 +26,10 @@ export default function LibraryScreen({ navigation, route } : any) {
 
     const onRefresh = () => {
         if(client.isFilteredBooks) {
-            const books = client.bookService.filteredBooks.values();
+            const books = client.bookService.getFilteredBooks().values();
             setBooks([...Array.from(books)]);
         } else {
-            const books = client.bookService.books.values();
+            const books = client.bookService.getBooks().values();
             setBooks([...Array.from(books)]);
         }
         setSearchText('');
@@ -40,13 +40,15 @@ export default function LibraryScreen({ navigation, route } : any) {
 
         if(client.isFilteredBooks) {
             try{
-                setBooks(Array.from((await client.bookService.fetchFilteredBooks(client.criteriaSearchBooks)).values()));
+                await client.bookService.fetchFilteredBooks(client.criteriaSearchBooks);
+                onRefresh();
             } catch(error) {
                 ToastAndroid.show("Problème lors du chargement des livres" , ToastAndroid.CENTER);
             }
         } else {
             try{
-                setBooks(Array.from((await client.bookService.fetchBooks()).values()));
+                await client.bookService.fetchBooks();
+                onRefresh();
             } catch(error) {
                 ToastAndroid.show("Problème lors du chargement des livres" , ToastAndroid.CENTER);
             }

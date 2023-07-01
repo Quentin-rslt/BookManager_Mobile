@@ -15,10 +15,10 @@ export default function HomeScreen({ navigation, route } : any) {
 
     const client:Client = route.params.client;
 
-    const [favBooks, setFavBooks] = useState(Array.from(client.bookService.books.values()));
+    const [favBooks, setFavBooks] = useState(Array.from(client.bookService.getBooks().values()));
     const [recentBooks, setRecentBooks] = useState(client.bookService.getFavBooks());
-    const [tags, setTags] = useState(Array.from(client.tagService.tags.values()));
-    const [readings, setReadings] = useState(Array.from(client.readingService.readings.values()));
+    const [tags, setTags] = useState(Array.from(client.tagService.getTags().values()));
+    const [readings, setReadings] = useState(Array.from(client.readingService.getReadings().values()));
     const [isLoading, setIsLoading] = useState<boolean>(false);
     
     useEffect(() => {
@@ -28,12 +28,12 @@ export default function HomeScreen({ navigation, route } : any) {
     }, [navigation]);
 
     const onRefresh = () => {
-        const tags = client.tagService.tags.values();
-        const readings = client.readingService.readings.values();
+        const tags = Array.from(client.tagService.getMostUseTags().values());
+        const readings = Array.from(client.readingService.getReadings().values());
 
         getBooks();
-        setTags([...Array.from(tags)]);
-        setReadings([...Array.from(readings).slice(0, 4)]);
+        setTags([...tags]);
+        setReadings([...readings.slice(0, 4)]);
     };
 
     const onRefreshFecthAPI = async () => {
@@ -49,21 +49,21 @@ export default function HomeScreen({ navigation, route } : any) {
 
     const getBooks = () => {
         //Recent book list
-        const recentBooks = Array.from(client.bookService.books.values());
-        setRecentBooks([...recentBooks.slice(0, 6)]);
+        const newRecentBooks = Array.from(client.readingService.getRecentBooksRead().values());
+        setRecentBooks([...newRecentBooks.slice(0, 6)]);
 
         // Fav book list
         const favBooks = client.bookService.getFavBooks();
-        setFavBooks([...favBooks.slice(0, 5)]);
+        setFavBooks([...favBooks]);
     }
 
     const onShowAllItems = () => {
-        setReadings(readings.concat(Array.from(client.readingService.readings.values()).slice(readings.length, client.readingService.readings.size)));
+        setReadings(readings.concat(Array.from(client.readingService.getReadings().values()).slice(readings.length, client.readingService.readings.size)));
 	}
 
     return (
         <View style={CommonStyles.container}>
-            <TopBar searchBarShow={false} headerShow onClickButtonHeader={onRefresh} titleHeader='Bonjour' iconNameTitleHeader={'home-variant'} iconNameButtonHeader={'cog-outline'}/>
+            <TopBar searchBarShow={false} headerShow onClickButtonHeader={onRefreshFecthAPI} titleHeader='Bonjour' iconNameTitleHeader={'home-variant'} iconNameButtonHeader={'cog-outline'}/>
             <ScrollView style={HomeStyles.scrollViewContainer} refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefreshFecthAPI}/>}>
                 <View style={HomeStyles.container}>
                     <View style={HomeStyles.itemsWrapperContainer}>
@@ -111,7 +111,9 @@ export default function HomeScreen({ navigation, route } : any) {
                         }
                         {
                             readings.length !== client.readingService.readings.size && 
-                            <TextIconButton callBack={onShowAllItems} text='Voir tout' buttonStyle={HomeStyles.showAllButton} textStyle={HomeStyles.textButton}/>
+                            <View style={HomeStyles.buttonContainer}>
+                                <TextIconButton callBack={onShowAllItems} text='Voir tout' buttonStyle={HomeStyles.showAllButton} textStyle={HomeStyles.textButton}/>
+                            </View>
                         }
                     </View>
                 </View>

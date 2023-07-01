@@ -30,6 +30,19 @@ export default class TagService extends BaseService {
         return [];
     }
 
+    public getMostUseTags(){
+        const mostUseTags = Array.from(this.tags.values()).sort((a:Tag, b:Tag) =>
+            b.books.size - a.books.size
+        );
+        return mostUseTags;
+    }
+
+    public getTags(){
+        return Array.from(this.tags.values()).sort((a, b) =>
+            a.idTag - b.idTag
+        );
+    }
+
     public async createTag(tag: TagBuilder){
         const data = tag.toJSON();
         const res = await axios.post(`${this.getIp()}/api/addTag`, data);

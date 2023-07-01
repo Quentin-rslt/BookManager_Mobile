@@ -52,6 +52,11 @@ export default StyleSheet.create({
     loadMoreContent: {
         alignItems: 'center',
     },
+    buttonContainer: {
+        display: 'flex',
+        width: '100%', 
+        alignItems: 'center'
+    },
     showAllButton: {
         alignItems: 'center',    
     },

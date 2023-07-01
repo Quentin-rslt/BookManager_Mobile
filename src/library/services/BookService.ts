@@ -58,6 +58,18 @@ export default class BookService extends BaseService {
         return [];
     }
 
+    public getBooks(){
+        return Array.from(this.books.values()).sort((a, b) =>
+            a.idBook - b.idBook
+        );
+    }
+
+    public getFilteredBooks(){
+        return Array.from(this.filteredBooks.values()).sort((a, b) =>
+            a.idBook - b.idBook
+        );
+    }
+
     public async favBook(book: BookBuilder){
         const res = await axios.put(`${this.getIp()}/api/favBook/${book.idBook}/${book.isFav}`);
 
@@ -67,7 +79,7 @@ export default class BookService extends BaseService {
     }
 
     public getFavBooks() {
-        const favBooks:Book[] = Array.from(this.books.values()).filter((book) =>
+        const favBooks:Book[] = Array.from(this.getBooks().values()).filter((book) =>
             book.isFav === true
         );
 

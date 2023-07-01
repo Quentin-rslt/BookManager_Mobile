@@ -8,7 +8,7 @@ export default class BaseService {
         this.client = client
     }
 
-    public getIp(){
+    public getIp(){ 
         return process.env.API_URL;
     }
 }
