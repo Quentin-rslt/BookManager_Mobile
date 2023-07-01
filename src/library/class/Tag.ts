@@ -52,8 +52,6 @@ export default class Tag extends Base {
     }
 
     public getBooks(){
-        return Array.from(this.books.values()).sort((a, b) =>
-            a.idBook - b.idBook
-        );
+        return Array.from(this.books.values());
     }
 }

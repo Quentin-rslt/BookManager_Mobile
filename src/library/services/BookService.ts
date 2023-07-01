@@ -59,15 +59,11 @@ export default class BookService extends BaseService {
     }
 
     public getBooks(){
-        return Array.from(this.books.values()).sort((a, b) =>
-            a.idBook - b.idBook
-        );
+        return Array.from(this.books.values());
     }
 
     public getFilteredBooks(){
-        return Array.from(this.filteredBooks.values()).sort((a, b) =>
-            a.idBook - b.idBook
-        );
+        return Array.from(this.filteredBooks.values());
     }
 
     public async favBook(book: BookBuilder){

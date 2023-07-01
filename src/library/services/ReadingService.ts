@@ -31,9 +31,7 @@ export default class ReadingService extends BaseService {
     }
 
     public getReadings(){
-        return Array.from(this.readings.values()).sort((a, b) =>
-            a.idReading - b.idReading
-        );
+        return Array.from(this.readings.values());
     }
 
     public getRecentBooksRead() {

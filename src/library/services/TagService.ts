@@ -38,9 +38,7 @@ export default class TagService extends BaseService {
     }
 
     public getTags(){
-        return Array.from(this.tags.values()).sort((a, b) =>
-            a.idTag - b.idTag
-        );
+        return Array.from(this.tags.values());
     }
 
     public async createTag(tag: TagBuilder){
