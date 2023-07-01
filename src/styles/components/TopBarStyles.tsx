@@ -61,7 +61,7 @@ export default StyleSheet.create({
     },
     searchButton: {
         paddingLeft: 15,
-        marginBottom: 15,
+        marginBottom: 17,
     },
     returnButtonContainer : {   
         position:'absolute',

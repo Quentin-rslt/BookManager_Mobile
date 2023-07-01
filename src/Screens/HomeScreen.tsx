@@ -1,9 +1,8 @@
-import { View, Text, RefreshControl, ToastAndroid } from 'react-native'
+import { View, Text, RefreshControl, ToastAndroid, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import CommonStyles from '../styles/CommonStyles'
 import Client from '../library/class/Client';
 import TopBar from '../components/TopBar';
-import { ScrollView } from 'react-native-gesture-handler';
 import HomeStyles from '../styles/Screens/HomeStyles';
 import BookFavCard from '../components/cards/book/BookFavCard';
 import BookRecentListenCard from '../components/cards/book/BookRecentListenCard';
