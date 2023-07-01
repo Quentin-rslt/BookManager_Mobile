@@ -13,7 +13,7 @@ export default function LibraryScreen({ navigation, route } : any) {
 
     const client: Client = route.params.client;
 
-    const [books, setBooks] = useState(Array.from(client.bookService.getBooks().values()));
+    const [books, setBooks] = useState(client.bookService.getBooks());
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [showModalSearch, setShowModalSearch] = useState<boolean>(false);
     const [searchText, setSearchText] = useState<string>('');
@@ -26,11 +26,11 @@ export default function LibraryScreen({ navigation, route } : any) {
 
     const onRefresh = () => {
         if(client.isFilteredBooks) {
-            const books = client.bookService.getFilteredBooks().values();
-            setBooks([...Array.from(books)]);
+            const books = client.bookService.getFilteredBooks();
+            setBooks([...books]);
         } else {
-            const books = client.bookService.getBooks().values();
-            setBooks([...Array.from(books)]);
+            const books = client.bookService.getBooks();
+            setBooks([...books]);
         }
         setSearchText('');
     };
@@ -65,12 +65,12 @@ export default function LibraryScreen({ navigation, route } : any) {
     const onChangeSearch = (text : string) => {
         setSearchText(text);
         if(client.isFilteredBooks) {
-            const filteredBooks = Array.from(client.bookService.filteredBooks.values()).filter((book) =>
+            const filteredBooks = client.bookService.getFilteredBooks().filter((book) =>
                 book.title.toLowerCase().includes(text.toLowerCase()) || book.author.toUpperCase().includes(text.toUpperCase())
             );
             setBooks([...filteredBooks]);
         } else {
-            const filteredBooks = Array.from(client.bookService.books.values()).filter((book) =>
+            const filteredBooks = client.bookService.getBooks().filter((book) =>
                 book.title.toLowerCase().includes(text.toLowerCase()) || book.author.toUpperCase().includes(text.toUpperCase())
             );
             setBooks([...filteredBooks]);

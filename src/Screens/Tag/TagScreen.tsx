@@ -12,7 +12,7 @@ export default function TagScreen({ navigation, route } : any) {
     const tag:Tag = route.params.tag;
 
     const [showModal, setShowModal] = useState<boolean>(false);
-    const [books, setBooks] = useState(Array.from(tag.books.values()));
+    const [books, setBooks] = useState(Array.from(tag.getBooks().values()));
 
     useEffect(() => {
         navigation.addListener('focus', () => {
@@ -21,7 +21,7 @@ export default function TagScreen({ navigation, route } : any) {
     }, [navigation]);
 
     const onRefresh = () => {
-        const books = tag.books.values();
+        const books = tag.getBooks().values();
         setBooks([...Array.from(books)]);
     };
 

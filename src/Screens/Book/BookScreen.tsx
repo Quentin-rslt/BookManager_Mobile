@@ -77,7 +77,7 @@ export default function BookScreen({ navigation, route } : any) {
                             <Text style={BookStyles.textHolder}>Tags : ({book.tags.size.toString()})</Text>
                             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={BookStyles.tagsContainer}>
                                 {
-                                    Array.from(book.tags.values()).map((tag, idTag) => 
+                                    book.getTags().map((tag, idTag) => 
                                         <TagSticker key={idTag} tag={tag} navigation={navigation}/>
                                     )
                                 }
@@ -97,7 +97,7 @@ export default function BookScreen({ navigation, route } : any) {
                             <Text style={BookStyles.textHolder}>Lectures ({book.readings.size})</Text>
                             <View style={BookStyles.readingsContainer}>
                                 {
-                                    Array.from(book.readings.values()).map((reading, idReading) => 
+                                    book.getReadings().map((reading, idReading) => 
                                         <ReadingCard key={idReading} reading={reading} showDeleteButton={false} idReading={idReading} book={book}/>
                                     )
                                 }

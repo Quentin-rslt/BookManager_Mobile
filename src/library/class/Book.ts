@@ -77,6 +77,12 @@ export default class Book extends Base {
         return tags;
     }
 
+    public getTags(){
+        return Array.from(this.tags.values()).sort((a, b) =>
+            a.idTag - b.idTag
+        );
+    }
+
     get readings(){
         const readings = new Map<number, Reading>();
         
@@ -88,5 +94,11 @@ export default class Book extends Base {
         }
         
         return readings;
+    }
+
+    public getReadings(){
+        return Array.from(this.readings.values()).sort((a, b) =>
+            a.idReading - b.idReading
+        );
     }
 } 

@@ -12,7 +12,7 @@ export default function TagsScreen({navigation, route } : any) {
 
     const client:Client = route.params.client;
 
-    const [tags, setTags] = useState(Array.from(client.tagService.getTags().values()));
+    const [tags, setTags] = useState(client.tagService.getTags());
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [searchText, setSearchText] = useState<string>('');
 
@@ -23,7 +23,7 @@ export default function TagsScreen({navigation, route } : any) {
     }, [navigation]);
 
     const onRefresh = () => {
-        const tags = Array.from(client.tagService.getTags().values());
+        const tags = client.tagService.getTags();
         setTags([...tags]);
         setSearchText('');
     };
@@ -41,7 +41,7 @@ export default function TagsScreen({navigation, route } : any) {
     };
 
     const onChangeSearch = (text : string) => {
-        const filteredTags = Array.from(client.tagService.tags.values()).filter((tag) =>
+        const filteredTags = client.tagService.getTags().filter((tag) =>
             tag.textTag.toLowerCase().includes(text.toLowerCase())
         );
         setTags([...filteredTags]);
