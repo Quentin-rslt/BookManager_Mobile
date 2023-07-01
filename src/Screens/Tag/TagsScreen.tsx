@@ -6,7 +6,6 @@ import TagsStyles from '../../styles/Screens/Tag/TagsStyles'
 import TopBar from '../../components/TopBar'
 import Client from '../../library/class/Client'
 import TagBuilder from '../../library/builders/TagBuilder'
-import Tag from '../../library/class/Tag'
 
 export default function TagsScreen({navigation, route } : any) {
 

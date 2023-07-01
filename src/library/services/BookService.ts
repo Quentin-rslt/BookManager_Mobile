@@ -75,7 +75,7 @@ export default class BookService extends BaseService {
     }
 
     public getFavBooks() {
-        const favBooks:Book[] = Array.from(this.getBooks().values()).filter((book) =>
+        const favBooks:Book[] = this.getBooks().filter((book) =>
             book.isFav === true
         );
 

@@ -7,7 +7,6 @@ import LibraryStyles from '../../styles/Screens/Book/LibraryStyles'
 import Client from '../../library/class/Client'
 import BookBuilder from '../../library/builders/BookBuilder'
 import SearchBooksModal from '../../components/Modals/SearchBooksModal'
-import Book from '../../library/class/Book'
 
 export default function LibraryScreen({ navigation, route } : any) {
 

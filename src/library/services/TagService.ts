@@ -31,7 +31,7 @@ export default class TagService extends BaseService {
     }
 
     public getMostUseTags(){
-        const mostUseTags = Array.from(this.tags.values()).sort((a:Tag, b:Tag) =>
+        const mostUseTags = this.getTags().sort((a:Tag, b:Tag) =>
             b.books.size - a.books.size
         );
         return mostUseTags;

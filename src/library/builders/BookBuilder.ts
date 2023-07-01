@@ -1,6 +1,5 @@
 import Base from "../class/Base";
 import Client from "../class/Client";
-import Reading from "../class/Reading";
 import Tag from "../class/Tag";
 import ReadingBuilder from "./ReadingBuilder";
 

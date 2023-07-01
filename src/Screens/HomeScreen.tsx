@@ -15,10 +15,10 @@ export default function HomeScreen({ navigation, route } : any) {
 
     const client:Client = route.params.client;
 
-    const [favBooks, setFavBooks] = useState(Array.from(client.bookService.getBooks().values()));
+    const [favBooks, setFavBooks] = useState(client.bookService.getBooks());
     const [recentBooks, setRecentBooks] = useState(client.bookService.getFavBooks());
-    const [tags, setTags] = useState(Array.from(client.tagService.getTags().values()));
-    const [readings, setReadings] = useState(Array.from(client.readingService.getReadings().values()));
+    const [mostUseTags, setMostUseTags] = useState(client.tagService.getTags());
+    const [readings, setReadings] = useState(client.readingService.getReadings());
     const [isLoading, setIsLoading] = useState<boolean>(false);
     
     useEffect(() => {
@@ -28,11 +28,11 @@ export default function HomeScreen({ navigation, route } : any) {
     }, [navigation]);
 
     const onRefresh = () => {
-        const tags = Array.from(client.tagService.getMostUseTags().values());
-        const readings = Array.from(client.readingService.getReadings().values());
+        const tags = client.tagService.getMostUseTags();
+        const readings = client.readingService.getReadings();
 
         getBooks();
-        setTags([...tags]);
+        setMostUseTags([...tags.slice(0, 6)]);
         setReadings([...readings.slice(0, 4)]);
     };
 
@@ -58,7 +58,7 @@ export default function HomeScreen({ navigation, route } : any) {
     }
 
     const onShowAllItems = () => {
-        setReadings(readings.concat(Array.from(client.readingService.getReadings().values()).slice(readings.length, client.readingService.readings.size)));
+        setReadings(readings.concat(client.readingService.getReadings().slice(readings.length, client.readingService.readings.size)));
 	}
 
     return (
@@ -91,10 +91,10 @@ export default function HomeScreen({ navigation, route } : any) {
                         </ScrollView>
                     </View>
                     <View style={HomeStyles.itemsContainer}>
-                        {tags.length !== 0 && <Text style={HomeStyles.textHolder}>Tags les plus utilisés</Text>}
+                        {mostUseTags.length !== 0 && <Text style={HomeStyles.textHolder}>Tags les plus utilisés</Text>}
                         <ScrollView horizontal style={HomeStyles.itemsScrollView} showsHorizontalScrollIndicator={false}>
                             {
-                                tags.map((tag, idTag) => 
+                                mostUseTags.map((tag, idTag) => 
                                     <View key={idTag} style={HomeStyles.tagCardContainer}>
                                         <TagMostUseCard key={idTag} tag={tag} navigation={navigation}/>
                                     </View>

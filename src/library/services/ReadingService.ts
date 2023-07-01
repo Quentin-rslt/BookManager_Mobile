@@ -37,7 +37,7 @@ export default class ReadingService extends BaseService {
     public getRecentBooksRead() {
         const recentBooks = new Map<number, Book>();
 
-        for(const reading of Array.from(this.readings.values()).sort((a:Reading, b:Reading) => new Date(b.endReadingDate).getTime() - new Date(a.endReadingDate).getTime())) {
+        for(const reading of this.getReadings().sort((a:Reading, b:Reading) => new Date(b.endReadingDate).getTime() - new Date(a.endReadingDate).getTime())) {
             for(const book of recentBooks.values()) {
                 if(reading.book && book.idBook !== reading.book.idBook) {
                     reading.book && recentBooks.set(reading.book.idBook, reading.book);
